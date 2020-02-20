@@ -1,6 +1,6 @@
 Computational Methods for Astronomy
 ===================================
-by: **Sebastian Bustamante** *2014/2015*
+by: **Sebastian Bustamante** *2014/2015* **Diego Restrepo ** 2017/...**
 
 ![](https://raw.githubusercontent.com/sbustamante/ComputationalMethods/master/material/figures/Collage.png)
 
@@ -22,6 +22,7 @@ including the detailed program, notes and presentations, examples (ipython
 notebooks) and homeworks. (This repository may be subject to changes continuously 
 as the course advances).
 
+[Submodules help](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 [**SYLLABUS**](https://github.com/sbustamante/ComputationalMethods/raw/master/syllabus/Programa_M%C3%A9todos_Computacionales.pdf):
 detailed description of the program of the course, including a brief motivation and presentation, 
