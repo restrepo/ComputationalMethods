@@ -7,13 +7,13 @@ kernel_path: content/features
 has_widgets: false
 title: |-
   Minimization
-pagenum: 3
+pagenum: 5
 prev_page:
   url: /features/interpolation_details.html
 next_page:
   url: /features/least_action_minimization.html
 suffix: .ipynb
-search: phi scipy x action least colab function df hermite font minimum equation com minimization minumum optimize org interpolation local mnimo global end pdf research google github restrepo computationalmethods blob master material ipynb optimization fit lectures intro html example dataset using iloc degree n data en cerca de color red e activity values fminpowell potential begin mu lambda hbox www href target parentimg src assets badge svg alt open bibliography autoexamples plotoptimizeexample consider following laggrange pandas series obtain specific valuea slices must note loc works recommend polynomial where finding minimums encontrando primer que resulta ser el y un maximum set points
+search: phi minimum scipy equation colab com minimization function df x hermite font action restrepo computationalmethods master material minumum org interpolation local close global right begin mu lambda end frac plane check least pdf research google github blob ipynb src svg optimization fit optimize lectures intro html example dataset iloc degree n data finding color red values points potential div v part left point minima www href target parentimg assets badge alt open bibliography autoexamples plotoptimizeexample consider following laggrange pandas series obtain specific valuea using slices must note loc works recommend polynomial where minimums corresponds sceond activity maximum set csv fminpowell
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -70,6 +70,17 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Populating the interactive namespace from numpy and matplotlib
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.5/dist-packages/IPython/core/magics/pylab.py:160: UserWarning: pylab import has clobbered these variables: [&#39;fmin&#39;, &#39;f&#39;]
+`%matplotlib` prevents importing * from pylab and numpy
+  &#34;\n`%matplotlib` prevents importing * from pylab and numpy&#34;
 </pre>
 </div>
 </div>
@@ -375,23 +386,6 @@ Name: X, dtype: float64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">but</span> <span class="n">only</span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
@@ -458,7 +452,7 @@ Name: X, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/Minimization_17_0.png"
+<img src="../images/features/Minimization_16_0.png"
 >
 </div>
 
@@ -526,7 +520,7 @@ Name: X, dtype: float64</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Text(0, 0.5, &#39;$H(x)$&#39;)</pre>
+<pre>Text(0,0.5,&#39;$H(x)$&#39;)</pre>
 </div>
 
 </div>
@@ -537,7 +531,7 @@ Name: X, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/Minimization_20_1.png"
+<img src="../images/features/Minimization_19_1.png"
 >
 </div>
 
@@ -563,7 +557,7 @@ Name: X, dtype: float64</pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Encontrando en primer mínimo cerca de <font color="red">3</font> (que resulta ser el mínimo global en [0,6]) y cerca de e <font color="red">5</font>  (un mínimo local)</p>
+<p>Finding the first minimum close to  <font color="red">3</font> (which corresponds to the global minimum), and the sceond close to <font color="red">5</font>  (a  local minimum)</p>
 
 </div>
 </div>
@@ -651,7 +645,7 @@ Optimization terminated successfully.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El mínimo global es f(x)=</span><span class="si">{}</span><span class="s1"> para x=</span><span class="si">{}</span><span class="s1">;</span><span class="se">\n</span><span class="s1"> el mínimo local es f(x)=</span><span class="si">{}</span><span class="s1"> para x=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The global minimum is f(x)=</span><span class="si">{}</span><span class="s1"> for x=</span><span class="si">{}</span><span class="s1">;</span><span class="se">\n</span><span class="s1"> the local minimum is f(x)=</span><span class="si">{}</span><span class="s1"> for x=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">min1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">min1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">min2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">min2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 
@@ -666,8 +660,8 @@ Optimization terminated successfully.
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>El mínimo global es f(x)=-1.3741131581291484 para x=2.9278495523433894;
- el mínimo local es f(x)=0.6998981514389016 para x=5.004929292406532
+<pre>The global minimum is f(x)=-1.3741131581291484 for x=2.9278495523433894;
+ the local minimum is f(x)=0.6998981514389016 for x=5.004929292406532
 </pre>
 </div>
 </div>
@@ -729,7 +723,7 @@ Optimization terminated successfully.
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/Minimization_27_1.png"
+<img src="../images/features/Minimization_26_1.png"
 >
 </div>
 
@@ -826,7 +820,7 @@ Optimization terminated successfully.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">min1</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="o">-</span><span class="n">H</span><span class="p">,</span><span class="n">x0</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">min1</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="o">-</span><span class="n">H</span><span class="p">,</span><span class="n">x0</span><span class="o">=</span><span class="mf">4.5</span><span class="p">)</span>
 <span class="n">min1</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
 </pre></div>
 
@@ -843,7 +837,7 @@ Optimization terminated successfully.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([4.01502381])</pre>
+<pre>array([4.01502453])</pre>
 </div>
 
 </div>
@@ -1038,11 +1032,60 @@ Optimization terminated successfully.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([5.91821429])</pre>
+<pre>array([5.91821428])</pre>
 </div>
 
 </div>
 </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Populating the interactive namespace from numpy and matplotlib
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -1067,7 +1110,7 @@ Optimization terminated successfully.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">α</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">α</span><span class="o">=</span><span class="mi">2</span>
 </pre></div>
 
     </div>
@@ -1146,7 +1189,7 @@ Optimization terminated successfully.
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/Minimization_43_0.png"
+<img src="../images/features/Minimization_44_0.png"
 >
 </div>
 
@@ -1183,6 +1226,40 @@ Optimization terminated successfully.
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Vp</span><span class="p">(</span><span class="n">ϕ</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-92060568.64037189</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ϕ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">380</span><span class="p">,</span><span class="mi">380</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ϕ</span><span class="p">,</span> <span class="n">V</span><span class="p">(</span><span class="n">ϕ</span><span class="p">)</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
@@ -1201,7 +1278,7 @@ Optimization terminated successfully.
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/Minimization_45_0.png"
+<img src="../images/features/Minimization_47_0.png"
 >
 </div>
 
@@ -1301,7 +1378,9 @@ Optimization terminated successfully.
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Activity">Activity<a class="anchor-link" href="#Activity"> </a></h2><p>For a complex scalar field with potential
+<h2 id="Minimization-in-higher-dimensions">Minimization in higher dimensions<a class="anchor-link" href="#Minimization-in-higher-dimensions"> </a></h2><div style="float: right;" markdown="1">
+    <img src="https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/figures/mexicanhat.svg?sanitize=true" width="300">
+</div><p>For a complex scalar field with potential
 \begin{equation}
 V(\phi)=\mu^2\phi^*\phi + \lambda (\phi^*\phi)^2
 \end{equation}
@@ -1309,7 +1388,10 @@ with
 \begin{equation}
 \phi=\frac{\phi_1+i\phi_2  }{\sqrt{2} }
 \end{equation}
-and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimum values of $\phi$</p>
+and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimum values of $\phi$, as illustrated in the figure, with the plane, $\phi_1-\phi_2$, moved to the minimum to easy the visualization. Expanding in terms of the real and imaginary part of $\phi$
+\begin{equation}
+V(\phi)=\frac{\mu^2}{2}\left(\phi_1^2+\phi_2^2 \right) + \frac{\lambda}{4}\left( \phi_1^2+\phi_2^2\right)^2
+\end{equation}</p>
 
 </div>
 </div>
@@ -1323,8 +1405,12 @@ and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimu
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">=</span><span class="mi">89</span><span class="n">j</span>
-<span class="n">l</span><span class="o">=</span><span class="n">λ</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">ϕ</span><span class="p">,</span><span class="n">m_H</span><span class="o">=</span><span class="mi">126</span><span class="p">,</span><span class="n">G_F</span><span class="o">=</span><span class="mf">1.1663787E-5</span><span class="p">):</span>
+    <span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">G_F</span><span class="p">)</span> <span class="c1"># GeV</span>
+    <span class="n">μ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m_H</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span> <span class="c1">#imaginary mass</span>
+    <span class="n">λ</span><span class="o">=</span><span class="n">m_H</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1">#print(μ,λ)</span>
+    <span class="k">return</span> <span class="p">(</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">μ</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.25</span><span class="o">*</span><span class="n">λ</span><span class="o">*</span><span class="p">(</span><span class="n">ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">.</span><span class="n">real</span>
 </pre></div>
 
     </div>
@@ -1336,19 +1422,12 @@ and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimu
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check a point of the function</p>
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mf">0.25</span><span class="o">*</span><span class="n">l</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
-
 </div>
 </div>
 
@@ -1359,7 +1438,52 @@ and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimu
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fmin</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_powell</span><span class="p">(</span><span class="n">f</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">ftol</span><span class="o">=</span><span class="mf">1E-16</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-396572.6550230127</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check the minimim obtained when an inizialization point at $\phi_0=(0,0)$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fmin</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_powell</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span><span class="n">ftol</span><span class="o">=</span><span class="mf">1E-16</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">fmin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
@@ -1375,9 +1499,9 @@ and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimu
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Optimization terminated successfully.
-         Current function value: -119793805.867789
+         Current function value: -120308559.069597
          Iterations: 3
-         Function evaluations: 129
+         Function evaluations: 111
 </pre>
 </div>
 </div>
@@ -1388,9 +1512,52 @@ and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimu
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([245.95486481,  -0.69854784])</pre>
+<pre>array([246.21914011,  -0.50137284])</pre>
 </div>
 
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check the proyection of the minimum in the plane $\phi_1-\phi_2$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;V(ϕ)=</span><span class="si">{}</span><span class="s1"> GeV^4&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fmin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>V(ϕ)=-120308559.1 GeV^4
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -1422,7 +1589,199 @@ and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimu
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>245.95585679378814</pre>
+<pre>246.21965057683713</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For random initialization points, we can get several minima</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 63.35817875, 200.27422358])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">ϕ0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ϕmin</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_powell</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="o">=</span><span class="n">ϕ0</span><span class="p">,</span><span class="n">ftol</span><span class="o">=</span><span class="mf">1E-16</span><span class="p">,</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;ϕ1&#39;</span><span class="p">:</span><span class="n">ϕmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;ϕ2&#39;</span><span class="p">:</span><span class="n">ϕmin</span><span class="p">[</span><span class="mi">1</span><span class="p">]},</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Projection of the minima in the plane, $\phi_1,\phi_2$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ϕ1</th>
+      <th>ϕ2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-245.213403</td>
+      <td>-22.237444</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>218.784839</td>
+      <td>112.948264</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>217.456430</td>
+      <td>115.485138</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ϕ1&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ϕ2&#39;</span><span class="p">],</span><span class="s1">&#39;r.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\phi_{{\rm min}}=</span><span class="si">{}</span><span class="s1">$ GeV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;ϕ1&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;ϕ2&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;ϕ1&#39;</span><span class="p">],</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;ϕ2&#39;</span><span class="p">],</span><span class="s1">&#39;k*&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Our Universe&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\phi_1$&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\phi_2$&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/Minimization_65_0.png"
+>
 </div>
 
 </div>
@@ -1441,648 +1800,6 @@ and $\mu^2&lt;0$, and $\lambda&gt;0$, find some of the infinite number of minimu
 
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Δt</span><span class="o">=</span><span class="mf">0.5</span>
-<span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="o">+</span><span class="n">Δt</span><span class="p">,</span><span class="n">Δt</span><span class="p">)</span>
-<span class="n">t</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. ])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([0.5, 1. , 1.5, 2. , 2.5, 3. ])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([0. , 0.5, 1. , 1.5, 2. , 2.5])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Δt=t_{i+1}-t_i=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Δt=t_{i+1}-t_i= [0.5 0.5 0.5 0.5 0.5 0.5]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">global</span> <span class="n">g</span>  
-<span class="n">g</span><span class="o">=</span><span class="mf">9.8</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">xini</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">xend</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
-    <span class="n">t</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">Dt</span><span class="o">=</span><span class="n">t</span><span class="o">/</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="c1">#Fix initial and final point</span>
-    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">xini</span>
-    <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">xend</span>
-    <span class="k">return</span> <span class="p">((</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">Dt</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">*</span><span class="n">Dt</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Function to find the least Action by using <code>scipy.optimize.fmin_powell</code>. It start from $\mathbf{x}=(x_{\hbox{ini}},0,0,\ldots,x_{\hbox{end}})$ and find the least action</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">xfit</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">xini</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">xend</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">ftol</span><span class="o">=</span><span class="mf">1E-8</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Find the array of n (odd) components that minimizes the action S(x)</span>
-
-<span class="sd">    :Parameters:</span>
-
-<span class="sd">    n: odd integer </span>
-<span class="sd">        dimension of the ndarray x that minimizes the action  S(x,t,m)</span>
-<span class="sd">    t,m: numbers</span>
-<span class="sd">       optional parameters for the action</span>
-<span class="sd">    ftol: number</span>
-<span class="sd">        acceptable relative error in S(x) for convergence.</span>
-
-<span class="sd">    :Returns: (x,xmax,Smin)</span>
-<span class="sd">    </span>
-<span class="sd">    x: ndarray</span>
-<span class="sd">        minimizer of the action S(x)</span>
-<span class="sd">        </span>
-<span class="sd">    xini:</span>
-<span class="sd">    </span>
-<span class="sd">    xend:</span>
-
-<span class="sd">    xmax: number</span>
-<span class="sd">        Maximum height for the object</span>
-
-<span class="sd">    Smin: number</span>
-<span class="sd">        value of function at minimum: Smin = S(x)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">optimize</span>
-    <span class="n">t</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">2</span>==0:
-        <span class="nb">print</span> <span class="p">(</span> <span class="s1">&#39;x array must be odd&#39;</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-  
-    <span class="n">x0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">a</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_powell</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">xini</span><span class="p">,</span><span class="n">xend</span><span class="p">),</span><span class="n">ftol</span><span class="o">=</span><span class="n">ftol</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">xini</span><span class="p">;</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">xend</span>
-    <span class="n">xmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">Smin</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">Dt</span><span class="o">=</span><span class="n">t</span><span class="o">/</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="c1">#  t/(n-1)</span>
-    <span class="k">return</span> <span class="n">x</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">Smin</span><span class="p">,</span><span class="n">Dt</span>  
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">11</span>
-<span class="n">t</span><span class="o">=</span><span class="mf">3.</span> <span class="c1"># s</span>
-<span class="n">m</span><span class="o">=</span><span class="mf">0.2</span> <span class="c1"># g</span>
-<span class="n">y</span><span class="o">=</span><span class="n">xfit</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">ftol</span><span class="o">=</span><span class="mf">1E-16</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Optimization terminated successfully.
-         Current function value: -21.392910
-         Iterations: 15
-         Function evaluations: 2154
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([ 0.        ,  3.96900002,  7.05599999,  9.26099998, 10.58400002,
-       11.02500004, 10.58400005,  9.26100006,  7.05600004,  3.96900001,
-        0.        ])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-<span class="n">P</span><span class="o">=</span><span class="n">poly1d</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">P</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>      2
--4.9 x + 14.7 x - 1.402e-08
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
-<span class="n">T</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">P</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$S_{\rm min}=</span><span class="si">%g</span><span class="s1">$&#39;</span> <span class="o">%</span><span class="k">y</span>[2])
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5,1,&#39;$S_{\\rm min}=-21.3929$&#39;)</pre>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../images/features/Minimization_68_1.png"
->
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="mf">3.</span>
-<span class="n">m</span><span class="o">=</span><span class="mf">0.2</span>
-<span class="n">n</span><span class="o">=</span><span class="mi">21</span>
-<span class="n">y</span><span class="o">=</span><span class="n">xfit</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
-<span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">Smin</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">Dt</span><span class="o">=</span><span class="n">t</span><span class="o">/</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
-<span class="n">tx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="o">+</span><span class="n">Dt</span><span class="p">,</span><span class="n">Dt</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Optimization terminated successfully.
-         Current function value: -21.554977
-         Iterations: 28
-         Function evaluations: 5837
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-<span class="n">P</span><span class="o">=</span><span class="n">poly1d</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">P</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>      2
--4.9 x + 14.7 x + 0.0001604
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">t</span><span class="o">=</span><span class="n">tx</span>
-<span class="n">Dt</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0.15</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0.2</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="p">((</span><span class="n">x</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">Dt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="p">((</span><span class="n">x</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([  0.        ,  21.55712992,  73.91284699, 146.0420276 ,
-       228.21348894, 312.00329681, 390.30425847, 457.22580097,
-       508.26594986, 540.20139067, 551.05824894, 540.19663702,
-       508.27028432, 457.21813084, 390.2603388 , 311.97587507,
-       228.18868613, 146.02183087,  73.90046308,  21.55285329])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
