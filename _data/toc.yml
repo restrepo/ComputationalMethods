@@ -33,6 +33,15 @@
 - header: Contents
 
 # A chapter w/ a collection of sections beneath it
+- title: One Variable Equations  
+  url: /features/one-variable-equations
+  not_numbered: false
+  expand_sections: false
+  sections:
+  - title: Fixed point
+    url: /features/one-variable-equations-fixed-point
+    not_numbered: false
+
 - title: Interpolation
   url: /features/interpolation
   not_numbered: false
