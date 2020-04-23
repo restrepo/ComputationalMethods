@@ -48,24 +48,3 @@
     url: /features/least_action_minimization
     not_numbered: false
 
-# Hel pages
-- title: Home
-  url: /intro
-  not_numbered: true
-
-# External link
-- title: GitHub repository
-  url: https://github.com/jupyter/jupyter-book
-  external: true
-  not_numbered: true
-- title: Features and customization
-  url: /features/features
-  not_numbered: false
-  expand_sections: true
-  sections:
-  - title: Markdown files
-    url: /features/markdown
-    not_numbered: false
-  - title: Jupyter notebooks
-    url: /features/notebooks
-    not_numbered: false
