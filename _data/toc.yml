@@ -47,6 +47,9 @@
   not_numbered: false
   expand_sections: false
   sections:
+  - title: Lagrange polynomials
+    url: /features/LagrangePoly
+    not_numbered: false
   - title: Hemite interpolation
     url: /features/interpolation_details
     not_numbered: false
