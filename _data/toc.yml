@@ -60,3 +60,12 @@
     url: /features/least_action_minimization
     not_numbered: false
 
+- title: Numerical calculus
+  url: /features/numerical-calculus
+  not_numbered: false
+  expand_sections: false
+  sections:
+  - title: Numerical integration
+    url: /features/numerical-calculus-integration
+    not_numbered: false
+
