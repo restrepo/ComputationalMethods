@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: x f frac n b dx xi left right h integration numerical quadrature function s simpsons font t ab omega rule intab using composite where int k e integral trapezoidal given interval sum color red adaptive end order universe methods integrals scipy begin next singularity previous error equation expression implementation p g d xk value density endpoint j cdots polynomial l formula intervals integrate epsilon calculus functions org second not wikipedia align operatorname r intabf activity com such improper within xn lagrange interpolation dt precision z ipynb different only infinite numpy approx obtained m simple pi since small here c
+search: x f frac n b dx xi left right h integration numerical quadrature function s simpsons font t ab omega rule intab using composite where int k e integral trapezoidal given interval sum color red adaptive end order universe methods integrals scipy begin next singularity previous error equation expression implementation integrate p g d xk value density endpoint j cdots polynomial l formula intervals epsilon calculus functions org second not wikipedia align operatorname r intabf activity com such improper within xn lagrange interpolation dt precision z ipynb different only infinite numpy approx obtained m simple pi since small python here
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -483,23 +483,6 @@ $$F(b) - F(a) = \int_{a}^{b} f(x) dx$$<p>This procedure can be formally thought 
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
 </pre></div>
 
@@ -567,6 +550,44 @@ Function with some parts of its domain in the complex plane like, <code>sqrt</co
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;interactive&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;tags&#39;: [&#39;interactive&#39;]}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
@@ -587,13 +608,13 @@ Function with some parts of its domain in the complex plane like, <code>sqrt</co
 
  
  
-<div id="c317138e-a1a1-4271-9dbc-842d30f5bf7d"></div>
+<div id="76537b7c-e134-41ab-8747-f5a43ae0a129"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c317138e-a1a1-4271-9dbc-842d30f5bf7d');
+var element = $('#76537b7c-e134-41ab-8747-f5a43ae0a129');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "500064b43ce343bd8b15ddcc2bb6433c", "version_major": 2, "version_minor": 0}
+{"model_id": "140c019097ab4b3da56dc1ae5b43016f", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -612,7 +633,7 @@ var element = $('#c317138e-a1a1-4271-9dbc-842d30f5bf7d');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">arcsin</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -622,118 +643,6 @@ var element = $('#c317138e-a1a1-4271-9dbc-842d30f5bf7d');
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>2.0498241882037043</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1.5707963267948966+1.3169578969248166j)</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>1.3643763538418412j</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">arcsin</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:1: DeprecationWarning: scipy.arcsin is deprecated and will be removed in SciPy 2.0.0, use numpy.lib.scimath.arcsin instead
-  &#34;&#34;&#34;Entry point for launching an IPython kernel.
-</pre>
-</div>
-</div>
-</div>
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
@@ -821,18 +730,16 @@ The numerical approximation of the integral with the trapezoidal method is then 
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>integrate.quad<span class="o">?</span>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
+<p><strong>Parameters</strong>:
+<code>python</code></p>
+<p>See <code>integrate.quad?</code> for further details</p>
 
-    </div>
 </div>
 </div>
-
 </div>
 </div>
 
@@ -1307,7 +1214,7 @@ $$\operatorname{Si}(t)=\int_0^t \frac{\sin x}{x}\, \operatorname{d}x$$</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration_50_0.png"
+<img src="../images/features/numerical-calculus-integration_47_0.png"
 >
 </div>
 
@@ -1537,7 +1444,7 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration_59_0.png"
+<img src="../images/features/numerical-calculus-integration_56_0.png"
 >
 </div>
 
@@ -1843,7 +1750,7 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration_72_1.png"
+<img src="../images/features/numerical-calculus-integration_69_1.png"
 >
 </div>
 
@@ -2286,7 +2193,7 @@ $$ \frac{dN}{dt} = e^{-t} $$<p>Compare the relative error for the composite trap
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration_96_0.png"
+<img src="../images/features/numerical-calculus-integration_93_0.png"
 >
 </div>
 
@@ -3024,6 +2931,60 @@ a=1 \label{a}
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;popout&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;tags&#39;: [&#39;popout&#39;]}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>{
+    "tags": [
+        "popout",
+    ]
+}
+Hola mundo</p>
 
 </div>
 </div>
