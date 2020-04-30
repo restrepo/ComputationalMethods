@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: x f frac n b dx xi left right h integration numerical quadrature s simpsons function font t ab omega rule intab using composite where int k e integral trapezoidal given interval sum color red adaptive end order universe methods integrals begin next singularity scipy previous error equation expression implementation p g d xk value density endpoint cdots polynomial l formula intervals integrate epsilon second not wikipedia align operatorname r j intabf activity calculus such improper within org xn lagrange interpolation dt precision z ipynb only functions infinite approx obtained m simple pi com since different small c defined numpy
+search: x f frac n b dx xi left right h integration numerical quadrature function s simpsons font t ab omega rule intab using composite where int k e integral trapezoidal given interval sum color red adaptive end order universe methods integrals scipy begin next singularity previous error equation expression implementation p g d xk value density endpoint j cdots polynomial l formula intervals integrate epsilon calculus functions org second not wikipedia align operatorname r intabf activity com such improper within xn lagrange interpolation dt precision z ipynb different only infinite numpy approx obtained m simple pi since small here c
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -19,12 +19,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Numerical integration</div>
 </div>
-    
-<div class="jb_cell">
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/numerical-calculus-integration.ipynb">View in Colaboratory</a></p>
+<p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/numerical-calculus-integration.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 
 </div>
 </div>
@@ -94,6 +93,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Bibliograpy">Bibliograpy<a class="anchor-link" href="#Bibliograpy"> </a></h2><ul>
+<li><a href="https://github.com/restrepo/Calculus">https://github.com/restrepo/Calculus</a></li>
+<li>Thomas J. Sargent John Stachurski, <a href="https://python-programming.quantecon.org/scipy.html">Python Programming for Quantitative Economics GitHub</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -101,10 +114,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="c1"># JSAnimation import available at https://github.com/jakevdp/JSAnimationfrom JSAnimation import IPython_display</span>
-<span class="c1">#from matplotlib import animation</span>
-<span class="c1">#Interpolation add-on</span>
 <span class="kn">import</span> <span class="nn">scipy.interpolate</span> <span class="k">as</span> <span class="nn">interpolate</span>
 <span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">integrate</span>
 </pre></div>
@@ -168,12 +177,23 @@ $$F(b) - F(a) = \int_{a}^{b} f(x) dx$$<p>This procedure can be formally thought 
 <span class="kn">import</span> <span class="nn">cmath</span> <span class="k">as</span> <span class="nn">cm</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy.lib.scimath</span> <span class="k">as</span> <span class="nn">sc</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Complex-object-in-Python">Complex object in Python<a class="anchor-link" href="#Complex-object-in-Python"> </a></h3>
+</div>
+</div>
 </div>
 </div>
 
@@ -191,6 +211,17 @@ $$F(b) - F(a) = \int_{a}^{b} f(x) dx$$<p>This procedure can be formally thought 
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>which</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -337,7 +368,7 @@ $$F(b) - F(a) = \int_{a}^{b} f(x) dx$$<p>This procedure can be formally thought 
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">asin</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">asin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -352,12 +383,12 @@ $$F(b) - F(a) = \int_{a}^{b} f(x) dx$$<p>This procedure can be formally thought 
 
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-red-fg">----------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-9-1385535d58fd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>m<span class="ansi-blue-fg">.</span>asin<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">+</span><span class="ansi-cyan-fg">0j</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-8-a8e9cf78b9cd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>m<span class="ansi-blue-fg">.</span>asin<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-red-fg">TypeError</span>: can&#39;t convert complex to float</pre>
+<span class="ansi-red-fg">ValueError</span>: math domain error</pre>
 </div>
 </div>
 </div>
@@ -408,7 +439,214 @@ $$F(b) - F(a) = \int_{a}^{b} f(x) dx$$<p>This procedure can be formally thought 
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:1: RuntimeWarning: invalid value encountered in arcsin
+  &#34;&#34;&#34;Entry point for launching an IPython kernel.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>nan</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1.5707963267948966+1.3169578969248166j)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>numpy.lib.scimath</code> imported as <code>sc</code> here, is from <code>sc?</code>:</p>
+<blockquote><p>Wrapper functions to more user-friendly calling of certain math functions
+whose output data-type is different than the input data-type in certain
+domains of the input.
+Function with some parts of its domain in the complex plane like, <code>sqrt</code>, <code>log</code>, <code>log2</code>, <code>logn</code>, <code>log10</code>, <code>power</code>, <code>arccos</code>, <code>arcsin</code>, and <code>arctanh</code>.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="c317138e-a1a1-4271-9dbc-842d30f5bf7d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#c317138e-a1a1-4271-9dbc-842d30f5bf7d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "500064b43ce343bd8b15ddcc2bb6433c", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2.0498241882037043</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -442,7 +680,7 @@ $$F(b) - F(a) = \int_{a}^{b} f(x) dx$$<p>This procedure can be formally thought 
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">arcsin</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -458,7 +696,51 @@ $$F(b) - F(a) = \int_{a}^{b} f(x) dx$$<p>This procedure can be formally thought 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([1.57079633+1.3169579j, 0.41151685+0.j       ])</pre>
+<pre>1.3643763538418412j</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">arcsin</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:1: DeprecationWarning: scipy.arcsin is deprecated and will be removed in SciPy 2.0.0, use numpy.lib.scimath.arcsin instead
+  &#34;&#34;&#34;Entry point for launching an IPython kernel.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1.57079633+1.3169579j , 1.57079633+1.76274717j])</pre>
 </div>
 
 </div>
@@ -953,7 +1235,7 @@ $$\operatorname{Si}(t)=\int_0^t \frac{\sin x}{x}\, \operatorname{d}x$$</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>$	aneta$
+<pre>$	aeta$
 </pre>
 </div>
 </div>
@@ -1003,38 +1285,6 @@ $$\operatorname{Si}(t)=\int_0^t \frac{\sin x}{x}\, \operatorname{d}x$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Populating the interactive namespace from numpy and matplotlib
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">1E-3</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">tt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">Si</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">)</span>
@@ -1057,7 +1307,7 @@ $$\operatorname{Si}(t)=\int_0^t \frac{\sin x}{x}\, \operatorname{d}x$$</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration_40_0.png"
+<img src="../images/features/numerical-calculus-integration_50_0.png"
 >
 </div>
 
@@ -1137,7 +1387,7 @@ $$E[f] = \frac{h^{n+2}f^{n+1}(\xi)}{(n+1)!}\int_0^nt(t-1)\cdots(t-n) $$<p>if $n$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">interpolate</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
 interpolate.lagrange<span class="o">?</span>
 </pre></div>
 
@@ -1159,7 +1409,7 @@ interpolate.lagrange<span class="o">?</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Antiderivate approximantion with Lagrange Polynomial </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">interpolate</span>    
+    <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>    
     <span class="n">Y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span> <span class="n">X</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">lagrange</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="p">)</span><span class="o">.</span><span class="n">integ</span><span class="p">()</span>
 </pre></div>
@@ -1185,7 +1435,7 @@ interpolate.lagrange<span class="o">?</span>
 <span class="sd">    X: nodes of the Lagrangian interpolation polynomial</span>
 <span class="sd">    xmin,xmax,ymin, ymax: size of the figure</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">interpolate</span>    
+    <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>    
     <span class="n">Y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span> <span class="n">X</span> <span class="p">)</span>
     
     <span class="c1">#X array</span>
@@ -1287,7 +1537,7 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration_49_0.png"
+<img src="../images/features/numerical-calculus-integration_59_0.png"
 >
 </div>
 
@@ -1593,7 +1843,7 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration_62_1.png"
+<img src="../images/features/numerical-calculus-integration_72_1.png"
 >
 </div>
 
@@ -2036,7 +2286,7 @@ $$ \frac{dN}{dt} = e^{-t} $$<p>Compare the relative error for the composite trap
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration_86_0.png"
+<img src="../images/features/numerical-calculus-integration_96_0.png"
 >
 </div>
 
@@ -2781,6 +3031,10 @@ a=1 \label{a}
 </div>
 
  
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"1c32eccc95d14030a24d741c494aed4b": {"model_module": "@jupyter-widgets/controls", "model_name": "VBoxModel", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_fba6837991814f5ea284fdb85e34cc6e", "IPY_MODEL_6f67970815044ecf96a7924fa29c6a07"], "layout": "IPY_MODEL_8162435f1ebf4b27876c56ae78444500"}}, "31971bc5839647f99debb47bb0db4cda": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "569d6cdf28c4486e81ac46f078bb5772": {"model_module": "@jupyter-widgets/controls", "model_name": "SliderStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "6f67970815044ecf96a7924fa29c6a07": {"model_module": "@jupyter-widgets/output", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_76235d5b1c0f4905bb034ec71c7e0882", "msg_id": "", "outputs": [{"metadata": {"tags": []}, "output_type": "stream", "stream": "stdout", "text": "5\n"}]}}, "76235d5b1c0f4905bb034ec71c7e0882": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8162435f1ebf4b27876c56ae78444500": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fba6837991814f5ea284fdb85e34cc6e": {"model_module": "@jupyter-widgets/controls", "model_name": "IntSliderModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "x", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_31971bc5839647f99debb47bb0db4cda", "max": 15, "min": -5, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_569d6cdf28c4486e81ac46f078bb5772", "value": 5}}}
+</script>
 
 
     </main>

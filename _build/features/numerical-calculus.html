@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/numerical-calculus-integration.html
 suffix: .ipynb
-search: x f function xi frac n h derivative point numerical xih font k float optional arguments formula formulas check points xj calculus used example endpoint python mandatory midpoint d set where argument color red order using activity full tan com next b dx xk e g such c values br try implementation three except generic into error not list heat t left right beta cdots github restrepo computationalmethods master ipynb becomes differentiation integration definition given expression previous derivate range need takes scipy equation alpha l blob material shall since its applications found only xh however very calculate taking evaluate args
+search: x f function xi frac n h derivative point numerical xih font k float optional arguments formula formulas python check points xj calculus used example endpoint mandatory midpoint d set where argument color red order using activity full tan com next b dx xk github e g scipy such c values br try implementation three except generic into error not list heat t left right beta cdots restrepo computationalmethods master ipynb becomes j differentiation integration definition given expression previous derivate range need takes equation alpha l blob material shall since its applications found only xh however very calculate taking evaluate
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -19,8 +19,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Numerical calculus</div>
 </div>
-    
-<div class="jb_cell">
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -49,6 +48,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <hr>
 <h2 id="*-Class-activities-with-CoCalc">* <a href="https://cocalc.com/projects/a8330cfb-9dfb-442e-9b2b-ba664e31a685/files/numerical-calculus.ipynb?fullscreen=default&amp;session=default">Class activities with CoCalc</a><a class="anchor-link" href="#*-Class-activities-with-CoCalc"> </a></h2><h3 id="Bibliography">Bibliography<a class="anchor-link" href="#Bibliography"> </a></h3><ul>
 <li><a href="https://github.com/restrepo/Calculus">https://github.com/restrepo/Calculus</a></li>
+<li>Thomas J. Sargent John Stachurski, <a href="https://python-programming.quantecon.org/scipy.html">Python Programming for Quantitative Economics GitHub</a></li>
 </ul>
 
 </div>
@@ -102,17 +102,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Populating the interactive namespace from numpy and matplotlib
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.5/dist-packages/IPython/core/magics/pylab.py:160: UserWarning: pylab import has clobbered these variables: [&#39;f&#39;, &#39;interp&#39;]
-`%matplotlib` prevents importing * from pylab and numpy
-  &#34;\n`%matplotlib` prevents importing * from pylab and numpy&#34;
 </pre>
 </div>
 </div>
@@ -187,7 +176,7 @@ $$f'(x) \approx \frac{f(x+h)-f(x)}{h}$$<p>where the function must be known at le
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="k">import</span> <span class="n">derivative</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
 </pre></div>
 
     </div>
@@ -1279,7 +1268,7 @@ This allows to have a dynamic return according to input:
 <span class="sd">        from scipy.misc import derivative</span>
 <span class="sd">        derivative?</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="k">import</span> <span class="n">derivative</span>
+    <span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1">#x0: can be an array or a list  </span>
         <span class="n">nn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># force error if float is used </span>
@@ -1790,7 +1779,7 @@ This allows to have a dynamic return according to input:
 <span class="sd">        from scipy.misc import derivative</span>
 <span class="sd">        derivative?</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="k">import</span> <span class="n">derivatives</span>
+    <span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivatives</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="nb">list</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
         <span class="n">fp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">derivative</span><span class="p">)</span>
