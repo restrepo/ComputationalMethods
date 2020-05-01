@@ -33,6 +33,24 @@
 - header: Contents
 
 # A chapter w/ a collection of sections beneath it
+- title: Python overview
+  url: /features/overview-python
+  not_numbered: false
+  expand_sections: false
+  sections:
+  - title: Scientific libraries
+    url: /features/scientific-libraries
+    not_numbered: false
+  - title: Data analysis with Pandas
+    url: /features/Pandas
+    not_numbered: false
+  - title: Visualization with matplotlib
+    url: /features/matplotlib
+    not_numbered: false
+  - title: Interactive editing with Jupyter
+    url: /features/ipython-notebooks
+    not_numbered: false
+
 - title: One Variable Equations  
   url: /features/one-variable-equations
   not_numbered: false

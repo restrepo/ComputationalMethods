@@ -1,0 +1,3769 @@
+---
+redirect_from:
+  - "/features/pandas"
+interact_link: content/features/Pandas.ipynb
+kernel_name: python3
+kernel_path: content/features
+has_widgets: false
+title: |-
+  Data analysis with Pandas
+pagenum: 3
+prev_page:
+  url: /features/scientific-libraries.html
+next_page:
+  url: /features/matplotlib.html
+suffix: .ipynb
+search: pandas data dataframe dictionary com series file python analysis list dictionaries web github used lists column open key spreadsheet just keys json restrepo level example apply google structures also excel even activity row any already machine similar odd previous resulting format string function colab flexible relational labeled goal drive load structure rows columns before dataframes df cell index values instead obtain quotes authors blob master ipynb easy numpy png new dimensional corresponds indices programming creating main check formats link specific value methods double option not empty true add save try lines further method implicit nested d research pydata org docs
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Data analysis with Pandas</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/Pandas.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Pandas">Pandas<a class="anchor-link" href="#Pandas"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From <a href="http://pandas.pydata.org/pandas-docs/stable/">http://pandas.pydata.org/pandas-docs/stable/</a></p>
+<p>pandas is a Python package providing fast, flexible, and expressive data structures designed to make working with “relational” or “labeled” data both easy and intuitive. It aims to be the fundamental high-level building block for doing practical, real world data analysis in Python. Additionally, it has the broader goal of becoming the most powerful and flexible open source data analysis / manipulation tool available in any language. It is already well on its way toward this goal.</p>
+<p>See also:</p>
+<ul>
+<li><a href="https://github.com/restrepo/data-analysis">https://github.com/restrepo/data-analysis</a><ul>
+<li><a href="https://classroom.github.com/g/sSMBdBqN">https://classroom.github.com/g/sSMBdBqN</a></li>
+<li><a href="https://classroom.github.com/a/PcbQBE7F">https://classroom.github.com/a/PcbQBE7F</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/restrepo/PythonTipsAndTricks">https://github.com/restrepo/PythonTipsAndTricks</a></li>
+</ul>
+<p>A good and practice book about <code>Pandas</code> possibilities is:</p>
+<p><a href="https://drive.google.com/open?id=0BxoOXsn2EUNIWExXbVc4SDN0YTQ"><strong>Python for Data Analysis</strong></a><br/>
+Data Wrangling with Pandas, NumPy, and IPython<br/>
+<em>By William McKinney</em></p>
+<p>This other is about aplications based on <code>Pandas</code>:
+<img src="https://covers.oreillystatic.com/images/0636920030515/cat.gif" alt="image.png"> <a href="https://drive.google.com/open?id=0BxoOXsn2EUNISGhrdEZ3S29fS3M">Introduction to Machine Learning with Python</a><br/>
+A Guide for Data Scientists
+By Sarah Guido, Andreas Müller</p>
+<p><code>Pandas</code> can be used in a similar way to <code>R</code>, which is based on similar data structures. <code>Pandas</code> also can replace the use of graphical interfaces to access spreadsheets like Excel</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Standard-way-to-load-the-module">Standard way to load the module<a class="anchor-link" href="#Standard-way-to-load-the-module"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Basic-structure:-DataFrame">Basic structure: DataFrame<a class="anchor-link" href="#Basic-structure:-DataFrame"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An flat <em>spreadsheet</em> can be seen in terms of the types of variables of <code>Python</code> just as dictionary of lists, where each column of the spreadsheet is a pair key-list of the dictionary</p>
+<table>
+<thead><tr>
+<th></th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">even</td>
+<td style="text-align:center">odd</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numbers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;even&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span>   <span class="c1">#  First  key-list</span>
+         <span class="s2">&quot;odd&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span> <span class="p">}</span>  <span class="c1">#  Second key-list</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-structures">Data structures<a class="anchor-link" href="#Data-structures"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>Pandas</code> has two new data structures:</p>
+<ol>
+<li><code>DataFrame</code> which are similar to numpy arrays but with some assigned key. For example, for the previous case<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span> 
+      <span class="p">])</span>
+</pre></div>
+</li>
+<li><code>Series</code> which are enriched  to dictionaries, as the ones defined for the rows of the previous example: <code>{'even':0,'odd':1}</code>.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The rows in a two-dimensional <code>DataFrame</code> corresponds to <code>Series</code> with similar keys, while the columns are also Series with the indices as keys.</p>
+<p>An example of a  <code>DataFrame</code> is a spreadsheet, as the one before.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DataFrame"><code>DataFrame</code><a class="anchor-link" href="#DataFrame"> </a></h3><p><code>Pandas</code> can convert a dictionary of lists, like the <code>numbers</code> dictionary before, into a <code>DataFrame</code>, which is just an spreadsheet but interpreted at the programming level:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is equivalent to:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>See below for other possibilities of <a href="https://fisica.udea.edu.co:4443/user/restrepo/notebooks/prog/cursos/data-analysis/Pandas.ipynb#Intialization-from-lists-and-dictionaries">creating Pandas DataFrames from lists and dictionaries</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The main advantage of the <code>DataFrame</code>, <code>df</code>, is that it can be managed without a graphical interface.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can check the shape of the <code>DataFrame</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(5, 2)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Export-DataFrame-to-other-formats">Export DataFrame to other formats<a class="anchor-link" href="#Export-DataFrame-to-other-formats"> </a></h4><ul>
+<li>To export to excel:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;example.xlsx&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>: Open the resulting spreadsheet in Google Drive, publish it and open from the resulting link with Pandas in the next cell</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;PASTE THE PUBLISHED LINK HERE&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Series"><code>Series</code><a class="anchor-link" href="#Series"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Each column of the DataFrame is now an augmented dictionary called <code>Series</code>, with the indices as the keys of the <code>Series</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A <code>Pandas</code> <code>Series</code> object can be just initialized from a <code>Python</code> dictionary:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;even&#39;</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>pandas.core.series.Series</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The keys are the index of the <code>DataFrame</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Each row is also a series</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>even    0
+odd     1
+Name: 0, dtype: int64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>with keys: <code>'even'</code> and <code>'odd'</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;even&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or attributes <code>even</code> and <code>odd</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">odd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One specific cell value can be reached with the index and the key:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;odd&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span><span class="s1">&#39;Juan Valdez&#39;</span><span class="p">,</span><span class="s1">&#39;Nacionality&#39;</span><span class="p">:</span><span class="s1">&#39;Colombia&#39;</span><span class="p">,</span><span class="s1">&#39;Age&#39;</span><span class="p">:</span><span class="mi">23</span><span class="p">})</span>
+<span class="n">s</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Note</em> that the key name can be used also as an attribute.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">odd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    1
+1    3
+2    5
+3    7
+4    9
+Name: odd, dtype: int64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>The <strong>power</strong> of Pandas rely in that their main data structures: <code>DataFrames</code> and <code>Series</code>, are enriched with many useful methods and attributes.</p>
+</blockquote>
+<h3 id="Official-definition-of-Pandas"><a href="http://pandas.pydata.org/pandas-docs/stable/">Official definition of Pandas</a><a class="anchor-link" href="#Official-definition-of-Pandas"> </a></h3><blockquote><p>Pandas is a Python package providing <strong>fast</strong>, <strong>flexible</strong>, and <strong>expressive</strong> <em>data structures</em> designed to make working with “relational” or “labeled” data both easy and intuitive. It aims to be the fundamental high-level building block for doing practical, real world data analysis in Python. Additionally, it <em>has the broader goal of becoming the most powerful and flexible open source data analysis / manipulation tool</em> available in any language. It is already well on its way toward this goal.</p>
+</blockquote>
+<ul>
+<li>"relational": the list of data is identified with some unique index (like a <code>SQL</code> table)</li>
+<li>"labeled": the list is identified with a key, like the previous <code>odd</code> or <code>even</code> keys.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For example. A double bracket <code>[[...]]</code>, can be used to filter data.</p>
+<p>A row in a two-dimensional <code>DataFrame</code> corresponds to <code>Series</code> with the same keys of the <code>DataFrame</code>, but with single values instead of a list</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;the row has&#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;                  keys: </span><span class="si">{}</span><span class="s1"> and values: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">),</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;like the dictionay:&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;                      { &#39;even&#39; : 0, &#39;odd&#39; : 1 }&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>the row has
+                  keys: [&#39;even&#39;, &#39;odd&#39;] and values: [0 1]
+like the dictionay:
+                      { &#39;even&#39; : 0, &#39;odd&#39; : 1 }
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To filter a column:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;odd&#39;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="More-on-Series">More on <code>Series</code><a class="anchor-link" href="#More-on-Series"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A <code>Pandas</code> <code>Series</code> object can be just initialized from a <code>Python</code> dictionary:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span><span class="s1">&#39;Juan Valdez&#39;</span><span class="p">,</span><span class="s1">&#39;Nacionality&#39;</span><span class="p">:</span><span class="s1">&#39;Colombia&#39;</span><span class="p">,</span><span class="s1">&#39;Age&#39;</span><span class="p">:</span><span class="mi">23</span><span class="p">})</span>
+<span class="n">s</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Name           Juan Valdez
+Nacionality       Colombia
+Age                     23
+dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Juan Valdez&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>but also as containers of name spaces!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">Name</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Juan Valdez&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="DataFrame-initialization"><code>DataFrame</code> initialization<a class="anchor-link" href="#DataFrame-initialization"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Initization-from-an-existing-spreadsheet.">Initization from an existing spreadsheet.<a class="anchor-link" href="#Initization-from-an-existing-spreadsheet."> </a></h3><p>This can be locally in your computer o from some downloadable  link</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;http://bit.ly/spreadsheet_xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Compañia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Juan Valdez</td>
+      <td>23</td>
+      <td>Café de Colombia</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Álvaro Uribe Vélez</td>
+      <td>65</td>
+      <td>Senado de la República</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To make a downloadable link for any spread sheet in Google Drive, follow the sequence:</p>
+
+<pre><code>File → Publish to the web...→ Entire Document → Web page → Microsoft excel (xlsx)</code></pre>
+<p>as illustrated in the figure:
+<img src="https://github.com/restrepo/data-analysis/blob/master/img/img1.png?raw=1" alt="GS"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Edad&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">32</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Compañia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Juan Valdez</td>
+      <td>32</td>
+      <td>Café de Colombia</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Álvaro Uribe Vélez</td>
+      <td>65</td>
+      <td>Senado de la República</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>After</em> some modification</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>it can be saved again as an <code>excel file</code> with the option to not create a column of indices: <code>index=False</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Intialization-from-lists-and-dictionaries">Intialization from lists and dictionaries<a class="anchor-link" href="#Intialization-from-lists-and-dictionaries"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Inizialization-from-Series">Inizialization from Series<a class="anchor-link" href="#Inizialization-from-Series"> </a></h4><p>We start with an empty <code>DataFrame</code>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Creating Pandas DataFrame from list and dictionaries <a href="http://pbpython.com/pandas-list-dict.html">offers many alternatives</a></p>
+<p><img src="http://pbpython.com/images/pandas-dataframe-shadow.png" alt="creating dataframes"></p>
+<h4 id="Row-oriented-way">Row oriented way<a class="anchor-link" href="#Row-oriented-way"> </a></h4><ul>
+<li>In addition to the dictionary of lists <a href="">already illustrated at the beginning</a> that in this case corresponds to:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Nombre&#39;</span>   <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Juan Valdez&#39;</span><span class="p">,</span><span class="s1">&#39;Álvaro Uribe Vélez&#39;</span><span class="p">],</span>
+              <span class="s1">&#39;Edad&#39;</span>     <span class="p">:</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span>            <span class="mi">65</span>                 <span class="p">],</span>
+              <span class="s1">&#39;Compañia&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Café de Colombia&#39;</span><span class="p">,</span><span class="s1">&#39;Senado de la República&#39;</span><span class="p">]})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Compañia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Juan Valdez</td>
+      <td>32</td>
+      <td>Café de Colombia</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Álvaro Uribe Vélez</td>
+      <td>65</td>
+      <td>Senado de la República</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We can obtain the DataFrame from list of items</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_items</span><span class="p">([</span> <span class="p">[</span> <span class="s1">&#39;Nombre&#39;</span>  <span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Juan Valdez&#39;</span><span class="p">,</span><span class="s1">&#39;Álvaro Uribe Vélez&#39;</span><span class="p">]],</span>
+                          <span class="p">[</span> <span class="s1">&#39;Edad&#39;</span>    <span class="p">,</span> <span class="p">[</span>  <span class="mi">32</span><span class="p">,</span>            <span class="mi">65</span>               <span class="p">]],</span>
+                          <span class="p">[</span> <span class="s1">&#39;Compañia&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Café de Colombia&#39;</span><span class="p">,</span><span class="s1">&#39;Senado de la República&#39;</span><span class="p">]]</span> <span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We can obtain the <code>DataFrame</code> from dictionary</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span><span class="s1">&#39;Juan Valdez&#39;</span><span class="p">,</span>        <span class="s1">&#39;Edad&#39;</span><span class="p">:</span> <span class="mi">32</span>   <span class="p">,</span><span class="s1">&#39;Compañia&#39;</span><span class="p">:</span><span class="s1">&#39;Café de Colombia&#39;</span>      <span class="p">},</span>
+              <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span><span class="s1">&#39;Álvaro Uribe Vélez&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad&#39;</span><span class="p">:</span> <span class="mi">65</span>   <span class="p">,</span><span class="s1">&#39;Compañia&#39;</span><span class="p">:</span><span class="s1">&#39;Senado de la República&#39;</span><span class="p">}</span>
+            <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Compañia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Nombre</th>
+      <td>Juan Valdez</td>
+      <td>32</td>
+      <td>Café de Colombia</td>
+    </tr>
+    <tr>
+      <th>Edad</th>
+      <td>Juan Valdez</td>
+      <td>32</td>
+      <td>Café de Colombia</td>
+    </tr>
+    <tr>
+      <th>Compañia</th>
+      <td>Juan Valdez</td>
+      <td>32</td>
+      <td>Café de Colombia</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Initialization-from-sequential-rows-as--Series">Initialization from sequential rows as  Series<a class="anchor-link" href="#Initialization-from-sequential-rows-as--Series"> </a></h3><p>We start with an empty <code>DataFrame</code>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">empty</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can append a dictionary (or Series) as a row of the <code>DataFrame</code>, provided that we always use the option: <code>ignore_index=True</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span><span class="s1">&#39;Juan Valdez&#39;</span><span class="p">,</span><span class="s1">&#39;Nacionality&#39;</span><span class="p">:</span><span class="s1">&#39;Colombia&#39;</span><span class="p">,</span><span class="s1">&#39;Age&#39;</span><span class="p">:</span><span class="mi">23</span><span class="p">}</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Nacionality</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23.0</td>
+      <td>Colombia</td>
+      <td>Juan Valdez</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can fix the type of data of the <code>'Age'</code> column</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>pandas.core.series.Series</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Nacionality</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23</td>
+      <td>Colombia</td>
+      <td>Juan Valdez</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To add a second file we build another <code>dict</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span><span class="s1">&#39;Nacionality&#39;</span><span class="p">,</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="s1">&#39;Company&#39;</span><span class="p">]:</span>
+    <span class="n">var</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">var</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Name:
+Diego
+Nacionality:
+Colombia
+Age:
+34
+Company:
+UdeA
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Exercises">Exercises<a class="anchor-link" href="#Exercises"> </a></h4><ul>
+<li>Display the resulting <code>Series</code> in the screen:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Append to the previous <code>DataFrame</code> and visualize it:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Fill NaN with empty strings</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Save <code>Pandas</code> <code>DataFrame</code> as an Excel file</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Load pandas DataFrame from the saved file in Excel</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Common-operations-upon-DataFrames">Common operations upon <code>DataFrames</code><a class="anchor-link" href="#Common-operations-upon-DataFrames"> </a></h3><p>See <a href="https://github.com/restrepo/PythonTipsAndTricks">https://github.com/restrepo/PythonTipsAndTricks</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>To fill a specific cell</strong></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Company&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Federación de Caferos&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Nacionality</th>
+      <th>Name</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23.0</td>
+      <td>Colombia</td>
+      <td>Juan Valdez</td>
+      <td>Federación de Caferos</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Other-formats-to-saving-and-read-files">Other formats to saving and read files<a class="anchor-link" href="#Other-formats-to-saving-and-read-files"> </a></h2><p>We are interested in format which keeps the tags of the columns, like <code>'Nombre', 'Edad', 'Compañia'</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;http://bit.ly/spreadsheet_xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Compañia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Juan Valdez</td>
+      <td>23</td>
+      <td>Café de Colombia</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Álvaro Uribe Vélez</td>
+      <td>65</td>
+      <td>Senado de la República</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="CSV">CSV<a class="anchor-link" href="#CSV"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;hoja.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Nacionality</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23</td>
+      <td>Colombia</td>
+      <td>Juan Valdez</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can check the explicit file format with</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Nombre,Edad,Compañia
+Juan Valdez,23,Café de Colombia
+Álvaro Uribe Vélez,65,Senado de la República
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="JSON">JSON<a class="anchor-link" href="#JSON"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This format keeps the lists and dictionaries at the storage level</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;Donald Trump&quot;</span><span class="p">,</span><span class="s2">&quot;Age&quot;</span><span class="p">:</span><span class="mi">73</span><span class="p">},{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;Barak Obama&quot;</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">:</span><span class="mi">58</span><span class="p">}])</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Donald Trump</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Barak Obama</td>
+      <td>58</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This format allow us to keep exactly the very same list of dictionaries structure!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[{&#34;Name&#34;:&#34;Donald Trump&#34;,&#34;Age&#34;:73},{&#34;Name&#34;:&#34;Barak Obama&#34;,&#34;Age&#34;:58}]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>:</p>
+<ul>
+<li>Save to a file instead of <code>None</code> and open the file with some editor. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Add a break-line at the end of the first dictionary and try to
+load the resulting file with <code>pd.read_json</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>JSON allows for some flexibility in the break-lines structure:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">             [{&quot;Name&quot;:&quot;Donald Trump&quot;,&quot;Age&quot;:73},</span>
+<span class="s1">              {&quot;Name&quot;:&quot;Barak Obama&quot;, &quot;Age&quot;:58}]</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Donald Trump</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Barak Obama</td>
+      <td>58</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For large databases it is convinient just to accumulate dictionaries in a sequential form:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">,</span><span class="n">lines</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#34;Name&#34;:&#34;Donald Trump&#34;,&#34;Age&#34;:73}
+{&#34;Name&#34;:&#34;Barak Obama&#34;,&#34;Age&#34;:58}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">             {&quot;Name&quot;:&quot;Donald Trump&quot;,&quot;Age&quot;:73}</span>
+<span class="s1">             {&quot;Name&quot;:&quot;Barak Obama&quot;, &quot;Age&quot;:58}</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">,</span><span class="n">lines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Donald Trump</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Barak Obama</td>
+      <td>58</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>:</p>
+<ul>
+<li>Save to a file instead of <code>None</code>, with options: <code>orient='records',lines=True</code>, and open the file with some editor. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Add a similar dictionary in the next new line, and try to
+load the resulting file with <code>pd.read_json</code> with options: <code>orient='records',lines=True</code>. <ul>
+<li>WARNING: Use doble-quotes <code>"</code> to write the keys od the new
+dictionary</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Any Python string need to be converted first to double-quotes before to be used as JSON string.</p>
+<p><strong>Example</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numbers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;even&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span>   <span class="c1">#  First  key-list</span>
+         <span class="s2">&quot;odd&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span> <span class="p">}</span>  <span class="c1">#  Second key-list</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;{&#39;even&#39;: [0, 2, 4, -6, 8], &#39;odd&#39;: [1, 3, -5, 7, 9]}&#34;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This string can be writing in the <code>JSON</code> format by replacing the single quotes, ' , by  duoble quotes, ":</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;even&#34;: [0, 2, 4, -6, 8], &#34;odd&#34;: [1, 3, -5, 7, 9]}&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and now can be used as an JSON input</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span>  <span class="nb">str</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>: Try to read the string as JSON without make the double-quote replacement</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Filters">Filters<a class="anchor-link" href="#Filters"> </a></h2><p>The main application of labeled data for data analysis is the possibility to make filers, or cuts, to obtain specific reduced datasets to further analysis</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>-6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#and</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">odd</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>-5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#or</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">odd</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>-5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-6</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-apply-method">The <code>apply</code> method<a class="anchor-link" href="#The-apply-method"> </a></h2><p>The advantage of the spreadsheet paradigm is that the columns can be transformed with functions. All the typical functions avalaible for a spreadsheet are already implemented like the method <code>.abs()</code> used before, or the method: <code>.sum()</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>8</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>: Explore the avalaible methods by using the completion system of the notebook after the last semicolon of <code>df.even.</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In addittion, for the <code>DataFrame</code> paradigm, we can easy implement any other function directly at the programming level either along the columns or along the rows</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Column-level-apply">Column-level <code>apply</code><a class="anchor-link" href="#Column-level-apply"> </a></h3><p>We just select the column and apply the direct or implicit function:</p>
+<ul>
+<li>Pre-defined function</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">abs</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    0
+1    2
+2    4
+3    6
+4    8
+Name: even, dtype: int64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Implicit function</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">int</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    True
+1    True
+2    True
+3    True
+4    True
+Name: even, dtype: bool</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Row-level-apply">Row-level apply<a class="anchor-link" href="#Row-level-apply"> </a></h3><p>The foll row is passed as dictionary to the explicit or implicit function when <code>apply</code> is used for the full <code>DataFrame</code> and the option <code>axis=1</code> is used at the end</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;even&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;odd&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0     1
+1     5
+2    -1
+3     1
+4    17
+dtype: int64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Non-relational-databases">Non-relational databases<a class="anchor-link" href="#Non-relational-databases"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have shown that the simple two dimensional spreadsheets where each cell values is a simple type like string, integer, or float, can be represented as a dictionary of lists values or a list of dictionary column-value assignment.</p>
+<p>We can go further and allow to store in the value itself a more general data structure, like nested lists and dictionaries. This allows advanced data-analysis when the <code>apply</code> methos is used to operate inside the nested lists or dictionaries.</p>
+<p>See for example:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Machine-web">Machine web<a class="anchor-link" href="#Machine-web"> </a></h2><p>There are really three kinds of web</p>
+<ul>
+<li>The normal web, </li>
+<li>The deep web,</li>
+<li><em>The machine web</em>. The web for machine readable responses. It is served in <code>JSON</code> or <code>XML</code>  formats, which preserve programming objects.</li>
+</ul>
+<p>For example, consider the following normal web page:</p>
+<p><a href="http://inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001">http://inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001</a></p>
+<p>about a Scientific paper with people from the University of Antioquia. A <em>machine web</em> version can be easily obtained in JSON just by attaching the extra parameter <code>&amp;of=recjson</code>, and direcly loaded from Pandas, which works like a <em>browser for the third web</em>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;http://inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001&amp;of=recjson&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>comment</th>
+      <th>reference</th>
+      <th>abstract</th>
+      <th>creation_date</th>
+      <th>imprint</th>
+      <th>primary_report_number</th>
+      <th>keywords</th>
+      <th>publication_info</th>
+      <th>coyright</th>
+      <th>subject</th>
+      <th>cataloguer_info</th>
+      <th>physical_description</th>
+      <th>number_of_citations</th>
+      <th>title</th>
+      <th>persistent_identifiers_keys</th>
+      <th>corporate_name</th>
+      <th>files</th>
+      <th>system_control_number</th>
+      <th>filenames</th>
+      <th>source_of_acquisition</th>
+      <th>number_of_reviews</th>
+      <th>version_id</th>
+      <th>FIXME_OAI</th>
+      <th>authors</th>
+      <th>doi</th>
+      <th>number_of_authors</th>
+      <th>license</th>
+      <th>accelerator_experiment</th>
+      <th>number_of_comments</th>
+      <th>url</th>
+      <th>recid</th>
+      <th>collection</th>
+      <th>thesaurus_terms</th>
+      <th>filetypes</th>
+      <th>prepublication</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Submitted to Phys. Rev. Lett. All figures and tables can be found at http://cms-results.web.cern.ch/cms-results/public-results/publications/BPH-18-007 (CMS Public Pages). This version corrects the...</td>
+      <td>[{'title': 'Phys.Rev.Lett.,81,2432', 'year': '1998', 'doi': 'doi:10.1103/PhysRevLett.81.2432', 'order_number': '1', 'authors': 'F. Abe'}, {'title': 'Phys.Rev.,D49,5845', 'year': '1994', 'doi': 'do...</td>
+      <td>[{'number': 'arXiv', 'summary': 'Signals consistent with the B$^+_\mathrm{c}$(2S) and B$^{*+}_\mathrm{c}$(2S) states are observed in proton-proton collisions at $\sqrt{s} =$ 13 TeV, in an event sa...</td>
+      <td>2019-02-05T04:03:36</td>
+      <td>{'date': '2019-04-03'}</td>
+      <td>[arXiv:1902.00571, None, CMS-BPH-18-007, CERN-EP-2019-014]</td>
+      <td>[{'institute': 'publisher', 'term': 'Elementary Particles and Fields'}]</td>
+      <td>{'volume': '122', 'pagination': '132001', 'title': 'Phys.Rev.Lett.', 'year': '2019'}</td>
+      <td>{'date': '2019', 'holder_contact': 'Article', 'holder': 'CERN'}</td>
+      <td>[{'source': 'INSPIRE', 'term': 'Experiment-HEP'}, {'source': 'arXiv', 'term': 'hep-ex'}, {'source': 'INSPIRE', 'term': 'Experiment-HEP'}]</td>
+      <td>{'creation_date': '2019-02-05'}</td>
+      <td>{'pagination': '17'}</td>
+      <td>30</td>
+      <td>{'title': 'Observation of Two Excited B$^+_\mathrm{c}$ States and Measurement of the B$^+_\mathrm{c}$(2S) Mass in pp Collisions at $\sqrt{s} =$ 13 TeV'}</td>
+      <td>[recid, system_control_number, doi]</td>
+      <td>[{'collaboration': 'CMS'}]</td>
+      <td>[{'comment': None, 'status': '', 'magic': ['XML 1.0 document text', 'application/xml; charset=utf-8', 'XML 1.0 document text', 'application/xml; charset=utf-8', 'application/xml'], 'description': ...</td>
+      <td>[{'institute': 'INSPIRETeX', 'value': 'Sirunyan:2019osb'}, {'institute': 'arXiv', 'value': 'oai:arXiv.org:1902.00571'}, {'institute': 'CDS', 'value': '2655521'}, {'institute': 'HAL', 'value': 'hal...</td>
+      <td>[fulltext, fulltext.xml, 10, 10.1103_PhysRevLett.122.132001.pdf, 10.1103_PhysRevLett.122.132001, 10.1103_PhysRevLett, 10.1103_PhysRevLett.122, 1902, 1902.00571, 1902.00571.pdf, scoap3-fulltext, sc...</td>
+      <td>{'source_of_acquisition': 'arXiv', 'date': '2019-02-13T03:35:35.632671', 'accession_number': '1447042'}</td>
+      <td>0</td>
+      <td>2019-08-15T02:03:52</td>
+      <td>{'set': ['CERN', 'INSPIRE:HEP', 'CERN:arXiv', 'CDS'], 'id': 'oai:inspirehep.net:1718338'}</td>
+      <td>[{'INSPIRE_number': 'INSPIRE-00312131', 'affiliation': 'Yerevan Phys. Inst.', 'first_name': 'Albert M', 'last_name': 'Sirunyan', 'full_name': 'Sirunyan, Albert M'}, {'INSPIRE_number': 'INSPIRE-001...</td>
+      <td>10.1103/PhysRevLett.122.132001</td>
+      <td>2279</td>
+      <td>[{'url': 'http://creativecommons.org/licenses/by/4.0/', 'material': 'preprint', 'license': 'CC BY 4.0'}, {'imposing': 'APS', 'url': 'https://creativecommons.org/licenses/by/4.0/', 'license': 'Crea...</td>
+      <td>{'experiment': 'CERN-LHC-CMS'}</td>
+      <td>0</td>
+      <td>{'url': 'https://physics.aps.org/synopsis-for/10.1103/PhysRevLett.122.132001', 'description': 'Physics Synopsis'}</td>
+      <td>1718338</td>
+      <td>[{'primary': 'HEP'}, {'primary': 'Citeable'}, {'primary': 'CORE'}, {'primary': 'Fermilab'}, {'primary': 'Published'}]</td>
+      <td>[{'term': 'p p: scattering'}, {'term': 'p p: colliding beams'}, {'term': 'B/c+: hadroproduction'}, {'term': 'B/c: excited state'}, {'term': 'B/c+: hadronic decay'}, {'term': 'excited state: hadron...</td>
+      <td>[xml, pdf, pdf, pdf, png, png, png]</td>
+      <td>{'date': '2019-02-01'}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that the column <code>authors</code> is quite nested: Is a list of dictionaries with the full information for each one of the authors of the article.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">authors</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    [{&#39;INSPIRE_number&#39;: &#39;INSPIRE-00312131&#39;, &#39;affiliation&#39;: &#39;Yerevan Phys. Inst.&#39;, &#39;first_name&#39;: &#39;Albert M&#39;, &#39;last_name&#39;: &#39;Sirunyan&#39;, &#39;full_name&#39;: &#39;Sirunyan, Albert M&#39;}, {&#39;INSPIRE_number&#39;: &#39;INSPIRE-001...
+Name: authors, dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>: Check that the lenght of the auhors list coincides with the <code>number_of_authors</code> 
+<!-- df.authors.apply(len),df.number_of_authors.values --></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use all the previous methods to extract the authors from <code>'Antioquia U.'</code>:</p>
+<p>Note: For a dictionary, <code>d</code> is safer to use <code>d.get('key')</code> instead of just <code>d['key']</code> to obtain some <code>key</code>, because not error is generated if the requested <code>key</code> does not exists at all</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span>  <span class="c1">#implicit function</span>
+                           <span class="p">[</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;full_name&#39;</span><span class="p">)</span> <span class="c1">#safer way to obtain a `key` value</span>
+                             <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">l</span>   <span class="c1">#comprehension list </span>
+                              <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;affiliation&#39;</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;Antioquia U.&#39;</span> <span class="c1">#condition</span>
+                           <span class="p">]</span> 
+                             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span> <span class="c1">#  Be sure that cell have the proper format</span>
+                 <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    [Mejia Guisao, Jhovanny, Ruiz Alvarez, José David]
+Name: authors, dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A simpler version is possible,  but is more prompted to error when used through multiple column entries:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="p">[</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;full_name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">l</span>   
+                              <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;affiliation&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Antioquia U.&#39;</span>
+                           <span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    [Mejia Guisao, Jhovanny, Ruiz Alvarez, José David]
+Name: authors, dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For further details see: <a href="https://github.com/restrepo/inspire/blob/master/gfif.ipynb">https://github.com/restrepo/inspire/blob/master/gfif.ipynb</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ACTIVITIES">ACTIVITIES<a class="anchor-link" href="#ACTIVITIES"> </a></h2><p>See:</p>
+<ul>
+<li><a href="https://github.com/ajcr/100-pandas-puzzles">https://github.com/ajcr/100-pandas-puzzles</a></li>
+<li><a href="https://github.com/guipsamora/pandas_exercises">https://github.com/guipsamora/pandas_exercises</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Final-remarks">Final remarks<a class="anchor-link" href="#Final-remarks"> </a></h2><p>With basic scripting and Pandas we already have a solid environment to analyse data. We introduce the other libraries motivated with the extending the capabilities of Pandas</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
