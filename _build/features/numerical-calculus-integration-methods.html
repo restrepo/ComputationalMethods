@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: x f frac n b xi dx left right h s ab k intab function quadrature sum font integration simpsons using where order interval given xk composite l error formula e scipy trapezoidal rule polynomial j intabf intervals int color red epsilon lagrange interpolation previous implementation integrate points methods cdots expression t adaptive numerical xn omegai value not obtain simple second precision approximation p such approx integral ipynb next prod begin end xj obtained org activity rules problem mu within dt step approximate operatorname d m applied newton cotes low wikipedia png assume np ln dn new integrals pn since
+search: x f frac n b xi dx left right h s ab k function quadrature intab sum font integration simpsons using where order interval given xk scipy composite l error formula e trapezoidal rule polynomial j previous intabf intervals implementation int color red epsilon points lagrange interpolation integrate methods cdots expression t adaptive numerical integral next xn omegai value not obtain simple second activity precision approximation p such approx ipynb prod begin end xj obtained org rules problem mu within dt step approximate operatorname d m applied newton cotes low wikipedia png assume simpson method np ln dn new integrals
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -97,11 +97,39 @@ $$E[f] = \frac{h^{n+2}f^{n+1}(\xi)}{(n+1)!}\int_0^nt(t-1)\cdots(t-n) $$<p>if $n$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
-interpolate.lagrange<span class="o">?</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+<span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">integrate</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Populating the interactive namespace from numpy and matplotlib
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.5/dist-packages/IPython/core/magics/pylab.py:160: UserWarning: pylab import has clobbered these variables: [&#39;f&#39;]
+`%matplotlib` prevents importing * from pylab and numpy
+  &#34;\n`%matplotlib` prevents importing * from pylab and numpy&#34;
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -115,12 +143,10 @@ interpolate.lagrange<span class="o">?</span>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Antiderivate approximantion with Lagrange Polynomial </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>    
-    <span class="n">Y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span> <span class="n">X</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">lagrange</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="p">)</span><span class="o">.</span><span class="n">integ</span><span class="p">()</span>
 </pre></div>
 
@@ -138,14 +164,35 @@ interpolate.lagrange<span class="o">?</span>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">Quadrature</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">leg</span><span class="o">=</span><span class="kc">True</span> <span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">Quadrature</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Antiderivate approximantion with Lagrange Polynomial </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">antif</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">antif</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="n">antif</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">PlotQuadrature</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">leg</span><span class="o">=</span><span class="kc">True</span> <span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of Newton-Cotes formula for A SINGLE INTERVAL</span>
 <span class="sd">    f: Function to integrate in A SINGLE INTERVAL</span>
 <span class="sd">    X: nodes of the Lagrangian interpolation polynomial</span>
 <span class="sd">    xmin,xmax,ymin, ymax: size of the figure</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>    
     <span class="n">Y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span> <span class="n">X</span> <span class="p">)</span>
     
     <span class="c1">#X array</span>
@@ -185,7 +232,7 @@ interpolate.lagrange<span class="o">?</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     
-    <span class="k">return</span> <span class="n">Ln</span>
+    <span class="k">return</span> <span class="n">Quadrature</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -230,8 +277,11 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
     <span class="k">return</span> <span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span>
 
 <span class="c1">#Quadrature with 2 points (Trapezoidal rule)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
-<span class="n">Ln</span><span class="o">=</span><span class="n">Quadrature</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">4</span> <span class="p">)</span>
+<span class="n">a</span><span class="o">=-</span><span class="mf">0.5</span>
+<span class="n">b</span><span class="o">=</span><span class="mf">1.5</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">])</span>
+<span class="n">Q</span><span class="o">=</span><span class="n">PlotQuadrature</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">4</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Full=</span><span class="si">{}</span><span class="s1">, trapezoid=</span><span class="si">{}</span><span class="s1">, rectangle=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span>  <span class="n">Quadrature</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="n">X</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">+</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -244,10 +294,19 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Full=4.245647748216942, trapezoid=3.775154904633847, rectangle=3.7751549046338475
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration-methods_9_0.png"
+<img src="../images/features/numerical-calculus-integration-methods_10_1.png"
 >
 </div>
 
@@ -266,7 +325,7 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">),(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -282,75 +341,7 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(4.245647748216942, 4.713615884518398e-14)</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">F</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X</span><span class="p">)(</span><span class="mf">1.5</span><span class="p">)</span><span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X</span><span class="p">)(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3.775154904633847</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">Ln</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3.775154904633847</pre>
+<pre>(2.5403023058681398, 5.010007503399555)</pre>
 </div>
 
 </div>
@@ -407,7 +398,7 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">integrate</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+<span class="n">integrate</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -423,7 +414,7 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>3.7751549046338475</pre>
+<pre>4.157728605250994</pre>
 </div>
 
 </div>
@@ -480,7 +471,7 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>4.2456474200304779</pre>
+<pre>4.245647420030478</pre>
 </div>
 
 </div>
@@ -525,8 +516,12 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
     <span class="k">return</span> <span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span>
 
 <span class="c1">#Quadrature with 3 points (Simpson&#39;s rule)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
-<span class="n">Ln</span><span class="o">=</span><span class="n">Quadrature</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">4</span> <span class="p">)</span>
+<span class="n">a</span><span class="o">=-</span><span class="mf">0.5</span>
+<span class="n">b</span><span class="o">=</span><span class="mf">1.5</span>
+<span class="n">x0</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">b</span><span class="p">])</span>
+<span class="n">Q</span><span class="o">=</span><span class="n">PlotQuadrature</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">4</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Full=</span><span class="si">{}</span><span class="s1">, P2=</span><span class="si">{}</span><span class="s1">, rectangle=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span>  <span class="n">Quadrature</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="n">X</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">+</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -539,12 +534,10 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>poly1d([-0.3825737 ,  1.        ,  1.86579458])</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Full=4.245647748216942, P2=4.285253172123376, rectangle=3.7751549046338475
+</pre>
 </div>
-
 </div>
 </div>
 <div class="jb_output_wrapper }}">
@@ -553,76 +546,8 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration-methods_22_1.png"
+<img src="../images/features/numerical-calculus-integration-methods_21_1.png"
 >
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>4.245647748216942</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">Ln</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>4.285253172123376</pre>
 </div>
 
 </div>
@@ -669,7 +594,7 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">simps</span><span class="p">(</span><span class="n">Ln</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="n">X</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">simps</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -720,7 +645,7 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(4.2456477481841874, 4.2456477482169408)</pre>
+<pre>(4.245647748184187, 4.245647748216941)</pre>
 </div>
 
 </div>
@@ -762,6 +687,17 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>: Implement the Simpson method <a href="https://beta.deepnote.com/project/52b463ef-f58d-4842-be84-cc155faa49b9#">here</a> by generalizing the previous <code>Quadrature</code> function to one that accepts lists of any size. Compares with the <code>Scipy</code> implementation for the next integral with a linspace of 100 points.</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -996,7 +932,7 @@ $$ \frac{dN}{dt} = e^{-t} $$<p>Compare the relative error for the composite trap
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration-methods_46_0.png"
+<img src="../images/features/numerical-calculus-integration-methods_44_0.png"
 >
 </div>
 
