@@ -9,9 +9,9 @@ pagenum: 15
 prev_page:
   url: /features/numerical-calculus-integration.html
 next_page:
-  url: 
+  url: /featur/T-profile-bar.html
 suffix: .ipynb
-search: x f frac n b xi dx left right h s ab k function quadrature intab sum font integration simpsons using where order interval given xk scipy composite l error formula e trapezoidal rule polynomial j previous intabf intervals implementation int color red epsilon points lagrange interpolation integrate methods cdots expression t adaptive numerical integral next xn omegai value not obtain simple second activity precision approximation p such approx ipynb prod begin end xj obtained org rules problem mu within dt step approximate operatorname d m applied newton cotes low wikipedia png assume simpson method np ln dn new integrals
+search: x f frac n b xi dx left right h s ab k function quadrature intab sum integration font simpsons using where order interval given xk scipy composite l error formula e intervals trapezoidal rule points polynomial j previous intabf implementation int color red epsilon lagrange interpolation integrate methods cdots expression t adaptive numerical integral next xn omegai value not obtain obtained simple second activity precision approximation p such approx ipynb prod begin end xj org rules problem mu within dt step here approximate operatorname d m applied newton cotes low wikipedia png assume simpson method np ln dn new
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -694,10 +694,54 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Activity</strong>: Implement the Simpson method <a href="https://beta.deepnote.com/project/52b463ef-f58d-4842-be84-cc155faa49b9#">here</a> by generalizing the previous <code>Quadrature</code> function to one that accepts lists of any size. Compares with the <code>Scipy</code> implementation for the next integral with a linspace of 100 points.</p>
+<p><strong>Activity</strong>: Implement the Simpson method <a href="https://beta.deepnote.com/project/52b463ef-f58d-4842-be84-cc155faa49b9#">here</a> or <a href="https://repl.it/@restrepo/integration">here</a> by generalizing the previous <code>Quadrature</code> function to one that accepts lists of any size. Compares with the <code>Scipy</code> implementation for the next integral with a linspace of 100 points.</p>
+<p><em>Hint</em>: Note that the intervals for each 3 points can be obtained by slicing in steps of 2:</p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3]
+[3, 4, 5]
+[5, 6, 7]
+[7, 8, 9]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -932,7 +976,7 @@ $$ \frac{dN}{dt} = e^{-t} $$<p>Compare the relative error for the composite trap
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus-integration-methods_44_0.png"
+<img src="../images/features/numerical-calculus-integration-methods_45_0.png"
 >
 </div>
 

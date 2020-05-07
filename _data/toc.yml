@@ -89,9 +89,6 @@
   - title: Numerical integration methods
     url: /features/numerical-calculus-integration-methods
     not_numbered: false
-  - title: Actividad sobre derivadas
-    url: /featur/T-profile-bar
-    not_numbered: false
 
 - title: Linear algebra
   url: /features/linear-algebra
