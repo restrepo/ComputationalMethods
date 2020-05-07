@@ -1,0 +1,2973 @@
+---
+interact_link: content/features/differential-equations.ipynb
+kernel_name: python3
+kernel_path: content/features
+has_widgets: false
+title: |-
+  Diferential equations
+pagenum: 17
+prev_page:
+  url: /features/linear-algebra.html
+next_page:
+  url: 
+suffix: .ipynb
+search: y t frac m boldsymbol f begin align end bmatrix d order p u problem r c operatorname x dt leq equations value methods method b delta k font mathbf system example h partial solution initial dy g second equation z differential problems v using alpha runge kutta mass where boundary pendulum theta rho set ti mbox previous color eulers point numerical lets left right form w red th com speed assume beta de ac quad space change approx times motion however yi uk around hf phase its ipynb shall high any solve solved going points activity conditions www cos
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Diferential equations</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/differential-equations.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Differential-Equations">Differential Equations<a class="anchor-link" href="#Differential-Equations"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Differential equations is without doubt one of the more useful branch of mathematics in science. They are used to model problems involving the change of some variable with respect to another. Differential equations cover a wide range of different applications, ranging from ordinary differential equations (ODE) until boundary-value problems involving many variables. For the sake of simplicity, throughout this section we shall cover only ODE systems as they are more elemental and equally useful. First, we shall cover first order methods, then second order methods and finally, system of differential equations.</p>
+<p>See:</p>
+<ul>
+<li><a href="http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture21.pdf">http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture21.pdf</a></li>
+<li><a href="http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture22.pdf">http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture22.pdf</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<ul>
+<li><a href="#First-Order-Methods">First Order Methods</a> <ul>
+<li><a href="#Euler&#39;s-method">Euler's method</a></li>
+<li><a href="#Example-1">Example 1</a></li>
+</ul>
+</li>
+<li><a href="#High-Order-Methods">High Order Methods</a><ul>
+<li><a href="#Second-order-Runge-Kutta-methods">Second-order Runge-Kutta methods</a></li>
+<li><a href="#Example-2">Example 2</a></li>
+<li><a href="#Fourth-order-Runge-Kutta-method">Fourth-order Runge-Kutta method</a></li>
+</ul>
+</li>
+<li><a href="#Two-Point-Boundary-Value-Problems">Two-Point Boundary Value Problems</a><ul>
+<li><a href="#Example-3">Example 3</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Populating the interactive namespace from numpy and matplotlib
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># JSAnimation import available at https://github.com/jakevdp/JSAnimation</span>
+<span class="c1">#from JSAnimation import IPython_display</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="First-Order-Methods">First Order Methods<a class="anchor-link" href="#First-Order-Methods"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Physical-motivation">Physical motivation<a class="anchor-link" href="#Physical-motivation"> </a></h2><h3 id="Momentum">Momentum<a class="anchor-link" href="#Momentum"> </a></h3><p>In absence a forces a body moves freely to a constant velocity (See figure)</p>
+<p>The quantity which can be associated with the change of speed of a body is the instantaneous <em>momentum</em> of a particle of mass $m$ moving with instantaneous velocity $\boldsymbol{v}$, given by
+\begin{align}
+   \boldsymbol{p}=&amp;\gamma m \mathbf{v}\,, &amp;\text{where: } \gamma=&amp;\frac{1}{\sqrt{1-{|\boldsymbol{v}|^2}/{c^2}}}\,,
+\end{align}
+and $c\approx 3\times 10^8\ $m/s is the speed of light.</p>
+<p>If $\gamma\approx1$, or equivalent, sif $|\boldsymbol{v}|\ll c$:
+\begin{align}
+  \boldsymbol{p}\approx &amp;m \boldsymbol{v}
+\end{align}</p>
+<h3 id="Equation-of-motion">Equation of motion<a class="anchor-link" href="#Equation-of-motion"> </a></h3><p>Any change of the momentum can be atribuited to some force, $\boldsymbol{F}$. In fact, the Newton's second law can be defined in a general way as</p>
+<blockquote><p>The change of the momentum of particle is equal to the net force acting upon the system times the duration of the interaction</p>
+</blockquote>
+<p>For one instaneous duration $\Delta t$, this law can be written as
+$$
+\Delta \boldsymbol{p} = \boldsymbol{F}\Delta t,\qquad \Delta t \to 0 
+$$
+or as the <em>equation of motion</em>, which is the <em>differential equation</em>
+\begin{align}
+\boldsymbol{F}=&amp;\lim_{t\to 0} \frac{\Delta \boldsymbol{p}}{\Delta t} \\
+\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} \,.
+\end{align}
+This equation of motion is of general validity and can be applied numerically to solve any problem.</p>
+<p>In the special case of constant mass
+\begin{align}
+\boldsymbol{F}=&amp;m \boldsymbol{a}
+\end{align}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mathematical-background">Mathematical background<a class="anchor-link" href="#Mathematical-background"> </a></h2><p>Ordinary differential equations normally implies the solution of an initial-value problem, i.e., the solution has to satisfy the differential equation together with some initial condition. Real-life problems usually imply very complicated problems and even non-soluble ones, making any analytical approximation unfeasible. Fortunately, there are two ways to handle this. First, for almost every situation, it is generally posible to simplify the original problem and obtain a simpler one that can be easily solved. Then, using perturbation theory, we can perturbate this solution in order to approximate the real one. This approach is useful, however, it depends very much on the specific problem and a systematic study is rather complicated.</p>
+<p>The second approximation, and the one used here, consists of a complete numerical reduction of the problem, solving it exactly within the accuracy allowed by implicit errors of the methods. For this part, we are going to assume well-defined problems, where solutions are expected to be well-behaved.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Euler's-method">Euler's method<a class="anchor-link" href="#Euler's-method"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This method is the most basic of all methods, however, it is useful to understand basic concepts and definitions of differential equations problems.</p>
+<p>Suppose we have a well-posed initial-value problem given by:</p>
+$$ \frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha $$<p>Now, let's define a <strong>mesh points</strong> as a set of values $\{t_i\}t_i$ where we are going to approximate the solution $y(t)$. These points can be equal-spaced such that</p>
+$$ t_i = a+ i \Delta t,\ \ \ \ \mbox{with}\ \ i=1,2,3,\cdots,N \ \ \mbox{and}\ \Delta t = \frac{b-a}{N}. $$<p>Here, $h$ is called the <strong>step size</strong> of the <strong>mesh points</strong>.</p>
+<p>Now, using the first-order approximation of the derivative that we saw in <a href="http://nbviewer.ipython.org/github/sbustamante/ComputationalMethods/blob/master/material/numerical-calculus.ipynb#Numerical-Differentiation">Numerical Differentiation</a>, we obtain</p>
+$$ \frac{dy}{dt}\approx \frac{y(t+\Delta t)-y(t)}{\Delta t} $$<p>or</p>
+$$ \left.\frac{dy}{dt}\right|_{t=t_i}\approx \frac{y(t_{i+1})-y(t_i)}{\Delta t} $$<p>The original problem can be rewritten as</p>
+$$ y_{i+1} = y_i + f(t_i, y_i)\Delta t + \frac{\Delta t^2}{2}y^{''}(\xi_i) $$<p>where the notation $y(t_i)\equiv y_i$ has been introduced and the last term (error term) can be obtained taking a second-order approximation of the derivative.</p>
+<p>This equation can be solved recursively as we know the initial value $y_0 = y(a) = \alpha$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-1">Example 1<a class="anchor-link" href="#Example-1"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The formalism of the Euler's method can be applied for any system of the form:</p>
+$$ \frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha $$<p>However, it is possible to extend this to second-order systems, i.e., systems involving second derivatives. Let's suppose a general system of the form:</p>
+$$ \frac{d^2y}{dt^2}+ g(t,y)\frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ y'(a) = \beta$$<p>For this system we have to provide both, the initial value $y(a)$ and the initial derivative $y'(a)$.</p>
+<p>Now, let's define a new variable $w(t) = y'(t)$, the previous problem can be then written as</p>
+\begin{align}
+\frac{dw}{dt}=&amp;f(t,y)-g(t,y)w \\  
+\frac{dy}{dt}=&amp;w(t)\, ,\ \ \ a\leq t\leq b\,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
+\end{align}<p>Each of this problem has now the form required by the Euler's algorithm, and the solution can be computed as:</p>
+\begin{align}
+w_{i+1}=&amp; w_{i} + [f(t_i,y_i)-g(t_i,y_i)w_i]\Delta t \\  
+y_{i+1}=&amp;y_i + w_i \Delta t\, ,\ \ \ a\leq t\leq b\,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In fact, the equation of motiion can be seen as the system of equations
+\begin{align}
+\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\\
+\boldsymbol{p}=&amp; \gamma m \boldsymbol{v}\\
+\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} 
+\end{align}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example:">Example:<a class="anchor-link" href="#Example:"> </a></h3><!-- Para ilustrar la integración numérica considere el siguiente programa en `vpython` de la solución al problema de una partícula de masa $m=0.5\ $Kg, con velocidad inicial $\mathbf{v}_i=(5,0,0)\ $m/s, moviendose bajo la influencia de una fuerza neta gravitacional dada por
+\begin{align}
+\textbf{F}_{\text{neta}}=&(0,-mg,0)\nonumber\\
+=&(0,-4.9,0)\ \text{N}\,,
+\end{align}
+La implementación con un paso de integración dado por un $\Delta t=0.01\ \text{s}$ se ilustra en el siguiente programa:
+-->
+
+<p>An object of 0.5 Kg is launched from the top of a building of 50 m with an horizontal speed of 5 m/s. Study the evolution of the movement</p>
+<ul>
+<li>Neglecting the air friction</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">m</span><span class="o">=.</span><span class="mi">5</span>
+<span class="n">g</span><span class="o">=</span><span class="mf">9.8</span>
+<span class="c1"># intial conditions</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">v</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">p</span><span class="o">=</span><span class="n">m</span><span class="o">*</span><span class="n">v</span>
+<span class="n">deltat</span><span class="o">=</span><span class="mf">0.01</span>
+<span class="c1"># Analysis for the first 3 s</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">:</span><span class="n">p</span><span class="p">},</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">deltat</span><span class="p">):</span>
+    <span class="n">Fg</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">+</span><span class="n">Fg</span><span class="o">*</span><span class="n">deltat</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">deltat</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">:</span><span class="n">p</span><span class="p">},</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="c1">#[:3]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p</th>
+      <th>x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[2.5, 0.0, 0.0]</td>
+      <td>[0, 50, 0]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[2.5, -0.049, 0.0]</td>
+      <td>[0.05, 49.99902, 0.0]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[2.5, -0.098, 0.0]</td>
+      <td>[0.1, 49.997060000000005, 0.0]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[2.5, -0.14700000000000002, 0.0]</td>
+      <td>[0.15000000000000002, 49.99412, 0.0]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[2.5, -0.196, 0.0]</td>
+      <td>[0.2, 49.9902, 0.0]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>[2.5, -0.245, 0.0]</td>
+      <td>[0.25, 49.9853, 0.0]</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>[2.5, -0.294, 0.0]</td>
+      <td>[0.3, 49.979420000000005, 0.0]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>[2.5, -0.34299999999999997, 0.0]</td>
+      <td>[0.35, 49.97256, 0.0]</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>[2.5, -0.39199999999999996, 0.0]</td>
+      <td>[0.39999999999999997, 49.96472, 0.0]</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>[2.5, -0.44099999999999995, 0.0]</td>
+      <td>[0.44999999999999996, 49.9559, 0.0]</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>[2.5, -0.48999999999999994, 0.0]</td>
+      <td>[0.49999999999999994, 49.9461, 0.0]</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>[2.5, -0.5389999999999999, 0.0]</td>
+      <td>[0.5499999999999999, 49.935320000000004, 0.0]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>[2.5, -0.588, 0.0]</td>
+      <td>[0.6, 49.92356, 0.0]</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>[2.5, -0.637, 0.0]</td>
+      <td>[0.65, 49.91082, 0.0]</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>[2.5, -0.686, 0.0]</td>
+      <td>[0.7000000000000001, 49.8971, 0.0]</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>[2.5, -0.7350000000000001, 0.0]</td>
+      <td>[0.7500000000000001, 49.882400000000004, 0.0]</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>[2.5, -0.7840000000000001, 0.0]</td>
+      <td>[0.8000000000000002, 49.86672, 0.0]</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>[2.5, -0.8330000000000002, 0.0]</td>
+      <td>[0.8500000000000002, 49.85006, 0.0]</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>[2.5, -0.8820000000000002, 0.0]</td>
+      <td>[0.9000000000000002, 49.83242, 0.0]</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>[2.5, -0.9310000000000003, 0.0]</td>
+      <td>[0.9500000000000003, 49.8138, 0.0]</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>[2.5, -0.9800000000000003, 0.0]</td>
+      <td>[1.0000000000000002, 49.794200000000004, 0.0]</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>[2.5, -1.0290000000000004, 0.0]</td>
+      <td>[1.0500000000000003, 49.77362, 0.0]</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>[2.5, -1.0780000000000003, 0.0]</td>
+      <td>[1.1000000000000003, 49.75206, 0.0]</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>[2.5, -1.1270000000000002, 0.0]</td>
+      <td>[1.1500000000000004, 49.72952, 0.0]</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>[2.5, -1.1760000000000002, 0.0]</td>
+      <td>[1.2000000000000004, 49.706, 0.0]</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>[2.5, -1.225, 0.0]</td>
+      <td>[1.2500000000000004, 49.6815, 0.0]</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>[2.5, -1.274, 0.0]</td>
+      <td>[1.3000000000000005, 49.65602, 0.0]</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>[2.5, -1.323, 0.0]</td>
+      <td>[1.3500000000000005, 49.62956, 0.0]</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>[2.5, -1.3719999999999999, 0.0]</td>
+      <td>[1.4000000000000006, 49.60212, 0.0]</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>[2.5, -1.4209999999999998, 0.0]</td>
+      <td>[1.4500000000000006, 49.5737, 0.0]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>271</th>
+      <td>[2.5, -13.278999999999971, 0.0]</td>
+      <td>[13.550000000000058, 13.88112000000001, 0.0]</td>
+    </tr>
+    <tr>
+      <th>272</th>
+      <td>[2.5, -13.327999999999971, 0.0]</td>
+      <td>[13.600000000000058, 13.61456000000001, 0.0]</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>[2.5, -13.37699999999997, 0.0]</td>
+      <td>[13.650000000000059, 13.347020000000011, 0.0]</td>
+    </tr>
+    <tr>
+      <th>274</th>
+      <td>[2.5, -13.42599999999997, 0.0]</td>
+      <td>[13.70000000000006, 13.078500000000012, 0.0]</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>[2.5, -13.47499999999997, 0.0]</td>
+      <td>[13.75000000000006, 12.809000000000013, 0.0]</td>
+    </tr>
+    <tr>
+      <th>276</th>
+      <td>[2.5, -13.523999999999969, 0.0]</td>
+      <td>[13.800000000000061, 12.538520000000014, 0.0]</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>[2.5, -13.572999999999968, 0.0]</td>
+      <td>[13.850000000000062, 12.267060000000015, 0.0]</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>[2.5, -13.621999999999968, 0.0]</td>
+      <td>[13.900000000000063, 11.994620000000015, 0.0]</td>
+    </tr>
+    <tr>
+      <th>279</th>
+      <td>[2.5, -13.670999999999967, 0.0]</td>
+      <td>[13.950000000000063, 11.721200000000016, 0.0]</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>[2.5, -13.719999999999967, 0.0]</td>
+      <td>[14.000000000000064, 11.446800000000016, 0.0]</td>
+    </tr>
+    <tr>
+      <th>281</th>
+      <td>[2.5, -13.768999999999966, 0.0]</td>
+      <td>[14.050000000000065, 11.171420000000015, 0.0]</td>
+    </tr>
+    <tr>
+      <th>282</th>
+      <td>[2.5, -13.817999999999966, 0.0]</td>
+      <td>[14.100000000000065, 10.895060000000017, 0.0]</td>
+    </tr>
+    <tr>
+      <th>283</th>
+      <td>[2.5, -13.866999999999965, 0.0]</td>
+      <td>[14.150000000000066, 10.617720000000018, 0.0]</td>
+    </tr>
+    <tr>
+      <th>284</th>
+      <td>[2.5, -13.915999999999965, 0.0]</td>
+      <td>[14.200000000000067, 10.339400000000019, 0.0]</td>
+    </tr>
+    <tr>
+      <th>285</th>
+      <td>[2.5, -13.964999999999964, 0.0]</td>
+      <td>[14.250000000000068, 10.06010000000002, 0.0]</td>
+    </tr>
+    <tr>
+      <th>286</th>
+      <td>[2.5, -14.013999999999964, 0.0]</td>
+      <td>[14.300000000000068, 9.77982000000002, 0.0]</td>
+    </tr>
+    <tr>
+      <th>287</th>
+      <td>[2.5, -14.062999999999963, 0.0]</td>
+      <td>[14.350000000000069, 9.49856000000002, 0.0]</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>[2.5, -14.111999999999963, 0.0]</td>
+      <td>[14.40000000000007, 9.216320000000021, 0.0]</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>[2.5, -14.160999999999962, 0.0]</td>
+      <td>[14.45000000000007, 8.933100000000021, 0.0]</td>
+    </tr>
+    <tr>
+      <th>290</th>
+      <td>[2.5, -14.209999999999962, 0.0]</td>
+      <td>[14.500000000000071, 8.648900000000022, 0.0]</td>
+    </tr>
+    <tr>
+      <th>291</th>
+      <td>[2.5, -14.258999999999961, 0.0]</td>
+      <td>[14.550000000000072, 8.363720000000024, 0.0]</td>
+    </tr>
+    <tr>
+      <th>292</th>
+      <td>[2.5, -14.30799999999996, 0.0]</td>
+      <td>[14.600000000000072, 8.077560000000025, 0.0]</td>
+    </tr>
+    <tr>
+      <th>293</th>
+      <td>[2.5, -14.35699999999996, 0.0]</td>
+      <td>[14.650000000000073, 7.790420000000026, 0.0]</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>[2.5, -14.40599999999996, 0.0]</td>
+      <td>[14.700000000000074, 7.502300000000027, 0.0]</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>[2.5, -14.45499999999996, 0.0]</td>
+      <td>[14.750000000000075, 7.213200000000027, 0.0]</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>[2.5, -14.503999999999959, 0.0]</td>
+      <td>[14.800000000000075, 6.923120000000028, 0.0]</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>[2.5, -14.552999999999958, 0.0]</td>
+      <td>[14.850000000000076, 6.632060000000029, 0.0]</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>[2.5, -14.601999999999958, 0.0]</td>
+      <td>[14.900000000000077, 6.34002000000003, 0.0]</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>[2.5, -14.650999999999957, 0.0]</td>
+      <td>[14.950000000000077, 6.047000000000031, 0.0]</td>
+    </tr>
+    <tr>
+      <th>300</th>
+      <td>[2.5, -14.699999999999957, 0.0]</td>
+      <td>[15.000000000000078, 5.753000000000032, 0.0]</td>
+    </tr>
+  </tbody>
+</table>
+<p>301 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;mvto.json&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#pd.read_json(&#39;mvto.json&#39;).x.str[1]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#               x       y</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="c1">#plt.grid()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0,0.5,&#39;$y$ [m]&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_21_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">m</span><span class="o">=.</span><span class="mi">5</span>
+<span class="n">g</span><span class="o">=</span><span class="mf">9.8</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]:</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">v</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">m</span><span class="o">*</span><span class="n">v</span>
+    <span class="n">deltat</span><span class="o">=</span><span class="mf">0.01</span>
+    <span class="n">t</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">:</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="n">c</span><span class="p">},</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">deltat</span><span class="p">):</span>
+        <span class="n">Fg</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="n">c</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">+</span><span class="n">Fg</span><span class="o">*</span><span class="n">deltat</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">deltat</span>
+        <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="o">+</span><span class="n">deltat</span>
+        <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">:</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="n">c</span><span class="p">},</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0. , 0.1, 0.5])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Apply a mask  upon the DataFrame:</p>
+<ul>
+<li>Example</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span> <span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="mf">0.5</span>  <span class="p">)]</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0. ,  0.5])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Filter <code>c==0</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="mi">0</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>c</th>
+      <th>p</th>
+      <th>t</th>
+      <th>x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>[2.5, 0.0, 0.0]</td>
+      <td>0.00</td>
+      <td>[0, 50, 0]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>[2.5, -0.049, 0.0]</td>
+      <td>0.01</td>
+      <td>[0.05, 49.99902, 0.0]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>[2.5, -0.098, 0.0]</td>
+      <td>0.02</td>
+      <td>[0.1, 49.997060000000005, 0.0]</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="mf">0.5</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>c</th>
+      <th>p</th>
+      <th>t</th>
+      <th>x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>602</th>
+      <td>0.5</td>
+      <td>[2.5, 0.0, 0.0]</td>
+      <td>0.00</td>
+      <td>[0, 50, 0]</td>
+    </tr>
+    <tr>
+      <th>603</th>
+      <td>0.5</td>
+      <td>[2.475, -0.049, 0.0]</td>
+      <td>0.01</td>
+      <td>[0.0495, 49.99902, 0.0]</td>
+    </tr>
+    <tr>
+      <th>604</th>
+      <td>0.5</td>
+      <td>[2.45025, -0.09751, 0.0]</td>
+      <td>0.02</td>
+      <td>[0.09850500000000001, 49.9970698, 0.0]</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">c</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">c</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.text.Text at 0x7f5af19ffd68&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_30_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">c</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">c</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="c1">#plt.grid()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0,0.5,&#39;$y$ [m]&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_31_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>: Find the time to reach the position <code>y=0</code> in each case. By using an algorithm to find roots</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In order to apply this, let's assume a simple mass-spring.</p>
+<p><img src="https://raw.githubusercontent.com/sbustamante/ComputationalMethods/master/material/figures/mass_spring.png" alt=""></p>
+<p>The equation of motion according to Newton's second law is</p>
+$$ F = -kx $$<p>Using the previous results, we can rewrite this as:</p>
+$$ \frac{d p}{dt} = -k x $$$$ \frac{dx}{dt} = \frac{p}{m}$$<p>And the equivalent Euler system is
+\begin{align}
+v_{i+1}=&amp; v_{i} - \Delta t\frac{k}{m}x_i \\  
+x_{i+1}=&amp;x_i +  v_i \Delta t\, ,\ \ \ x(0) = x_0\ \ \mbox{and}\ v(0) = v_0
+\end{align}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font color='red'>    
+**1.** Using the initial conditions $x(0) = 0$ and $v(0) = 3$, solve the previous system. Plot the solutions $x(t)$ and $y(t)$ and compare with real solutions. Furthermore, calculate the total energy of the system. What can you conclude about the behaviour of the energy? Does it make any sense?
+</font></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font color='red'>    
+**2.** Using the same reasoning, derive the equations for a simple pendulum. Compare the solution for small oscillations with the analytic one. What happens when increasing the initial amplitude of the movement?
+</font></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="High-Order-Methods">High Order Methods<a class="anchor-link" href="#High-Order-Methods"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although first-order schemes like Euler's method are illustrative and allow a good understanding of the numerical problem, real applications cannot be dealt with them, instead more precise and accurate high-order methods must be invoked. In this section we shall cover a well-known family of numerical integrators, the Runge-Kutta methods.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">integrate</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Some-examples">Some examples<a class="anchor-link" href="#Some-examples"> </a></h3><ol>
+<li><a href="http://www.southampton.ac.uk/~fangohr/teaching/python/book/Python-for-Computational-Science-and-Engineering.pdf">http://www.southampton.ac.uk/~fangohr/teaching/python/book/Python-for-Computational-Science-and-Engineering.pdf</a><ul>
+<li><a href="http://www.southampton.ac.uk/~fangohr/teaching/python/book/ipynb/">http://www.southampton.ac.uk/~fangohr/teaching/python/book/ipynb/</a></li>
+</ul>
+</li>
+<li><a href="http://sam-dolan.staff.shef.ac.uk/mas212/">http://sam-dolan.staff.shef.ac.uk/mas212/</a><ul>
+<li><a href="http://sam-dolan.staff.shef.ac.uk/mas212/notebooks/ODE_Example.ipynb">http://sam-dolan.staff.shef.ac.uk/mas212/notebooks/ODE_Example.ipynb</a></li>
+</ul>
+</li>
+<li><a href="https://apmonitor.com/pdc/index.php/Main/SolveDifferentialEquations">https://apmonitor.com/pdc/index.php/Main/SolveDifferentialEquations</a></li>
+<li><a href="http://csc.ucdavis.edu/~cmg/Group/readings/pythonissue_3of4.pdf">http://csc.ucdavis.edu/~cmg/Group/readings/pythonissue_3of4.pdf</a></li>
+<li><a href="http://www.tau.ac.il/~kineret/amit/scipy_tutorial/#x1-210004.4">http://www.tau.ac.il/~kineret/amit/scipy_tutorial/#x1-210004.4</a></li>
+<li><a href="https://www.udacity.com/course/differential-equations-in-action--cs222">https://www.udacity.com/course/differential-equations-in-action--cs222</a></li>
+<li><a href="https://github.com/robclewley/pydstool">https://github.com/robclewley/pydstool</a><ul>
+<li><a href="http://www2.gsu.edu/~matrhc/PyDSTool.htm">http://www2.gsu.edu/~matrhc/PyDSTool.htm</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/JuliaDiffEq">https://github.com/JuliaDiffEq</a>   </li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \frac{dy(t)}{dt}=-k y(t)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dy_dt</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="n">dydt</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">dydt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>para un punto $t=1$: con condición inicial $y(0)=y_0=5$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># initial condition</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dy_dt</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[5.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># time points</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># solve ODE</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dy_dt</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+
+
+<span class="c1"># plot results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_46_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dx_dt</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example</strong>: From <a href="http://sam-dolan.staff.shef.ac.uk/mas212/notebooks/ODE_Example.ipynb">http://sam-dolan.staff.shef.ac.uk/mas212/</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Suppose we have a second-order ODE such as a damped simple harmonic motion equation,
+$$
+\quad y'' + 2 y' + 2 y = \cos(2x), \quad \quad y(0) = 0, \; y'(0) = 0
+$$
+We can turn this into two first-order equations by defining a new depedent variable. For example,
+$$
+\quad z \equiv y' \quad \Rightarrow \quad z' + 2 z + 2y = \cos(2x), \quad z(0)=y(0) = 0.
+$$
+We can solve this system of ODEs using "odeint" with lists, as follows:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let 
+$$
+U=\begin{bmatrix}
+U_0\\
+U_1
+\end{bmatrix}=\begin{bmatrix}
+y\\
+z
+\end{bmatrix}.
+$$
+Therefore
+\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} x} 
+\begin{bmatrix} 
+y\\
+z\\
+\end{bmatrix}=&amp;
+\begin{bmatrix}
+z\\
+-2z-2y+\cos(2x)\\
+\end{bmatrix}\\
+\frac{\operatorname{d}}{\operatorname{d} x} 
+U=&amp;
+\begin{bmatrix}
+U_1\\
+-2U_1-2U_0+\cos(2x)\\
+\end{bmatrix}
+\end{align}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dU_dx</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Here U is a vector such that y=U[0] and z=U[1]. </span>
+<span class="sd">    This function should return [y&#39;, z&#39;]</span>
+<span class="sd">    &#39;&#39;&#39;</span>    
+    <span class="k">return</span> <span class="p">[</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)]</span>
+
+<span class="n">U0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">Us</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dx</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that <code>y=Us[:,0]</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ys</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Damped harmonic oscillator&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_53_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By using:
+\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} x} 
+\begin{bmatrix} 
+y\\
+z\\
+\end{bmatrix}=&amp;
+\begin{bmatrix}
+z\\
+-2z-2y+\cos(2x)\\
+\end{bmatrix}
+\end{align}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dU_dx</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Here U is a vector such that y=U[0] and z=U[1]. </span>
+<span class="sd">    This function should return [y&#39;, z&#39;]</span>
+<span class="sd">    &#39;&#39;&#39;</span>    
+    <span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="n">U</span> <span class="c1"># y → U[0]; z → U[1] </span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">z</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">z</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)]</span>
+
+<span class="n">U0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">Us</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dx</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ys</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Damped harmonic oscillator&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_56_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>: Apply the previous example to the problem of parabolic motion with air friction:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+\begin{align}
+\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\\
+\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} 
+\end{align}\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} t} 
+\begin{bmatrix} 
+ \boldsymbol{x}\\
+ \boldsymbol{p}\\
+\end{bmatrix}=&amp;
+\begin{bmatrix}
+\boldsymbol{p}/m\\
+-m\boldsymbol{g}-c \boldsymbol{p}/m \\
+\end{bmatrix}\,,
+\end{align}<p>such that in two dimensions</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+\boldsymbol{U}=\begin{bmatrix}
+{U}_0\\
+{U}_1\\
+{U}_2\\
+{U}_3\\
+\end{bmatrix}=\begin{bmatrix}
+{x}\\
+y\\
+p_x\\
+p_y\\
+\end{bmatrix}
+$$\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} t} \boldsymbol{U}=&amp;
+\begin{bmatrix}
+{U}_2/m\\
+{U}_3/m\\
+-c{U}_2/m\\
+-m{g}-c{U}_3/m\\
+\end{bmatrix}
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dU_dt</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">m</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Here U is a vector such that y=U[0] and z=U[1]. </span>
+<span class="sd">    This function should return [y&#39;, z&#39;]</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">g</span><span class="o">=</span><span class="mf">9.8</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">U</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="p">,</span>
+            <span class="n">U</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="p">,</span>
+            <span class="o">-</span><span class="n">c</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="p">,</span> 
+            <span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">-</span><span class="n">c</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="p">]</span>
+
+<span class="n">m</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="n">U0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span><span class="mi">5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Us</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dt</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>  
+<span class="n">xs</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">)</span>
+<span class="n">Us</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dt</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span> <span class="p">)</span>  
+<span class="n">xs</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">)</span>
+<span class="n">Us</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dt</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="p">)</span>  
+<span class="n">xs</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]):,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f9980af1e48&gt;]</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_61_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font color="red">Activity</font>: Implemet directly:
+\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} t} 
+\begin{bmatrix} 
+ \boldsymbol{x}\\
+ \boldsymbol{p}\\
+\end{bmatrix}=&amp;
+\begin{bmatrix}
+\boldsymbol{p}/m\\
+-m\boldsymbol{g}-c \boldsymbol{p}/m \\
+\end{bmatrix}\,,
+\end{align}
+as
+\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} t} 
+\begin{bmatrix} 
+ x\\
+ y\\
+ p_x\\
+ p_y
+\end{bmatrix}=&amp;
+\begin{bmatrix}
+p_x/m\\
+p_y/m\\
+-c p_x/m \\
+-mg-c p_y/m \\
+\end{bmatrix}\,,
+\end{align}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dU_dt</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">m</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Here U is a vector such that y=U[0] and z=U[1]. </span>
+<span class="sd">    This function should return [y&#39;, z&#39;]</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">g</span><span class="o">=</span><span class="mf">9.8</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="o">=</span><span class="n">U</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">px</span><span class="o">/</span><span class="n">m</span><span class="p">,</span>
+            <span class="n">py</span><span class="o">/</span><span class="n">m</span><span class="p">,</span>
+            <span class="o">-</span><span class="n">c</span><span class="o">*</span><span class="n">px</span><span class="o">/</span><span class="n">m</span><span class="p">,</span> 
+            <span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">-</span><span class="n">c</span><span class="o">*</span><span class="n">py</span><span class="o">/</span><span class="n">m</span><span class="p">]</span>
+
+<span class="n">m</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="n">U0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span><span class="mi">5</span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">Us</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dt</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">argplt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span><span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span> <span class="p">)</span>  
+<span class="n">xs</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f9980b24b00&gt;]</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_63_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Second-order-Runge-Kutta-methods">Second-order Runge-Kutta methods<a class="anchor-link" href="#Second-order-Runge-Kutta-methods"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this method, let's assume a problem of the form:</p>
+$$ \frac{dy}{dt}=y'=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha $$<p>Now, we want to know the solution in the next timestep, i.e. $y(t+h)$. For this, we propose the next solution:</p>
+$$ y(t+h) = y(t) + c_0 f(t,y)h + c_1f[  t+ph, y+qhf(t,y) ]h $$<p>determining the coefficients $c_0, c_1, q$ and $p$, we will have the complete approximated solution of the problem.</p>
+<p>One way to determine them is by comparing with the taylor expansion around $t$</p>
+$$ y(t+h) = y(t) + f(t,y)h + \frac{1}{2}\left( \frac{\partial f}{\partial t} + \frac{\partial f}{\partial y}  \right)h^2 + \mathcal{O}(h^3) $$<p>Now, we can also expand the function $f[  t+ph, y+qhf(t,y) ]$ around the point $(t,y)$, yielding:</p>
+$$ f[  t+ph, y+qhf(t,y) ] = f(t,y) + \frac{\partial f}{\partial t}ph + \frac{\partial f}{\partial y}qh + \mathcal{O}(h^2)  $$<p>Replacing this into the original expression:</p>
+$$ y(t+h) = y(t) + c_0 f(t,y)h + c_1\left[ f(t,y) + \frac{\partial f}{\partial t}ph + \frac{\partial f}{\partial y}qh \right]h + \mathcal{O}(h^3)$$<p>ordering the terms we obtain:</p>
+$$ y(t+h) = y(t) + (c_0+c_1) f(t,y)h + c_1\left[ \frac{\partial f}{\partial t}p + \frac{\partial f}{\partial y}q \right]h^2 + \mathcal{O}(h^3)$$<p>Equalling the next conditions are obtained:</p>
+$$ c_0 + c_1 =1 \ \ \ c_1p=\frac{1}{2}\ \ \ c_1q = \frac{1}{2} $$<p>This set of equations are undetermined so there are several solutions, each one yielding a different method:</p>
+$$ \matrix{ 
+c_0 = 0 &amp; c_1=1 &amp; p = 1/2 &amp; q = 1/2 &amp; \mbox{Modified Euler's Method} \\
+c_0 = 1/2 &amp; c_1=1/2 &amp; p = 1 &amp; q = 1 &amp; \mbox{Heun's Method} \\
+c_0 = 1/3 &amp; c_1=2/3 &amp; p = 3/4 &amp; q = 3/4 &amp; \mbox{Ralston's Method}
+} $$<p>The algorithm is then:</p>
+$$ y(t+h) = y(t) + (c_1+c_2)\mathbf{K}_1 $$<p>with</p>
+$$ \mathbf{K}_1 = hf( t+pt, y+q\mathbf{K}_0 ) $$$$ \mathbf{K}_0 = hf(t,y) $$<p>All these methods constitute the second-order Runge-Kutta methods.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-2">Example 2<a class="anchor-link" href="#Example-2"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this example we are going to use the Runge-Kutta 2 method (Modified Euler's) for mapping the phase space of a pendulum.</p>
+<p>The equations of the pendulum are given by:</p>
+$$ \frac{d\theta}{dt} = \omega $$$$ \frac{d\omega}{dt} = -\frac{g}{l}\sin \theta $$\begin{align}
+\frac{d}{dt} U=\begin{pmatrix}\omega\\
+ -\dfrac{g}{l}\sin\theta \end{pmatrix},
+\end{align}<p>where
+\begin{align}
+ U=\begin{pmatrix}\theta\\
+\omega \end{pmatrix}.
+\end{align}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dU_dθ</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Here U is a vector such that   θ=U[0] and ω=U[1]. </span>
+<span class="sd">    This function should return [θ&#39;, ω&#39;]</span>
+<span class="sd">    &#39;&#39;&#39;</span>    
+    <span class="n">g</span><span class="o">=</span><span class="mf">9.8</span>
+    <span class="n">θ</span><span class="p">,</span><span class="n">ω</span><span class="o">=</span><span class="n">U</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">ω</span><span class="p">,</span> <span class="o">-</span><span class="n">g</span><span class="o">/</span><span class="n">l</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">θ</span> <span class="p">)</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmax</span> <span class="o">=</span> <span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">omega_max</span> <span class="o">=</span> <span class="mi">8</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Nic</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="c1">#Maxim angular velocity</span>
+
+<span class="n">theta0s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">Nic</span><span class="p">)</span>
+<span class="n">omega0s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">omega_max</span><span class="p">,</span><span class="n">omega_max</span><span class="p">,</span><span class="n">Nic</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TAREA: Generar un rango aleatorio unoforme de varios ordenes de magnitud.
+En particular, 1000 números aleatorios entre  $3\times 10^{-6}$ hasta $5\times 10^{4}$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U0</span><span class="o">=</span><span class="p">[</span><span class="n">theta0s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">omega0s</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">U0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[-2.092128822241305, -4.627223898308207]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">Us</span><span class="o">=</span><span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dθ</span><span class="p">,</span><span class="n">U0</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(-10, 10)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_74_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(1, 3), (2, 4)]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">j</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">theta0</span><span class="p">,</span> <span class="n">omega0</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">theta0s</span><span class="p">,</span> <span class="n">omega0s</span><span class="p">):</span>
+    <span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+    <span class="n">U0</span><span class="o">=</span><span class="p">[</span><span class="n">theta0</span><span class="p">,</span><span class="n">omega0</span><span class="p">]</span>
+    <span class="n">Us</span><span class="o">=</span><span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dθ</span><span class="p">,</span><span class="n">U0</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">lw</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="n">Nic</span><span class="p">:</span> <span class="c1">#secutity stop</span>
+        <span class="k">break</span>
+    <span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span>
+    
+<span class="c1">#Format of figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span> <span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">theta/\pi$&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span> <span class="s2">&quot;$\omega$ [rad/s]&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="n">omega_max</span><span class="p">,</span> <span class="n">omega_max</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span> <span class="s2">&quot;Phase space of a pendulum&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_76_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The nearly closed curves around (0,0) represent the regular small swings of the pendulum near its
+rest position.  The oscillatory curves up and down of the closed curves represent the movement when  the pendulum start at $\theta=0$ but with high enough angular speed such that the pendulum goes all the way around. Of course, its
+angular speed will slow down on the way up but then it will speed up on the way down again.
+In the absence of friction, it just keeps spinning around indefinitely. The counterclockwise
+motions of the pendulum of this kind are shown in the graph by the wavy lines
+at the top with positive angular speed, while the curves on the bottom
+which go from right to left represent clockwise rotations. The phase space have a periodicity of $2\pi$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Small oscillation</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">Us</span><span class="o">=</span><span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dθ</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">t</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(-10, 10)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_79_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>All around</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">Us</span><span class="o">=</span><span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dθ</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span><span class="n">t</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(-10, 10)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_81_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">Us</span><span class="o">=</span><span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dθ</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">7</span><span class="p">],</span><span class="n">t</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(-10, 10)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_82_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Us</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(-10, 10)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_83_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(1, 3), (2, 4)]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font color='red'>    
+Using the previous example, explore the phase space of a simple oscillator and a damped pendulum.
+</font></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Fourth-order-Runge-Kutta-method">Fourth-order Runge-Kutta method<a class="anchor-link" href="#Fourth-order-Runge-Kutta-method"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, the most used general purpose method is the fourth-order Runge-Kutta scheme. Its derivation follows the same previous reasoning, however the procedure is rather long and it makes no sense to reprouce it here. Instead, we will give the direct algorithm:</p>
+<p>Let's assume again a problem of the form:</p>
+$$ \frac{dy}{dt}=y'=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha $$<p>The Runge-Kutta-4 (RK4) method allows us to predict the solution at the time $t+h$ as:</p>
+$$ y(t+h) = y(t) + \frac{1}{6}( \mathbf{K}_0 + 2\mathbf{K}_1 + 2\mathbf{K}_2 + \mathbf{K}_3  ) $$<p>where:</p>
+$$ \mathbf{K}_0 = hf(t,y)$$$$ \mathbf{K}_1 = hf\left( t + \frac{h}{2},y + \frac{\mathbf{K}_0}{2}\right)$$$$ \mathbf{K}_2 = hf\left( t + \frac{h}{2},y + \frac{\mathbf{K}_1}{2}\right)$$$$ \mathbf{K}_3 = hf\left( t + h,y + \mathbf{K}_2\right)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font color='red'><br>
+The Lorenz attractor is a common set of differential equations of some models of terrestrial atmosphere studies. It is historically known as one of the first system to exhibit deterministic caos. The equations are:</p>
+$$ \frac{dx}{dt} = a(y-x) $$$$ \frac{dy}{dt} = x(b-z)-y $$$$ \frac{dz}{dt} = xy-cz $$<p>with $a = 10$, $b=28$ and $c = 8/3$ the solution shows periodic orbits.
+&lt;/font&gt;</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font color='red'>    
+Write a routine that gives a step of RK4 and integrate the previous system. Plot the resulting 3D solution $(x,y,z)$.
+</font></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Two-Point-Boundary-Value-Problems">Two-Point Boundary Value Problems<a class="anchor-link" href="#Two-Point-Boundary-Value-Problems"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Up to now we have solved initial value problems of the form:</p>
+$$ \frac{dy}{dt}=y'=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha $$<p>Second order equations can be similarly planted as</p>
+$$ \frac{d^2y}{dt^2}=y''=f(t,y,y'),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha \ \ \ y'(a) = u $$<p>This type of systems can be readily solved by defining the auxiliar variable $w = y'$, turning it into a first order system of equations.</p>
+<p>Now, we shall solve two-point boundary problem, where we have two conditions on the solution $y(t)$ instead of having the function and its derivative at some initial point, i.e.</p>
+$$ \frac{d^2y}{dt^2}=y''=f(t,y,y'),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha \ \ \ y(b) = \beta $$<p>In spite of its similar form to the initial value problem, two-point boundary problems pose a increased difficulty for numerical methods. The main reason of this is the iterative procedure performed by numerical approaches, where from an initial point, further points are found. Trying to fit two different values at different points implies then a continuous readjusting of the solution.</p>
+<p>A common way to solve these problems is by turning them into a initial-value problem</p>
+$$ \frac{d^2y}{dt^2}=y''=f(t,y,y'),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha \ \ \ y'(a) = u $$<p>Let's suppose some choice of $u$, integrating by using some of the previous methods, we obtain the final boundary condition $y(b)=\theta$. If the produced value is not the one we wanted from our initial problem, we try another value $u$. This can be repeated until we get a reasonable approach to $y(b)=\beta$. This method works fine, but it is so expensive and terribly inefficient.</p>
+<p>Note when we change $u$, the final boundary value also change, so we can assume $y(b) = \theta$. The solution to the problem can be thought then as a root-finding problem:</p>
+$$ y(b) = \theta(u) = \beta $$<p>or</p>
+<p>$ r(u) \equiv \theta(u) - \beta = 0 $</p>
+<p>where $r(u)$ is the residual function. This problem can be thus solved using some of the methods previously seen for the root-finding problem.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-3">Example 3<a class="anchor-link" href="#Example-3"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A very simplified model of interior solid planets consists of a set of spherically symmetric radial layers, where the next properties are computed: density $\rho(r)$, enclosed mass $m(r)$, gravity $g(r)$ and pressure $P(r)$. Each of these properties are assumed to be only radially dependent. The set of equations that rules the planetary interior is:</p>
+<p><strong>Hydrostatic equilibrium equation</strong></p>
+$$\frac{dP}{dr} = -\rho(r)g(r)$$<p><strong>Adams-Williamson equation</strong></p>
+$$\frac{dg}{dr} = 4\pi G\rho(r) - \frac{2Gm(r)}{r^3}$$<p><strong>Continuity equation</strong></p>
+$$\frac{dm}{dr} = 4\pi r^2 \rho(r)$$<p><strong>Equation of state</strong></p>
+$$\frac{d\rho}{dr} = -\frac{\rho(r)^2g(r)}{K_s}$$<p>For accurate results the term $K_s$, called the adiabatic bulk modulus, is temperature and radii dependent. However, for the sake of simplicity we shall assume a constant value.</p>
+<p>Solving simultaneously the previous set of equations, we can find the complete internal structure of a planet.</p>
+<p>We have four functions to be determined and four equations, so the problem is solvable. It is only necessary to provide a set of boundary conditions of the form:</p>
+$$ \rho(R) = \rho_{surf},\ \ \ m(R) = M_p, \ \ \ g(R) = g_{surf},\ \ \ P(R) = P_{atm} $$<p>where $R$ is the planetary radius, $\rho_{surf}$ the surface density, $M_p$ the mass of the planet, $g_{surf}$ the surface gravity and $P_{atm}$ the atmospheric pressure. However, there is a problem, we do not know the planetary radius $R$, so an extra condition is required to determine this value. This is reached through the physical condition $m(0) = 0$, this is, the enclosed mass at a radius $r = 0$ (center of the planet) must be 0.</p>
+<p>The two-value boundary nature of this problem lies then in fitting the mass function at $m(R) = M_p$ and at $m(0) = 0$. To do so, let's call the residual mass $m(0) = M_r$. This value should depend on the chosen radius $R$, so a large value would imply a mass defect $M_r(R)&lt;0$, and a small value a mass excess $M_r(0)&gt;0$. The problem is then solving the radius $R$ for which $m(0) = M_r(R) = 0$. This can be done by using the bisection method.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this problem, we are going to assume an one-layer planet made of perovskite, so $K_s \approx 200\ GPa$. A planet mass equal to earth, so $M_p = 5.97219 \times 10^{24}\ kg$, a surface density $\rho_{surf} = 3500\ kg/m^3$ and a atmospheric pressure of $P_{atm} = 1\ atm = 1\times 10^5\ Pa$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Appendix:-implementation-of-the-pendulum-phase-space">Appendix: implementation of the pendulum phase space<a class="anchor-link" href="#Appendix:-implementation-of-the-pendulum-phase-space"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RK2 integrator</span>
+<span class="k">def</span> <span class="nf">RK2_step</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span> <span class="p">):</span>
+    <span class="c1">#Creating solutions</span>
+    <span class="n">K0</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">K1</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">K0</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">K1</span>
+    <span class="c1">#Returning solution</span>
+    <span class="k">return</span> <span class="n">y1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The phase space of a dynamical system is a space in which all the possible states of that system are univocally represented. For the case of the pendulum, a complete state of the system is given by the set $(\theta, \omega)$, so its phase space is two-dimensional. In order to explore all the possible states, we are going to generate a set of initial conditions and integrate them.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#========================================================</span>
+<span class="c1">#Defining parameters</span>
+<span class="c1">#========================================================</span>
+<span class="c1">#Gravity</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="c1">#Pendulum&#39;s lenght</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1">#Number of initial conditions</span>
+<span class="n">Nic</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="c1">#Maxim angular velocity</span>
+<span class="n">omega_max</span> <span class="o">=</span> <span class="mi">8</span>
+
+<span class="c1">#Maxim time of integration</span>
+<span class="n">tmax</span> <span class="o">=</span> <span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="c1">#Timestep</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1">#========================================================</span>
+<span class="c1">#Dynamical function of the system</span>
+<span class="c1">#========================================================</span>
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="p">):</span>
+    <span class="c1">#Using the convention y = [theta, omega]</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1">#Derivatives</span>
+    <span class="n">dtheta</span> <span class="o">=</span> <span class="n">omega</span>
+    <span class="n">domega</span> <span class="o">=</span> <span class="o">-</span><span class="n">g</span><span class="o">/</span><span class="n">l</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dtheta</span><span class="p">,</span> <span class="n">domega</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#========================================================</span>
+<span class="c1">#Generating set of initial conditions</span>
+<span class="c1">#========================================================</span>
+<span class="n">theta0s</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">Nic</span><span class="p">)</span><span class="o">*</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">omega0s</span> <span class="o">=</span> <span class="o">-</span><span class="n">omega_max</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">Nic</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">omega_max</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#========================================================</span>
+<span class="c1">#Integrating and plotting the solution for each IC</span>
+<span class="c1">#========================================================</span>
+<span class="c1">#Setting figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">jj</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">theta0</span><span class="p">,</span> <span class="n">omega0</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">theta0s</span><span class="p">,</span> <span class="n">omega0s</span><span class="p">):</span>
+    <span class="c1">#Arrays for solutions</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,]</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta0</span><span class="p">,]</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="p">[</span><span class="n">omega0</span><span class="p">,]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tmax</span><span class="o">/</span><span class="n">h</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">h</span> <span class="p">)):</span>
+        <span class="c1">#Building current condition</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">omega</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+        <span class="c1">#Integrating the system</span>
+        <span class="n">thetai</span><span class="p">,</span> <span class="n">omegai</span> <span class="o">=</span> <span class="n">RK2_step</span><span class="p">(</span> <span class="n">function</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span> <span class="p">)</span>
+        <span class="c1">#Appending new components</span>
+        <span class="n">theta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">thetai</span> <span class="p">)</span>
+        <span class="n">omega</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">omegai</span> <span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+        <span class="c1">#if i==10:</span>
+        <span class="c1">#    break</span>
+    <span class="c1">#Plotting solution</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">theta</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="n">jj</span><span class="o">==</span><span class="mi">50</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">jj</span><span class="o">=</span><span class="n">jj</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="c1">#Format of figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span> <span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">theta$&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span> <span class="s2">&quot;$\omega$&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="n">omega_max</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">omega_max</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span> <span class="s2">&quot;Phase space of a pendulum&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/differential-equations_103_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
