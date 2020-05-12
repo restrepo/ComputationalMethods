@@ -94,6 +94,13 @@
   url: /features/linear-algebra
   not_numbered: false
   expand_sections: false
+  sections:
+  - title: Matriz diagonalization
+    url: /features/linear-algebra-diagonalization
+    not_numbered: false
+  - title: Custum Gaussian elimination
+    url: /features/linear-algebra-extra
+    not_numbered: false
 
 - title: Diferential equations
   url: /features/differential-equations

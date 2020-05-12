@@ -1,0 +1,2159 @@
+---
+interact_link: content/features/linear-algebra-diagonalization.ipynb
+kernel_name: python3
+kernel_path: content/features
+has_widgets: false
+title: |-
+  Matriz diagonalization
+pagenum: 17
+prev_page:
+  url: /features/linear-algebra.html
+next_page:
+  url: /features/linear-algebra-extra.html
+suffix: .ipynb
+search: boldsymbol v dagger u begin end align diag matrix text equation x b operatorname t lambdai np lambda eigenvalues order bmatrix check exists where diagonalized font diagonalization such left right hermitic e g ldots lambdan eigenvector solution bi diagonal eigenvectors vi n pmatrix example mass corollary symmetric nonumber general transformacin since proper system python linalg color redactivity unitarian problem eigenvalue just not unitary transformation cdots note final reshape solve define rebuild hstack changing index diagonalize eig ortogonal theorem only guarantees existence tor really calculate de must establish case symetric identity avoid trivial require does inverse equivalently det complex demostration fact
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Matriz diagonalization</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Matrix-diagonalization">Matrix diagonalization<a class="anchor-link" href="#Matrix-diagonalization"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Theorem-2">Theorem 2<a class="anchor-link" href="#Theorem-2"> </a></h2><p>If $\boldsymbol{A}$ is hermitic, e.g:
+\begin{align}
+\boldsymbol{A}^\dagger =\boldsymbol{A}\,,
+\end{align}
+Then exists an unitarian  matrix $\boldsymbol{V}$ is hermitic, e.g:
+\begin{align}
+\boldsymbol{V}^{-1}=\boldsymbol{V}^\dagger \,,
+\end{align}
+such that
+\begin{equation}
+  \boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{V}=\boldsymbol{A}_{\text{diag}}\,,
+\end{equation}
+where 
+$\boldsymbol{A}_{\text{diag}}=\operatorname{diag}(\lambda_1,\lambda_2,\ldots \lambda_n)$ is the diagonalized mass matrix.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Corollary-1">Corollary 1<a class="anchor-link" href="#Corollary-1"> </a></h2><p>If $\boldsymbol{A}$ is symmetric, e.g:
+\begin{align}
+\boldsymbol{A}^{\operatorname{T}} =\boldsymbol{A}\,,
+\end{align}
+Then exists an unitarian  matrix $\boldsymbol{V}$ is hermitic, e.g:
+\begin{align}
+\boldsymbol{V}^{-1}=\boldsymbol{V}^{\operatorname{T}} \,,
+\end{align}
+such that
+\begin{equation}
+  \boldsymbol{V}^{\operatorname{T}}\boldsymbol{A}\,\boldsymbol{V}=\boldsymbol{A}_{\text{diag}}\,,
+\end{equation}
+where 
+$\boldsymbol{A}_{\text{diag}}=\operatorname{diag}(\lambda_1,\lambda_2,\ldots \lambda_n)$ is the diagonalized mass matrix.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>Corollary</strong> only guarantees existence. Tor really calculate de diagonalization matrix we must establish the eigenvector problem:</p>
+<p>In the case a symetric matrix, the eigenvalue equation is just:
+\begin{align}
+%$$
+  \boldsymbol{A}\,\boldsymbol{V}_i=&amp;\lambda_i\boldsymbol{V}_i \nonumber\\
+  \boldsymbol{A}\,\boldsymbol{V}_i-\lambda_i\boldsymbol{V}_i=&amp;\boldsymbol{0} \nonumber\\
+  (\boldsymbol{A}-\lambda_i \,\boldsymbol{I})\boldsymbol{V}_i=&amp;\boldsymbol{0}\,,
+%$$
+\end{align}
+where $\boldsymbol{I}$ is the identity matrix.</p>
+<p>To avoid the trivial solution $\boldsymbol{V}_i=\boldsymbol{0}$ we require that $\boldsymbol{A}-\lambda_i\, \boldsymbol{I}$
+does not has an inverse, or equivalently
+$$\det( \boldsymbol{A}-\lambda_i\, \boldsymbol{I})=0\,.$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Corollary-2">Corollary 2<a class="anchor-link" href="#Corollary-2"> </a></h2><p>A general complex matrix $\boldsymbol{A}$  can be diagonalized by a bi-diagonal transformación such that
+\begin{equation}
+  \boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U}=\boldsymbol{A}_{\text{diag}}\,,
+\end{equation}
+where 
+$\boldsymbol{A}_{\text{diag}}=\operatorname{diag}(\lambda_1,\lambda_2,\ldots \lambda_n)$ is the diagonalized mass matrix.</p>
+<h2 id="Demostration">Demostration<a class="anchor-link" href="#Demostration"> </a></h2>\begin{align}
+  \boldsymbol{A}_{\text{diag}}=&amp;\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U}\\
+  \boldsymbol{A}_{\text{diag}}\boldsymbol{A}_{\text{diag}}^\dagger=&amp;\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U}
+  \left(\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U}\right)^\dagger\\
+  =&amp;\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U}
+  \left(   \boldsymbol{U}^\dagger \boldsymbol{A}^\dagger\,\boldsymbol{V}\right)\\
+  =&amp;\boldsymbol{V}^\dagger
+  \left( \boldsymbol{A}  \boldsymbol{A}^\dagger\,\right) \boldsymbol{V}\,.\\
+\end{align}<p>Since $\boldsymbol{A}  \boldsymbol{A}^\dagger$ is hermitic and $\boldsymbol{A}  \boldsymbol{A}^\dagger$ is diagonal, then in fact there exists an unitary matrix $\boldsymbol{V}$.  Similarly there exists an unitary matrix $\boldsymbol{U}$ which diagonalizes  $\boldsymbol{A}^\dagger  \boldsymbol{A}$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Eigenvectors-and-eigenvalues">Eigenvectors and eigenvalues<a class="anchor-link" href="#Eigenvectors-and-eigenvalues"> </a></h3><p>If we make
+$$ \boldsymbol{U}=[\boldsymbol{U}_1,\boldsymbol{U}_2,\boldsymbol{U}_3], \qquad \boldsymbol{V}=[\boldsymbol{V}_1,\boldsymbol{V}_2,\boldsymbol{V}_3] $$</p>
+<p>We know that there exists a bi-diagonal transformación such that
+\begin{equation}
+%$$
+  \boldsymbol{A}\,\boldsymbol{U}=\boldsymbol{V}\boldsymbol{A}_{\text{diag}}
+\end{equation}
+\begin{equation}
+  \boldsymbol{A}\,\boldsymbol{U}_i=\lambda_i\boldsymbol{V}_i
+%$$
+\end{equation}
+not sum upon $i$. Here</p>
+<ul>
+<li>$\lambda_i$ are called eigenvalues</li>
+<li>$V_i$ and $U_i$ are the eigenvectors</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use this to check the proper order of the eigenvalues</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transformation-of-a-linear-system">Transformation of a linear system<a class="anchor-link" href="#Transformation-of-a-linear-system"> </a></h2><p>We start again with the matrix equation, capitol bold letters denotes matrices
+\begin{equation}
+  \boldsymbol{A}\boldsymbol{X}=\boldsymbol{B}\,,
+\end{equation}
+where $\boldsymbol{A}$ is an $n \times n$ matrix.</p>
+<p>We know that there exists a bi-diagonal transformación such that
+\begin{equation}
+  \boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U}=\boldsymbol{A}_{\text{diag}}
+\end{equation}
+So, by doing standard operations we have
+\begin{align}
+  \boldsymbol{V}^\dagger \boldsymbol{A} \boldsymbol{U} \boldsymbol{U}^\dagger \boldsymbol{X}=&amp; \boldsymbol{V}^\dagger \boldsymbol{B}\\
+   \left( \boldsymbol{V}^\dagger \boldsymbol{A} \boldsymbol{U} \right) 
+   \left( \boldsymbol{U}^\dagger \boldsymbol{X}\right)=&amp; \boldsymbol{V}^\dagger \boldsymbol{B}\\
+  \boldsymbol{A}_{\text{diag}} \boldsymbol{X}'=&amp;\boldsymbol{B}'\,,      
+\end{align}
+where
+\begin{align}
+  \boldsymbol{X}'=&amp; \boldsymbol{U}^\dagger \boldsymbol{X}\,, &amp;    \boldsymbol{B}'=&amp; \boldsymbol{V}^\dagger \boldsymbol{B}\,,
+\end{align}
+or
+\begin{align}
+  \boldsymbol{X}=&amp; \boldsymbol{U}\boldsymbol{X}'\,, &amp;    \boldsymbol{B}=&amp; \boldsymbol{V}\boldsymbol{B}'\,.
+\end{align}</p>
+<p>If $\boldsymbol{A}_{\text{diag}}=\operatorname{diag}(\lambda_1,\lambda_2,\ldots \lambda_n)$, $\boldsymbol{X}^{\operatorname{T}}=\begin{pmatrix}x_1 &amp; x_2 &amp;\cdots &amp; x_n\end{pmatrix}^{\operatorname{T}}$ and $\boldsymbol{B}^{\operatorname{T}}=\begin{pmatrix}b_1&amp; b_2 &amp;\cdots &amp; b_n\end{pmatrix}^{\operatorname{T}}$,
+the solution of the system is given by
+\begin{equation}
+\lambda_i x'_i=b_i'\,.
+\end{equation}</p>
+<p>Note that
+\begin{align}
+   \boldsymbol{X}'=&amp;\boldsymbol{A}_{\text{diag}}^{-1}\boldsymbol{B}'\,,      
+\end{align}
+and the final solution is
+\begin{align}
+   \boldsymbol{X}=&amp;U \boldsymbol{X}'\\ 
+               =&amp;U\boldsymbol{A}_{\text{diag}}^{-1}V^\dagger \boldsymbol{B}\,,      
+\end{align}
+Therefore
+$$A^{-1}=U\boldsymbol{A}_{\text{diag}}^{-1}V^\dagger$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A suitable way to introduce this method is applying it to some basic problem. To do so, let's take the result of the <a href="#Example-1">Example 1</a>:</p>
+$$ \begin{bmatrix}
+5 &amp; -4 &amp; 0 \\
+-4 &amp; 7 &amp; -3 \\ 
+0 &amp; -3 &amp; 5
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3} 
+\end{bmatrix}  =
+\begin{bmatrix}
+1 \\
+0 \\
+-2
+\end{bmatrix}
+$$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol{U}^\dagger=\boldsymbol{U}^{\operatorname{T}}$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+             <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+             <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">M1</span>
+<span class="n">A</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 5, -4,  0],
+       [-4,  7, -3],
+       [ 0, -3,  5]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check if all eigenvalues are different from zero:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>49.99999999999999</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1],
+       [ 0],
+       [-2]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Also as</p>
+<div class="highlight"><pre><span></span><span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="c1">#or</span>
+<span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>  <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">],(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">A</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A_diag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">λ</span><span class="p">)</span>
+<span class="n">A_diag</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[11.09901951,  0.        ,  0.        ],
+       [ 0.        ,  0.90098049,  0.        ],
+       [ 0.        ,  0.        ,  5.        ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-5.07191124e-01, -6.18673713e-01, -6.00000000e-01],
+       [ 7.73342141e-01, -6.33988906e-01,  1.91548674e-16],
+       [-3.80393343e-01, -4.64005285e-01,  8.00000000e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We first check the proper order of the diagonalization</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span>  <span class="p">),</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[11.09901951,  0.        ,  0.        ],
+       [ 0.        ,  0.90098049,  0.        ],
+       [ 0.        ,  0.        ,  5.        ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ -5.07191124e-01,  -6.18673713e-01,  -6.00000000e-01],
+       [  7.73342141e-01,  -6.33988906e-01,   1.91548674e-16],
+       [ -3.80393343e-01,  -4.64005285e-01,   8.00000000e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The final solution is:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A_diag_inv</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">λ</span><span class="p">)</span>
+<span class="n">A_diag_inv</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.09009805, 0.        , 0.        ],
+       [0.        , 1.10990195, 0.        ],
+       [0.        , 0.        , 0.2       ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>check with <code>np.linalg.inv(A_diag)</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">λ</span><span class="p">)</span> <span class="p">),</span><span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">),</span><span class="n">B</span><span class="p">)</span>
+<span class="n">X</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.04],
+       [-0.2 ],
+       [-0.52]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><font color="red">Activity</font></strong>: Usar np.lingalg.solve</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1,  0, -2])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.04, -0.2 , -0.52])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now check some properties</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-5.07191124e-01, -6.18673713e-01, -6.00000000e-01],
+       [ 7.73342141e-01, -6.33988906e-01,  1.91548674e-16],
+       [-3.80393343e-01, -4.64005285e-01,  8.00000000e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V</span><span class="p">[:</span> <span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-0.50719112],
+       [ 0.77334214],
+       [-0.38039334]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A_diag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">λ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(11.099019513592784, 11.099019513592784)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We define the eigenvector $V_i$ as</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="p">]</span>
+<span class="n">V1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="p">]</span>
+<span class="n">V2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">V0</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">V1</span><span class="p">)</span>
+<span class="n">V2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>array([[-0.50719112],
+       [ 0.77334214],
+       [-0.38039334]])</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>array([[-0.61867371],
+       [-0.63398891],
+       [-0.46400528]])</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-6.00000000e-01],
+       [ 1.91548674e-16],
+       [ 8.00000000e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> =</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">V0</span><span class="p">),</span><span class="n">λ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">V0</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[-5.62932419]
+ [ 8.58333952]
+ [-4.22199314]] =
+[[-5.62932419]
+ [ 8.58333952]
+ [-4.22199314]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check: $ A V_i=\lambda_i V_i$</p>
+<p>Which means the eigenvalue associated to the "operator" $A$ acting on the eigenvector $V_1$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> =</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">V1</span><span class="p">),</span><span class="n">λ</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">V1</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[-0.55741294]
+ [-0.57121163]
+ [-0.41805971]] =
+[[-0.55741294]
+ [-0.57121163]
+ [-0.41805971]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> =</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">V2</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span>
+                         <span class="p">(</span><span class="n">λ</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">V2</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[-3.]
+ [ 0.]
+ [ 4.]] =
+[[-3.]
+ [ 0.]
+ [ 4.]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The diagonalization matrix can be rebuild from the eigenvectors</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-5.07191124e-01, -6.18673713e-01, -6.00000000e-01],
+       [ 7.73342141e-01, -6.33988906e-01,  1.91548674e-16],
+       [-3.80393343e-01, -4.64005285e-01,  8.00000000e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>is rebuild with</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V0</span><span class="p">,</span><span class="n">V1</span><span class="p">,</span><span class="n">V2</span><span class="p">]</span>
+<span class="n">U</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-5.07191124e-01, -6.18673713e-01, -6.00000000e-01],
+       [ 7.73342141e-01, -6.33988906e-01,  1.91548674e-16],
+       [-3.80393343e-01, -4.64005285e-01,  8.00000000e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or with: <code>np.hstack((V0,V1,V2))</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span>  <span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[11.09901951,  0.        ,  0.        ],
+       [ 0.        ,  0.90098049,  0.        ],
+       [ 0.        ,  0.        ,  5.        ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Eigenvector-reordering">Eigenvector reordering<a class="anchor-link" href="#Eigenvector-reordering"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use this to check the proper order of the eigenvalues</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V1</span><span class="p">,</span><span class="n">V2</span><span class="p">,</span><span class="n">V0</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span>  <span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.90098049,  0.        ,  0.        ],
+       [ 0.        ,  5.        ,  0.        ],
+       [ 0.        ,  0.        , 11.09901951]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The order of eigenvalues can now be changed by changing the order of the eigenvectors and redifining the diagonalization matrix. For example, from small to large. We define first the eigenvalues</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>np.sort<span class="o">?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="n">λ</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.90098049,  5.        , 11.09901951])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To reverse the order</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="n">λ</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([11.09901951,  5.        ,  0.90098049])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 11.09901951,   0.90098049,   5.        ])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">λ</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+<span class="n">index</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1, 2, 0])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>can be implemented in general with a <em>comprehensive</em> list</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-5.07191124e-01, -6.18673713e-01, -6.00000000e-01],
+       [ 7.73342141e-01, -6.33988906e-01,  1.91548674e-16],
+       [-3.80393343e-01, -4.64005285e-01,  8.00000000e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="nb">tuple</span><span class="p">(</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">V</span><span class="p">[:,</span><span class="n">i</span><span class="p">]]</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">]</span> <span class="p">)</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-5.07191124e-01, -6.18673713e-01, -6.00000000e-01],
+       [ 7.73342141e-01, -6.33988906e-01,  1.91548674e-16],
+       [-3.80393343e-01, -4.64005285e-01,  8.00000000e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Changing the order to <code>index</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="nb">tuple</span><span class="p">(</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">V</span><span class="p">[:,</span><span class="n">i</span><span class="p">]]</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span> <span class="p">]</span> <span class="p">)</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-6.18673713e-01, -6.00000000e-01, -5.07191124e-01],
+       [-6.33988906e-01,  1.91548674e-16,  7.73342141e-01],
+       [-4.64005285e-01,  8.00000000e-01, -3.80393343e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or:</p>
+<div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span> <span class="n">V</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span>   <span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span>  <span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.90098049,  0.        ,  0.        ],
+       [ 0.        ,  5.        ,  0.        ],
+       [ 0.        ,  0.        , 11.09901951]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font color="red">Activity</font>:  Build a function that diagonalize with increasing order in the eigenvalues as a replacement of <code>np.linalg.eig</code></p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">argeig</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">l</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="o">....</span>
+    <span class="k">return</span> <span class="n">argl</span><span class="p">,</span> <span class="n">argV</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>np.linalg.eig<span class="o">??</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">argeig</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Diagonalize with increasing order in the eigenvalues.</span>
+<span class="sd">  </span>
+<span class="sd">    See help(np.linalg.eig)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">l</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+    <span class="n">argl</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="n">l</span><span class="p">)</span>
+    <span class="n">argV</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="nb">tuple</span><span class="p">([</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V</span><span class="p">[:,</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span>   <span class="p">])</span> <span class="p">]</span>
+    <span class="k">return</span> <span class="n">argl</span><span class="p">,</span> <span class="n">argV</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">argeig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">λ</span><span class="p">,</span><span class="n">V</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(array([ 0.90098049,  5.        , 11.09901951]),
+ array([[-6.18673713e-01, -6.00000000e-01, -5.07191124e-01],
+        [-6.33988906e-01,  1.91548674e-16,  7.73342141e-01],
+        [-4.64005285e-01,  8.00000000e-01, -3.80393343e-01]]))</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span>  <span class="p">),</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.90098049,  0.        ,  0.        ],
+       [ 0.        ,  5.        ,  0.        ],
+       [ 0.        ,  0.        , 11.09901951]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="o">-</span> <span class="n">λ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="o">-</span> <span class="n">λ</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="o">-</span> <span class="n">λ</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2.43765788099e-14
+1.63829730326e-14
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="General-matrix">General matrix<a class="anchor-link" href="#General-matrix"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since
+\begin{equation}
+  \boldsymbol{A}_{\text{diag}}=\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U}
+\end{equation}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+\begin{align}
+\boldsymbol{A}_{\text{diag}}\boldsymbol{A}^\dagger_{\text{diag}}=&amp;  (\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U})(\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U})^\dagger\nonumber \\
+ =&amp; \boldsymbol{V}^\dagger( \boldsymbol{A}\boldsymbol{A}^\dagger)\boldsymbol{V}
+\end{align}\begin{align}
+\boldsymbol{A}_{\text{diag}}^\dagger \boldsymbol{A}_{\text{diag}} 
+ =&amp; \boldsymbol{U}^\dagger (\boldsymbol{A}^\dagger\boldsymbol{A})\boldsymbol{U}
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="p">]</span>
+            <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 13, -12],
+       [-12,  45]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>is symmetric and can be diagonalized by one ortogonal matrix $V$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">)</span>   <span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">λ2</span><span class="p">)</span>
+<span class="n">V</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>array([ 9., 49.])</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-0.9486833 ,  0.31622777],
+       [-0.31622777, -0.9486833 ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the same way, $A^{\rm T} A$  an be diagonalized by other ortogonal matrix $U$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2</span><span class="p">,</span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">)</span>   <span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">λ2</span><span class="p">)</span>
+<span class="n">U</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>array([ 9., 49.])</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-0.9486833 , -0.31622777],
+       [ 0.31622777, -0.9486833 ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The biortogonal transformation which diagonalize $A$ is just:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">A</span> <span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[3., 0.],
+       [0., 7.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font color="red">__Activity__</font>: Solve the system
+$$ \boldsymbol{A} \boldsymbol{x}=\boldsymbol{B}$$
+for the previous $ \boldsymbol{A}$ matrix and
+$$\boldsymbol{B}=\begin{bmatrix}
+   1\\
+   -4\\
+   \end{bmatrix}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-0.28571429, -0.52380952])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
