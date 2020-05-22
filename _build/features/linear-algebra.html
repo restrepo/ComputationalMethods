@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-diagonalization.html
 suffix: .ipynb
-search: n matrix vdots mathbf x b cdots m left right e font computing j ij times frac l ei linear begin align end matrices operatorname det hat gaussian color red equations elimination system operations determinant t bmatrix lambda using r k example operation determinants factorization inverse activity previous mbox where systems ej equation boldsymbol diagonal v lu row given nn y u prime algebra general array order solve next coefficients upper w algorithm numpy zero rows method associated obtain xn not necessary large errors pivoting also new leq routine psi vector non properties such both function return ib problem augmented
+search: n matrix vdots mathbf x b cdots m e left right font computing j ij times frac l ei linear begin align end matrices operatorname det hat gaussian color red equations elimination system operations determinant t bmatrix lambda using r k example operation v determinants factorization inverse activity previous mbox where systems ej equation boldsymbol diagonal lu row given nn y u prime algebra general array order solve next coefficients upper w algorithm numpy zero rows method associated obtain xn not necessary large errors pivoting also new np leq routine psi vector non properties such both function return ib problem
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -4373,17 +4373,86 @@ V=
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<!-- sin2θ=0.23
+θ=np.arcsin( np.sqrt(sin2θ)  )
+print(θ)
+MZ=91.1876
+GF=1.166371E-5
+v=1/np.sqrt(np.sqrt(2)*GF)
+g=2*MZ*np.cos(θ)/v
+gp=g*np.tan(θ)
+gp-->
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sin2θ</span><span class="o">=</span><span class="mf">0.222290</span>
+<span class="n">θ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sin2θ</span><span class="p">)</span>  <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">θ</span><span class="p">)</span>
+<span class="n">MZ</span><span class="o">=</span><span class="mf">91.1876</span>
+<span class="n">GF</span><span class="o">=</span><span class="mf">1.166371E-5</span>
+<span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">GF</span><span class="p">)</span>
+<span class="n">g</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">MZ</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">θ</span><span class="p">)</span><span class="o">/</span><span class="n">v</span>
+<span class="n">gp</span><span class="o">=</span><span class="n">g</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">θ</span><span class="p">)</span>
+<span class="n">gp</span><span class="p">,</span><span class="n">v</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.4909641885293004
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(0.3492220034655014, 246.22046352361286)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">g</span><span class="o">=</span><span class="mf">0.6</span>
-<span class="n">gp</span><span class="o">=</span><span class="mf">0.7</span>
-<span class="n">v</span><span class="o">=</span><span class="mi">246</span>
-<span class="n">M</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">g</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">g</span><span class="o">*</span><span class="n">gp</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">],</span>
-                <span class="p">[</span><span class="o">-</span><span class="n">g</span><span class="o">*</span><span class="n">gp</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">gp</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">g</span> <span class="o">=</span><span class="mf">0.64996</span>
+<span class="n">gp</span><span class="o">=</span><span class="mf">0.35523</span>
+<span class="n">v</span><span class="o">=</span><span class="mf">246.22046</span>
+<span class="n">M</span><span class="o">=</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="p">,</span><span class="o">-</span><span class="n">g</span><span class="o">*</span><span class="n">gp</span><span class="p">],</span>
+                     <span class="p">[</span><span class="o">-</span><span class="n">g</span><span class="o">*</span><span class="n">gp</span><span class="p">,</span> <span class="n">gp</span><span class="o">**</span><span class="mi">2</span><span class="p">]])</span>
 </pre></div>
 
     </div>
@@ -4416,8 +4485,8 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 10892.88, -12708.36],
-       [-12708.36,  14826.42]])</pre>
+<pre>array([[ 6402.67629426, -3499.32718938],
+       [-3499.32718938,  1912.52692086]])</pre>
 </div>
 
 </div>
@@ -4446,7 +4515,7 @@ V=
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -4462,7 +4531,7 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.0</pre>
+<pre>-0.0</pre>
 </div>
 
 </div>
@@ -4491,7 +4560,7 @@ V=
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -4507,7 +4576,7 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([    0. , 25719.3])</pre>
+<pre>array([8315.20321512,   -0.        ])</pre>
 </div>
 
 </div>
@@ -4603,8 +4672,8 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[    0. ,     0. ],
-       [    0. , 25719.3]])</pre>
+<pre>array([[8315.20321512,    0.        ],
+       [   0.        ,   -0.        ]])</pre>
 </div>
 
 </div>
@@ -4622,28 +4691,11 @@ V=
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2</span><span class="o">=</span><span class="n">λ</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">λ2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ1</span><span class="o">=</span><span class="n">λ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">λ2</span><span class="o">=</span><span class="n">λ</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>25719.299999999996</pre>
-</div>
-
-</div>
-</div>
 </div>
 </div>
 
@@ -4673,8 +4725,8 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.7592566 , -0.65079137],
-       [ 0.65079137,  0.7592566 ]])</pre>
+<pre>array([[-0.87749437, -0.47958694],
+       [ 0.47958694, -0.87749437]])</pre>
 </div>
 
 </div>
@@ -4725,7 +4777,7 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.7086262721276704</pre>
+<pre>-0.5001839211647364</pre>
 </div>
 
 </div>
@@ -4760,8 +4812,8 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.7592566 , -0.65079137],
-       [ 0.65079137,  0.7592566 ]])</pre>
+<pre>array([[ 0.87749437, -0.47958694],
+       [ 0.47958694,  0.87749437]])</pre>
 </div>
 
 </div>
@@ -4779,7 +4831,7 @@ V=
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MZ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MZ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ1</span><span class="p">)</span>
 <span class="n">MZ</span>
 </pre></div>
 
@@ -4796,7 +4848,7 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>160.37237916798514</pre>
+<pre>91.18773610041056</pre>
 </div>
 
 </div>
@@ -4830,7 +4882,7 @@ V=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.423529411764706</pre>
+<pre>0.23000362966286086</pre>
 </div>
 
 </div>
