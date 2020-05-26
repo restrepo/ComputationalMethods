@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: y t frac m boldsymbol f begin align end bmatrix d order p u problem r c operatorname x dt leq equations value methods method b delta k font mathbf system example h partial solution initial dy g second equation z differential problems v using alpha runge kutta mass where boundary pendulum theta rho set ti mbox previous color com eulers point numerical lets left right form w red th speed assume beta de ac quad space change approx times motion however yi uk around hf phase its ipynb shall high any solve solved going points activity conditions www cos
+search: y t frac m boldsymbol f align begin end p d bmatrix order c u problem r dt operatorname x equations leq value methods method b delta k font example mathbf g system h partial solution initial dy differential second v equation rho where z problems mass using alpha runge kutta boundary w previous pendulum theta motion set ti mbox color com eulers point force numerical lets left right form red th speed assume beta de ac quad space change approx times however yi activity uk around hf phase its ipynb shall edu pdf high given any general solve air
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -186,10 +186,39 @@ or as the <em>equation of motion</em>, which is the <em>differential equation</e
 \boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} \,.
 \end{align}
 This equation of motion is of general validity and can be applied numerically to solve any problem.</p>
-<p>In the special case of constant mass
+<h3 id="Constant-mass">Constant mass<a class="anchor-link" href="#Constant-mass"> </a></h3><p>In the special case of constant mass
 \begin{align}
 \boldsymbol{F}=&amp;m \boldsymbol{a}
 \end{align}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example:-Drag-force">Example: Drag force<a class="anchor-link" href="#Example:-Drag-force"> </a></h3><p>For a body falling in the air, in addition to the gravitiy force $\boldsymbol{W}$, there is a dragging force in the opposite direction given by <a href="">see</a><img src="./figures/friction.svg" alt="img">
+$$
+F_D=\frac{1}{2}{\rho A C_d} v^2=\frac{1}{2m^2}{\rho A C_d} p^2\,,
+$$
+where</p>
+<ul>
+<li>$A$: is the frontal area on a plane perpendicular to the direction of motion—e.g. for objects with a simple shape, such as a sphere</li>
+<li>$\rho$ is the density o the air</li>
+<li>$C_d$: <em>Drag coefficient</em>. $C_d=0.346$ for a <a href="http://baseball.physics.illinois.edu/DragTPTMay2014.pdf">baseball</a></li>
+</ul>
+<p>The equation of motion is
+\begin{align}
+W-F_D=&amp; \frac{d p}{dt}\\
+m g - \frac{\rho A C_d}{2m^2} p^2 = \frac{d p}{dt}.
+\end{align}</p>
+<p>We see then that, in general
+$$
+\frac{d p}{dt}=f(t,p)\,.
+$$</p>
 
 </div>
 </div>
@@ -223,7 +252,7 @@ This equation of motion is of general validity and can be applied numerically to
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Euler's-method">Euler's method<a class="anchor-link" href="#Euler's-method"> </a></h3>
+<h2 id="Euler's-method">Euler's method<a class="anchor-link" href="#Euler's-method"> </a></h2><h2 id="First-order-differential-equations">First order differential equations<a class="anchor-link" href="#First-order-differential-equations"> </a></h2>
 </div>
 </div>
 </div>
@@ -240,7 +269,7 @@ $$ t_i = a+ i \Delta t,\ \ \ \ \mbox{with}\ \ i=1,2,3,\cdots,N \ \ \mbox{and}\ \
 <p>Now, using the first-order approximation of the derivative that we saw in <a href="http://nbviewer.ipython.org/github/sbustamante/ComputationalMethods/blob/master/material/numerical-calculus.ipynb#Numerical-Differentiation">Numerical Differentiation</a>, we obtain</p>
 $$ \frac{dy}{dt}\approx \frac{y(t+\Delta t)-y(t)}{\Delta t} $$<p>or</p>
 $$ \left.\frac{dy}{dt}\right|_{t=t_i}\approx \frac{y(t_{i+1})-y(t_i)}{\Delta t} $$<p>The original problem can be rewritten as</p>
-$$ y_{i+1} = y_i + f(t_i, y_i)\Delta t + \frac{\Delta t^2}{2}y^{''}(\xi_i) $$<p>where the notation $y(t_i)\equiv y_i$ has been introduced and the last term (error term) can be obtained taking a second-order approximation of the derivative.</p>
+$$ y_{i+1} = y_i + f(t_i, y_i)\Delta t \pm \frac{\Delta t^2}{2}y^{''}(\xi_i) $$<p>where the notation $y(t_i)\equiv y_i$ has been introduced and the last term (error term) can be obtained taking a second-order approximation of the derivative.</p>
 <p>This equation can be solved recursively as we know the initial value $y_0 = y(a) = \alpha$.</p>
 
 </div>
@@ -252,7 +281,7 @@ $$ y_{i+1} = y_i + f(t_i, y_i)\Delta t + \frac{\Delta t^2}{2}y^{''}(\xi_i) $$<p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-1">Example 1<a class="anchor-link" href="#Example-1"> </a></h2>
+<h3 id="Second-order-differential-equations">Second order differential equations<a class="anchor-link" href="#Second-order-differential-equations"> </a></h3>
 </div>
 </div>
 </div>
@@ -283,7 +312,7 @@ y_{i+1}=&amp;y_i + w_i \Delta t\, ,\ \ \ a\leq t\leq b\,, \ \ \ \ y(a) = \alpha\
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In fact, the equation of motiion can be seen as the system of equations
+<h2 id="Newton's-third-law-of-motion">Newton's third law of motion<a class="anchor-link" href="#Newton's-third-law-of-motion"> </a></h2><p>In fact, the equation of motion can be seen as the system of equations
 \begin{align}
 \frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\\
 \boldsymbol{p}=&amp; \gamma m \boldsymbol{v}\\
@@ -787,7 +816,7 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_21_1.png"
+<img src="../images/features/differential-equations_22_1.png"
 >
 </div>
 
@@ -796,6 +825,21 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Consider now the case the movement inside a fluid with a draggin force proportinal to the velocity
+$$
+\boldsymbol{F}_D=c \boldsymbol{v} = c \frac{\boldsymbol{p}}{m}\,,
+$$
+where $c$ can take the values 0 (not dragging force), 0.1 y  0.5</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -905,7 +949,7 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([ 0. ,  0.5])</pre>
+<pre>array([0. , 0.5])</pre>
 </div>
 
 </div>
@@ -1142,7 +1186,7 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7f5af19ffd68&gt;</pre>
+<pre>Text(0.5,0,&#39;$y$ [m]&#39;)</pre>
 </div>
 
 </div>
@@ -1153,7 +1197,7 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_30_1.png"
+<img src="../images/features/differential-equations_32_1.png"
 >
 </div>
 
@@ -1207,7 +1251,7 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_31_1.png"
+<img src="../images/features/differential-equations_33_1.png"
 >
 </div>
 
@@ -1234,7 +1278,18 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In order to apply this, let's assume a simple mass-spring.</p>
+<p><strong>Activity</strong>: Repeat the previous analysis for a baseball in the air with a dragging force proportinal to the square of the velocity. The diameter of the baseball is 7.5cm</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example.-Spring">Example. Spring<a class="anchor-link" href="#Example.-Spring"> </a></h3><p>In order to apply this, let's assume a simple mass-spring.</p>
 <p><img src="https://raw.githubusercontent.com/sbustamante/ComputationalMethods/master/material/figures/mass_spring.png" alt=""></p>
 <p>The equation of motion according to Newton's second law is</p>
 $$ F = -kx $$<p>Using the previous results, we can rewrite this as:</p>
@@ -1475,7 +1530,7 @@ $$ \frac{dy(t)}{dt}=-k y(t)$$
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_46_0.png"
+<img src="../images/features/differential-equations_49_0.png"
 >
 </div>
 
@@ -1654,7 +1709,7 @@ U_1\\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_53_0.png"
+<img src="../images/features/differential-equations_56_0.png"
 >
 </div>
 
@@ -1743,7 +1798,7 @@ z\\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_56_0.png"
+<img src="../images/features/differential-equations_59_0.png"
 >
 </div>
 
@@ -1895,7 +1950,7 @@ $$\begin{align}
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_61_1.png"
+<img src="../images/features/differential-equations_64_1.png"
 >
 </div>
 
@@ -1998,7 +2053,7 @@ p_y/m\\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_63_1.png"
+<img src="../images/features/differential-equations_66_1.png"
 >
 </div>
 
@@ -2240,7 +2295,7 @@ En particular, 1000 números aleatorios entre  $3\times 10^{-6}$ hasta $5\times 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_74_1.png"
+<img src="../images/features/differential-equations_77_1.png"
 >
 </div>
 
@@ -2326,7 +2381,7 @@ En particular, 1000 números aleatorios entre  $3\times 10^{-6}$ hasta $5\times 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_76_0.png"
+<img src="../images/features/differential-equations_79_0.png"
 >
 </div>
 
@@ -2404,7 +2459,7 @@ which go from right to left represent clockwise rotations. The phase space have 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_79_1.png"
+<img src="../images/features/differential-equations_82_1.png"
 >
 </div>
 
@@ -2465,7 +2520,7 @@ which go from right to left represent clockwise rotations. The phase space have 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_81_1.png"
+<img src="../images/features/differential-equations_84_1.png"
 >
 </div>
 
@@ -2515,7 +2570,7 @@ which go from right to left represent clockwise rotations. The phase space have 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_82_1.png"
+<img src="../images/features/differential-equations_85_1.png"
 >
 </div>
 
@@ -2563,7 +2618,7 @@ which go from right to left represent clockwise rotations. The phase space have 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_83_1.png"
+<img src="../images/features/differential-equations_86_1.png"
 >
 </div>
 
@@ -2944,7 +2999,7 @@ $$ \rho(R) = \rho_{surf},\ \ \ m(R) = M_p, \ \ \ g(R) = g_{surf},\ \ \ P(R) = P_
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_103_0.png"
+<img src="../images/features/differential-equations_106_0.png"
 >
 </div>
 
