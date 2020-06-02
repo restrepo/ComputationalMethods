@@ -1,0 +1,436 @@
+---
+redirect_from:
+  - "/features/medium-modelling-part-one"
+interact_link: content/features/medium_modelling_part_one.ipynb
+kernel_name: python3
+kernel_path: content/features
+has_widgets: false
+title: |-
+  SIR Model
+pagenum: 20
+prev_page:
+  url: /features/differential-equations.html
+next_page:
+  url: 
+suffix: .ipynb
+search: d infected t r cdot com model beta frac colab github blob master s ipynb sir n person gamma research google restrepo hf infectiousdiseasemodelling license compartmental population susceptible recovered total infects per disease used covid understanding align href computationalmethods material mediummodellingpartone target parentimg src assets badge svg alt open partone separates into several compartments example still healthy already cannot get again require following parameters expected amount days spread proportion recovering basic reproduction just intuitive formula check colombia models coronavirus towardsdatascience infectious modelling part defdfc explaining background deriving formulas scratch coding visualizing python begin end want start using scaling
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">SIR Model</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/medium_modelling_part_one.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="SIR-Model">SIR Model<a class="anchor-link" href="#SIR-Model"> </a></h1><p>From: <a href="https://github.com/hf2000510/infectious_disease_modelling/blob/master/part_one.ipynb">https://github.com/hf2000510/infectious_disease_modelling/blob/master/part_one.ipynb</a></p>
+<p>LICENSE: <a href="https://github.com/hf2000510/infectious_disease_modelling/blob/master/LICENSE">https://github.com/hf2000510/infectious_disease_modelling/blob/master/LICENSE</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline 
+<span class="o">!</span>pip install mpld3
+<span class="kn">import</span> <span class="nn">mpld3</span>
+<span class="n">mpld3</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: mpld3 in /usr/local/lib/python3.6/dist-packages (0.3)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="compartmental-model.">compartmental model.<a class="anchor-link" href="#compartmental-model."> </a></h1><p>A compartmental model separates the population into several compartments, for example:</p>
+<ul>
+<li><strong>S</strong>usceptible (can still be infected, “healthy”)</li>
+<li><strong>I</strong>nfected</li>
+<li><strong>R</strong>ecovered (were already infected, cannot get infected again)</li>
+</ul>
+<p>We require the following parameters</p>
+<ul>
+<li>$N$: total population</li>
+<li>$S(t)$: number of people susceptible on day t</li>
+<li>$I(t)$: number of people infected on day t</li>
+<li>$R(t)$: number of people recovered on day t</li>
+<li>$\beta$: expected amount of people an infected person infects per day</li>
+<li>$D$: number of days an infected person has and can spread the disease</li>
+<li>$\gamma=1/D$: <!--γ --> the proportion of infected recovering per day ( = 1/D)</li>
+</ul>
+<p>the basic reproduction number $R_0$, is the total number of people an infected person infects. We just used an intuitive formula: 
+$$R_0 = \beta \cdot D\,.$$</p>
+<p>Check $R_0$ for Colombia: <a href="https://github.com/restrepo/COVID-19/blob/master/covid.ipynb">https://github.com/restrepo/COVID-19/blob/master/covid.ipynb</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>See <a href="https://towardsdatascience.com/infectious-disease-modelling-part-i-understanding-sir-28d60e29fdfc">Understanding the models that are used to model Coronavirus</a>: Explaining the background and deriving the formulas of the SIR model from scratch. Coding and visualizing the model in Python.</p>
+\begin{align}
+\frac{d S}{d t}=&amp;-\beta \cdot I \cdot \frac{S}{N} \\
+\frac{d I}{d t}=&amp;\beta \cdot I \cdot \frac{S}{N}-\gamma \cdot I \\
+\frac{d R}{d t}=&amp;\gamma \cdot I
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">β</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">γ</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dSdt</span> <span class="o">=</span> <span class="o">-</span><span class="n">β</span> <span class="o">*</span> <span class="n">S</span> <span class="o">*</span> <span class="n">I</span> <span class="o">/</span> <span class="n">N</span>
+    <span class="n">dIdt</span> <span class="o">=</span> <span class="n">β</span> <span class="o">*</span> <span class="n">S</span> <span class="o">*</span> <span class="n">I</span> <span class="o">/</span> <span class="n">N</span> <span class="o">-</span> <span class="n">γ</span> <span class="o">*</span> <span class="n">I</span>
+    <span class="n">dRdt</span> <span class="o">=</span> <span class="n">γ</span> <span class="o">*</span> <span class="n">I</span>
+    <span class="k">return</span> <span class="n">dSdt</span><span class="p">,</span> <span class="n">dIdt</span><span class="p">,</span> <span class="n">dRdt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want start with an infected, $I_0=I(0)=1$ and a $R_0=R(0)=1.2$.
+Then, by using $D=4$ 
+$$\beta=R_0/D=0.3\,.$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">β</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># infected person infects 0.275 other person per day, such that R_0=1.2</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="c1"># infections lasts four days</span>
+<span class="n">γ</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">D</span>
+
+<span class="n">S0</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">R0</span> <span class="o">=</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span>  <span class="c1"># initial conditions: one infected, rest susceptible</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span> <span class="c1"># Grid of time points (in days)</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="n">S0</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">R0</span><span class="p">]</span> <span class="c1"># Initial conditions vector</span>
+
+<span class="c1"># Integrate the SIR equations over the time grid, t.</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">γ</span><span class="p">))</span>
+<span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plotsir</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span><span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">):</span>
+  <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Susceptible&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Infected&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Recovered&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="n">yscale</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (days)&#39;</span><span class="p">)</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+  <span class="n">legend</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+  <span class="n">legend</span><span class="o">.</span><span class="n">get_frame</span><span class="p">()</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">):</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotsir</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span><span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+
+<style>
+
+</style>
+
+<div id="fig_el1251398393640644247381256858"></div>
+<script>
+function mpld3_load_lib(url, callback){
+  var s = document.createElement('script');
+  s.src = url;
+  s.async = true;
+  s.onreadystatechange = s.onload = callback;
+  s.onerror = function(){console.warn("failed to load library " + url);};
+  document.getElementsByTagName("head")[0].appendChild(s);
+}
+
+if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
+   // already loaded: just create the figure
+   !function(mpld3){
+
+       mpld3.draw_figure("fig_el1251398393640644247381256858", {"width": 720.0, "height": 288.0, "axes": [{"bbox": [0.125, 0.125, 0.775, 0.755], "xlim": [-9.950000000000001, 208.95], "ylim": [0.18196725774576228, 1505.3599473044846], "xdomain": [-9.950000000000001, 208.95], "ydomain": [0.18196725774576228, 1505.3599473044846], "xscale": "linear", "yscale": "log", "axes": [{"position": "bottom", "nticks": 11, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#FFFFFF", "dasharray": "none", "alpha": 1.0}, "visible": true}, {"position": "left", "nticks": 8, "tickvalues": null, "tickformat": null, "scale": "log", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#FFFFFF", "dasharray": "none", "alpha": 1.0}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el125139839364065824", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el125139839354616352", "color": "#0000FF", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el125139839354616632", "color": "#BFBF00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el125139839354617472", "color": "#007F00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 1, "coordinates": "axes", "id": "el125139839354649176", "color": "#0000FF", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 2, "coordinates": "axes", "id": "el125139839354650240", "color": "#BFBF00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 3, "coordinates": "axes", "id": "el125139839354680040", "color": "#007F00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}], "paths": [{"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el125139839354648224", "dasharray": "none", "alpha": 0.5, "facecolor": "#FFFFFF", "edgecolor": "#CCCCCC", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Time (days)", "position": [0.5, -0.08048197203826342], "coordinates": "axes", "h_anchor": "middle", "v_baseline": "hanging", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el125139839364219904"}, {"text": "Susceptible", "position": [0.8803763440860216, 0.5551876379690949], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354648672"}, {"text": "Infected", "position": [0.8803763440860216, 0.48620309050772625], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354649792"}, {"text": "Recovered", "position": [0.8803763440860216, 0.41721854304635764], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354679592"}], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 999.0, 1.0, 1.2], [1.0, 998.6927795211318, 1.0509077262807474, 1.4563127525874036], [2.0, 998.370036183886, 1.1043027174515043, 1.7256610986623924], [3.0, 998.031023955388, 1.1602954676532755, 2.0086805769585325], [4.0, 997.6749649503538, 1.2190002068690742, 2.306034842777106], [5.0, 997.301048583684, 1.2805348962780514, 2.6184165200380285], [6.0, 996.9084305656194, 1.3450212032239448, 2.9465482311567106], [7.0, 996.4962320401409, 1.41258445861831, 3.291183501240819], [8.0, 996.0635388081133, 1.483353591166507, 3.6531076007201086], [9.0, 995.6094004899654, 1.5574610329368546, 4.033138477097692], [10.0, 995.1328297857309, 1.6350425995488087, 4.432127614720322], [11.0, 994.6328018007002, 1.716237339266159, 4.850960860033614], [12.0, 994.1082534505355, 1.8011873442898463, 5.290559205174635], [13.0, 993.5580829502295, 1.8900375264653653, 5.751879523304993], [14.0, 992.9811493756711, 1.982935365410194, 6.235915258918615], [15.0, 992.3762724626255, 2.0800305543609907, 6.743696983013362], [16.0, 991.7422323845167, 2.1814746735507526, 7.276292941932406], [17.0, 991.0777697563352, 2.2874207679545653, 7.8348094757100695], [18.0, 990.3815858228093, 2.398022866656284, 8.420391310534395], [19.0, 989.6523427758809, 2.5134354552957863, 9.034221768823206], [20.0, 988.8886643771074, 2.633812860396924, 9.6775227624956], [21.0, 988.089136695413, 2.7593085885322823, 10.351554716054657], [22.0, 987.252309194846, 2.8900745683890308, 11.057616236764925], [23.0, 986.3766960301591, 3.0262603296668904, 11.797043640174014], [24.0, 985.4607776820837, 3.1680120891981915, 12.571210228717977], [25.0, 984.5030029358347, 3.3154717498345816, 13.381525314330624], [26.0, 983.50179107382, 3.4687758295225373, 14.22943309665736], [27.0, 982.4555346754341, 3.6280542640818125, 15.116411060483834], [28.0, 981.3626026247053, 3.7934291401554527, 16.043968235139143], [29.0, 980.2213436210469, 3.965013329516039, 17.013643049436936], [30.0, 979.0300901521889, 4.142909017392322, 18.027000830418704], [31.0, 977.7871628549908, 4.3272061521773315, 19.08563099283172], [32.0, 976.4908755398917, 4.5179807826446154, 20.19114367746355], [33.0, 975.1395404774448, 4.715293323065519, 21.345166199489444], [34.0, 973.7314745329845, 4.919186728262335, 22.54933873875292], [35.0, 972.2650054865434, 5.12968457748621, 23.80530993597024], [36.0, 970.7384792686948, 5.346789133101429, 25.114731598203587], [37.0, 969.1502674168242, 5.570479264532357, 26.479253318643217], [38.0, 967.4987753684035, 5.8007084462172935, 27.900516185379118], [39.0, 965.7824511024552, 6.037402570495186, 29.3801463270496], [40.0, 963.9997944149272, 6.2804579491768315, 30.91974763589586], [41.0, 962.1493667189424, 6.529739096912699, 32.52089418414476], [42.0, 960.2298012022284, 6.785076807837611, 34.18512198993389], [43.0, 958.239813654904, 7.046266027356363, 35.913920317739546], [44.0, 956.1782133831246, 7.3130640825532, 37.708722534322206], [45.0, 954.0439148105893, 7.585188795296111, 39.57089639411451], [46.0, 951.8359489927789, 7.862316953826003, 41.50173405339505], [47.0, 949.5534756062015, 8.144082847994847, 43.502441545803514], [48.0, 947.1957948688896, 8.430077081287532, 45.57412804982266], [49.0, 944.7623594048595, 8.719845722971224, 47.7177948721692], [50.0, 942.252786322169, 9.012889576090883, 49.93432410174003], [51.0, 939.6668683453662, 9.308664132005488, 52.22446752262827], [52.0, 937.0045856910982, 9.60657944256898, 54.58883486633274], [53.0, 934.2661158822793, 9.906001005344013, 57.02788311237662], [54.0, 931.451844858248, 10.206250436848215, 59.54190470490372], [55.0, 928.5623749890462, 10.506607343214833, 62.13101766773887], [56.0, 925.5985346750523, 10.806311001108678, 64.79515432383894], [57.0, 922.5613841670821, 11.104563218271625, 67.53405261464614], [58.0, 919.4522228316328, 11.400531180367183, 70.34724598800003], [59.0, 916.2725924427954, 11.693351273874313, 73.23405628333023], [60.0, 913.0242813134299, 11.982133164294176, 76.19358552227585], [61.0, 909.7093247649951, 12.265964532286263, 79.22471070271848], [62.0, 906.3300054650464, 12.543916320230974, 82.32607821472246], [63.0, 902.8888507997126, 12.81504831667735, 85.49610088360987], [64.0, 899.3886290101275, 13.078415361407702, 88.7329556284648], [65.0, 895.8323432008956, 13.333073693795242, 92.03458310530908], [66.0, 892.2232232051697, 13.578087766527076, 95.39868902830321], [67.0, 888.5647159844799, 13.812537238996862, 98.8227467765232], [68.0, 884.8604735255453, 14.035523946247093, 102.30400252820763], [69.0, 881.1143394536292, 14.246179354252387, 105.83948119211844], [70.0, 877.3303336022617, 14.443671204719784, 109.42599519301845], [71.0, 873.5126347771575, 14.627211182803041, 113.06015404003944], [72.0, 869.6655628282816, 14.796060796406211, 116.73837637531213], [73.0, 865.7935585366808, 14.949538264128137, 120.456903199191], [74.0, 861.9011627927815, 15.087024519941075, 124.21181268727747], [75.0, 857.9929949590585, 15.207968415538888, 127.99903662540268], [76.0, 854.0737302473829, 15.31189158624949, 131.81437816636767], [77.0, 850.1480772425175, 15.39839253730674, 135.65353022017587], [78.0, 846.2207543887633, 15.46715015058746, 139.51209546064936], [79.0, 842.2964674829224, 15.517926079181947, 143.38560643789577], [80.0, 838.3798865425368, 15.550566651013547, 147.26954680644968], [81.0, 834.4756239284052, 15.5650036654948, 151.1593724061001], [82.0, 830.5882128250277, 15.561254478048214, 155.0505326969242], [83.0, 826.722086655989, 15.539421160464151, 158.93849218354694], [84.0, 822.8815601669554, 15.499688877521763, 162.81875095552292], [85.0, 819.0708102220016, 15.442323398365199, 166.68686637963324], [86.0, 815.2938608323127, 15.367668025177142, 170.5384711425102], [87.0, 811.5545668588954, 15.276139516419855, 174.36929362468481], [88.0, 807.8566014086466, 15.168223892939178, 178.17517469841428], [89.0, 804.2034436810976, 15.044471112716913, 181.95208520618556], [90.0, 800.5983693929338, 14.905489882217529, 185.69614072484873], [91.0, 797.0444426368229, 14.751941585750421, 189.40361577742695], [92.0, 793.5445094447583, 14.584534307145558, 193.07095624809634], [93.0, 790.1011934105074, 14.404016495903166, 196.69479009358952], [94.0, 786.7168926230565, 14.2111704455882, 200.27193693135544], [95.0, 783.3937785569456, 14.006806109435184, 203.79941533361938], [96.0, 780.1337963576392, 13.791754344096232, 207.2744492982648], [97.0, 776.9386664110567, 13.566861173049787, 210.6944724158937], [98.0, 773.8098878931138, 13.33298108119854, 214.05713102568797], [99.0, 770.7487423843727, 13.090971974255442, 217.36028564137212], [100.0, 767.756299694787, 12.841689329616587, 220.60201097559664], [101.0, 764.8334242379951, 12.585980892845184, 223.78059486915996], [102.0, 761.9807821915875, 12.32468217407172, 226.89453563434097], [103.0, 759.1988494591234, 12.058612087431355, 229.94253845344542], [104.0, 756.4879202432222, 11.788569058594147, 232.92351069818386], [105.0, 753.8481161195284, 11.51532738792701, 235.83655649254476], [106.0, 751.2793954398918, 11.239634373333516, 238.68097018677483], [107.0, 748.7815630595107, 10.962207650408885, 241.45622929008053], [108.0, 746.3542801949967, 10.683733025646939, 244.16198677935645], [109.0, 743.9970743768241, 10.404862701940296, 246.7980629212357], [110.0, 741.7093494039855, 10.126213915411824, 249.36443668060272], [111.0, 739.4903951895417, 9.848367943256076, 251.8612368672022], [112.0, 737.3393975213237, 9.571869447367732, 254.28873303130854], [113.0, 735.2554475592857, 9.297226159767632, 256.6473262809465], [114.0, 733.2375511389974, 9.024908845642042, 258.93754001536047], [115.0, 731.2846376731296, 8.755351565127606, 261.16001076174274], [116.0, 729.3955688220461, 8.48895215193637, 263.31547902601744], [117.0, 727.5691468459173, 8.22607288267836, 265.40478027140426], [118.0, 725.8041224365893, 7.967041360432768, 267.428836202978], [119.0, 724.0992021796782, 7.7121516124317155, 269.3886462078902], [120.0, 722.4530557537447, 7.461665179185714, 271.28527906706967], [121.0, 720.8643224874828, 7.215812463022882, 273.1198650494945], [122.0, 719.3316176695383, 6.974794065087945, 274.8935882653739], [123.0, 717.85353839696, 6.738782213226582, 276.6076793898136], [124.0, 716.4286689355722, 6.507922280234375, 278.2634087841936], [125.0, 715.0555858063889, 6.282334257822926, 279.8620799357883], [126.0, 713.7328623636403, 6.062114306504478, 281.4050233298554], [127.0, 712.4590730719156, 5.8473362724928135, 282.89359065559165], [128.0, 711.232797349933, 5.638053207371356, 284.3291494426957], [129.0, 710.0526230951111, 5.434298861972987, 285.71307804291587], [130.0, 708.9171498739157, 5.236089147477239, 287.0467609786071], [131.0, 707.8249917624535, 5.043423559626201, 288.3315846779203], [132.0, 706.7747799213046, 4.856286558201059, 289.5689335204944], [133.0, 705.7651648339888, 4.674648891445925, 290.76018627456534], [134.0, 704.7948183193624, 4.498468873309198, 291.90671280732846], [135.0, 703.8624352587334, 4.3276935943643835, 293.0098711469023], [136.0, 702.9667351076038, 4.162260081512349, 294.071004810884], [137.0, 702.1064632013329, 4.002096402108092, 295.09144039655916], [138.0, 701.2803917813711, 3.84712267591023, 296.0724855427187], [139.0, 700.4873209116879, 3.697252059239134, 297.015427029073], [140.0, 699.7260792139343, 3.552391665485837, 297.92152912057986], [141.0, 698.9955243852976, 3.4124433910477703, 298.7920322236547], [142.0, 698.2945436331179, 3.277304724640785, 299.62815164224145], [143.0, 697.6220539568047, 3.1468694855792347, 300.431076557616], [144.0, 696.9770022759008, 3.0210284778901424, 301.20196924620905], [145.0, 696.3583654984486, 2.8996701372385, 301.9419643643129], [146.0, 695.7651504664508, 2.782681103277611, 302.6521684302716], [147.0, 695.1963938031423, 2.669946726620005, 303.3336594702377], [148.0, 694.6511617031624, 2.5613515669280478, 303.98748672990956], [149.0, 694.1285496402983, 2.4567798224020265, 304.61467053729973], [150.0, 693.6276820141878, 2.356115711374517, 305.2162022744376], [151.0, 693.1477117459359, 2.259243841897417, 305.79304441216664], [152.0, 692.6878198241438, 2.1660495222655634, 306.34613065359054], [153.0, 692.2472148099441, 2.0764190382095284, 306.87636615184636], [154.0, 691.8251323070825, 1.9902399146147882, 307.3846277783027], [155.0, 691.4208344066456, 1.9074011305524792, 307.87176446280193], [156.0, 691.0336091057571, 1.8277933118128318, 308.33859758243], [157.0, 690.6627697004133, 1.7513089047413453, 308.7859213948453], [158.0, 690.3076541726467, 1.6778423163044078, 309.2145035110488], [159.0, 689.9676245598547, 1.6072900378444874, 309.6250854023007], [160.0, 689.6420663130457, 1.5395507509445225, 310.01838293600974], [161.0, 689.3303876616046, 1.4745254092325346, 310.3950869291628], [162.0, 689.0320189614806, 1.412117308932397, 310.75586372958696], [163.0, 688.7464120433756, 1.3522321440722107, 311.1013558125521], [164.0, 688.4730395789566, 1.294778043547045, 311.43218237749636], [165.0, 688.2113944443291, 1.2396655974728261, 311.7489399581979], [166.0, 687.9609890705701, 1.186807876830788, 312.05220305259905], [167.0, 687.7213548223652, 1.1361204386647665, 312.3425247389699], [168.0, 687.4920413904873, 1.0875213235743602, 312.6204372859382], [169.0, 687.2726161669237, 1.0409310452535163, 312.8864527878227], [170.0, 687.062663648082, 0.9962725729280044, 313.1410637789899], [171.0, 686.8617848603868, 0.9534713079870042, 313.38474383162605], [172.0, 686.6695967740449, 0.9124550542485713, 313.6179481717065], [173.0, 686.485731738161, 0.8731539835760291, 313.8411142782628], [174.0, 686.3098369398913, 0.8355005992961042, 314.0546624608125], [175.0, 686.1415738661261, 0.7994296941528543, 314.25899643972093], [176.0, 685.9806177746864, 0.7648783044020296, 314.4545039209116], [177.0, 685.826657190975, 0.7317856638412397, 314.64155714518364], [178.0, 685.6793934198721, 0.7000931561231979, 314.8205134240046], [179.0, 685.5385400555833, 0.6697442615212535, 314.9917156828953], [180.0, 685.4038225185584, 0.6406845055376109, 315.15549297590394], [181.0, 685.2749776085747, 0.6128614076496921, 315.3121609837756], [182.0, 685.1517530610838, 0.5862244255984685, 315.4620225133176], [183.0, 685.0339071228409, 0.5607249011772351, 315.6053679759818], [184.0, 684.9212081479218, 0.5363160080930669, 315.742475843985], [185.0, 684.8134341975313, 0.5129526965073262, 315.8736131059613], [186.0, 684.7103726545604, 0.4905916382302469, 315.9990357072093], [187.0, 684.6118198559918, 0.4691911742563618, 316.1189889697518], [188.0, 684.5175807360018, 0.4487112619532703, 316.2337080020449], [189.0, 684.4274684781135, 0.4291134212267021, 316.3434181006598], [190.0, 684.3413041837024, 0.4103606833811445, 316.4483351329165], [191.0, 684.2589165540348, 0.3924175415247402, 316.5486659044405], [192.0, 684.1801415776299, 0.37524989895259303, 316.6446085234175], [193.0, 684.1048222331921, 0.35882502045757714, 316.7363527463505], [194.0, 684.0328082054433, 0.3431114856589426, 316.82408030889786], [195.0, 683.9639556073498, 0.32807914118120834, 316.9079652514691], [196.0, 683.8981267144558, 0.3136990547936504, 316.9881742307506], [197.0, 683.8351897107211, 0.29994347163392265, 317.06486681764494], [198.0, 683.7750184427322, 0.28678577066189337, 317.1381957866059], [199.0, 683.717492182889, 0.27420042195325534, 317.2083073951577]], "data02": [[0.8301971326164875, 0.5712840323767475, 0.5022994849153789, 0.43331493745401034], [0.8660394265232976, 0.5712840323767475, 0.5022994849153789, 0.43331493745401034]], "data03": [[0.8266129032258065, 0.38962472406181015], [0.9874551971326165, 0.38962472406181015], [0.9910394265232975, 0.38962472406181015], [0.9910394265232975, 0.398822663723326], [0.9910394265232975, 0.601177336276674], [0.9910394265232975, 0.6103752759381899], [0.9874551971326165, 0.6103752759381899], [0.8266129032258065, 0.6103752759381899], [0.8230286738351255, 0.6103752759381899], [0.8230286738351255, 0.601177336276674], [0.8230286738351255, 0.398822663723326], [0.8230286738351255, 0.38962472406181015], [0.8266129032258065, 0.38962472406181015]]}, "id": "el125139839364064424", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+   }(mpld3);
+}else if(typeof define === "function" && define.amd){
+   // require.js is available: use it to load d3/mpld3
+   require.config({paths: {d3: "https://mpld3.github.io/js/d3.v3.min"}});
+   require(["d3"], function(d3){
+      window.d3 = d3;
+      mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.3.js", function(){
+
+         mpld3.draw_figure("fig_el1251398393640644247381256858", {"width": 720.0, "height": 288.0, "axes": [{"bbox": [0.125, 0.125, 0.775, 0.755], "xlim": [-9.950000000000001, 208.95], "ylim": [0.18196725774576228, 1505.3599473044846], "xdomain": [-9.950000000000001, 208.95], "ydomain": [0.18196725774576228, 1505.3599473044846], "xscale": "linear", "yscale": "log", "axes": [{"position": "bottom", "nticks": 11, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#FFFFFF", "dasharray": "none", "alpha": 1.0}, "visible": true}, {"position": "left", "nticks": 8, "tickvalues": null, "tickformat": null, "scale": "log", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#FFFFFF", "dasharray": "none", "alpha": 1.0}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el125139839364065824", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el125139839354616352", "color": "#0000FF", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el125139839354616632", "color": "#BFBF00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el125139839354617472", "color": "#007F00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 1, "coordinates": "axes", "id": "el125139839354649176", "color": "#0000FF", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 2, "coordinates": "axes", "id": "el125139839354650240", "color": "#BFBF00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 3, "coordinates": "axes", "id": "el125139839354680040", "color": "#007F00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}], "paths": [{"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el125139839354648224", "dasharray": "none", "alpha": 0.5, "facecolor": "#FFFFFF", "edgecolor": "#CCCCCC", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Time (days)", "position": [0.5, -0.08048197203826342], "coordinates": "axes", "h_anchor": "middle", "v_baseline": "hanging", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el125139839364219904"}, {"text": "Susceptible", "position": [0.8803763440860216, 0.5551876379690949], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354648672"}, {"text": "Infected", "position": [0.8803763440860216, 0.48620309050772625], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354649792"}, {"text": "Recovered", "position": [0.8803763440860216, 0.41721854304635764], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354679592"}], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 999.0, 1.0, 1.2], [1.0, 998.6927795211318, 1.0509077262807474, 1.4563127525874036], [2.0, 998.370036183886, 1.1043027174515043, 1.7256610986623924], [3.0, 998.031023955388, 1.1602954676532755, 2.0086805769585325], [4.0, 997.6749649503538, 1.2190002068690742, 2.306034842777106], [5.0, 997.301048583684, 1.2805348962780514, 2.6184165200380285], [6.0, 996.9084305656194, 1.3450212032239448, 2.9465482311567106], [7.0, 996.4962320401409, 1.41258445861831, 3.291183501240819], [8.0, 996.0635388081133, 1.483353591166507, 3.6531076007201086], [9.0, 995.6094004899654, 1.5574610329368546, 4.033138477097692], [10.0, 995.1328297857309, 1.6350425995488087, 4.432127614720322], [11.0, 994.6328018007002, 1.716237339266159, 4.850960860033614], [12.0, 994.1082534505355, 1.8011873442898463, 5.290559205174635], [13.0, 993.5580829502295, 1.8900375264653653, 5.751879523304993], [14.0, 992.9811493756711, 1.982935365410194, 6.235915258918615], [15.0, 992.3762724626255, 2.0800305543609907, 6.743696983013362], [16.0, 991.7422323845167, 2.1814746735507526, 7.276292941932406], [17.0, 991.0777697563352, 2.2874207679545653, 7.8348094757100695], [18.0, 990.3815858228093, 2.398022866656284, 8.420391310534395], [19.0, 989.6523427758809, 2.5134354552957863, 9.034221768823206], [20.0, 988.8886643771074, 2.633812860396924, 9.6775227624956], [21.0, 988.089136695413, 2.7593085885322823, 10.351554716054657], [22.0, 987.252309194846, 2.8900745683890308, 11.057616236764925], [23.0, 986.3766960301591, 3.0262603296668904, 11.797043640174014], [24.0, 985.4607776820837, 3.1680120891981915, 12.571210228717977], [25.0, 984.5030029358347, 3.3154717498345816, 13.381525314330624], [26.0, 983.50179107382, 3.4687758295225373, 14.22943309665736], [27.0, 982.4555346754341, 3.6280542640818125, 15.116411060483834], [28.0, 981.3626026247053, 3.7934291401554527, 16.043968235139143], [29.0, 980.2213436210469, 3.965013329516039, 17.013643049436936], [30.0, 979.0300901521889, 4.142909017392322, 18.027000830418704], [31.0, 977.7871628549908, 4.3272061521773315, 19.08563099283172], [32.0, 976.4908755398917, 4.5179807826446154, 20.19114367746355], [33.0, 975.1395404774448, 4.715293323065519, 21.345166199489444], [34.0, 973.7314745329845, 4.919186728262335, 22.54933873875292], [35.0, 972.2650054865434, 5.12968457748621, 23.80530993597024], [36.0, 970.7384792686948, 5.346789133101429, 25.114731598203587], [37.0, 969.1502674168242, 5.570479264532357, 26.479253318643217], [38.0, 967.4987753684035, 5.8007084462172935, 27.900516185379118], [39.0, 965.7824511024552, 6.037402570495186, 29.3801463270496], [40.0, 963.9997944149272, 6.2804579491768315, 30.91974763589586], [41.0, 962.1493667189424, 6.529739096912699, 32.52089418414476], [42.0, 960.2298012022284, 6.785076807837611, 34.18512198993389], [43.0, 958.239813654904, 7.046266027356363, 35.913920317739546], [44.0, 956.1782133831246, 7.3130640825532, 37.708722534322206], [45.0, 954.0439148105893, 7.585188795296111, 39.57089639411451], [46.0, 951.8359489927789, 7.862316953826003, 41.50173405339505], [47.0, 949.5534756062015, 8.144082847994847, 43.502441545803514], [48.0, 947.1957948688896, 8.430077081287532, 45.57412804982266], [49.0, 944.7623594048595, 8.719845722971224, 47.7177948721692], [50.0, 942.252786322169, 9.012889576090883, 49.93432410174003], [51.0, 939.6668683453662, 9.308664132005488, 52.22446752262827], [52.0, 937.0045856910982, 9.60657944256898, 54.58883486633274], [53.0, 934.2661158822793, 9.906001005344013, 57.02788311237662], [54.0, 931.451844858248, 10.206250436848215, 59.54190470490372], [55.0, 928.5623749890462, 10.506607343214833, 62.13101766773887], [56.0, 925.5985346750523, 10.806311001108678, 64.79515432383894], [57.0, 922.5613841670821, 11.104563218271625, 67.53405261464614], [58.0, 919.4522228316328, 11.400531180367183, 70.34724598800003], [59.0, 916.2725924427954, 11.693351273874313, 73.23405628333023], [60.0, 913.0242813134299, 11.982133164294176, 76.19358552227585], [61.0, 909.7093247649951, 12.265964532286263, 79.22471070271848], [62.0, 906.3300054650464, 12.543916320230974, 82.32607821472246], [63.0, 902.8888507997126, 12.81504831667735, 85.49610088360987], [64.0, 899.3886290101275, 13.078415361407702, 88.7329556284648], [65.0, 895.8323432008956, 13.333073693795242, 92.03458310530908], [66.0, 892.2232232051697, 13.578087766527076, 95.39868902830321], [67.0, 888.5647159844799, 13.812537238996862, 98.8227467765232], [68.0, 884.8604735255453, 14.035523946247093, 102.30400252820763], [69.0, 881.1143394536292, 14.246179354252387, 105.83948119211844], [70.0, 877.3303336022617, 14.443671204719784, 109.42599519301845], [71.0, 873.5126347771575, 14.627211182803041, 113.06015404003944], [72.0, 869.6655628282816, 14.796060796406211, 116.73837637531213], [73.0, 865.7935585366808, 14.949538264128137, 120.456903199191], [74.0, 861.9011627927815, 15.087024519941075, 124.21181268727747], [75.0, 857.9929949590585, 15.207968415538888, 127.99903662540268], [76.0, 854.0737302473829, 15.31189158624949, 131.81437816636767], [77.0, 850.1480772425175, 15.39839253730674, 135.65353022017587], [78.0, 846.2207543887633, 15.46715015058746, 139.51209546064936], [79.0, 842.2964674829224, 15.517926079181947, 143.38560643789577], [80.0, 838.3798865425368, 15.550566651013547, 147.26954680644968], [81.0, 834.4756239284052, 15.5650036654948, 151.1593724061001], [82.0, 830.5882128250277, 15.561254478048214, 155.0505326969242], [83.0, 826.722086655989, 15.539421160464151, 158.93849218354694], [84.0, 822.8815601669554, 15.499688877521763, 162.81875095552292], [85.0, 819.0708102220016, 15.442323398365199, 166.68686637963324], [86.0, 815.2938608323127, 15.367668025177142, 170.5384711425102], [87.0, 811.5545668588954, 15.276139516419855, 174.36929362468481], [88.0, 807.8566014086466, 15.168223892939178, 178.17517469841428], [89.0, 804.2034436810976, 15.044471112716913, 181.95208520618556], [90.0, 800.5983693929338, 14.905489882217529, 185.69614072484873], [91.0, 797.0444426368229, 14.751941585750421, 189.40361577742695], [92.0, 793.5445094447583, 14.584534307145558, 193.07095624809634], [93.0, 790.1011934105074, 14.404016495903166, 196.69479009358952], [94.0, 786.7168926230565, 14.2111704455882, 200.27193693135544], [95.0, 783.3937785569456, 14.006806109435184, 203.79941533361938], [96.0, 780.1337963576392, 13.791754344096232, 207.2744492982648], [97.0, 776.9386664110567, 13.566861173049787, 210.6944724158937], [98.0, 773.8098878931138, 13.33298108119854, 214.05713102568797], [99.0, 770.7487423843727, 13.090971974255442, 217.36028564137212], [100.0, 767.756299694787, 12.841689329616587, 220.60201097559664], [101.0, 764.8334242379951, 12.585980892845184, 223.78059486915996], [102.0, 761.9807821915875, 12.32468217407172, 226.89453563434097], [103.0, 759.1988494591234, 12.058612087431355, 229.94253845344542], [104.0, 756.4879202432222, 11.788569058594147, 232.92351069818386], [105.0, 753.8481161195284, 11.51532738792701, 235.83655649254476], [106.0, 751.2793954398918, 11.239634373333516, 238.68097018677483], [107.0, 748.7815630595107, 10.962207650408885, 241.45622929008053], [108.0, 746.3542801949967, 10.683733025646939, 244.16198677935645], [109.0, 743.9970743768241, 10.404862701940296, 246.7980629212357], [110.0, 741.7093494039855, 10.126213915411824, 249.36443668060272], [111.0, 739.4903951895417, 9.848367943256076, 251.8612368672022], [112.0, 737.3393975213237, 9.571869447367732, 254.28873303130854], [113.0, 735.2554475592857, 9.297226159767632, 256.6473262809465], [114.0, 733.2375511389974, 9.024908845642042, 258.93754001536047], [115.0, 731.2846376731296, 8.755351565127606, 261.16001076174274], [116.0, 729.3955688220461, 8.48895215193637, 263.31547902601744], [117.0, 727.5691468459173, 8.22607288267836, 265.40478027140426], [118.0, 725.8041224365893, 7.967041360432768, 267.428836202978], [119.0, 724.0992021796782, 7.7121516124317155, 269.3886462078902], [120.0, 722.4530557537447, 7.461665179185714, 271.28527906706967], [121.0, 720.8643224874828, 7.215812463022882, 273.1198650494945], [122.0, 719.3316176695383, 6.974794065087945, 274.8935882653739], [123.0, 717.85353839696, 6.738782213226582, 276.6076793898136], [124.0, 716.4286689355722, 6.507922280234375, 278.2634087841936], [125.0, 715.0555858063889, 6.282334257822926, 279.8620799357883], [126.0, 713.7328623636403, 6.062114306504478, 281.4050233298554], [127.0, 712.4590730719156, 5.8473362724928135, 282.89359065559165], [128.0, 711.232797349933, 5.638053207371356, 284.3291494426957], [129.0, 710.0526230951111, 5.434298861972987, 285.71307804291587], [130.0, 708.9171498739157, 5.236089147477239, 287.0467609786071], [131.0, 707.8249917624535, 5.043423559626201, 288.3315846779203], [132.0, 706.7747799213046, 4.856286558201059, 289.5689335204944], [133.0, 705.7651648339888, 4.674648891445925, 290.76018627456534], [134.0, 704.7948183193624, 4.498468873309198, 291.90671280732846], [135.0, 703.8624352587334, 4.3276935943643835, 293.0098711469023], [136.0, 702.9667351076038, 4.162260081512349, 294.071004810884], [137.0, 702.1064632013329, 4.002096402108092, 295.09144039655916], [138.0, 701.2803917813711, 3.84712267591023, 296.0724855427187], [139.0, 700.4873209116879, 3.697252059239134, 297.015427029073], [140.0, 699.7260792139343, 3.552391665485837, 297.92152912057986], [141.0, 698.9955243852976, 3.4124433910477703, 298.7920322236547], [142.0, 698.2945436331179, 3.277304724640785, 299.62815164224145], [143.0, 697.6220539568047, 3.1468694855792347, 300.431076557616], [144.0, 696.9770022759008, 3.0210284778901424, 301.20196924620905], [145.0, 696.3583654984486, 2.8996701372385, 301.9419643643129], [146.0, 695.7651504664508, 2.782681103277611, 302.6521684302716], [147.0, 695.1963938031423, 2.669946726620005, 303.3336594702377], [148.0, 694.6511617031624, 2.5613515669280478, 303.98748672990956], [149.0, 694.1285496402983, 2.4567798224020265, 304.61467053729973], [150.0, 693.6276820141878, 2.356115711374517, 305.2162022744376], [151.0, 693.1477117459359, 2.259243841897417, 305.79304441216664], [152.0, 692.6878198241438, 2.1660495222655634, 306.34613065359054], [153.0, 692.2472148099441, 2.0764190382095284, 306.87636615184636], [154.0, 691.8251323070825, 1.9902399146147882, 307.3846277783027], [155.0, 691.4208344066456, 1.9074011305524792, 307.87176446280193], [156.0, 691.0336091057571, 1.8277933118128318, 308.33859758243], [157.0, 690.6627697004133, 1.7513089047413453, 308.7859213948453], [158.0, 690.3076541726467, 1.6778423163044078, 309.2145035110488], [159.0, 689.9676245598547, 1.6072900378444874, 309.6250854023007], [160.0, 689.6420663130457, 1.5395507509445225, 310.01838293600974], [161.0, 689.3303876616046, 1.4745254092325346, 310.3950869291628], [162.0, 689.0320189614806, 1.412117308932397, 310.75586372958696], [163.0, 688.7464120433756, 1.3522321440722107, 311.1013558125521], [164.0, 688.4730395789566, 1.294778043547045, 311.43218237749636], [165.0, 688.2113944443291, 1.2396655974728261, 311.7489399581979], [166.0, 687.9609890705701, 1.186807876830788, 312.05220305259905], [167.0, 687.7213548223652, 1.1361204386647665, 312.3425247389699], [168.0, 687.4920413904873, 1.0875213235743602, 312.6204372859382], [169.0, 687.2726161669237, 1.0409310452535163, 312.8864527878227], [170.0, 687.062663648082, 0.9962725729280044, 313.1410637789899], [171.0, 686.8617848603868, 0.9534713079870042, 313.38474383162605], [172.0, 686.6695967740449, 0.9124550542485713, 313.6179481717065], [173.0, 686.485731738161, 0.8731539835760291, 313.8411142782628], [174.0, 686.3098369398913, 0.8355005992961042, 314.0546624608125], [175.0, 686.1415738661261, 0.7994296941528543, 314.25899643972093], [176.0, 685.9806177746864, 0.7648783044020296, 314.4545039209116], [177.0, 685.826657190975, 0.7317856638412397, 314.64155714518364], [178.0, 685.6793934198721, 0.7000931561231979, 314.8205134240046], [179.0, 685.5385400555833, 0.6697442615212535, 314.9917156828953], [180.0, 685.4038225185584, 0.6406845055376109, 315.15549297590394], [181.0, 685.2749776085747, 0.6128614076496921, 315.3121609837756], [182.0, 685.1517530610838, 0.5862244255984685, 315.4620225133176], [183.0, 685.0339071228409, 0.5607249011772351, 315.6053679759818], [184.0, 684.9212081479218, 0.5363160080930669, 315.742475843985], [185.0, 684.8134341975313, 0.5129526965073262, 315.8736131059613], [186.0, 684.7103726545604, 0.4905916382302469, 315.9990357072093], [187.0, 684.6118198559918, 0.4691911742563618, 316.1189889697518], [188.0, 684.5175807360018, 0.4487112619532703, 316.2337080020449], [189.0, 684.4274684781135, 0.4291134212267021, 316.3434181006598], [190.0, 684.3413041837024, 0.4103606833811445, 316.4483351329165], [191.0, 684.2589165540348, 0.3924175415247402, 316.5486659044405], [192.0, 684.1801415776299, 0.37524989895259303, 316.6446085234175], [193.0, 684.1048222331921, 0.35882502045757714, 316.7363527463505], [194.0, 684.0328082054433, 0.3431114856589426, 316.82408030889786], [195.0, 683.9639556073498, 0.32807914118120834, 316.9079652514691], [196.0, 683.8981267144558, 0.3136990547936504, 316.9881742307506], [197.0, 683.8351897107211, 0.29994347163392265, 317.06486681764494], [198.0, 683.7750184427322, 0.28678577066189337, 317.1381957866059], [199.0, 683.717492182889, 0.27420042195325534, 317.2083073951577]], "data02": [[0.8301971326164875, 0.5712840323767475, 0.5022994849153789, 0.43331493745401034], [0.8660394265232976, 0.5712840323767475, 0.5022994849153789, 0.43331493745401034]], "data03": [[0.8266129032258065, 0.38962472406181015], [0.9874551971326165, 0.38962472406181015], [0.9910394265232975, 0.38962472406181015], [0.9910394265232975, 0.398822663723326], [0.9910394265232975, 0.601177336276674], [0.9910394265232975, 0.6103752759381899], [0.9874551971326165, 0.6103752759381899], [0.8266129032258065, 0.6103752759381899], [0.8230286738351255, 0.6103752759381899], [0.8230286738351255, 0.601177336276674], [0.8230286738351255, 0.398822663723326], [0.8230286738351255, 0.38962472406181015], [0.8266129032258065, 0.38962472406181015]]}, "id": "el125139839364064424", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+      });
+    });
+}else{
+    // require.js not available: dynamically load d3 & mpld3
+    mpld3_load_lib("https://mpld3.github.io/js/d3.v3.min.js", function(){
+         mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.3.js", function(){
+
+                 mpld3.draw_figure("fig_el1251398393640644247381256858", {"width": 720.0, "height": 288.0, "axes": [{"bbox": [0.125, 0.125, 0.775, 0.755], "xlim": [-9.950000000000001, 208.95], "ylim": [0.18196725774576228, 1505.3599473044846], "xdomain": [-9.950000000000001, 208.95], "ydomain": [0.18196725774576228, 1505.3599473044846], "xscale": "linear", "yscale": "log", "axes": [{"position": "bottom", "nticks": 11, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#FFFFFF", "dasharray": "none", "alpha": 1.0}, "visible": true}, {"position": "left", "nticks": 8, "tickvalues": null, "tickformat": null, "scale": "log", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#FFFFFF", "dasharray": "none", "alpha": 1.0}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el125139839364065824", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el125139839354616352", "color": "#0000FF", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el125139839354616632", "color": "#BFBF00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el125139839354617472", "color": "#007F00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 2, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 1, "coordinates": "axes", "id": "el125139839354649176", "color": "#0000FF", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 2, "coordinates": "axes", "id": "el125139839354650240", "color": "#BFBF00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data02", "xindex": 0, "yindex": 3, "coordinates": "axes", "id": "el125139839354680040", "color": "#007F00", "linewidth": 2.0, "dasharray": "none", "alpha": 0.7, "zorder": 1000002.0, "drawstyle": "default"}], "paths": [{"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el125139839354648224", "dasharray": "none", "alpha": 0.5, "facecolor": "#FFFFFF", "edgecolor": "#CCCCCC", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Time (days)", "position": [0.5, -0.08048197203826342], "coordinates": "axes", "h_anchor": "middle", "v_baseline": "hanging", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el125139839364219904"}, {"text": "Susceptible", "position": [0.8803763440860216, 0.5551876379690949], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354648672"}, {"text": "Infected", "position": [0.8803763440860216, 0.48620309050772625], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354649792"}, {"text": "Recovered", "position": [0.8803763440860216, 0.41721854304635764], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el125139839354679592"}], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 999.0, 1.0, 1.2], [1.0, 998.6927795211318, 1.0509077262807474, 1.4563127525874036], [2.0, 998.370036183886, 1.1043027174515043, 1.7256610986623924], [3.0, 998.031023955388, 1.1602954676532755, 2.0086805769585325], [4.0, 997.6749649503538, 1.2190002068690742, 2.306034842777106], [5.0, 997.301048583684, 1.2805348962780514, 2.6184165200380285], [6.0, 996.9084305656194, 1.3450212032239448, 2.9465482311567106], [7.0, 996.4962320401409, 1.41258445861831, 3.291183501240819], [8.0, 996.0635388081133, 1.483353591166507, 3.6531076007201086], [9.0, 995.6094004899654, 1.5574610329368546, 4.033138477097692], [10.0, 995.1328297857309, 1.6350425995488087, 4.432127614720322], [11.0, 994.6328018007002, 1.716237339266159, 4.850960860033614], [12.0, 994.1082534505355, 1.8011873442898463, 5.290559205174635], [13.0, 993.5580829502295, 1.8900375264653653, 5.751879523304993], [14.0, 992.9811493756711, 1.982935365410194, 6.235915258918615], [15.0, 992.3762724626255, 2.0800305543609907, 6.743696983013362], [16.0, 991.7422323845167, 2.1814746735507526, 7.276292941932406], [17.0, 991.0777697563352, 2.2874207679545653, 7.8348094757100695], [18.0, 990.3815858228093, 2.398022866656284, 8.420391310534395], [19.0, 989.6523427758809, 2.5134354552957863, 9.034221768823206], [20.0, 988.8886643771074, 2.633812860396924, 9.6775227624956], [21.0, 988.089136695413, 2.7593085885322823, 10.351554716054657], [22.0, 987.252309194846, 2.8900745683890308, 11.057616236764925], [23.0, 986.3766960301591, 3.0262603296668904, 11.797043640174014], [24.0, 985.4607776820837, 3.1680120891981915, 12.571210228717977], [25.0, 984.5030029358347, 3.3154717498345816, 13.381525314330624], [26.0, 983.50179107382, 3.4687758295225373, 14.22943309665736], [27.0, 982.4555346754341, 3.6280542640818125, 15.116411060483834], [28.0, 981.3626026247053, 3.7934291401554527, 16.043968235139143], [29.0, 980.2213436210469, 3.965013329516039, 17.013643049436936], [30.0, 979.0300901521889, 4.142909017392322, 18.027000830418704], [31.0, 977.7871628549908, 4.3272061521773315, 19.08563099283172], [32.0, 976.4908755398917, 4.5179807826446154, 20.19114367746355], [33.0, 975.1395404774448, 4.715293323065519, 21.345166199489444], [34.0, 973.7314745329845, 4.919186728262335, 22.54933873875292], [35.0, 972.2650054865434, 5.12968457748621, 23.80530993597024], [36.0, 970.7384792686948, 5.346789133101429, 25.114731598203587], [37.0, 969.1502674168242, 5.570479264532357, 26.479253318643217], [38.0, 967.4987753684035, 5.8007084462172935, 27.900516185379118], [39.0, 965.7824511024552, 6.037402570495186, 29.3801463270496], [40.0, 963.9997944149272, 6.2804579491768315, 30.91974763589586], [41.0, 962.1493667189424, 6.529739096912699, 32.52089418414476], [42.0, 960.2298012022284, 6.785076807837611, 34.18512198993389], [43.0, 958.239813654904, 7.046266027356363, 35.913920317739546], [44.0, 956.1782133831246, 7.3130640825532, 37.708722534322206], [45.0, 954.0439148105893, 7.585188795296111, 39.57089639411451], [46.0, 951.8359489927789, 7.862316953826003, 41.50173405339505], [47.0, 949.5534756062015, 8.144082847994847, 43.502441545803514], [48.0, 947.1957948688896, 8.430077081287532, 45.57412804982266], [49.0, 944.7623594048595, 8.719845722971224, 47.7177948721692], [50.0, 942.252786322169, 9.012889576090883, 49.93432410174003], [51.0, 939.6668683453662, 9.308664132005488, 52.22446752262827], [52.0, 937.0045856910982, 9.60657944256898, 54.58883486633274], [53.0, 934.2661158822793, 9.906001005344013, 57.02788311237662], [54.0, 931.451844858248, 10.206250436848215, 59.54190470490372], [55.0, 928.5623749890462, 10.506607343214833, 62.13101766773887], [56.0, 925.5985346750523, 10.806311001108678, 64.79515432383894], [57.0, 922.5613841670821, 11.104563218271625, 67.53405261464614], [58.0, 919.4522228316328, 11.400531180367183, 70.34724598800003], [59.0, 916.2725924427954, 11.693351273874313, 73.23405628333023], [60.0, 913.0242813134299, 11.982133164294176, 76.19358552227585], [61.0, 909.7093247649951, 12.265964532286263, 79.22471070271848], [62.0, 906.3300054650464, 12.543916320230974, 82.32607821472246], [63.0, 902.8888507997126, 12.81504831667735, 85.49610088360987], [64.0, 899.3886290101275, 13.078415361407702, 88.7329556284648], [65.0, 895.8323432008956, 13.333073693795242, 92.03458310530908], [66.0, 892.2232232051697, 13.578087766527076, 95.39868902830321], [67.0, 888.5647159844799, 13.812537238996862, 98.8227467765232], [68.0, 884.8604735255453, 14.035523946247093, 102.30400252820763], [69.0, 881.1143394536292, 14.246179354252387, 105.83948119211844], [70.0, 877.3303336022617, 14.443671204719784, 109.42599519301845], [71.0, 873.5126347771575, 14.627211182803041, 113.06015404003944], [72.0, 869.6655628282816, 14.796060796406211, 116.73837637531213], [73.0, 865.7935585366808, 14.949538264128137, 120.456903199191], [74.0, 861.9011627927815, 15.087024519941075, 124.21181268727747], [75.0, 857.9929949590585, 15.207968415538888, 127.99903662540268], [76.0, 854.0737302473829, 15.31189158624949, 131.81437816636767], [77.0, 850.1480772425175, 15.39839253730674, 135.65353022017587], [78.0, 846.2207543887633, 15.46715015058746, 139.51209546064936], [79.0, 842.2964674829224, 15.517926079181947, 143.38560643789577], [80.0, 838.3798865425368, 15.550566651013547, 147.26954680644968], [81.0, 834.4756239284052, 15.5650036654948, 151.1593724061001], [82.0, 830.5882128250277, 15.561254478048214, 155.0505326969242], [83.0, 826.722086655989, 15.539421160464151, 158.93849218354694], [84.0, 822.8815601669554, 15.499688877521763, 162.81875095552292], [85.0, 819.0708102220016, 15.442323398365199, 166.68686637963324], [86.0, 815.2938608323127, 15.367668025177142, 170.5384711425102], [87.0, 811.5545668588954, 15.276139516419855, 174.36929362468481], [88.0, 807.8566014086466, 15.168223892939178, 178.17517469841428], [89.0, 804.2034436810976, 15.044471112716913, 181.95208520618556], [90.0, 800.5983693929338, 14.905489882217529, 185.69614072484873], [91.0, 797.0444426368229, 14.751941585750421, 189.40361577742695], [92.0, 793.5445094447583, 14.584534307145558, 193.07095624809634], [93.0, 790.1011934105074, 14.404016495903166, 196.69479009358952], [94.0, 786.7168926230565, 14.2111704455882, 200.27193693135544], [95.0, 783.3937785569456, 14.006806109435184, 203.79941533361938], [96.0, 780.1337963576392, 13.791754344096232, 207.2744492982648], [97.0, 776.9386664110567, 13.566861173049787, 210.6944724158937], [98.0, 773.8098878931138, 13.33298108119854, 214.05713102568797], [99.0, 770.7487423843727, 13.090971974255442, 217.36028564137212], [100.0, 767.756299694787, 12.841689329616587, 220.60201097559664], [101.0, 764.8334242379951, 12.585980892845184, 223.78059486915996], [102.0, 761.9807821915875, 12.32468217407172, 226.89453563434097], [103.0, 759.1988494591234, 12.058612087431355, 229.94253845344542], [104.0, 756.4879202432222, 11.788569058594147, 232.92351069818386], [105.0, 753.8481161195284, 11.51532738792701, 235.83655649254476], [106.0, 751.2793954398918, 11.239634373333516, 238.68097018677483], [107.0, 748.7815630595107, 10.962207650408885, 241.45622929008053], [108.0, 746.3542801949967, 10.683733025646939, 244.16198677935645], [109.0, 743.9970743768241, 10.404862701940296, 246.7980629212357], [110.0, 741.7093494039855, 10.126213915411824, 249.36443668060272], [111.0, 739.4903951895417, 9.848367943256076, 251.8612368672022], [112.0, 737.3393975213237, 9.571869447367732, 254.28873303130854], [113.0, 735.2554475592857, 9.297226159767632, 256.6473262809465], [114.0, 733.2375511389974, 9.024908845642042, 258.93754001536047], [115.0, 731.2846376731296, 8.755351565127606, 261.16001076174274], [116.0, 729.3955688220461, 8.48895215193637, 263.31547902601744], [117.0, 727.5691468459173, 8.22607288267836, 265.40478027140426], [118.0, 725.8041224365893, 7.967041360432768, 267.428836202978], [119.0, 724.0992021796782, 7.7121516124317155, 269.3886462078902], [120.0, 722.4530557537447, 7.461665179185714, 271.28527906706967], [121.0, 720.8643224874828, 7.215812463022882, 273.1198650494945], [122.0, 719.3316176695383, 6.974794065087945, 274.8935882653739], [123.0, 717.85353839696, 6.738782213226582, 276.6076793898136], [124.0, 716.4286689355722, 6.507922280234375, 278.2634087841936], [125.0, 715.0555858063889, 6.282334257822926, 279.8620799357883], [126.0, 713.7328623636403, 6.062114306504478, 281.4050233298554], [127.0, 712.4590730719156, 5.8473362724928135, 282.89359065559165], [128.0, 711.232797349933, 5.638053207371356, 284.3291494426957], [129.0, 710.0526230951111, 5.434298861972987, 285.71307804291587], [130.0, 708.9171498739157, 5.236089147477239, 287.0467609786071], [131.0, 707.8249917624535, 5.043423559626201, 288.3315846779203], [132.0, 706.7747799213046, 4.856286558201059, 289.5689335204944], [133.0, 705.7651648339888, 4.674648891445925, 290.76018627456534], [134.0, 704.7948183193624, 4.498468873309198, 291.90671280732846], [135.0, 703.8624352587334, 4.3276935943643835, 293.0098711469023], [136.0, 702.9667351076038, 4.162260081512349, 294.071004810884], [137.0, 702.1064632013329, 4.002096402108092, 295.09144039655916], [138.0, 701.2803917813711, 3.84712267591023, 296.0724855427187], [139.0, 700.4873209116879, 3.697252059239134, 297.015427029073], [140.0, 699.7260792139343, 3.552391665485837, 297.92152912057986], [141.0, 698.9955243852976, 3.4124433910477703, 298.7920322236547], [142.0, 698.2945436331179, 3.277304724640785, 299.62815164224145], [143.0, 697.6220539568047, 3.1468694855792347, 300.431076557616], [144.0, 696.9770022759008, 3.0210284778901424, 301.20196924620905], [145.0, 696.3583654984486, 2.8996701372385, 301.9419643643129], [146.0, 695.7651504664508, 2.782681103277611, 302.6521684302716], [147.0, 695.1963938031423, 2.669946726620005, 303.3336594702377], [148.0, 694.6511617031624, 2.5613515669280478, 303.98748672990956], [149.0, 694.1285496402983, 2.4567798224020265, 304.61467053729973], [150.0, 693.6276820141878, 2.356115711374517, 305.2162022744376], [151.0, 693.1477117459359, 2.259243841897417, 305.79304441216664], [152.0, 692.6878198241438, 2.1660495222655634, 306.34613065359054], [153.0, 692.2472148099441, 2.0764190382095284, 306.87636615184636], [154.0, 691.8251323070825, 1.9902399146147882, 307.3846277783027], [155.0, 691.4208344066456, 1.9074011305524792, 307.87176446280193], [156.0, 691.0336091057571, 1.8277933118128318, 308.33859758243], [157.0, 690.6627697004133, 1.7513089047413453, 308.7859213948453], [158.0, 690.3076541726467, 1.6778423163044078, 309.2145035110488], [159.0, 689.9676245598547, 1.6072900378444874, 309.6250854023007], [160.0, 689.6420663130457, 1.5395507509445225, 310.01838293600974], [161.0, 689.3303876616046, 1.4745254092325346, 310.3950869291628], [162.0, 689.0320189614806, 1.412117308932397, 310.75586372958696], [163.0, 688.7464120433756, 1.3522321440722107, 311.1013558125521], [164.0, 688.4730395789566, 1.294778043547045, 311.43218237749636], [165.0, 688.2113944443291, 1.2396655974728261, 311.7489399581979], [166.0, 687.9609890705701, 1.186807876830788, 312.05220305259905], [167.0, 687.7213548223652, 1.1361204386647665, 312.3425247389699], [168.0, 687.4920413904873, 1.0875213235743602, 312.6204372859382], [169.0, 687.2726161669237, 1.0409310452535163, 312.8864527878227], [170.0, 687.062663648082, 0.9962725729280044, 313.1410637789899], [171.0, 686.8617848603868, 0.9534713079870042, 313.38474383162605], [172.0, 686.6695967740449, 0.9124550542485713, 313.6179481717065], [173.0, 686.485731738161, 0.8731539835760291, 313.8411142782628], [174.0, 686.3098369398913, 0.8355005992961042, 314.0546624608125], [175.0, 686.1415738661261, 0.7994296941528543, 314.25899643972093], [176.0, 685.9806177746864, 0.7648783044020296, 314.4545039209116], [177.0, 685.826657190975, 0.7317856638412397, 314.64155714518364], [178.0, 685.6793934198721, 0.7000931561231979, 314.8205134240046], [179.0, 685.5385400555833, 0.6697442615212535, 314.9917156828953], [180.0, 685.4038225185584, 0.6406845055376109, 315.15549297590394], [181.0, 685.2749776085747, 0.6128614076496921, 315.3121609837756], [182.0, 685.1517530610838, 0.5862244255984685, 315.4620225133176], [183.0, 685.0339071228409, 0.5607249011772351, 315.6053679759818], [184.0, 684.9212081479218, 0.5363160080930669, 315.742475843985], [185.0, 684.8134341975313, 0.5129526965073262, 315.8736131059613], [186.0, 684.7103726545604, 0.4905916382302469, 315.9990357072093], [187.0, 684.6118198559918, 0.4691911742563618, 316.1189889697518], [188.0, 684.5175807360018, 0.4487112619532703, 316.2337080020449], [189.0, 684.4274684781135, 0.4291134212267021, 316.3434181006598], [190.0, 684.3413041837024, 0.4103606833811445, 316.4483351329165], [191.0, 684.2589165540348, 0.3924175415247402, 316.5486659044405], [192.0, 684.1801415776299, 0.37524989895259303, 316.6446085234175], [193.0, 684.1048222331921, 0.35882502045757714, 316.7363527463505], [194.0, 684.0328082054433, 0.3431114856589426, 316.82408030889786], [195.0, 683.9639556073498, 0.32807914118120834, 316.9079652514691], [196.0, 683.8981267144558, 0.3136990547936504, 316.9881742307506], [197.0, 683.8351897107211, 0.29994347163392265, 317.06486681764494], [198.0, 683.7750184427322, 0.28678577066189337, 317.1381957866059], [199.0, 683.717492182889, 0.27420042195325534, 317.2083073951577]], "data02": [[0.8301971326164875, 0.5712840323767475, 0.5022994849153789, 0.43331493745401034], [0.8660394265232976, 0.5712840323767475, 0.5022994849153789, 0.43331493745401034]], "data03": [[0.8266129032258065, 0.38962472406181015], [0.9874551971326165, 0.38962472406181015], [0.9910394265232975, 0.38962472406181015], [0.9910394265232975, 0.398822663723326], [0.9910394265232975, 0.601177336276674], [0.9910394265232975, 0.6103752759381899], [0.9874551971326165, 0.6103752759381899], [0.8266129032258065, 0.6103752759381899], [0.8230286738351255, 0.6103752759381899], [0.8230286738351255, 0.601177336276674], [0.8230286738351255, 0.398822663723326], [0.8230286738351255, 0.38962472406181015], [0.8266129032258065, 0.38962472406181015]]}, "id": "el125139839364064424", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+            })
+         });
+}
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Scaling:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Nreal</span><span class="o">=</span><span class="mf">50E6</span>
+<span class="n">sc</span><span class="o">=</span><span class="n">Nreal</span><span class="o">/</span><span class="n">N</span>
+<span class="n">sc</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>50000.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;N0=</span><span class="si">{:g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">I0</span><span class="o">*</span><span class="n">sc</span><span class="p">)</span>
+<span class="s1">&#39;Nmax=</span><span class="si">{:g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">18</span><span class="o">*</span><span class="n">sc</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Nmax=900000&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">5E4</span><span class="p">,</span><span class="mi">5</span><span class="o">*</span><span class="mf">5E4</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(50000.0, 250000.0)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

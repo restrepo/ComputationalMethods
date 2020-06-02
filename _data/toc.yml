@@ -106,4 +106,8 @@
   url: /features/differential-equations
   not_numbered: false
   expand_sections: false
+  sections:
+  - title: SIR Model
+    url: /features/medium_modelling_part_one
+    not_numbered: false
 
