@@ -111,3 +111,12 @@
     url: /features/medium_modelling_part_one
     not_numbered: false
 
+- title: Statistics
+  url: /features/statistics
+  not_numbered: false
+  expand_sections: false
+
+- title: Clases
+  url: /features/Intro_clases
+  not_numbered: false
+  expand_sections: false

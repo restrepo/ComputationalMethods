@@ -1,0 +1,1003 @@
+---
+redirect_from:
+  - "/features/intro-clases"
+interact_link: content/features/Intro_clases.ipynb
+kernel_name: python3
+kernel_path: content/features
+has_widgets: false
+title: |-
+  Clases
+pagenum: 22
+prev_page:
+  url: /features/statistics.html
+next_page:
+  url: 
+suffix: .ipynb
+search: la de es el python que en una se funcin func main un clase programa objeto self def para como colab clases y name las desde com instancia funcional ser del ayuda debe pueda funciona mdulo con objetonuevo research google decir cada tiene mtodos los atributo simple dentro algunos tambin programacin funciones esqueleto import x z resultado final sus otro todas permite interna jupyter ejemplo consola por pensar complejidad estructura capas clasenueva usar hay href github restrepo computationalmethods blob master material introclases ipynb target parentimg src assets badge svg alt open todo o realizacin unos metodo corresponde atributos son definiciones
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Clases</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/Intro_clases.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Clases">Clases<a class="anchor-link" href="#Clases"> </a></h1><p>En Python, todo es un objeto, es decir, una instancia o realización de un clase. Cada objeto tiene unos métodos:</p>
+<div class="highlight"><pre><span></span><span class="n">objeto</span><span class="o">.</span><span class="n">metodo</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">que</span> <span class="n">corresponde</span>  <span class="n">a</span> <span class="n">función</span> <span class="err">`</span><span class="fm">__call__</span><span class="err">`</span> <span class="n">de</span> <span class="n">una</span> <span class="n">clase</span><span class="p">,</span> <span class="n">y</span> <span class="n">los</span> <span class="n">atributos</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="n">objeto</span><span class="o">.</span><span class="n">atributo</span>
+</pre></div>
+<p>que son simple definiciones dentro de la case: <code>self.atributo=....</code>.</p>
+<p>Algunos objetos en Python también</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Programaci&#243;n-funcional">Programaci&#243;n funcional<a class="anchor-link" href="#Programaci&#243;n-funcional"> </a></h2><p>En cálculo científico el paradigma funcional, en el cual el programa se escribe en términos de funciones, suele ser suficiente.</p>
+<p>El esqueleto de un programa funcional  es típicamente del sigiento tipo</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/user/env python3</span>
+<span class="kn">import</span> <span class="nn">somemodule</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Ayuda func1</span>
+<span class="sd">   &#39;&#39;&#39;</span>
+    <span class="o">.....</span>
+
+<span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Ayuda func2</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="o">.....</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Ayuda función principal</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">func1</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">func2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">=</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">z</span><span class="o">=</span><span class="n">main</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El resultado final es: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+<p>Para su diseño, el programa se debe separar  sus partes independientes y para cada una de ellas se debe definir una función.</p>
+<p><em>La función ideal es una  que se pueda reutilizar facilamente en otro contexto.</em></p>
+<p>La última funciona combina todas las anteriores para entregar el resultado final del programa. La instrucción <code>if __name__='__main__'</code>,  permite que el programa sea pueda ser usado también como un módulo de Python, es decir que se pueda cargar desde otro programa con el <code>import</code>. En tal caso, la variable 
+interna de Python <code>__name__</code>  es diferente a la cadena de caracteres <code>'__main__'</code>. Dentro de Jupyter:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="vm">__name__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;__main__&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ejemplo módulo</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> example.py
+<span class="ch">#!/usr/bin/env python3</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;check __name__: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__name__</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">hola</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mundo&#39;</span><span class="p">)</span>
+    
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">hola</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Overwriting example.py
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>ls</code> funciona</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 8
+-rw-r--r-- 1 root root   53 Nov 16 17:28 example.py
+drwxr-xr-x 2 root root 4096 Nov 15 01:02 <span class="ansi-blue-intense-fg ansi-bold">sample_data</span>/
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>cat</code> funciona</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">example</span><span class="o">.</span><span class="n">py</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>#!/usr/bin/env python3
+print( &#39;check __name__: {}&#39;.format(__name__))
+
+def hola():
+    print(&#39;mundo&#39;)
+    
+if __name__==&#39;__main__&#39;:
+    hola()</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Cambia los permisos a ejecución</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> chmod a+x example.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 8
+-rwxr-xr-x 1 root root   53 Nov 16 17:28 <span class="ansi-green-intense-fg ansi-bold">example.py</span>*
+drwxr-xr-x 2 root root 4096 Nov 15 01:02 <span class="ansi-blue-intense-fg ansi-bold">sample_data</span>/
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Corre el programa desde la consola</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>./example.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>check __name__: __main__
+mundo
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Uso como módulo</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">example</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>check __name__: example
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example</span><span class="o">.</span><span class="n">hola</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>mundo
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Coorrelo desde una celda de Jupyter es equivalente a ejecutarlo desde la consola</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;check __name__: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__name__</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">hola</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mundo&#39;</span><span class="p">)</span>
+    
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">hola</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>check __name__: __main__
+mundo
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Programaci&#243;n-por-clases">Programaci&#243;n por clases<a class="anchor-link" href="#Programaci&#243;n-por-clases"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Una clase se puede pensar como un conjuto de funciones que comparten algo común.</p>
+<p>Algunas veces, cuando la complejidad de las estructuras  tiene una estructura de capas, donde la capa interna es la mas simple y las capas más externas van aumentando la complejidad, pude ser conveniente pensar en una estructura de clases.</p>
+<p>De hecho, la clase básica pasa todas sus propiedades  a las clases basadas en ella.</p>
+<p>Esqueleto:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">clasenueva</span><span class="p">:</span>
+    <span class="n">var</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span>
+    <span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">...</span><span class="p">):</span>
+        <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span> <span class="n">es</span> <span class="n">lo</span> <span class="n">que</span> <span class="n">está</span> <span class="n">antes</span> <span class="k">del</span> <span class="n">punto</span>
+        <span class="s1">&#39;&#39;</span>
+        <span class="o">....</span>
+    <span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">....</span><span class="p">):</span>
+        <span class="o">....</span>
+
+    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">....</span><span class="p">):</span>
+        <span class="o">....</span>
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+         <span class="n">objetonuevo</span><span class="o">=</span><span class="n">clasenueva</span><span class="p">()</span>
+         <span class="c1"># self → objetonuevo</span>
+        <span class="n">objetonuevo</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">veterinaria</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tipo</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;perro&#39;</span><span class="p">:</span><span class="s1">&#39;guau&#39;</span><span class="p">,</span><span class="s1">&#39;gato&#39;</span><span class="p">:</span><span class="s1">&#39;miau&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sonido</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tipo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nombre</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">nombre</span><span class="o">==</span><span class="s1">&#39;greco&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sonido</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;grrr!!&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nombre</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">nombre</span><span class="o">==</span><span class="s1">&#39;greco&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;blanco&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Cundo se inicializa la clase la función llamada <code>__init__</code>, se ejecuta automáticamente.</li>
+<li>La función <code>__call__</code> permite usar el objeto directamente como función, sin hacer referencia al método, que por supuesto es   <code>__call__</code></li>
+</ul>
+<p>Hay muchos otros métodos especiales, que comienzan con un <code>__</code>.... Usar <code>&lt;TAB&gt;</code> a continuación para ver algunos</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">veterinaria</span><span class="o">.</span><span class="n">__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para utilizar la clase, primero se debe incializar como un objeto. Crear la instancia de la clase.</p>
+<p><strong>Ejemplo</strong>: Crea la instancia <code>mascotafeliz</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mascotafeliz</span><span class="o">=</span><span class="n">veterinaria</span><span class="p">(</span><span class="s1">&#39;perro&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mascotafeliz</span><span class="p">(</span><span class="s1">&#39;greco&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>guau
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mascotafeliz</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s1">&#39;greco&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>blanco
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">perro</span><span class="o">.</span><span class="n">tipo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;vaca&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Herencia">Herencia<a class="anchor-link" href="#Herencia"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">finanzas</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">finanzas</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>__main__.finanzas</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">([{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-47-d585aedd1152&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">{</span><span class="ansi-blue-fg">&#39;A&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">}</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: &#39;finanzas&#39; object is not callable</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para realmente heradar hay que inicializarlo de forma especial con la función <code>super</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">hkdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">hkdict</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">has_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;perro&#39;</span><span class="p">:</span><span class="s1">&#39;guau&#39;</span><span class="p">,</span><span class="s1">&#39;gato&#39;</span><span class="p">:</span><span class="s1">&#39;miau&#39;</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;gato&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-52-4598d173b43c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>d<span class="ansi-blue-fg">.</span>has_key<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;gato&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">AttributeError</span>: &#39;dict&#39; object has no attribute &#39;has_key&#39;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dd</span><span class="o">=</span><span class="n">hkdict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dd</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;vaca&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Refs:
+<a href="https://realpython.com/python3-object-oriented-programming/">https://realpython.com/python3-object-oriented-programming/</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
