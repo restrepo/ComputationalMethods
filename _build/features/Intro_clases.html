@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: la de es el python que en una se funcin func main un clase programa objeto self def para como colab clases y name las desde com instancia funcional ser del ayuda debe pueda funciona mdulo con objetonuevo research google decir cada tiene mtodos los atributo simple dentro algunos tambin programacin funciones esqueleto import x z resultado final sus otro todas permite interna jupyter ejemplo consola por pensar complejidad estructura capas clasenueva usar hay href github restrepo computationalmethods blob master material introclases ipynb target parentimg src assets badge svg alt open todo o realizacin unos metodo corresponde atributos son definiciones
+search: de el la que en python es un objeto una se para programa func main del y con como por funcin com clase self def atributo nombre los las colab google clases dentro objetos diferentes mtodo pueda ser name desde instancia mtodos tambin puede punto caracteres tipo permite ejemplo x mdulos usar import m sus drive programacin funcional ayuda debe funciona mdulo objetonuevo research decir o cada tiene corresponde internas tener atributos son variables algunos pueden modo propiedades si pude paradigma partes principal su sera lastname firstname diferente cargar espacio cuando ms lo forma uso suele cientfico usp sharing pep
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -36,14 +36,156 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Clases">Clases<a class="anchor-link" href="#Clases"> </a></h1><p>En Python, todo es un objeto, es decir, una instancia o realización de un clase. Cada objeto tiene unos métodos:</p>
+<h1 id="Clases">Clases<a class="anchor-link" href="#Clases"> </a></h1><p>En Python, todo es un objeto, es decir, una instancia o realización de un clase. Cada objeto tiene unos <em>métodos</em>:</p>
 <div class="highlight"><pre><span></span><span class="n">objeto</span><span class="o">.</span><span class="n">metodo</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="n">que</span> <span class="n">corresponde</span>  <span class="n">a</span> <span class="n">función</span> <span class="err">`</span><span class="fm">__call__</span><span class="err">`</span> <span class="n">de</span> <span class="n">una</span> <span class="n">clase</span><span class="p">,</span> <span class="n">y</span> <span class="n">los</span> <span class="n">atributos</span>
+<span class="n">que</span> <span class="n">corresponde</span>  <span class="n">a</span> <span class="n">funciónes</span> <span class="n">internas</span> <span class="k">del</span> <span class="n">objeto</span><span class="p">,</span> <span class="n">y</span> <span class="n">también</span> <span class="n">puede</span> <span class="n">tener</span> <span class="n">_atributos_</span><span class="p">:</span>
 </pre></div>
 <div class="highlight"><pre><span></span><span class="n">objeto</span><span class="o">.</span><span class="n">atributo</span>
 </pre></div>
-<p>que son simple definiciones dentro de la case: <code>self.atributo=....</code>.</p>
-<p>Algunos objetos en Python también</p>
+<p>que son variables internas dentro del objeto: <code>self.atributo=....</code>.</p>
+<p>Algunos objetos en Python también pueden recibir parámetros de entrada a modo de claves de un diccionario interno del objeto</p>
+<div class="highlight"><pre><span></span><span class="n">objeto</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;value&#39;</span>
+</pre></div>
+<p>entro otras muchas propiedades</p>
+<p>Ejemplos de objetos son:</p>
+<ul>
+<li><code>int</code>: Enteros</li>
+<li><code>float</code>: Números punto flotante (floating point numbers)</li>
+<li><code>str</code>: Cadenas de caracteres</li>
+<li><code>list</code>: Listas </li>
+<li><code>dict</code>: Diccionarios.</li>
+</ul>
+<p>Si el tipo de objeto es conocido, uno pude comprobar si un objeto determinado corresponde a ese tipo con <code>isinstance</code>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="s1">&#39;hola mundo&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Is `s` an string?: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="nb">str</span><span class="p">))</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Is `s` a float?: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="nb">float</span><span class="p">))</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Is `s` an string?: True
+Is `s` a float?: False
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Dentro del paradigma de objetos es posible agrupar diferentes conjuntos de variables de modo que el nombre de un atributo a método adquiere dos partes, una parte principal, que en el análogo con el <em>nombre completo</em> de una persona podríamos asimilar a su <em>apellido</em>, y el método o atributo, que sería como el primer <em>nombre</em>, separados por un punto:</p>
+<ul>
+<li>Método:  <code>last_name.first_name()</code></li>
+<li>Atributo: <code>last_name.first_name</code>.</li>
+</ul>
+<p>Esto nos permite tener objetos dentro de un programa con igual <em>nombre</em>, pero diferente <em>appellido</em>. Como por ejemplo, los diferentes $\cos(x)$ que vienen en los diferentes módulos matématicos implementados en Python. Por eso es recomendado cargar los módulos manteniendo el espacio de nombres (que en nuestra analogía sería el espacio de <em>apellidos</em>). Cuando el modulo tenga un nombre muy largo (más de cuatro caracteres), se puede usar una abreviatura lo suficientemente original para evitar que pueda ser sobreescrita por un nuevo objeto:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">k</span><span class="o">=</span><span class="mi">3</span> <span class="c1">#N/m</span>
+<span class="n">m</span><span class="o">=</span><span class="mi">2</span> <span class="c1">#Kg</span>
+<span class="n">A</span><span class="o">=</span><span class="mi">3</span> <span class="c1">#m</span>
+<span class="n">t</span><span class="o">=</span><span class="mi">2</span> <span class="c1">#s</span>
+<span class="n">ω</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">m</span><span class="p">)</span> <span class="c1">#rad/s</span>
+<span class="c1">#ver https://pyformat.info/</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x(t)=</span><span class="si">{:.2f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> 
+    <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">ω</span><span class="o">*</span><span class="n">t</span> <span class="p">)</span>
+     <span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x(t)=</span><span class="si">{:.2f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> 
+    <span class="n">A</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">ω</span><span class="o">*</span><span class="n">t</span> <span class="p">)</span>
+     <span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x(t)=-2.31 m
+x(t)=-2.31 m
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note que <code>import math as m</code> entraría en conflicto con la definición de <code>m</code> en <code>m=2</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La forma recomendada de importar los diferentes módulos y el uso de sus métodos y atributos suele resumirse en <em>Cheat Sheets</em>. Para Python científico recomendamos las elaboradas por <a href="https://learn.datacamp.com/">Data Camp</a>, que pueden consultarse <a href="https://drive.google.com/drive/folders/11ReN5mXiYGsBjNfdj3zEj2Z1E3bZ7TRk?usp=sharing">aquí</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para programación de Python en general se recomienda el estándar <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> de Python</p>
 
 </div>
 </div>
@@ -988,8 +1130,11 @@ mundo
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Refs:
-<a href="https://realpython.com/python3-object-oriented-programming/">https://realpython.com/python3-object-oriented-programming/</a></p>
+<p>Refs:</p>
+<ul>
+<li><a href="https://realpython.com/python3-object-oriented-programming/">https://realpython.com/python3-object-oriented-programming/</a></li>
+<li><a href="https://drive.google.com/file/d/0BxoOXsn2EUNIWkt5Ni1vV2E4QlU/view?usp=sharing">Building Skills in Object-Oriented Design</a></li>
+</ul>
 
 </div>
 </div>
