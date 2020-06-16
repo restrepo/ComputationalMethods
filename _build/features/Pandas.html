@@ -3346,7 +3346,7 @@ Name: even, dtype: bool</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;even&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;odd&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;even&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;odd&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -3412,7 +3412,7 @@ dtype: int64</pre>
 <li><em>The machine web</em>. The web for machine readable responses. It is served in <code>JSON</code> or <code>XML</code>  formats, which preserve programming objects.</li>
 </ul>
 <p>For example, consider the following normal web page:</p>
-<p><a href="http://inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001">http://inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001</a></p>
+<p><a href="http://old.inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001">http://old.inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001</a></p>
 <p>about a Scientific paper with people from the University of Antioquia. A <em>machine web</em> version can be easily obtained in JSON just by attaching the extra parameter <code>&amp;of=recjson</code>, and direcly loaded from Pandas, which works like a <em>browser for the third web</em>:</p>
 
 </div>
@@ -3427,7 +3427,24 @@ dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;http://inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001&amp;of=recjson&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;http://old.inspirehep.net/search?p=doi:10.1103/PhysRevLett.122.132001&amp;of=recjson&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -3477,84 +3494,57 @@ dtype: int64</pre>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>comment</th>
-      <th>reference</th>
-      <th>abstract</th>
-      <th>creation_date</th>
-      <th>imprint</th>
-      <th>primary_report_number</th>
-      <th>keywords</th>
-      <th>publication_info</th>
-      <th>coyright</th>
-      <th>subject</th>
-      <th>cataloguer_info</th>
-      <th>physical_description</th>
-      <th>number_of_citations</th>
-      <th>title</th>
-      <th>persistent_identifiers_keys</th>
-      <th>corporate_name</th>
-      <th>files</th>
-      <th>system_control_number</th>
-      <th>filenames</th>
-      <th>source_of_acquisition</th>
-      <th>number_of_reviews</th>
-      <th>version_id</th>
       <th>FIXME_OAI</th>
-      <th>authors</th>
-      <th>doi</th>
-      <th>number_of_authors</th>
-      <th>license</th>
+      <th>abstract</th>
       <th>accelerator_experiment</th>
-      <th>number_of_comments</th>
-      <th>url</th>
-      <th>recid</th>
+      <th>authors</th>
+      <th>cataloguer_info</th>
       <th>collection</th>
+      <th>comment</th>
+      <th>corporate_name</th>
+      <th>coyright</th>
+      <th>creation_date</th>
+      <th>...</th>
+      <th>publication_info</th>
+      <th>recid</th>
+      <th>reference</th>
+      <th>source_of_acquisition</th>
+      <th>subject</th>
+      <th>system_control_number</th>
       <th>thesaurus_terms</th>
-      <th>filetypes</th>
-      <th>prepublication</th>
+      <th>title</th>
+      <th>url</th>
+      <th>version_id</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Submitted to Phys. Rev. Lett. All figures and tables can be found at http://cms-results.web.cern.ch/cms-results/public-results/publications/BPH-18-007 (CMS Public Pages). This version corrects the...</td>
-      <td>[{'title': 'Phys.Rev.Lett.,81,2432', 'year': '1998', 'doi': 'doi:10.1103/PhysRevLett.81.2432', 'order_number': '1', 'authors': 'F. Abe'}, {'title': 'Phys.Rev.,D49,5845', 'year': '1994', 'doi': 'do...</td>
-      <td>[{'number': 'arXiv', 'summary': 'Signals consistent with the B$^+_\mathrm{c}$(2S) and B$^{*+}_\mathrm{c}$(2S) states are observed in proton-proton collisions at $\sqrt{s} =$ 13 TeV, in an event sa...</td>
-      <td>2019-02-05T04:03:36</td>
-      <td>{'date': '2019-04-03'}</td>
-      <td>[arXiv:1902.00571, None, CMS-BPH-18-007, CERN-EP-2019-014]</td>
-      <td>[{'institute': 'publisher', 'term': 'Elementary Particles and Fields'}]</td>
-      <td>{'volume': '122', 'pagination': '132001', 'title': 'Phys.Rev.Lett.', 'year': '2019'}</td>
-      <td>{'date': '2019', 'holder_contact': 'Article', 'holder': 'CERN'}</td>
-      <td>[{'source': 'INSPIRE', 'term': 'Experiment-HEP'}, {'source': 'arXiv', 'term': 'hep-ex'}, {'source': 'INSPIRE', 'term': 'Experiment-HEP'}]</td>
-      <td>{'creation_date': '2019-02-05'}</td>
-      <td>{'pagination': '17'}</td>
-      <td>30</td>
-      <td>{'title': 'Observation of Two Excited B$^+_\mathrm{c}$ States and Measurement of the B$^+_\mathrm{c}$(2S) Mass in pp Collisions at $\sqrt{s} =$ 13 TeV'}</td>
-      <td>[recid, system_control_number, doi]</td>
-      <td>[{'collaboration': 'CMS'}]</td>
-      <td>[{'comment': None, 'status': '', 'magic': ['XML 1.0 document text', 'application/xml; charset=utf-8', 'XML 1.0 document text', 'application/xml; charset=utf-8', 'application/xml'], 'description': ...</td>
-      <td>[{'institute': 'INSPIRETeX', 'value': 'Sirunyan:2019osb'}, {'institute': 'arXiv', 'value': 'oai:arXiv.org:1902.00571'}, {'institute': 'CDS', 'value': '2655521'}, {'institute': 'HAL', 'value': 'hal...</td>
-      <td>[fulltext, fulltext.xml, 10, 10.1103_PhysRevLett.122.132001.pdf, 10.1103_PhysRevLett.122.132001, 10.1103_PhysRevLett, 10.1103_PhysRevLett.122, 1902, 1902.00571, 1902.00571.pdf, scoap3-fulltext, sc...</td>
-      <td>{'source_of_acquisition': 'arXiv', 'date': '2019-02-13T03:35:35.632671', 'accession_number': '1447042'}</td>
-      <td>0</td>
-      <td>2019-08-15T02:03:52</td>
-      <td>{'set': ['CERN', 'INSPIRE:HEP', 'CERN:arXiv', 'CDS'], 'id': 'oai:inspirehep.net:1718338'}</td>
-      <td>[{'INSPIRE_number': 'INSPIRE-00312131', 'affiliation': 'Yerevan Phys. Inst.', 'first_name': 'Albert M', 'last_name': 'Sirunyan', 'full_name': 'Sirunyan, Albert M'}, {'INSPIRE_number': 'INSPIRE-001...</td>
-      <td>10.1103/PhysRevLett.122.132001</td>
-      <td>2279</td>
-      <td>[{'url': 'http://creativecommons.org/licenses/by/4.0/', 'material': 'preprint', 'license': 'CC BY 4.0'}, {'imposing': 'APS', 'url': 'https://creativecommons.org/licenses/by/4.0/', 'license': 'Crea...</td>
+      <td>{'set': ['CERN', 'INSPIRE:HEP', 'CERN:arXiv', ...</td>
+      <td>[{'number': 'arXiv', 'summary': 'Signals consi...</td>
       <td>{'experiment': 'CERN-LHC-CMS'}</td>
-      <td>0</td>
-      <td>{'url': 'https://physics.aps.org/synopsis-for/10.1103/PhysRevLett.122.132001', 'description': 'Physics Synopsis'}</td>
+      <td>[{'INSPIRE_number': 'INSPIRE-00312131', 'full_...</td>
+      <td>{'creation_date': '2019-02-05'}</td>
+      <td>[{'primary': 'HEP'}, {'primary': 'Citeable'}, ...</td>
+      <td>Submitted to Phys. Rev. Lett. All figures and ...</td>
+      <td>[{'collaboration': 'CMS'}]</td>
+      <td>{'holder': 'CERN', 'holder_contact': 'Article'...</td>
+      <td>2019-02-05T04:03:36</td>
+      <td>...</td>
+      <td>{'pagination': '132001', 'year': '2019', 'volu...</td>
       <td>1718338</td>
-      <td>[{'primary': 'HEP'}, {'primary': 'Citeable'}, {'primary': 'CORE'}, {'primary': 'Fermilab'}, {'primary': 'Published'}]</td>
-      <td>[{'term': 'p p: scattering'}, {'term': 'p p: colliding beams'}, {'term': 'B/c+: hadroproduction'}, {'term': 'B/c: excited state'}, {'term': 'B/c+: hadronic decay'}, {'term': 'excited state: hadron...</td>
-      <td>[xml, pdf, pdf, pdf, png, png, png]</td>
-      <td>{'date': '2019-02-01'}</td>
+      <td>[{'authors': 'F. Abe', 'year': '1998', 'order_...</td>
+      <td>{'source_of_acquisition': 'arXiv', 'accession_...</td>
+      <td>[{'source': 'INSPIRE', 'term': 'Experiment-HEP...</td>
+      <td>[{'institute': 'INSPIRETeX', 'value': 'Sirunya...</td>
+      <td>[{'term': 'p p: scattering'}, {'term': 'p p: c...</td>
+      <td>{'title': 'Observation of Two Excited B$^+_\ma...</td>
+      <td>[{'size': '34929', 'url': 'http://inspirehep.n...</td>
+      <td>2020-06-04T17:41:04</td>
     </tr>
   </tbody>
 </table>
+<p>1 rows × 36 columns</p>
 </div>
 </div>
 
@@ -3584,6 +3574,41 @@ dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">number_of_authors</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    2279
+Name: number_of_authors, dtype: int64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">authors</span>
 </pre></div>
 
@@ -3600,7 +3625,7 @@ dtype: int64</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0    [{&#39;INSPIRE_number&#39;: &#39;INSPIRE-00312131&#39;, &#39;affiliation&#39;: &#39;Yerevan Phys. Inst.&#39;, &#39;first_name&#39;: &#39;Albert M&#39;, &#39;last_name&#39;: &#39;Sirunyan&#39;, &#39;full_name&#39;: &#39;Sirunyan, Albert M&#39;}, {&#39;INSPIRE_number&#39;: &#39;INSPIRE-001...
+<pre>0    [{&#39;INSPIRE_number&#39;: &#39;INSPIRE-00312131&#39;, &#39;full_...
 Name: authors, dtype: object</pre>
 </div>
 
@@ -3626,6 +3651,44 @@ Name: authors, dtype: object</pre>
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">authors</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;INSPIRE_number&#39;: &#39;INSPIRE-00312131&#39;,
+ &#39;affiliation&#39;: &#39;Yerevan Phys. Inst.&#39;,
+ &#39;first_name&#39;: &#39;Albert M&#39;,
+ &#39;full_name&#39;: &#39;Sirunyan, Albert M&#39;,
+ &#39;last_name&#39;: &#39;Sirunyan&#39;}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can use all the previous methods to extract the authors from <code>'Antioquia U.'</code>:</p>
@@ -3633,6 +3696,57 @@ Name: authors, dtype: object</pre>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">x</span> <span class="k">if</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">1</span> <span class="k">else</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[3, 2, 3]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -3665,7 +3779,7 @@ Name: authors, dtype: object</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0    [Mejia Guisao, Jhovanny, Ruiz Alvarez, José David]
+<pre>0    [Mejia Guisao, Jhovanny, Ruiz Alvarez, José Da...
 Name: authors, dtype: object</pre>
 </div>
 
