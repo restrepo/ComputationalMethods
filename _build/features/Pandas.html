@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/matplotlib.html
 suffix: .ipynb
-search: pandas data dataframe dictionary com series file python analysis list dictionaries web github used lists column open key spreadsheet just keys json restrepo level example apply google structures also excel even activity row any already machine similar odd previous resulting format string function colab flexible relational labeled goal drive load structure rows columns before dataframes df cell index values instead obtain quotes authors blob master ipynb easy numpy png new dimensional corresponds indices programming creating main check formats link specific value methods double option not empty true add save try lines further method implicit nested d research pydata org docs
+search: pandas data dataframe dictionary com series file python analysis list dictionaries web github used lists column open key json spreadsheet just keys activity restrepo level example apply google structures also excel even row any already machine similar odd previous resulting format string function colab flexible relational labeled goal drive load structure rows columns before dataframes df cell index values instead obtain quotes authors blob master ipynb easy numpy png new dimensional corresponds indices programming creating main check formats link specific value methods double same option not empty true add save try lines further method implicit nested d research pydata org
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -3847,6 +3847,58 @@ Name: authors, dtype: object</pre>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Activity</strong>: Repeat the same activity but using directly the JSON file</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#See: https://github.com/inspirehep/rest-api-doc/issues/4#issuecomment-645218074</span>
+<span class="kn">import</span> <span class="nn">requests</span>                                                                                                                                                      
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://inspirehep.net/api/doi/10.1103/PhysRevLett.122.132001&#39;</span><span class="p">)</span>                                                                              
+<span class="n">authors</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span>                                                                                                                     
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;full_name&#39;</span><span class="p">)</span>
+              <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">authors</span> 
+               <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">aff</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Antioquia U.&#39;</span> <span class="k">for</span> <span class="n">aff</span> <span class="ow">in</span> <span class="n">author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;affiliations&#39;</span><span class="p">))]</span>
+<span class="n">names</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;Mejia Guisao, Jhovanny&#39;, &#39;Ruiz Alvarez, José David&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
