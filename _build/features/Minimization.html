@@ -1416,6 +1416,40 @@ V(\phi)=\frac{\mu^2}{2}\left(\phi_1^2+\phi_2^2 \right) + \frac{\lambda}{4}\left(
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Populating the interactive namespace from numpy and matplotlib
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">ϕ</span><span class="p">,</span><span class="n">m_H</span><span class="o">=</span><span class="mi">126</span><span class="p">,</span><span class="n">G_F</span><span class="o">=</span><span class="mf">1.1663787E-5</span><span class="p">):</span>
     <span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">G_F</span><span class="p">)</span> <span class="c1"># GeV</span>
     <span class="n">μ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m_H</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span> <span class="c1">#imaginary mass</span>
@@ -1645,7 +1679,7 @@ V(\phi)=\frac{\mu^2}{2}\left(\phi_1^2+\phi_2^2 \right) + \frac{\lambda}{4}\left(
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([ 63.35817875, 200.27422358])</pre>
+<pre>array([  14.51694022, -185.04344682])</pre>
 </div>
 
 </div>
@@ -1735,18 +1769,18 @@ V(\phi)=\frac{\mu^2}{2}\left(\phi_1^2+\phi_2^2 \right) + \frac{\lambda}{4}\left(
   <tbody>
     <tr>
       <th>0</th>
-      <td>-245.213403</td>
-      <td>-22.237444</td>
+      <td>159.718611</td>
+      <td>-187.387519</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>218.784839</td>
-      <td>112.948264</td>
+      <td>242.337264</td>
+      <td>-43.551885</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>217.456430</td>
-      <td>115.485138</td>
+      <td>239.405273</td>
+      <td>-57.525921</td>
     </tr>
   </tbody>
 </table>
@@ -1791,7 +1825,7 @@ V(\phi)=\frac{\mu^2}{2}\left(\phi_1^2+\phi_2^2 \right) + \frac{\lambda}{4}\left(
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/Minimization_66_0.png"
+<img src="../images/features/Minimization_67_0.png"
 >
 </div>
 

@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/Intro_clases.html
 suffix: .ipynb
-search: m sum xi yi random n e align data scipy frac font left right error least numbers xiyi linear com function polynomial begin end square partial color red not example set using order approximation x adjust html points functions going used optimize parameters activity decay also necessary numpy take obtained procedure value f where coefficients generated initial following generate seed colab github squares non fitting associated known equations curve starting c between wi drag b restrepo computationalmethods blob master material src only why raw stackoverflow given build certain axi minimize since solve resulting second docs org doc reference curvefit s
+search: m sum xi yi random n e align frac data scipy left font right error least numbers xiyi com linear function polynomial begin end x square example partial color red not set using order approximation adjust html points functions going used value f where optimize parameters activity decay also necessary numpy take obtained procedure coefficients generated initial following generate seed colab github squares non fitting associated known equations curve docs starting c fit between wi drag d b google restrepo computationalmethods blob master material ipynb src only why raw stackoverflow given build certain axi minimize since solve resulting second org
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -1648,6 +1648,119 @@ $$<p>Determinar: $A,c,d$</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example:-exponential-fit">Example: exponential fit<a class="anchor-link" href="#Example:-exponential-fit"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Guess-the-number-of-pages-of-a-book">Guess the number of pages of a book<a class="anchor-link" href="#Guess-the-number-of-pages-of-a-book"> </a></h4><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeZJ0QII5JcST-M9_JgGYNzX3GahULVVFc31DQnWjJ4SdUQwg/viewform?fbclid=IwAR0wEadM0ZH-HXmp3lkAM3emCDPxs_6F509BS3EkOvldp-NFzbCOkZVSjR4">https://docs.google.com/forms/d/e/1FAIpQLSeZJ0QII5JcST-M9_JgGYNzX3GahULVVFc31DQnWjJ4SdUQwg/viewform?fbclid=IwAR0wEadM0ZH-HXmp3lkAM3emCDPxs_6F509BS3EkOvldp-NFzbCOkZVSjR4</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+f(x)=a\exp\left[ -\frac{(x-\mu)^2}{2\sigma^2} \right]
+$$<p>where $a$ is the height of the gaussian, $\mu$ is the mean (expected value), and $\sigma$ es la varianze</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://docs.google.com/spreadsheets/d/e/2PACX-1vTu_XE2dAiTcjHTfbaVKt7xEl_GnNeF_VYFsIBi5uM-gqBlBRfNHso-X1z3lxV7IW2f9UYKmZkSOYv-/pub?output=csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Guess&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Guess</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1500</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>See solution: <a href="./gaussian_fit.ipynb">gaussian_fit.ipynb</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Random-Numbers">Random Numbers<a class="anchor-link" href="#Random-Numbers"> </a></h1>
 </div>
 </div>
@@ -2256,7 +2369,7 @@ They are normalized so each step is of unit length.</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_80_1.png"
+<img src="../images/features/statistics_88_1.png"
 >
 </div>
 
@@ -2377,7 +2490,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_85_1.png"
+<img src="../images/features/statistics_93_1.png"
 >
 </div>
 
@@ -2435,7 +2548,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_87_1.png"
+<img src="../images/features/statistics_95_1.png"
 >
 </div>
 
@@ -2493,7 +2606,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_89_1.png"
+<img src="../images/features/statistics_97_1.png"
 >
 </div>
 
@@ -2588,7 +2701,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_92_1.png"
+<img src="../images/features/statistics_100_1.png"
 >
 </div>
 
