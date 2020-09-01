@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/Pandas.html
 suffix: .ipynb
-search: numpy scipy arrays python functions scientific libraries basic methods www org lists import features data linear algebra different pythonnumpy official colab advanced useful manipulating used object framework numerical abstractions loops sympy pages anaconda math miscellaneous div src supported capabilities array operations implemented level also only packages pandas tasks importing vs integrate imported next logical course covered list research google com very allows common task should not its nevertheless nested new algorithms code true must designed avoid high work intended system en index html store continuum io cshop interesting standard uses specific interested general style float right markdown img static package
+search: numpy scipy arrays python functions basic methods scientific libraries www org lists import data linear algebra features different pythonnumpy official name colab advanced useful manipulating used object framework numerical abstractions loops sympy pages anaconda math miscellaneous div space src not supported capabilities array operations implemented attributes level also only packages pandas tasks importing vs integrate imported np next logical course covered list research google com very allows common task should its nevertheless nested new through algorithms code true must designed avoid high work intended system en index html store continuum io cshop interesting standard uses specific interested general style float
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -171,6 +171,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>The stantard name space for other Python modules are</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
@@ -189,7 +190,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If imported with an alias, NumPy functions and features are accessed by using the alias before</p>
+<p>If imported through the name space <code>np</code>, NumPy methods and attributes are accessed by using the assigned name space.</p>
+<p>The Basic methods of NumPy include the usual mathematical functions</p>
 
 </div>
 </div>
@@ -203,8 +205,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Basic functions</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">10.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">52.3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">63.9</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">10.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">52.3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">63.9</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -218,7 +219,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>36315.5026742 3.95699637107 1.80550085816 3.16227766017
+<pre>36315.502674246636 3.9569963710708773 1.8055008581584002 3.1622776601683795
 </pre>
 </div>
 </div>
@@ -264,12 +265,23 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The basic attributes include some important constants</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span>  <span class="p">(</span> <span class="s2">&quot;The value of PI is </span><span class="si">%1.6f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span>  <span class="p">(</span> <span class="s2">&quot;The value of PI is </span><span class="si">{:.6f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -284,6 +296,102 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>The value of PI is 3.141593
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span>  <span class="p">(</span> <span class="s2">&quot;The value of e is </span><span class="si">{:.6f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">e</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The value of e is 2.718282
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span>  <span class="p">(</span> <span class="s2">&quot;∞=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>∞=inf
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span>  <span class="p">(</span> <span class="s2">&quot;0/0=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0/0=nan
 </pre>
 </div>
 </div>
@@ -538,6 +646,40 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>numpy.ndarray</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#For lists, new elements can be added using append method</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">]</span>
 <span class="n">x1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">5.9</span><span class="p">)</span>
@@ -546,7 +688,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.6</span><span class="p">,</span> <span class="mf">6.9</span><span class="p">])</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -648,7 +790,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Operator + for numpy arrays is overloaded for adding</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span> <span class="n">x1</span><span class="o">+</span><span class="n">x2</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x1</span><span class="o">+</span><span class="n">x2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -715,12 +857,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-16-10bb95b98344&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">print</span> x1<span class="ansi-blue-fg">*</span>x2
-
-<span class="ansi-red-fg">TypeError</span>: can&#39;t multiply sequence by non-int of type &#39;list&#39;</pre>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-36-74e5b133da9a&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span>
+<span class="ansi-red-fg">    print x1*x2</span>
+           ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> Missing parentheses in call to &#39;print&#39;. Did you mean print(x1*x2)?
+</pre>
 </div>
 </div>
 </div>
@@ -753,13 +894,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-19-d643f42defa1&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg">#Division</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">print</span> x1<span class="ansi-blue-fg">/</span>x2
-
-<span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for /: &#39;list&#39; and &#39;list&#39;</pre>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-37-8a7d2d79dbee&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span>
+<span class="ansi-red-fg">    print x1/x2</span>
+           ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> Missing parentheses in call to &#39;print&#39;. Did you mean print(x1/x2)?
+</pre>
 </div>
 </div>
 </div>
@@ -792,12 +931,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-17-06680cf9cdd9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">print</span> x1<span class="ansi-blue-fg">-</span>x2
-
-<span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for -: &#39;list&#39; and &#39;list&#39;</pre>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-38-22974d1ab3f5&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span>
+<span class="ansi-red-fg">    print x1-x2</span>
+           ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> Missing parentheses in call to &#39;print&#39;. Did you mean print(x1-x2)?
+</pre>
 </div>
 </div>
 </div>
@@ -830,12 +968,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-18-da701bb7a380&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">print</span> x1<span class="ansi-blue-fg">**</span>x2
-
-<span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for ** or pow(): &#39;list&#39; and &#39;list&#39;</pre>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-39-b658a0801010&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span>
+<span class="ansi-red-fg">    print x1**x2</span>
+           ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> Missing parentheses in call to &#39;print&#39;. Did you mean print(x1**x2)?
+</pre>
 </div>
 </div>
 </div>
@@ -867,11 +1004,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">4.8</span><span class="p">,</span><span class="mf">6.9</span><span class="p">])</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.6</span><span class="p">,</span><span class="mf">2.8</span><span class="p">,</span><span class="mf">1.1</span><span class="p">])</span>
 
-<span class="nb">print</span> <span class="s2">&quot;Adding&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">+</span><span class="n">x2</span>
-<span class="nb">print</span> <span class="s2">&quot;Multiplication&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">*</span><span class="n">x2</span>
-<span class="nb">print</span> <span class="s2">&quot;Division&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">/</span><span class="n">x2</span>
-<span class="nb">print</span> <span class="s2">&quot;Subtraction&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">-</span><span class="n">x2</span>
-<span class="nb">print</span> <span class="s2">&quot;Power&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">**</span><span class="n">x2</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Adding&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">+</span><span class="n">x2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Multiplication&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Division&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">/</span><span class="n">x2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Subtraction&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Power&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="o">**</span><span class="n">x2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -885,11 +1022,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Adding [ 3.8  7.6  8. ]
-Multiplication [  3.12  13.44   7.59]
-Division [ 0.46153846  1.71428571  6.27272727]
+<pre>Adding [3.8 7.6 8. ]
+Multiplication [ 3.12 13.44  7.59]
+Division [0.46153846 1.71428571 6.27272727]
 Subtraction [-1.4  2.   5.8]
-Power [  1.6064649   80.81192733   8.37016462]
+Power [ 1.6064649  80.81192733  8.37016462]
 </pre>
 </div>
 </div>
@@ -904,7 +1041,7 @@ Power [  1.6064649   80.81192733   8.37016462]
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Note:</strong> Matrices can be represented as NumPy arrays where each element is a row vector. Nevertheless, be careful when multiply arrays, the operator * is overloaded in such a way that single elements are multiplied one by one, what is different than multiplication of matrices.</p>
+<p><strong>Note:</strong> Matrices can be represented as NumPy arrays where each element is a row vector. Nevertheless, be careful when multiply arrays, the operator * is overloaded in such a way that single elements are multiplied one by one, quite different from multiplication of matrices.</p>
 
 </div>
 </div>
@@ -920,9 +1057,9 @@ Power [  1.6064649   80.81192733   8.37016462]
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">A</span><span class="p">)</span> 
-<span class="nb">print</span> <span class="p">(</span><span class="n">B</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">B</span><span class="p">)</span> <span class="c1"># No matrix multiplication</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;A=</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> 
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;B=</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">B</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;A*B=</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">B</span><span class="p">))</span> <span class="c1"># No matrix multiplication</span>
 </pre></div>
 
     </div>
@@ -936,10 +1073,13 @@ Power [  1.6064649   80.81192733   8.37016462]
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[1 2]
+<pre>A=
+[[1 2]
  [3 4]]
+B=
 [[4 3]
  [2 1]]
+A*B=
 [[4 6]
  [6 4]]
 </pre>
@@ -949,6 +1089,17 @@ Power [  1.6064649   80.81192733   8.37016462]
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A matrix element can be accessed directly</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -988,23 +1139,12 @@ Power [  1.6064649   80.81192733   8.37016462]
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>NumPy define the tensor product</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1020,8 +1160,7 @@ Power [  1.6064649   80.81192733   8.37016462]
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 8,  5],
-       [20, 13]])</pre>
+<pre>2</pre>
 </div>
 
 </div>
@@ -1057,7 +1196,7 @@ Power [  1.6064649   80.81192733   8.37016462]
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Masks">Masks<a class="anchor-link" href="#Masks"> </a></h3><p>Superspostion of an logical array unpon the original one. The output filters only the True values</p>
+<h3 id="Masks">Masks<a class="anchor-link" href="#Masks"> </a></h3><p>Superspostion of n logical array unpon the original one. The output filters only the True values</p>
 
 </div>
 </div>
@@ -1135,7 +1274,7 @@ Power [  1.6064649   80.81192733   8.37016462]
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([False, False,  True,  True], dtype=bool)</pre>
+<pre>array([False, False,  True,  True])</pre>
 </div>
 
 </div>
@@ -1184,7 +1323,7 @@ Power [  1.6064649   80.81192733   8.37016462]
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>which is much better than:</p>
+<p>which is much better and faster than:</p>
 
 </div>
 </div>
@@ -1280,7 +1419,7 @@ Power [  1.6064649   80.81192733   8.37016462]
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Combining these features, we can perform searches and comparisons far more efficient</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
 <span class="c1">#A new list with numbers greater than 4</span>
 <span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
@@ -1358,6 +1497,96 @@ Power [  1.6064649   80.81192733   8.37016462]
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>or</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">[</span> <span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">)</span> <span class="p">]</span> <span class="c1">#or: |</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([4, 4, 3, 3])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>the full mask can be negated!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">))</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1, 2, 6, 8, 0, 9, 1, 6, 7])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Numpy-methods-to-basic-calculations">Numpy methods to basic calculations<a class="anchor-link" href="#Numpy-methods-to-basic-calculations"> </a></h3><p>spreadsheeet like operations</p>
 
 </div>
@@ -1373,7 +1602,7 @@ Power [  1.6064649   80.81192733   8.37016462]
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Native methods of numpy arrays allow to calculate basic quantities</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
 <span class="c1">#Maximum element</span>
 <span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;Maximum element&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="p">)</span>
 <span class="c1">#Minimum element</span>
@@ -1405,7 +1634,7 @@ Minimum element 0
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(&#39;Mean value&#39;, 4.1538461538461542)</pre>
+<pre>(&#39;Mean value&#39;, 4.153846153846154)</pre>
 </div>
 
 </div>
@@ -1420,7 +1649,7 @@ Minimum element 0
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="upond-the-indices">upond the indices<a class="anchor-link" href="#upond-the-indices"> </a></h3>
+<h3 id="upon-the-indices">upon the indices<a class="anchor-link" href="#upon-the-indices"> </a></h3>
 </div>
 </div>
 </div>
@@ -1464,18 +1693,12 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Direct sorted</p>
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
-
 </div>
 </div>
 
@@ -1486,7 +1709,9 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">x</span>
 </pre></div>
 
     </div>
@@ -1514,13 +1739,18 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 </div>
 
 <div class="jb_cell">
+or
+</div>
+
+<div class="jb_cell">
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,]</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1695,8 +1925,8 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create an array with a given range and a number of intervals</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">10</span> <span class="p">)</span>
-<span class="nb">print</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">10</span> <span class="p">)</span> 
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1816,7 +2046,7 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create an array with a given range and a given step</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.2</span> <span class="p">)</span>
-<span class="nb">print</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1830,8 +2060,8 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[ 1.   1.2  1.4  1.6  1.8  2.   2.2  2.4  2.6  2.8  3.   3.2  3.4  3.6  3.8
-  4.   4.2  4.4  4.6  4.8]
+<pre>[1.  1.2 1.4 1.6 1.8 2.  2.2 2.4 2.6 2.8 3.  3.2 3.4 3.6 3.8 4.  4.2 4.4
+ 4.6 4.8]
 </pre>
 </div>
 </div>
@@ -1904,7 +2134,7 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#In the same way, using the function loadtxt it is possible to load external data files</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;file.dat&quot;</span><span class="p">)</span>
 <span class="c1">#Data is then a multidimensional array with the loaded data</span>
-<span class="nb">print</span> <span class="n">data</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">data</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1918,47 +2148,10 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[ 3.2  2.1]
- [ 3.1  4.1]]
+<pre>[[3.2 2.1]
+ [3.1 4.1]]
 </pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Histograms are also useful and NumPy provides functions to do so</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(array([1, 2, 3, 2, 0, 4, 2, 2, 2, 1]),
- array([ 1. ,  1.8,  2.6,  3.4,  4.2,  5. ,  5.8,  6.6,  7.4,  8.2,  9. ]))</pre>
-</div>
-
 </div>
 </div>
 </div>
@@ -2016,7 +2209,7 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([ 1.,  2.,  2.,  1.,  1.,  1.,  1.,  6.,  6.,  8.])</pre>
+<pre>array([1., 2., 2., 1., 1., 1., 1., 6., 6., 8.])</pre>
 </div>
 
 </div>
@@ -2031,7 +2224,7 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Reverse order</p>
+<p>Reverse order (arrays do not have the <code>reverse()</code> method)</p>
 
 </div>
 </div>
@@ -2061,7 +2254,7 @@ Sorted array [0 1 1 2 3 3 4 4 6 6 7 8 9]
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([ 8.,  6.,  6.,  1.,  1.,  1.,  1.,  2.,  2.,  1.])</pre>
+<pre>array([8., 6., 6., 1., 1., 1., 1., 2., 2., 1.])</pre>
 </div>
 
 </div>
