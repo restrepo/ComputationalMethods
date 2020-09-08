@@ -50,6 +50,18 @@
   - title: Interactive editing with Jupyter
     url: /features/ipython-notebooks
     not_numbered: false
+    
+- title: Mathematical Preliminaries 
+  url: /features/computer-arithmetics
+  not_numbered: false
+  expand_sections: false
+  sections:
+  - title: Algorithms and convergence
+    url: /features/algorithms-convergence
+    not_numbered: false
+  - title: Optimization
+    url: /features/numba
+    not_numbered: false
 
 - title: One Variable Equations  
   url: /features/one-variable-equations
