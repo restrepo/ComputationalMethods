@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/one-variable-equations.html
 suffix: .ipynb
-search: font jupyter notebook notebooks com github org color ipython red markdown text interactive curves colab google wikipedia web into step should t b blob master svg style upload computing python official page rich based code www en service cell example lissajous heading systems research restrepo computationalmethods ipynb src div wikimedia commons jupyterlogo px powerful designed programming support plots media easy new list item mathematica where document colleagues using viewer family activity problem wiki normally axis x y figures sin delta once nbviewer online dropbox drive gitlab href material target parentimg assets badge alt open float right img thumb png height
+search: com notebooks jupyter notebook github colab ipython org google markdown interactive text curves research blob master svg wikipedia web into step should t b restrepo computationalmethods ipynb src style upload computing python official page rich based code www en service cell example lissajous heading systems href material target parentimg assets badge alt open div wikimedia commons jupyterlogo px powerful designed programming support plots media easy new list item mathematica where document colleagues using viewer family problem wiki normally axis x y figures sin delta once nbviewer online dropbox drive gitlab float right img thumb png height interface multiple languages although
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -45,6 +45,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/ipython-notebooks.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <p>Jupyter notebooks are a powerful web interface designed for interactive computing in multiple programming languages. Although it was initially designed for Python, its functionalities have quickly permeated other programming languagues. It have evolved from IPython, a replacement for the official Python shell in the console</p>
 <p>It is worth mentioning the main author of IPython is Fernando Perez, a physicist graduate from the <em>Universidad de Antioquia</em> and currently Professor in University of California, Berkeley.</p>
 <p><strong><a href="http://jupyter.org/">Official page</a></strong></p>
@@ -106,132 +107,27 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="How-to-(step-by-step)">How to (step by step)<a class="anchor-link" href="#How-to-(step-by-step)"> </a></h1>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>What is better than a step by step example when you want to introduce a new tool. Next it is shown a simple example of a IPython notebook for generating a family of Lissajous curves.</p>
-<p><font color='red'>*Red cursive text*</font> corresponds to comments on the activity.</p>
+<h1 id="How-to-(step-by-step)">How to (step by step)<a class="anchor-link" href="#How-to-(step-by-step)"> </a></h1><p>What is better than a step by step example when you want to introduce a new tool. Next it is shown a simple example of a IPython notebook for generating a family of Lissajous curves.</p>
 <hr>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'>
-*First, a suitable title for your notebook should be thought. For this, choose the style **Heading 1**.*
-</font></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lissajous-curves">Lissajous curves<a class="anchor-link" href="#Lissajous-curves"> </a></h1>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'>
-*Then, a brief statement of the problem to solve should be done. For this, you can use the **Markdown** style. A useful reference for formatting markdown text can be found* [here](http://en.wikipedia.org/wiki/Markdown#Example).
-</font></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>First, a suitable title for your notebook should be thought. For this, choose the style <strong>Heading 1</strong> with <code>#</code> at the beggining.</p>
+</blockquote>
+<h1 id="Lissajous-curves">Lissajous curves<a class="anchor-link" href="#Lissajous-curves"> </a></h1><blockquote><p>Then, a brief statement of the problem to solve should be done. For this, you can use the <strong>Markdown</strong> style. A useful reference for formatting markdown text can be found <a href="http://en.wikipedia.org/wiki/Markdown#Example">here</a>.</p>
+</blockquote>
 <p>Lissajous curves are a family of parametric two-dimensional curves normally obtained when solving multi-harmonic systems, like a mass-spring systems with two springs in each axis (x and y) or some circuit systems. The figures are described with the following equations:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'>
-    *You can use LaTex format in a Markdown cell, for this you must use double $*
-</font></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>You can use LaTex format in a Markdown cell, for this you must use double <code>$</code></p>
+</blockquote>
 <p>$x(t) = A\sin(a t +\delta)$</p>
 <p>$y(t) = B\sin(b t)$</p>
 <p>where $A$ and $B$ are the amplitudes along each axis, $a$ and $b$ the angular frequencies and $\delta$ the relative phase.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'>
-    <em>It is possible to embed figures from internet into a Markdown cell simply by writing:</em></p>
+<blockquote><p>It is possible to embed figures from internet into a Markdown cell simply by writing:</p>
+</blockquote>
 
 <pre><code>![Some text](URL_to_figure)
+
 </code></pre>
-<p>&lt;/font&gt;</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="http://upload.wikimedia.org/wikipedia/commons/5/5d/Lissajous_animation.gif" alt="Figure"></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'>
-    *Once established the problem, the first thing to do is to import all the libraries you should use for your calculations.*
-</font></p>
+<blockquote><p>Once established the problem, the first thing to do is to import all the libraries you should use for your calculations.</p>
+</blockquote>
 
 </div>
 </div>
@@ -262,9 +158,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Welcome to pylab, a matplotlib-based Python environment [backend: module://IPython.zmq.pylab.backend_inline].
-For more information, type &#39;help(pylab)&#39;.
+<pre>Populating the interactive namespace from numpy and matplotlib
 </pre>
 </div>
 </div>
@@ -279,9 +173,8 @@ For more information, type &#39;help(pylab)&#39;.
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'>
-    *You can create subsections and subsubsections using the styles **Heading 2** and **Heading 3**.*
-</font></p>
+<blockquote><p>You can create subsections and subsubsections using the styles <strong>Heading 2</strong>: with <code>##</code>, and <strong>Heading 3</strong>: with <code>###</code></p>
+</blockquote>
 
 </div>
 </div>
@@ -302,9 +195,8 @@ For more information, type &#39;help(pylab)&#39;.
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'>
-    *Regarding coding, you can write Python code normally as if you were doing it in a text editor like emacs.*
-</font></p>
+<blockquote><p>Regarding coding, you can write Python code normally as if you were doing it in a text editor like emacs.</p>
+</blockquote>
 
 </div>
 </div>
@@ -354,8 +246,8 @@ For more information, type &#39;help(pylab)&#39;.
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span> <span class="n">Nratio</span><span class="p">,</span> <span class="n">Ndelta</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="c1">#Sweeping all figures</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span> <span class="n">Ndelta</span> <span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span> <span class="n">Nratio</span> <span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">Ndelta</span> <span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">Nratio</span> <span class="p">):</span>
         <span class="c1">#Creating a subfigure with the current delta and ratio c</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span> <span class="n">Nratio</span><span class="p">,</span> <span class="n">Ndelta</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="n">Ndelta</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="p">)</span>
         <span class="c1">#Plotting this Lissajous curve</span>
@@ -374,10 +266,19 @@ For more information, type &#39;help(pylab)&#39;.
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py:19: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/ipython-notebooks_22_0.png"
+<img src="../images/features/ipython-notebooks_12_1.png"
 >
 </div>
 
@@ -479,7 +380,7 @@ For more information, type &#39;help(pylab)&#39;.
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/ipython-notebooks_29_0.png"
+<img src="../images/features/ipython-notebooks_19_0.png"
 >
 </div>
 
