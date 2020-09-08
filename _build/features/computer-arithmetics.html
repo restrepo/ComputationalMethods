@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/algorithms-convergence.html
 suffix: .ipynb
-search: numbers binary bits b precision s frac representation quotient arithmetic float python sum svg e operations single double org real represent finite next wikipedia x com computer used represented any not addition divide remainder previous activity function d floatexample times integer set multiplication digits step new string format need base digit formula np colab off example within errors machine www last obtain r integers implement following full upload wikimedia commons thumb px png system where rules sign given result n xe print u round v computation numerical called representable taken error must into values here zeroes standard font four implementation
+search: numbers binary bits b precision s frac representation quotient arithmetic float python sum svg e operations single double org real represent finite next wikipedia x com computer used represented any not addition divide remainder previous activity function string d floatexample times integer set multiplication digits step new format need base digit formula np colab off example within errors machine here www last obtain r integers int implement following full upload wikimedia commons thumb px png system where rules sign given result n xe print u round v computation numerical called representable taken error must into values zeroes standard check font
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -252,8 +252,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From <a href="https://www.techcareerbooster.com/blog/binary-representation-of-an-integer">here</a>: If you recall your mathematics, then it will be easy for you to find out how we turn an integer number to its binary representation. Let's take for example the number 47.</p>
 <ol>
-<li>We divide 47 by 2. The quotient is 23 and the remainder is <strong>1</strong>.</li>
-<li>We divide the quotient of the previous step by 2. The new quotient is 11 and the remainder is <strong>1</strong>.</li>
+<li>We divide 47 by 2. The quotient is <code>int(47/2) → 23</code> and the remainder is <code>47%2 → 1</code></li>
+<li>We divide the quotient of the previous step by 2. The new quotient is <code>int(23/2) → 1</code> and the remainder is <code>int(23/2) → 1</code>.</li>
 <li>We divide the quotient of the previous step by 2. The new quotient is 5 and the remainder is <strong>1</strong>.</li>
 <li>We divide the quotient of the previous step by 2. The new quotient is 2 and the remainder is <strong>1</strong>.</li>
 <li>We divide the quotient of the previous step by 2. The new quotient is 1 and the remainder is <strong>0</strong>.</li>
@@ -272,7 +272,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Activity</strong>: Implement a binary function that get the binary representation of an integer.</p>
+<p><strong>Activity</strong>: Implement a function that get the binary representation of an integer.</p>
 
 </div>
 </div>
@@ -283,7 +283,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Activity</strong>: Return as a string with 8 charactes completed with leasing zeroes.</p>
+<p><strong>Activity</strong>: Return as a string with 8 charactes completed with leading zeroes. Use the string method: <code>.rjust(8,"0")</code></p>
 
 </div>
 </div>
@@ -311,9 +311,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="k">def</span> <span class="nf">mybin</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__name__ = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__name__</span><span class="p">))</span>
+    <span class="c1">#Write your code here and change the next line as required</span>
     <span class="k">return</span> <span class="nb">bin</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">n</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Escriba un entero;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">n</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Escriba un entero:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">b</span><span class="o">=</span><span class="n">mybin</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Su representación binaria es: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 </pre></div>
@@ -328,11 +329,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Escriba un entero;
-45
-__name__ = __main__
-Su representación binaria es: 00101101
+<pre>__name__ = __main__
+Su representación binaria es: 00000010
 </pre>
 </div>
 </div>
@@ -348,7 +353,7 @@ Su representación binaria es: 00101101
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The advantage of this standard format is that can be used directly as a python module, because in that case the variable <code>__name__</code> evaluates to the name
-of the function. To chech this, we first use a cell of the notebook just as a editor with the Jupyter magic function <code>%%writefile</code></p>
+of the function. To check this, we first use a cell of the notebook just as a editor with the Jupyter magic function <code>%%writefile</code></p>
 
 </div>
 </div>
@@ -384,7 +389,7 @@ of the function. To chech this, we first use a cell of the notebook just as a ed
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Overwriting mybin.py
+<pre>Writing mybin.py
 </pre>
 </div>
 </div>
@@ -429,7 +434,7 @@ in the working directory</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>mybin
+<pre>__name__ = mybin
 </pre>
 </div>
 </div>
@@ -441,6 +446,51 @@ in the working directory</p>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>&#39;00101101&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>while here, or in a terminal:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="vm">__name__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;__main__&#39;</pre>
 </div>
 
 </div>
