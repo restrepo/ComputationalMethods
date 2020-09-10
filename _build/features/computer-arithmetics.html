@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/algorithms-convergence.html
 suffix: .ipynb
-search: numbers binary bits b precision s frac representation quotient arithmetic float python sum svg e operations single double org real represent finite next wikipedia x com computer used represented any not addition divide remainder previous activity function string d floatexample times integer set multiplication digits step new format need base digit formula np colab off example within errors machine here www last obtain r integers int implement following full upload wikimedia commons thumb px png system where rules sign given result n xe print u round v computation numerical called representable taken error must into values zeroes standard check font
+search: numbers binary bits b precision s frac representation quotient arithmetic float python sum svg e operations single double org real com represent finite next int wikipedia x computer used represented any not addition divide remainder previous activity function string d floatexample times integer set multiplication here digits step new format need base digit formula np colab off example within errors machine www last obtain r integers implement following full upload wikimedia commons thumb px png system where rules sign given result n xe print u round v computation numerical called representable taken error must into values zeroes standard check font
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -250,15 +250,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>From <a href="https://www.techcareerbooster.com/blog/binary-representation-of-an-integer">here</a>: If you recall your mathematics, then it will be easy for you to find out how we turn an integer number to its binary representation. Let's take for example the number 47.</p>
+<p>From <a href="https://www.techcareerbooster.com/blog/binary-representation-of-an-integer">here</a>: If you recall your mathematics, then it will be easy for you to find out how we turn an integer number to its binary representation. Let's take for example the number 47. (see '//' operator <a href="https://stackoverflow.com/a/1535601">here</a>)</p>
 <ol>
-<li>We divide 47 by 2. The quotient is <code>int(47/2) → 23</code> and the remainder is <code>47%2 → 1</code></li>
-<li>We divide the quotient of the previous step by 2. The new quotient is <code>int(23/2) → 1</code> and the remainder is <code>int(23/2) → 1</code>.</li>
-<li>We divide the quotient of the previous step by 2. The new quotient is 5 and the remainder is <strong>1</strong>.</li>
-<li>We divide the quotient of the previous step by 2. The new quotient is 2 and the remainder is <strong>1</strong>.</li>
-<li>We divide the quotient of the previous step by 2. The new quotient is 1 and the remainder is <strong>0</strong>.</li>
-<li>We divide the quotient of the previous step by 2. The new quotient is 0 and the remainder is <strong>1</strong></li>
-<li>We stop here, when the last quotient is 0.</li>
+<li>We divide 47 by 2. The quotient is <code>int(47//2) → 23</code> and the remainder is <code>47%2 → 1</code></li>
+<li>We divide the quotient of the previous step by 2. The new quotient is <code>int(23//2) → 11</code> and the remainder is <code>23%2 → 1</code>.</li>
+<li>We divide the quotient of the previous step by 2. The new quotient is <code>int(11/2) → 5</code> and the remainder is <code>11%2 → 1</code>.</li>
+<li>We divide the quotient of the previous step by 2. The new quotient is <code>int(5//2) → 2</code> and the remainder is <code>5%2 → 1</code>.</li>
+<li>We divide the quotient of the previous step by 2. The new quotient is <code>int(2//2) → 1</code> and the remainder is <code>2%2 → 0</code>.</li>
+<li>We divide the quotient of the previous step by 2. The new quotient is <code>int(1//2) → 0</code> and the remainder is <code>1%2 → 1</code></li>
+<li>We stop here, when the last quotient is <code>1//2→0</code>.</li>
 </ol>
 <p>Then, the binary representation is the series of <strong>1</strong>s and <strong>0</strong>s of the remainders, taken in reverse order to the one produced, from latest to earliest: <strong>101111</strong>.
 <!-- https://www.geeksforgeeks.org/bin-in-python/ --></p>
@@ -298,6 +298,40 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1793,7 +1827,7 @@ $$0\approx 10^{-16}$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float128</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1809,7 +1843,41 @@ $$0\approx 10^{-16}$$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>3.141592653589793116</pre>
+<pre>3.14</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3.1415927</pre>
 </div>
 
 </div>
@@ -1895,7 +1963,7 @@ $$0\approx 10^{-16}$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float128</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1911,41 +1979,7 @@ $$0\approx 10^{-16}$$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>3.1415927</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3.14</pre>
+<pre>3.141592653589793116</pre>
 </div>
 
 </div>
