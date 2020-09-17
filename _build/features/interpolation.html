@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/LagrangePoly.html
 suffix: .ipynb
-search: x frac y xi interpolation n polynomial f plt l m t font yi linear xm points function smallmatrix polynomials example end plot lagrange right degree begin left ipynb numpy color np com data activity text set leq where df p xj steps roots define pn neq prod colab implementation align xn using both de github discrete derivation print org s such defined kind cdots wikipedia matter google computationalmethods master however lp divided differences object latex given details linspace form value lets want b dataset interpolate expression sp red interpd fit functions blue ngc galaxy circular velocity research restrepo blob
+search: x frac y xi interpolation n polynomial f plt l m t yi linear xm font points function smallmatrix polynomials example end plot com ipynb lagrange right degree colab begin left numpy np data activity text set leq where df p xj github steps roots define color pn neq prod google master implementation align xn using both de research restrepo computationalmethods blob discrete derivation print org s such defined kind cdots wikipedia matter material however lp divided differences object latex given details linspace form value lets want b dataset interpolate expression sp interpd fit functions blue ngc galaxy circular velocity
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -34,7 +34,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Interpolation-Methods">Interpolation Methods<a class="anchor-link" href="#Interpolation-Methods"> </a></h1>
+<h1 id="Interpolation-Methods">Interpolation Methods<a class="anchor-link" href="#Interpolation-Methods"> </a></h1><p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/interpolation.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
 </div>
 </div>
 </div>
@@ -48,6 +49,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <hr>
 <p><!-- __Homework__: https://classroom.github.com/a/SB94rDVJ --></p>
 <h2 id="Bibliography:">Bibliography:<a class="anchor-link" href="#Bibliography:"> </a></h2><p>[1d] Gonzalo Galiano Casas, Esperanza García Gonzalo <a href="https://www.unioviedo.es/compnum/expositive/handbook/metnum.pdf">Numerical Computation</a> - <a href="https://drive.google.com/file/d/1gwHYLx5aBf3oXRhmGeG-n1toTtAUhvfX/view?usp=sharing">GD</a> - <a href="https://www.unioviedo.es/compnum/index.php/english-menu">Web page with notebooks</a></p>
+<p><a href="https://github.com/restrepo/Calculus/blob/master/Differential_Calculus.ipynb">https://github.com/restrepo/Calculus/blob/master/Differential_Calculus.ipynb</a></p>
 
 </div>
 </div>
@@ -229,6 +231,36 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="s1">      })();</span>
 <span class="s1">      &lt;/script&gt;</span>
 <span class="s1">      &#39;&#39;&#39;</span><span class="p">))</span>
+    
+<span class="k">def</span> <span class="nf">Polynomial_to_LaTeX</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Small function to print nicely the polynomial p as we write it in maths, in LaTeX code.&quot;&quot;&quot;</span>
+    <span class="n">coefs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">coef</span>  <span class="c1"># List of coefficient, sorted by increasing degrees</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># The resulting string</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coefs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span><span class="p">:</span>  <span class="c1"># Remove the trailing .0</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># First coefficient, no need for X</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{a}</span><span class="s2"> + &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Negative a is printed like (a)</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;(</span><span class="si">{a}</span><span class="s2">) + &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+            <span class="c1"># a = 0 is not displayed </span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Second coefficient, only X and not X**i</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># a = 1 does not need to be displayed</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;x + &quot;</span>
+            <span class="k">elif</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{a}</span><span class="s2"> \;x + &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;(</span><span class="si">{a}</span><span class="s2">) \;x + &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># A special care needs to be addressed to put the exponent in {..} in LaTeX</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;x^</span><span class="si">{i}</span><span class="s2"> + &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="s2">&quot;{</span><span class="si">%d</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{a}</span><span class="s2"> \;x^</span><span class="si">{i}</span><span class="s2"> + &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="s2">&quot;{</span><span class="si">%d</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;(</span><span class="si">{a}</span><span class="s2">) \;x^</span><span class="si">{i}</span><span class="s2"> + &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="s2">&quot;{</span><span class="si">%d</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;$&quot;</span> <span class="o">+</span> <span class="n">res</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;$&quot;</span> <span class="k">if</span> <span class="n">res</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>    
 </pre></div>
 
     </div>
@@ -300,6 +332,40 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 1 x + 2 x - 3
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Latex</span><span class="p">(</span><span class="n">Polynomial_to_LaTeX</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$1 + 2 \;x + (-3) \;x^{2}$
+</div>
+
 </div>
 </div>
 </div>
@@ -800,13 +866,13 @@ sp.interpolate.interp1d<span class="o">?</span>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The option <code>kind</code> specifies the kind of interpolation:</p>
 <ul>
-<li>('linear', 'nearest', 'zero', 'slinear', 'quadratic', 'cubic'
-  where 'zero', 'slinear', 'quadratic' and 'cubic' refer to a spline
+<li><code>'linear', 'nearest', 'zero', 'slinear', 'quadratic', 'cubic'</code>,
+  where <code>'zero', 'slinear', 'quadratic' and 'cubic'</code> refer to a spline
   interpolation of zeroth, first, second or third order) </li>
 <li>or as an
   integer specifying the order of the spline interpolator to use.</li>
 </ul>
-<p>Default is 'linear' correponding to integer 1.</p>
+<p>Default is <code>'linear'</code> correponding to integer 1.</p>
 
 </div>
 </div>
@@ -958,7 +1024,7 @@ sp.interpolate.interp1d<span class="o">?</span>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_44_0.png"
+<img src="../images/features/interpolation_45_0.png"
 >
 </div>
 
@@ -1091,7 +1157,7 @@ sp.interpolate.interp1d<span class="o">?</span>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_47_1.png"
+<img src="../images/features/interpolation_48_1.png"
 >
 </div>
 
@@ -1409,7 +1475,7 @@ plt.plot(2.35,f(2.35),'y*',markersize=10)
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_60_0.png"
+<img src="../images/features/interpolation_61_0.png"
 >
 </div>
 
@@ -1614,7 +1680,7 @@ In fact, we can try with a polynomial of degree two with roots at 1 and 22.</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_69_1.png"
+<img src="../images/features/interpolation_70_1.png"
 >
 </div>
 
@@ -1832,7 +1898,7 @@ plt.ylim(-15,20)
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_79_1.png"
+<img src="../images/features/interpolation_80_1.png"
 >
 </div>
 
@@ -1993,7 +2059,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_85_0.png"
+<img src="../images/features/interpolation_86_0.png"
 >
 </div>
 
@@ -2058,7 +2124,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_87_1.png"
+<img src="../images/features/interpolation_88_1.png"
 >
 </div>
 
@@ -2123,7 +2189,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_89_1.png"
+<img src="../images/features/interpolation_90_1.png"
 >
 </div>
 
@@ -2198,7 +2264,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_91_2.png"
+<img src="../images/features/interpolation_92_2.png"
 >
 </div>
 
@@ -2327,7 +2393,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_93_1.png"
+<img src="../images/features/interpolation_94_1.png"
 >
 </div>
 
@@ -2660,7 +2726,7 @@ $$ L_{1,1}=\prod_{\begin{smallmatrix}m=0\\ m\neq 1\end{smallmatrix}}^1 \frac{x-x
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_106_1.png"
+<img src="../images/features/interpolation_107_1.png"
 >
 </div>
 
@@ -2853,19 +2919,8 @@ $\displaystyle - 0.00521578136549848 x^{2} - 0.146480556534234 x + 8.48638370189
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'></p>
-<p>Along with the professor, write an implementation of the previous algorithm during classtime.
-&lt;/font&gt;</p>
+<p><strong>Activity</strong></p>
+<p>Along with the professor, write an implementation of the previous algorithm during classtime.</p>
 
 </div>
 </div>
