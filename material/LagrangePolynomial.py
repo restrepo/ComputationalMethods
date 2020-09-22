@@ -1,14 +1,38 @@
 """
 From: https://gist.github.com/folkertdev/084c53887c49a6248839
 A sympy-based Lagrange polynomial constructor. 
-Given a set of function inputs and outputs, the lagrangePolynomial function will construct an 
-expression that for every input gives the corresponding output. For intermediate values,
-the polynomial interpolates (giving varying results based on the shape of your input). 
+
+Implementation of Lagrangian interpolating polynomial.
+See:
+
+   def lagrangePolynomial(xs, ys):
+
+Given two 1-D arrays `xs` and `ys,` returns the Lagrange interpolating
+polynomial through the points ``(xs, ys)``
+
+
+Given a set 1-D arrays of inputs and outputs, the lagrangePolynomial function 
+will construct an expression that for every input gives the corresponding output. 
+For intermediate values, the polynomial interpolates (giving varying results 
+based  on the shape of your input). 
+
+The Lagrangian polynomials can be obtained explicitly with (see below):
+   
+   def polyL(xs,j):
+   
+as sympy polynomial, and 
+
+    def L(xs,j):
+
+as Python functions.
+
+
 This is useful when the result needs to be used outside of Python, because the 
-expression can easily be copied. To convert the expression to a python function object,
-use sympy.lambdify.
+expression can easily be copied. To convert the expression to a python function 
+object, use sympy.lambdify.
 """
 from sympy import symbols, expand, lambdify, solve_poly_system
+#Python library for arithmetic with arbitrary precision
 from mpmath import tan, e
 
 import math
@@ -58,6 +82,11 @@ def L(xs,j):
     return lambdify(x, polyL(xs,j) )
 
 def lagrangePolynomial(xs, ys):
+    '''
+    Given two 1-D arrays `x` and `w,` returns the Lagrange interpolating
+    polynomial through the points ``(x, w)``.
+
+    '''
     # based on https://en.wikipedia.org/wiki/Lagrange_polynomial#Example_1
     k = len(xs)
     total = 0

@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/interpolation_details.html
 suffix: .ipynb
-search: x lagrange n l polynomial f sympy implementation colab interpolation com form polynomials research google github pn sum xi wikipedia function qquad text href restrepo computationalmethods blob master material lagrangepoly ipynb target parentimg src assets badge svg alt open based code gist folkertdev cca approx yil references en org wiki lagrangepolynomial interpolating example tree points degree numpy scipy simpy check expliclty p using lp polyl properties xj quad neq j objects python actividad fit cuatro puntos comprobando las propiedades del ploinomio de
+search: x colab lagrange n l com polynomial f sympy implementation research google interpolation github form polynomials href restrepo computationalmethods blob master material lagrangepoly ipynb target parentimg src assets badge svg alt open pn sum xi wikipedia function qquad text based code gist folkertdev cca approx yil references en org wiki lagrangepolynomial interpolating example tree points degree numpy scipy simpy check expliclty p using lp polyl properties xj quad neq j objects python actividad fit cuatro puntos comprobando las propiedades del polinomio de
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -36,7 +36,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Interpolation-polynomial-in-the-Lagrange-form">Interpolation polynomial in the Lagrange form<a class="anchor-link" href="#Interpolation-polynomial-in-the-Lagrange-form"> </a></h1><p>Based on <a href="https://gist.github.com/folkertdev/084c53887c49a6248839">this code</a></p>
+<h1 id="Interpolation-polynomial-in-the-Lagrange-form">Interpolation polynomial in the Lagrange form<a class="anchor-link" href="#Interpolation-polynomial-in-the-Lagrange-form"> </a></h1><p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/LagrangePoly.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<p>Based on <a href="https://gist.github.com/folkertdev/084c53887c49a6248839">this code</a></p>
 $$f(x)\approx P_n(x)\,,$$$$P_n(x) = \sum_{i=0}^n f(x_i)L_{n,i}(x) = \sum_{i=0}^n y_iL_{n,i}(x)$$<p><strong>References:</strong>
 <a href="https://en.wikipedia.org/wiki/Lagrange_polynomial">Wikipedia</a></p>
 
@@ -94,8 +95,8 @@ $$f(x)\approx P_n(x)\,,$$$$P_n(x) = \sum_{i=0}^n f(x_i)L_{n,i}(x) = \sum_{i=0}^n
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>3/2</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \frac{3}{2}$
 </div>
 
 </div>
@@ -129,8 +130,8 @@ $$f(x)\approx P_n(x)\,,$$$$P_n(x) = \sum_{i=0}^n f(x_i)L_{n,i}(x) = \sum_{i=0}^n
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>x**2 - 1</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle x^{2} - 1$
 </div>
 
 </div>
@@ -163,8 +164,8 @@ $$f(x)\approx P_n(x)\,,$$$$P_n(x) = \sum_{i=0}^n f(x_i)L_{n,i}(x) = \sum_{i=0}^n
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>(x - 1)*(x + 1)</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left(x - 1\right) \left(x + 1\right)$
 </div>
 
 </div>
@@ -344,7 +345,7 @@ $$f(x)\approx P_n(x)\,,$$$$P_n(x) = \sum_{i=0}^n f(x_i)L_{n,i}(x) = \sum_{i=0}^n
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Writing LagrangePolynomial.py
+<pre>Overwriting LagrangePolynomial.py
 </pre>
 </div>
 </div>
@@ -389,7 +390,7 @@ $$f(x)\approx P_n(x)\,,$$$$P_n(x) = \sum_{i=0}^n f(x_i)L_{n,i}(x) = \sum_{i=0}^n
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.6/dist-packages/IPython/core/magics/pylab.py:161: UserWarning: pylab import has clobbered these variables: [&#39;cos&#39;, &#39;sin&#39;]
+<pre>/usr/local/lib/python3.5/dist-packages/IPython/core/magics/pylab.py:160: UserWarning: pylab import has clobbered these variables: [&#39;cos&#39;, &#39;sin&#39;]
 `%matplotlib` prevents importing * from pylab and numpy
   &#34;\n`%matplotlib` prevents importing * from pylab and numpy&#34;
 </pre>
@@ -643,8 +644,8 @@ $$f(x)\approx P_n(x)\,,$$$$P_n(x) = \sum_{i=0}^n f(x_i)L_{n,i}(x) = \sum_{i=0}^n
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>-0.00521578136549848*x**2 - 0.146480556534234*x + 8.48638370189219</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle - 0.00521578136549848 x^{2} - 0.146480556534234 x + 8.48638370189219$
 </div>
 
 </div>
@@ -700,8 +701,8 @@ $$P_2(x) =  L_{2,0}(x)f(x_0)+L_{2,1}(x)f(x_1)+L_{2,2}(x)f(x_2)$$</p>
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>-0.00521578136549848*x**2 - 0.146480556534234*x + 8.48638370189219</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle - 0.00521578136549848 x^{2} - 0.146480556534234 x + 8.48638370189219$
 </div>
 
 </div>
@@ -734,8 +735,8 @@ $$P_2(x) =  L_{2,0}(x)f(x_0)+L_{2,1}(x)f(x_1)+L_{2,2}(x)f(x_2)$$</p>
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>0.0078064012490242*x**2 - 0.244340359094457*x + 1.66276346604215</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 0.0078064012490242 x^{2} - 0.244340359094457 x + 1.66276346604215$
 </div>
 
 </div>
@@ -802,7 +803,7 @@ $$P_2(x) =  L_{2,0}(x)f(x_0)+L_{2,1}(x)f(x_1)+L_{2,2}(x)f(x_2)$$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.0, 12.0)</pre>
+<pre>(0, 12)</pre>
 </div>
 
 </div>
@@ -870,8 +871,42 @@ $$P_2(x) =  L_{2,0}(x)f(x_0)+L_{2,1}(x)f(x_1)+L_{2,2}(x)f(x_2)$$</p>
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>0.0078064012490242*x**2 - 0.244340359094457*x + 1.66276346604215</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 0.0078064012490242 x^{2} - 0.244340359094457 x + 1.66276346604215$
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">L2_0</span><span class="o">.</span><span class="n">as_poly</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \operatorname{Poly}{\left( 0.0078064012490242 x^{2} - 0.244340359094457 x + 1.66276346604215, x, domain=\mathbb{R} \right)}$
 </div>
 
 </div>
@@ -904,8 +939,8 @@ $$P_2(x) =  L_{2,0}(x)f(x_0)+L_{2,1}(x)f(x_1)+L_{2,2}(x)f(x_2)$$</p>
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>1.00000000000000</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 1.0$
 </div>
 
 </div>
@@ -938,8 +973,8 @@ $$P_2(x) =  L_{2,0}(x)f(x_0)+L_{2,1}(x)f(x_1)+L_{2,2}(x)f(x_2)$$</p>
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>-4.44089209850063e-16</pre>
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle -4.44089209850063 \cdot 10^{-16}$
 </div>
 
 </div>
@@ -982,7 +1017,7 @@ $$P_2(x) =  L_{2,0}(x)f(x_0)+L_{2,1}(x)f(x_1)+L_{2,2}(x)f(x_2)$$</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0.9999999999999969 0.9999999999999951 0.9999999999999996
+<pre>0.9999999999999968 0.9999999999999951 0.9999999999999998
 </pre>
 </div>
 </div>
@@ -1108,7 +1143,7 @@ Name: X, dtype: float64</pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Actividad</strong> Fit a cuatro puntos, comprobando las propiedades del ploinomio de Lagrange</p>
+<p><strong>Actividad</strong> Fit a cuatro puntos, comprobando las propiedades del polinomio de Lagrange</p>
 
 </div>
 </div>
