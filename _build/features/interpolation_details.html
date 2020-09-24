@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/Minimization.html
 suffix: .ipynb
-search: x y xi f frac z n d left right divided polynomials hermite cdots order differences equiv k polynomial lagrange function points ik font interpolation expression p dk any using color derivative colab ipynb pn set data zeroth difference example coefficients span taylor however dataset com computationalmethods master interpolationdetails interpolating next given note previous through sum red both calculate point equal real research google github blob material functions such expressions different notation suppose where determined yi interpolant cdotsa align defining also style defined show specific those only derivatives approximated assume respective finally h sbustamante routine href restrepo target parentimg src
+search: x y xi f frac z n d left right divided polynomials hermite cdots order differences equiv k polynomial lagrange function points ik font interpolation expression p dk any using color derivative colab ipynb pn set data obtain zeroth difference example coefficients span taylor however dataset com computationalmethods master interpolationdetails interpolating next given note previous through sum red both calculate point equal real research google github blob material functions such expressions different notation suppose where determined yi interpolant cdotsa align also style defined show specific those only derivatives approximated assume respective finally h sbustamante routine href restrepo target parentimg src
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -70,9 +70,20 @@ $$P_n(x) = a_0 + a_1(x-x_0)+ a_2 (x-x_0)(x-x_1)+\cdots + a_n(x-x_0)\cdots (x-x_{
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>where $a_i$ are a set of constants to be determined from the given data $(x_i, y_i)$.</p>
-<p>Note that due to the definition of an interpolant function, previous expression should satisfy:</p>
-$$P_{n}\left(x_{0}\right)=a_{0}=f\left(x_{0}\right)=y_{0}$$$$\frac{P_{n}(x)-a_{0}}{x-x_{0}}=\frac{P_{n}(x)-y_{0}}{x-x_{0}}=a_{1}+a_{2}\left(x-x_{1}\right)+\cdots+a_{n}\left(x-x_{2}\right) \cdots\left(x-x_{n}\right)$$$$\frac{P_{n}\left(x_{1}\right)-y_{0}}{x-x_{0}}=a_{1}=\frac{y_{1}-y_{0}}{x-x_{0}}$$$$\frac{1}{x-x_{1}}\left(\frac{P_{n}(x)-y_{0}}{x-x_{0}}-\frac{y_{1}-y_{0}}{x_{1}-x_{0}}\right)=a_{2}+a_{3}\left(x-x_{2}\right)+\cdots+a_{n}\left(x-x_{2}\right) \cdots\left(x-x_{n}\right)$$<p>evaluando en $x=x_2$</p>
-$$a_{2}=\frac{1}{x_{2}-x_{1}}\left(\frac{y_{2}-y_{0}}{x_{2}-x_{0}}-\frac{y_{1}-y_{0}}{x_{1}-x_{0}}\right)$$
+<ul>
+<li>Obtain $a_0$ <br/>Note that due to the definition of an interpolant function, previous expression should satisfy:</li>
+</ul>
+$$P_{n}\left(x_{0}\right)=a_{0}=f\left(x_{0}\right)=y_{0}$$<ul>
+<li>Obtain $a_1$
+$$\frac{P_{n}(x)-a_{0}}{x-x_{0}}=\frac{P_{n}(x)-y_{0}}{x-x_{0}}=a_{1}+a_{2}\left(x-x_{1}\right)+\cdots+a_{n}\left(x-x_{2}\right) \cdots\left(x-x_{n}\right)$$</li>
+</ul>
+$$\frac{P_{n}\left(x_{1}\right)-y_{0}}{x-x_{0}}=a_{1}=\frac{y_{1}-y_{0}}{x-x_{0}}$$<ul>
+<li>Obtain $a_1$ $$
+\frac{1}{x-x_{1}}\left(\frac{P_{n}(x)-y_{0}}{x-x_{0}}-\frac{y_{1}-y_{0}}{x_{1}-x_{0}}\right)=a_{2}+a_{3}\left(x-x_{2}\right)+\cdots+a_{n}\left(x-x_{2}\right) \cdots\left(x-x_{n}\right)$$ evaluando en $x=x_2$ $$
+a_{2}=\frac{1}{x_{2}-x_{1}}\left(\frac{y_{2}-y_{0}}{x_{2}-x_{0}}-\frac{y_{1}-y_{0}}{x_{1}-x_{0}}\right),$$ que <a href="https://bit.ly/3j018kH">podemos reescribir como</a>
+$$a_{2}=\frac{\frac{y_{2}-y_{1}}{x_{2}-x_{1}}-\frac{y_{1}-y_{0}}{x_{1}-x_{0}}}{x_{2}-x_{0}}.$$</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -82,11 +93,13 @@ $$a_{2}=\frac{1}{x_{2}-x_{1}}\left(\frac{y_{2}-y_{0}}{x_{2}-x_{0}}-\frac{y_{1}-y
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$a_{2}=\frac{\frac{y_{2}-y_{1}}{x_{2}-x_{1}}-\frac{y_{1}-y_{0}}{x_{1}-x_{0}}}{x_{2}-x_{0}}$$\begin{align}
+<p>In summary
+\begin{align}
 a_{0}=&amp; f\left[y_{0}\right] \equiv y_{0} \\
 a_{1}=&amp; f\left[y_{0}, y_{1}\right] \equiv \frac{y_{1}-y_{0}}{x_{1}-x_{0}}\\
 a_{2}=&amp;f\left[y_{0}, y_{1}, y_{2}\right] \equiv \frac{\frac{y_{2}-y_{1}}{x_{2}-x_{1}}-\frac{y_{1}-y_{0}}{x_{1}-x_{0}}}{x_{2}-x_{0}}
-\end{align}<p>The key observation
+\end{align}</p>
+<p>The key observation
 $$f\left[y_{0}, y_{1}, y_{2}\right]=\frac{f\left[y_{1}, y_{2}\right]-f\left[y_{0}, y_{1}\right]}{x_{2}-x_{0}}$$</p>
 
 </div>
@@ -98,7 +111,7 @@ $$f\left[y_{0}, y_{1}, y_{2}\right]=\frac{f\left[y_{1}, y_{2}\right]-f\left[y_{0
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Defining the <strong>zeroth divided difference</strong>, $k=0$, of $x_i$ like</p>
+<p>Allow us to definine the <strong>zeroth divided difference</strong>, $k=0$, of $x_i$ like</p>
 $$D_0[x_i] \equiv f[x_i] \equiv f(x_i) = y_i$$<p>the <strong>first divided difference</strong>, $k=1$ of $x_i$ like</p>
 $$D_1[x_i] \equiv f[x_i, x_{i+1}] \equiv \frac{f[x_{i+1}]-f[x_i]}{x_{i+1}-x_i}$$$$D_1[x_i] = \frac{D_{0}[x_{i+1}]-D_{0}[x_{i}]}{x_{i+1}-x_i} $$<p>the <strong>second divided difference</strong>, $k=2$ of $x_i$ like</p>
 $$D_2[x_i]\equiv f[x_i,x_{i+1},x_{i+2}] \equiv \frac{f[x_{i+1},x_{i+2}]-f[x_i,x_{i+1}]}{x_{i+2}-x_{i}}$$$$D_2[x_i]=\frac{D_1[x_{i+1}]-D_1[x_i]}{x_{i+2}-x_{i}}$$<p>successively until the <strong>kth divided difference</strong></p>
