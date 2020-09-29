@@ -85,6 +85,17 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 </div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.5/dist-packages/IPython/core/magics/pylab.py:160: UserWarning: pylab import has clobbered these variables: [&#39;fmin&#39;, &#39;f&#39;]
+`%matplotlib` prevents importing * from pylab and numpy
+  &#34;\n`%matplotlib` prevents importing * from pylab and numpy&#34;
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -386,7 +397,7 @@ Name: X, dtype: float64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -402,7 +413,7 @@ Name: X, dtype: float64</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>6.2</pre>
+<pre>(6.2, 6.2)</pre>
 </div>
 
 </div>
@@ -1127,12 +1138,12 @@ Optimization terminated successfully.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m_H</span><span class="o">=</span><span class="mi">126</span> <span class="c1"># GeV</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m_H</span><span class="o">=</span><span class="mi">126</span> <span class="c1"># GeV/c^2 (c→1)</span>
 <span class="n">G_F</span><span class="o">=</span><span class="mf">1.1663787E-5</span> <span class="c1">#GeV^-2</span>
 <span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">G_F</span><span class="p">)</span> <span class="c1"># GeV</span>
 <span class="n">μ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m_H</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">λ</span><span class="o">=</span><span class="n">m_H</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">μ</span><span class="p">,</span><span class="n">λ</span>
+<span class="n">μ</span><span class="p">,</span><span class="n">λ</span><span class="p">,</span><span class="n">v</span>
 </pre></div>
 
     </div>
@@ -1148,7 +1159,7 @@ Optimization terminated successfully.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(89.09545442950498, 0.13093799079487806)</pre>
+<pre>(89.09545442950498, 0.13093799079487806, 246.21965079413738)</pre>
 </div>
 
 </div>
@@ -1262,6 +1273,10 @@ Optimization terminated successfully.
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ϕ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">380</span><span class="p">,</span><span class="mi">380</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ϕ</span><span class="p">,</span> <span class="n">V</span><span class="p">(</span><span class="n">ϕ</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\phi$ [GeV]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V(\phi)$ [GeV]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\phi$ [GeV]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V(\phi)$ [GeV$^4$]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 
@@ -1668,7 +1683,7 @@ V(\phi)=\frac{\mu^2}{2}\left(\phi_1^2+\phi_2^2 \right) + \frac{\lambda}{4}\left(
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([-108.57625925, -172.6477193 ])</pre>
+<pre>array([-164.99567257,  -65.7636795 ])</pre>
 </div>
 
 </div>
@@ -1758,18 +1773,18 @@ V(\phi)=\frac{\mu^2}{2}\left(\phi_1^2+\phi_2^2 \right) + \frac{\lambda}{4}\left(
   <tbody>
     <tr>
       <th>0</th>
-      <td>-195.787115</td>
-      <td>149.303457</td>
+      <td>118.814666</td>
+      <td>-215.655260</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-210.157023</td>
-      <td>128.289290</td>
+      <td>239.086165</td>
+      <td>-58.838100</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-109.067895</td>
-      <td>220.744899</td>
+      <td>228.276742</td>
+      <td>-92.270501</td>
     </tr>
   </tbody>
 </table>

@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/numerical-calculus.html
 suffix: .ipynb
-search: t x action m p frac l least function s end hbox xmin plt object plot points tx right com v obtained interpolation set range ts xp height xi ti polynomial delta approx left eqnarray return lagrange np define small segment free fall data mass degree energy begin g interpolate between int value such ini random txx tt minimization div raw restrepo computationalmethods master leastaction geometry following www eftaylor movement fitted figure calculate align xx problem possible correct definition lagrangian rm d code throw vertically let final using calculates steps solution activity cocalc zero curve check smooth polynomials step full
+search: t x action m p frac l least function s end hbox xmin plt object plot points tx right com v obtained interpolation set range ts xp height xi ti polynomial delta approx left eqnarray return lagrange np initial final define small segment free fall data mass degree energy begin g interpolate between int value such ini random txx tt minimization div raw restrepo computationalmethods master leastaction geometry following www eftaylor movement fitted figure calculate align xx problem possible correct definition lagrangian rm d code throw vertically let using calculates steps solution activity cocalc zero curve check smooth polynomials step
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -101,7 +101,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <div style="float: right;" markdown="1">
     <img src="https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/figures/leastaction3.svg?sanitize=true">
-</div><h2 id="Geometry-interpretation">Geometry interpretation<a class="anchor-link" href="#Geometry-interpretation"> </a></h2><p>Following the geometry theory developed <a href="http://www.eftaylor.com/software/ActionApplets/LeastAction.html">here</a>, we will try to define something called the <em>Action</em> for one small segment of the free fall movement in one-dimension.</p>
+</div><h2 id="Geometry-interpretation">Geometry interpretation<a class="anchor-link" href="#Geometry-interpretation"> </a></h2><p>Predict from initial conditions, rebuild physical path from initial and the final state.</p>
+<p>Following the geometry theory developed <a href="http://www.eftaylor.com/software/ActionApplets/LeastAction.html">here</a>, we will try to define something called the <em>Action</em> for one small segment of the free fall movement in one-dimension.</p>
 <p>For that we need the experimental data consisting on the height of an object of mass $m$ in free fall, and the height $x_i$, for each time $t_i$. This data would be fitted by a polynomial of degree two, as displayed in the figure for one of the fitted segments of the plot of $x$ as a function of $t$. We take the origin of the coordinates at ground level. For each segment we can calculate an average kinetic energy, $T$, and an averge potential energy, $V$, in the limit of $\Delta t=t_2-t_1$ small. From the figure</p>
 \begin{align}
 T_{12}=\frac12 m v^2\approx &amp;\frac12 m\left(\frac{x_2-x_1}{t_2-t_1}\right)^2\,,&amp;
@@ -298,6 +299,34 @@ S&amp;=&amp;\int_{t_{\hbox{ini}}}^{t_{\hbox{end}}} L\, {\rm d}t \\
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>550.3493673339286
+459.61825206303354
+342.4644127733231
+331.459689578506
+225.01316485752167
+211.21468603608093
+196.71669612765731
+186.64743929364718
+154.74301469839858
+151.59615942111134
+99.39935405252346
+72.90890773801733
+70.46213681452232
+43.20057111692605
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -631,7 +660,7 @@ plt.grid()
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>20.329460377237375</pre>
+<pre>43.20057111692605</pre>
 </div>
 
 </div>
@@ -682,7 +711,7 @@ plt.grid()
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>29.84351359257962</pre>
+<pre>56.65688265854261</pre>
 </div>
 
 </div>
@@ -864,6 +893,7 @@ plt.grid()
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;TIME seconds&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Worldline of least action&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -878,19 +908,8 @@ plt.grid()
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7f56ca144fd0&gt;</pre>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
 <div class="output_png output_subarea ">
-<img src="../images/features/least_action_minimization_40_1.png"
+<img src="../images/features/least_action_minimization_40_0.png"
 >
 </div>
 
@@ -921,7 +940,7 @@ $$x(t)=-\frac{{1}}{{2}}gt^2+v_0t$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="o">=</span><span class="n">poly1d</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="o">=</span><span class="n">poly1d</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;t&#39;</span> <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
 </pre></div>
 
@@ -937,9 +956,43 @@ $$x(t)=-\frac{{1}}{{2}}gt^2+v_0t$$</p>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>      2
--4.9 x + 14.7 x + 0.0001604
+-4.9 t + 14.7 t + 0.0001604
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>11.025294114794459</pre>
+</div>
+
 </div>
 </div>
 </div>
@@ -982,6 +1035,7 @@ $$x(t)=-\frac{{1}}{{2}}gt^2+v_0t$$</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;TIME seconds&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;VELOCITY meter/seconds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -996,19 +1050,8 @@ $$x(t)=-\frac{{1}}{{2}}gt^2+v_0t$$</p>
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0,0.5,&#39;VELOCITY meter/seconds&#39;)</pre>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
 <div class="output_png output_subarea ">
-<img src="../images/features/least_action_minimization_45_1.png"
+<img src="../images/features/least_action_minimization_46_0.png"
 >
 </div>
 
@@ -1067,7 +1110,7 @@ $$x(t)=-\frac{{1}}{{2}}gt^2+v_0t$$</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/least_action_minimization_47_1.png"
+<img src="../images/features/least_action_minimization_48_1.png"
 >
 </div>
 
@@ -1191,7 +1234,61 @@ $$x(t)=-\frac{{1}}{{2}}gt^2+v_0t$$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;S_MINIMUM=</span><span class="si">%g</span><span class="s1">  Joules*second&#39;</span> <span class="o">%</span><span class="k">SS</span>.sum() )
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">sc</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">hbar</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.0545718001391127e-34</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;S_MINIMUM=</span><span class="si">{}</span><span class="s1">  Joules*second = </span><span class="si">{}</span><span class="s1"> ħ&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+      <span class="n">SS</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">format_float_scientific</span><span class="p">(</span><span class="n">SS</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">sc</span><span class="o">.</span><span class="n">hbar</span><span class="p">,</span><span class="n">precision</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+      <span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1205,7 +1302,7 @@ $$x(t)=-\frac{{1}}{{2}}gt^2+v_0t$$</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>S_MINIMUM=-21.555  Joules*second
+<pre>S_MINIMUM=-21.55497732876534  Joules*second = -2.e+35 ħ
 </pre>
 </div>
 </div>
