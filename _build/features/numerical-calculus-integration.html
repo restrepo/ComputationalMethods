@@ -5,13 +5,13 @@ kernel_path: content/features
 has_widgets: false
 title: |-
   Numerical integration
-pagenum: 17
+pagenum: 18
 prev_page:
-  url: /features/numerical-calculus.html
+  url: /features/numerical-calculus-integration.html
 next_page:
   url: /features/numerical-calculus-integration-methods.html
 suffix: .ipynb
-search: x f omega numerical frac t integration universe simpsons singularity equation integral rule integrals font g quadrature dx end density composite left endpoint function b int begin using calculus next adaptive right e methods improper where d r color red h z p com trapezoidal infinite align only given expression numpy abstractions wikipedia intab previous operatorname pi value lambda infty colab cover used also functions python programming org possible interval c defined terms xi mathbf implementation integrate activity kappa infinity google github svg ones shall since actual different found analytical approaches small such those differentiation scipy second here antiderivative not
+search: x f numerical omega integration frac t universe simpsons singularity integral rule integrals g quadrature dx density equation calculus composite left endpoint function b int end using colab com next adaptive right begin span infty e methods improper where d r h z p trapezoidal infinite numpy align google only python given defined expression abstractions wikipedia intab previous operatorname pi value lambda research github svg cover used also functions programming org possible interval c terms xi mathbf implementation integrate style color red activity kappa infinity restrepo ipynb open ones shall since actual different found analytical approaches small such those differentiation
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -34,7 +34,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Numerical-Calculus.-Integration">Numerical Calculus. Integration<a class="anchor-link" href="#Numerical-Calculus.-Integration"> </a></h1>
+<h1 id="Numerical-Calculus.-Integration">Numerical Calculus. Integration<a class="anchor-link" href="#Numerical-Calculus.-Integration"> </a></h1><p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/numerical-calculus-integration.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
 </div>
 </div>
 </div>
@@ -134,17 +135,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 </div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.6/dist-packages/IPython/core/magics/pylab.py:161: UserWarning: pylab import has clobbered these variables: [&#39;cm&#39;, &#39;f&#39;]
-`%matplotlib` prevents importing * from pylab and numpy
-  &#34;\n`%matplotlib` prevents importing * from pylab and numpy&#34;
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -213,18 +203,16 @@ The numerical approximation of the integral with the trapezoidal method is then 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">integracion</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">test</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-  <span class="sd">&#39;&#39;&#39;Trapezoidal method for the numerical integration  de f entre a y b</span>
-<span class="sd">     con n intervalos</span>
-<span class="sd">  &#39;&#39;&#39;</span>
-  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-  <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-  <span class="n">y</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-  <span class="k">elif</span> <span class="n">test</span> <span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-    <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-  <span class="k">elif</span> <span class="n">test</span> <span class="o">==</span><span class="mi">2</span><span class="p">:</span>
-    <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="nb">sum</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="sd">&#39;&#39;&#39;Trapezoidal method for the numerical integration  de f entre a y b</span>
+<span class="sd">         con n intervalos</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">elif</span> <span class="n">test</span> <span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -248,7 +236,7 @@ The numerical approximation of the integral with the trapezoidal method is then 
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(),</span><span class="n">full_output</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 <p><strong>Parameters</strong>:
 <code>python</code></p>
@@ -318,7 +306,7 @@ The numerical approximation of the integral with the trapezoidal method is then 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:1: RuntimeWarning: invalid value encountered in double_scalars
+<pre>/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:1: RuntimeWarning: invalid value encountered in double_scalars
   &#34;&#34;&#34;Entry point for launching an IPython kernel.
 </pre>
 </div>
@@ -393,7 +381,7 @@ The numerical approximation of the integral with the trapezoidal method is then 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>(0.9460830703671831, 1.0503632079297089e-14)
-0.00048422813415527344
+0.0009553432464599609
 </pre>
 </div>
 </div>
@@ -485,12 +473,23 @@ The numerical approximation of the integral with the trapezoidal method is then 
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Avoid singularities in custom solutions</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integracion</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span> <span class="p">(</span> <span class="n">x</span> <span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">,</span><span class="mf">1E-14</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">test</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integracion</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span> <span class="p">(</span> <span class="n">x</span> <span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">,</span><span class="mf">1E-14</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -506,44 +505,9 @@ The numerical approximation of the integral with the trapezoidal method is then 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.945078780953392</pre>
+<pre>0.9450787809533919</pre>
 </div>
 
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">integracion</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span> <span class="p">(</span> <span class="n">x</span> <span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">,</span><span class="mf">1E-14</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="n">test</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">s</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0.9460829699776094
-0.0004754066467285156
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -780,7 +744,7 @@ $$\operatorname{Si}(t)=\int_0^t \frac{\sin x}{x}\, \operatorname{d}x$$</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+<h2 id="---Activity-"><span style="color:red">   Activity </span><a class="anchor-link" href="#---Activity-"> </a></h2>
 </div>
 </div>
 </div>
@@ -829,42 +793,10 @@ The superior limit in the integral corresponds to the actual redshift $z=0$. Wha
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'></p>
-<ul>
+<h2 id="--Activity-"><span style="color:red">  Activity </span><a class="anchor-link" href="#--Activity-"> </a></h2><ul>
 <li>Using the Simpson's adaptive quadrature determine the value of the next integral with a precision of float32.</li>
 </ul>
-$$\int_0^4 e^{-3x}\sin(4x)dx$$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'><br>
-Fresnel integrals are commonly used in the study of light difraction at a rectangular aperture, they are given by:</p>
+$$\int_0^4 e^{-3x}\sin(4x)dx$$<h2 id="--Activity-"><span style="color:red">  Activity </span><a class="anchor-link" href="#--Activity-"> </a></h2><p>Fresnel integrals are commonly used in the study of light difraction at a rectangular aperture, they are given by:</p>
 $$c(t) = \int_0^t\cos\left(\frac{\pi}{2}\omega^2\right)d\omega$$$$s(t) = \int_0^t\sin\left(\frac{\pi}{2}\omega^2\right)d\omega$$<p>These integrals cannot be solved using analitical methods. Using the previous routine for adaptive quadrature, compute the integrals with a precision of $\epsilon=10^{-4}$ for values of $t=0.1,0.2,0.3,\cdots 1.0$. Create two arrays with those values and then make a plot of $c(t)$ vs $s(t)$. The resulting figure is called Euler spiral, that is a member of a family of curves called <a href="http://en.wikipedia.org/wiki/Vertical_loop">Clothoid loops</a>.</p>
 
 </div>
@@ -899,8 +831,8 @@ $$c(t) = \int_0^t\cos\left(\frac{\pi}{2}\omega^2\right)d\omega$$$$s(t) = \int_0^
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Improper integral can be processed with the <code>quad</code> function of <code>scipy.integrate</code>, or other integration functions, by using the infinity implementation of <code>numpy</code>, (which is the same of the <code>math</code> module, see below)</p>
 <ul>
-<li>Positive infinity: <code>np.inf</code> and several aliases</li>
-<li>Negagite infinity: <code>np.NINF</code>
+<li>Positive infinity ($+\infty$): <code>np.inf</code> and several aliases</li>
+<li>Negagite infinity ($-\infty$): <code>np.NINF</code>
 For details of the implementation and the aliases <a href="https://stackoverflow.com/a/42315752/2268280">see here</a></li>
 </ul>
 
@@ -923,6 +855,17 @@ For details of the implementation and the aliases <a href="https://stackoverflow
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Python the $\infty$ can be defined as</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -957,6 +900,17 @@ For details of the implementation and the aliases <a href="https://stackoverflow
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is already implemented in numpy</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -1175,7 +1129,7 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">NINF</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">NINF</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1191,7 +1145,7 @@ $$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(1.7724538509055159, 1.4202636780944923e-08)</pre>
+<pre>True</pre>
 </div>
 
 </div>
@@ -1243,7 +1197,7 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
 
     </div>
@@ -1259,41 +1213,7 @@ $$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.8862269254527579</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(0.8862269254527579, 7.101318390472462e-09)</pre>
+<pre>True</pre>
 </div>
 
 </div>
@@ -1390,33 +1310,9 @@ $$ \int_a^\infty f(x)dx = \int_0^{1/a}t^{-2}f\left(\frac{1}{t}\right)dt $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'><br>
-Error function is a special and non-elementary function that is widely used in probability, statistics and diffussion processes.
+<h2 id="-Activity"><span style="color:red"> Activity</span><a class="anchor-link" href="#-Activity"> </a></h2><p>Error function is a special and non-elementary function that is widely used in probability, statistics and diffussion processes.
 It is defined through the integral:</p>
 $$\mbox{erf}(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}dt$$<p>Using the substitution $u=t^2$ it is possible to use the previous methods for impropers integrals in order to evaluate the error function. Create a routine called <code>ErrorFunction</code> that, given a value of $x$, return the respective value of the integral.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-\begin{equation}
-a=1 \label{a}
-\end{equation}<p>\ref{a}</p>
 
 </div>
 </div>

@@ -5,13 +5,13 @@ kernel_path: content/features
 has_widgets: false
 title: |-
   Numerical integration methods
-pagenum: 18
+pagenum: 19
 prev_page:
   url: /features/numerical-calculus-integration.html
 next_page:
   url: /features/linear-algebra.html
 suffix: .ipynb
-search: x f frac n b xi dx left right h s ab k function quadrature intab sum integration font simpsons using where order interval given xk scipy composite l error formula e intervals trapezoidal rule points polynomial j previous intabf implementation int color red epsilon lagrange interpolation integrate methods cdots expression t adaptive numerical integral next xn omegai value not obtain obtained simple second activity precision approximation p such approx ipynb prod begin end xj org rules problem mu within dt step here approximate operatorname d m applied newton cotes low wikipedia png assume simpson method np ln dn new
+search: x f frac n b xi dx left right h s ab k function quadrature intab integration sum simpsons using where order interval given xk scipy composite l error formula e intervals trapezoidal rule points polynomial j previous intabf implementation int span epsilon methods lagrange interpolation integrate numerical cdots expression t adaptive ipynb integral next xn value not obtain obtained simple second activity precision colab com approximation p such approx prod begin end xj org style color red rules problem mu within dt step here approximate operatorname d m omegak applied omegai newton cotes low wikipedia png assume simpson method
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -23,7 +23,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Integration-for-data-points">Integration for data points<a class="anchor-link" href="#Integration-for-data-points"> </a></h1>
+<h1 id="Integration-for-data-points">Integration for data points<a class="anchor-link" href="#Integration-for-data-points"> </a></h1><p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/numerical-calculus-integration-methods.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
 </div>
 </div>
 </div>
@@ -61,8 +62,8 @@ $$f(x) \approx \sum_{k=0}^n f(x_k)L_{n,k}(x)$$\begin{align}
 =&amp;\sum_{k=0}^n f(x_k) \omega_k \,
 %$$
 \end{align}<p><!-- http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture18.pdf -->
-where $\omega_i$ is a <em>weight</em> applied to each function value:
-$$\omega_i = \int_a^b L_{n,k}(x) dx= \int_a^b\prod_{j=0,\ j\neq k}^{n}\frac{(x-x_j)}{(x_k-x_j)}dx$$
+where $\omega_k$ is a <em>weight</em> applied to each function value:
+$$\omega_k = \int_a^b L_{n,k}(x) dx= \int_a^b\prod_{j=0,\ j\neq k}^{n}\frac{(x-x_j)}{(x_k-x_j)}dx$$
 Note that, since Lagrange polynomials do not depend on the function, we can calculate the weights $\omega_i$ using only the nodes $[x_0,x_1,\ldots x_n]$</p>
 
 </div>
@@ -115,17 +116,6 @@ $$E[f] = \frac{h^{n+2}f^{n+1}(\xi)}{(n+1)!}\int_0^nt(t-1)\cdots(t-n) $$<p>if $n$
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Populating the interactive namespace from numpy and matplotlib
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.5/dist-packages/IPython/core/magics/pylab.py:160: UserWarning: pylab import has clobbered these variables: [&#39;f&#39;]
-`%matplotlib` prevents importing * from pylab and numpy
-  &#34;\n`%matplotlib` prevents importing * from pylab and numpy&#34;
 </pre>
 </div>
 </div>
@@ -376,6 +366,85 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre><span class="ansi-red-fg">Signature:</span> integrate<span class="ansi-blue-fg">.</span>trapz<span class="ansi-blue-fg">(</span>y<span class="ansi-blue-fg">,</span> x<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> dx<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1.0</span><span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
+Integrate along the given axis using the composite trapezoidal rule.
+
+Integrate `y` (`x`) along given axis.
+
+Parameters
+----------
+y : array_like
+    Input array to integrate.
+x : array_like, optional
+    The sample points corresponding to the `y` values. If `x` is None,
+    the sample points are assumed to be evenly spaced `dx` apart. The
+    default is None.
+dx : scalar, optional
+    The spacing between sample points when `x` is None. The default is 1.
+axis : int, optional
+    The axis along which to integrate.
+
+Returns
+-------
+trapz : float
+    Definite integral as approximated by trapezoidal rule.
+
+See Also
+--------
+sum, cumsum
+
+Notes
+-----
+Image [2]_ illustrates trapezoidal rule -- y-axis locations of points
+will be taken from `y` array, by default x-axis distances between
+points will be 1.0, alternatively they can be provided with `x` array
+or with `dx` scalar.  Return value will be equal to combined area under
+the red lines.
+
+
+References
+----------
+.. [1] Wikipedia page: http://en.wikipedia.org/wiki/Trapezoidal_rule
+
+.. [2] Illustration image:
+       http://en.wikipedia.org/wiki/File:Composite_trapezoidal_rule_illustration.png
+
+Examples
+--------
+&gt;&gt;&gt; np.trapz([1,2,3])
+4.0
+&gt;&gt;&gt; np.trapz([1,2,3], x=[4,6,8])
+8.0
+&gt;&gt;&gt; np.trapz([1,2,3], dx=2)
+8.0
+&gt;&gt;&gt; a = np.arange(6).reshape(2, 3)
+&gt;&gt;&gt; a
+array([[0, 1, 2],
+       [3, 4, 5]])
+&gt;&gt;&gt; np.trapz(a, axis=0)
+array([ 1.5,  2.5,  3.5])
+&gt;&gt;&gt; np.trapz(a, axis=1)
+array([ 2.,  8.])
+<span class="ansi-red-fg">File:</span>      /usr/local/lib/python3.5/dist-packages/numpy/lib/function_base.py
+<span class="ansi-red-fg">Type:</span>      function
+</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -414,7 +483,7 @@ $$\int_{x_0}^{x_1}f(x)dx = \frac{h}{2}[ f(x_0) + f(x_1) ]-\frac{h^3}{12}f^{''}(\
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>4.157728605250994</pre>
+<pre>3.7751549046338475</pre>
 </div>
 
 </div>
@@ -584,6 +653,75 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre><span class="ansi-red-fg">Signature:</span> integrate<span class="ansi-blue-fg">.</span>simps<span class="ansi-blue-fg">(</span>y<span class="ansi-blue-fg">,</span> x<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> dx<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span> even<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;avg&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
+Integrate y(x) using samples along the given axis and the composite
+Simpson&#39;s rule.  If x is None, spacing of dx is assumed.
+
+If there are an even number of samples, N, then there are an odd
+number of intervals (N-1), but Simpson&#39;s rule requires an even number
+of intervals.  The parameter &#39;even&#39; controls how this is handled.
+
+Parameters
+----------
+y : array_like
+    Array to be integrated.
+x : array_like, optional
+    If given, the points at which `y` is sampled.
+dx : int, optional
+    Spacing of integration points along axis of `y`. Only used when
+    `x` is None. Default is 1.
+axis : int, optional
+    Axis along which to integrate. Default is the last axis.
+even : str {&#39;avg&#39;, &#39;first&#39;, &#39;last&#39;}, optional
+    &#39;avg&#39; : Average two results:1) use the first N-2 intervals with
+              a trapezoidal rule on the last interval and 2) use the last
+              N-2 intervals with a trapezoidal rule on the first interval.
+
+    &#39;first&#39; : Use Simpson&#39;s rule for the first N-2 intervals with
+            a trapezoidal rule on the last interval.
+
+    &#39;last&#39; : Use Simpson&#39;s rule for the last N-2 intervals with a
+           trapezoidal rule on the first interval.
+
+See Also
+--------
+quad: adaptive quadrature using QUADPACK
+romberg: adaptive Romberg quadrature
+quadrature: adaptive Gaussian quadrature
+fixed_quad: fixed-order Gaussian quadrature
+dblquad: double integrals
+tplquad: triple integrals
+romb: integrators for sampled data
+cumtrapz: cumulative integration for sampled data
+ode: ODE integrators
+odeint: ODE integrators
+
+Notes
+-----
+For an odd number of samples that are equally spaced the result is
+exact if the function is a polynomial of order 3 or less.  If
+the samples are not equally spaced, then the result is exact only
+if the function is a polynomial of order 2 or less.
+<span class="ansi-red-fg">File:</span>      /usr/local/lib/python3.5/dist-packages/scipy/integrate/quadrature.py
+<span class="ansi-red-fg">Type:</span>      function
+</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -749,7 +887,7 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+<h2 id="-----Activity-"><span style="color:red">     Activity </span><a class="anchor-link" href="#-----Activity-"> </a></h2>
 </div>
 </div>
 </div>
@@ -759,7 +897,6 @@ $$\int_{x_0}^{x_2} f(x)dx = \frac{h}{3}[ f(x_0)+4f(x_1)+f(x_2) ]-\frac{h^5}{90}f
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'></p>
 <ul>
 <li>Using the trapezoidal and the Simpson's rules, determine the value of the integral (4.24565)</li>
 </ul>
@@ -793,7 +930,7 @@ print(poly1d(Ln))</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+<h2 id="-----Activity-"><span style="color:red">     Activity </span><a class="anchor-link" href="#-----Activity-"> </a></h2>
 </div>
 </div>
 </div>
@@ -803,7 +940,6 @@ print(poly1d(Ln))</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'></p>
 <p>Approximate the following integrals using formulas Trapezoidal and Simpson rules. Are the accuracies of
 the approximations consistent with the error formulas?</p>
 \begin{eqnarray*}
@@ -866,7 +1002,7 @@ $$ \int_a^b f(x) dx = \frac{h}{2}\left[ f(a) + 2\sum_{j=1}^{N-1}f(x_j) + f(b) \r
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+<h2 id="-----Activity-"><span style="color:red">     Activity </span><a class="anchor-link" href="#-----Activity-"> </a></h2>
 </div>
 </div>
 </div>
@@ -876,10 +1012,8 @@ $$ \int_a^b f(x) dx = \frac{h}{2}\left[ f(a) + 2\sum_{j=1}^{N-1}f(x_j) + f(b) \r
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'><br>
-Determine the value of the integral (4.24565)</p>
-$$ \int_{-0.5}^{1.5}(1+\cos^2x + x)dx $$<p>&lt;/font&gt;</p>
-
+<p>Determine the value of the integral (4.24565)</p>
+$$ \int_{-0.5}^{1.5}(1+\cos^2x + x)dx $$
 </div>
 </div>
 </div>
@@ -889,7 +1023,7 @@ $$ \int_{-0.5}^{1.5}(1+\cos^2x + x)dx $$<p>&lt;/font&gt;</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+<h2 id="-----Activity-"><span style="color:red">     Activity </span><a class="anchor-link" href="#-----Activity-"> </a></h2>
 </div>
 </div>
 </div>
@@ -899,7 +1033,6 @@ $$ \int_{-0.5}^{1.5}(1+\cos^2x + x)dx $$<p>&lt;/font&gt;</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><font color='red'></p>
 <p>An experiment has measured $dN(t)/dt$, the number of particles entering a counter, per unit time, as a function of time. Your problem is to integrate this spectrum to obtain the number of particles $N(1)$ that entered the counter
 in the first second</p>
 $$ N(1) = \int_0^1 \frac{dN}{dt} dt$$<p>For the problem it is assumed exponential decay so that there actually is an analytic answer.</p>

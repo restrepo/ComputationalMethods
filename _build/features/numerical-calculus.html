@@ -95,21 +95,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Populating the interactive namespace from numpy and matplotlib
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -195,17 +180,17 @@ $$f'(x) \approx \frac{f(x+h)-f(x)}{h}$$<p>where the function must be known at le
 <div class="highlight"><pre><span></span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 <p><strong>Parameters</strong><br/>
-<code>func</code> : function -&gt;
+<code>func</code> : function →
     Input function.<br/>
-<code>x0</code> : float -&gt; 
+<code>x0</code> : float →
     The point at which <code>n</code>-th derivative is found.<br/>
-<code>dx</code> : float, optional -&gt; 
+<code>dx</code> : float, optional →
     Spacing.<br/>
-<code>n</code> : int, optional -&gt; 
+<code>n</code> : int, optional →
     Order of the derivative. Default is 1.<br/>
-<code>args</code> : tuple, optional -&gt; 
+<code>args</code> : tuple, optional →
     Arguments<br/>
-<code>order</code> : int, optional -&gt; 
+<code>order</code> : int, optional → 
     Number of points to use, must be odd.<br/></p>
 
 </div>
@@ -1058,6 +1043,42 @@ This allows to have a dynamic return according to input:
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">sinv</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">)</span>
+<span class="n">sinv</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.7</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0.47942554, 0.64421769])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Vectorization-of-Scipy-method-derivative">Vectorization of Scipy method <code>derivative</code><a class="anchor-link" href="#Vectorization-of-Scipy-method-derivative"> </a></h3><p>The problem is that <code>derivative</code> only works for one a point</p>
@@ -1639,7 +1660,7 @@ This allows to have a dynamic return according to input:
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus_73_0.png"
+<img src="../images/features/numerical-calculus_74_0.png"
 >
 </div>
 
@@ -1706,7 +1727,7 @@ This allows to have a dynamic return according to input:
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus_75_1.png"
+<img src="../images/features/numerical-calculus_76_1.png"
 >
 </div>
 
@@ -1772,7 +1793,7 @@ This allows to have a dynamic return according to input:
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
 
-<span class="k">def</span> <span class="nf">derivatel</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">derivate</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Vectorized replacement of scipy.misc derivative:</span>
 <span class="sd">        from scipy.misc import derivative</span>
@@ -1870,7 +1891,7 @@ This allows to have a dynamic return according to input:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">derivatel</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">derivate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2001,7 +2022,7 @@ $$ q = -k\nabla T = -k\left( \frac{dT}{dx}\hat{i} + \frac{dT}{dy}\hat{j} + \frac
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus_86_1.png"
+<img src="../images/features/numerical-calculus_87_1.png"
 >
 </div>
 
@@ -2202,7 +2223,7 @@ y = a\frac{\tan \alpha\tan \beta}{\tan \beta- \tan \alpha}
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus_97_1.png"
+<img src="../images/features/numerical-calculus_98_1.png"
 >
 </div>
 
@@ -2392,7 +2413,7 @@ $$f'(x_i) = \frac{1}{12h}[f(x_i-2h)-8f(x_i-h)+8f(x_i+h)-f(x_i+2h)] + \frac{h^4}{
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/numerical-calculus_106_1.png"
+<img src="../images/features/numerical-calculus_107_1.png"
 >
 </div>
 
