@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/LagrangePoly.html
 suffix: .ipynb
-search: x xi frac y interpolation f n polynomial t right plt left l m function points yi linear p xm smallmatrix com polynomials example end degree lagrange text plot b ipynb numpy begin np prod colab font where pn leq error data activity roots align set such xn df max xj google github steps define e neq master www implementation cdot color value using both fit de research restrepo computationalmethods blob discrete derivation print org given details s defined interval kind cdots en wikipedia blue matter material however gonzalo es pdf lp divided differences object latex its variable not previous
+search: x xi frac y f interpolation n polynomial t right plt left l m function points yi linear p xm com polynomials smallmatrix lagrange example end degree text plot b ipynb numpy begin np prod colab error font where pn leq google data activity roots align set such xn df max xj github www steps define e neq master implementation cdot color value using both fit de research restrepo computationalmethods blob discrete drive math derivation print org given details s defined interval kind cdots en wikipedia blue matter material methods however pdf br lp divided differences object latex its variable
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -48,9 +48,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <p>Due to the discrete (and sometimes sparse) nature of experiments and observations, data taking procedures will always produce discrete data as well. Even, as we have seen before, information only can be discretely presented into a computer due to the binary representation. However, when we are dealing with physical models, continuous and smooth properties are of course preferred. Interpolation techniques allow then to recover a continuous field (intermediate values) from sparse datasets. Throughout this section we shall cover some of these interpolation methods.</p>
 <hr>
 <p><!-- __Homework__: https://classroom.github.com/a/SB94rDVJ --></p>
-<h2 id="Bibliography:">Bibliography:<a class="anchor-link" href="#Bibliography:"> </a></h2><p>[1a] Gonzalo Galiano Casas, Esperanza García Gonzalo <a href="https://www.unioviedo.es/compnum/expositive/handbook/metnum.pdf">Numerical Computation</a> - <a href="https://drive.google.com/file/d/1gwHYLx5aBf3oXRhmGeG-n1toTtAUhvfX/view?usp=sharing">GD</a> - [Web page with notebooks]- Capítulo 3. <br/>
-[1d] Gonzalo Galiano Casas, Esperanza García Gonzalo <a href="https://www.unioviedo.es/compnum/expositive/handbook/metnum.pdf">Numerical Computation</a> - <a href="https://drive.google.com/file/d/1gwHYLx5aBf3oXRhmGeG-n1toTtAUhvfX/view?usp=sharing">GD</a> - <a href="https://www.unioviedo.es/compnum/index.php/english-menu">Web page with notebooks</a><br/>
-[3]<a href="https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf">https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf</a><br/></p>
+<h2 id="Bibliography:">Bibliography:<a class="anchor-link" href="#Bibliography:"> </a></h2><p>[1a] Gonzalo Galiano Casas, Esperanza García Gonzalo <a href="https://www.unioviedo.es/compnum/expositive/handbook/metnum.pdf">Numerical Computation</a> - <a href="https://drive.google.com/file/d/1gwHYLx5aBf3oXRhmGeG-n1toTtAUhvfX/view?usp=sharing">GD</a> - <a href="https://www.unioviedo.es/compnum/index.php/english-menu">Web page with notebooks</a><br/>
+[1g] Mo Mu, <a href="https://www.math.ust.hk/~mamu/courses/230/course.htm">MATH 3311: Introduction to Numerical Methods</a> <a href="https://drive.google.com/drive/folders/1vv38SS7Zpw8mOHG7Kq_3lZr6o9H4xOYP?usp=sharing">GD</a> - <a href="https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf">Demostration Error in Lagrange Polynomials</a><br/>
+[1h] Zhiliang Xu, <a href="https://www3.nd.edu/~zxu2/ACMS40390-F16.html">ACMS 40390: Fall 2016 - Numerical Analysis</a> <a href="https://drive.google.com/drive/folders/1Z9Fws1v34PuPdGAp_mBCWmTvZM_Qd6Xk?usp=sharing">GD</a>&lt;/br&gt;</p>
 <p><a href="https://github.com/restrepo/Calculus/blob/master/Differential_Calculus.ipynb">https://github.com/restrepo/Calculus/blob/master/Differential_Calculus.ipynb</a></p>
 
 </div>
@@ -2879,7 +2879,7 @@ $$
 E_n(x) = {f^{n+1}(\xi(x)) \over (n+1)!} \cdot \prod_{i=0}^{n}\left(x-x_{i}\right)\,,
 $$
 $f^{(n+1)}$ is the $n+1$ derivative of $f$</p>
-<p>For a demostration see: <a href="https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf">https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf</a></p>
+<p>For a demostration see [1d] → <a href="https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf">https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf</a></p>
 <p>The specific calculation of the bounded error is to find the $\xi$ and $x$ such that
 $$
 \left|f(x)-P(x)\right| \leq \max_{\xi\in[a,b]}\left|\frac{f^{(n+1)}(\xi)}{(n+1) !}\right| \cdot \max_{x\in[a,b]}\left|\prod_{i=0}^{n}\left(x-x_{i}\right)\right|
