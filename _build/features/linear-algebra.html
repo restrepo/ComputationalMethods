@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-diagonalization.html
 suffix: .ipynb
-search: n matrix vdots mathbf cdots b x m left right e font computing j ij times frac l ei linear matrices det hat gaussian color red equations elimination system operations determinant using r k example operation determinants factorization inverse previous mbox where systems ej activity boldsymbol lu row lambda given equation nn diagonal u algebra general array order solve next align coefficients upper algorithm numpy operatorname rows method associated obtain xn y not necessary large errors pivoting also begin end leq routine psi vector properties both new function return ib problem augmented coefficient solution ma multiplications mathcal o written methods
+search: n matrix vdots mathbf b cdots x m left right e font computing j ij times frac l linear ei matrices det hat gaussian color red equations elimination system operations using determinant r k operation determinants factorization example inverse previous mbox where systems ej activity boldsymbol lu row lambda given equation nn diagonal algebra u general numpy array rows order operatorname solve next align coefficients upper algorithm arrays both method associated obtain xn y colab not necessary large errors pivoting also begin end leq routine psi com vector python properties new function return ib problem augmented coefficient solution ma multiplications
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -34,7 +34,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Linear-Algebra">Linear Algebra<a class="anchor-link" href="#Linear-Algebra"> </a></h1>
+<h1 id="Linear-Algebra">Linear Algebra<a class="anchor-link" href="#Linear-Algebra"> </a></h1><p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/linear-algebra.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
 </div>
 </div>
 </div>
@@ -133,17 +134,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 </div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.5/dist-packages/IPython/core/magics/pylab.py:160: UserWarning: pylab import has clobbered these variables: [&#39;interp&#39;, &#39;display&#39;]
-`%matplotlib` prevents importing * from pylab and numpy
-  &#34;\n`%matplotlib` prevents importing * from pylab and numpy&#34;
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -185,6 +175,22 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.7/dist-packages/IPython/utils/traitlets.py:5: UserWarning: IPython.utils.traitlets has moved to a top-level traitlets package.
+  warn(&#34;IPython.utils.traitlets has moved to a top-level traitlets package.&#34;)
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -460,7 +466,7 @@ M2=
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Random matrix witn entries between 0 and 1</li>
+<li>Random matrix with entries between 0 and 1</li>
 </ul>
 
 </div>
@@ -491,9 +497,9 @@ M2=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[0.81583177, 0.78833639, 0.55835195],
-       [0.99509434, 0.3109503 , 0.39842598],
-       [0.90435829, 0.83132871, 0.9372933 ]])</pre>
+<pre>array([[0.03759466, 0.03529442, 0.77509671],
+       [0.65252241, 0.71648007, 0.09995053],
+       [0.11837179, 0.08144293, 0.62915985]])</pre>
 </div>
 
 </div>
@@ -540,9 +546,9 @@ M2=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[8, 2, 9],
-       [3, 8, 5],
-       [2, 7, 9]])</pre>
+<pre>array([[0, 9, 3],
+       [5, 6, 8],
+       [7, 2, 9]])</pre>
 </div>
 
 </div>
@@ -557,7 +563,7 @@ M2=
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Analytical-matrices">Analytical matrices<a class="anchor-link" href="#Analytical-matrices"> </a></h3><p>Some times it is necessary to work with analytical Matrix. In such a case we can use the symbolic module <code>Sympy</code></p>
+<h3 id="Analytical-matrices">Analytical matrices<a class="anchor-link" href="#Analytical-matrices"> </a></h3><p>Some times it is necessary to work with analytical Matrices. In such a case we can use the symbolic module <code>Sympy</code></p>
 
 </div>
 </div>
@@ -654,9 +660,19 @@ $\displaystyle \left[\begin{matrix}3 & -2 & 1\\-1 & 5 & 4\\1 & -2 & 3\end{matrix
 <div class="output_area">
 
 
+<div class="output_html rendered_html output_subarea ">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
 
 <div class="output_latex output_subarea ">
-$\displaystyle M_2^{\rm T}=$
+$$M_2^{\rm T}=$$
 </div>
 
 </div>
@@ -834,7 +850,34 @@ $\displaystyle \left[\begin{matrix}5.0 - 3.0 i & -4.0 + 1.0 i & - 1.0 i\\-4.0 + 
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Matrix multiplication
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Matrix_multiplication_diagram_2.svg/200px-Matrix_multiplication_diagram_2.svg.png" alt="MP"></li>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Matrix_multiplication_diagram_2.svg/200px-Matrix_multiplication_diagram_2.svg.png" alt="MP">
+Mult</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+<p>Dot product of two arrays. Specifically,</p>
+<ul>
+<li><p>If both <code>a</code> and <code>b</code> are 1-D arrays, it is inner product of vectors
+(without complex conjugation).</p>
+</li>
+<li><p>If both <code>a</code> and <code>b</code> are 2-D arrays, it is matrix multiplication,
+but using :func:<code>matmul</code> or <code>a @ b</code> is preferred.</p>
+</li>
+<li><p>If either <code>a</code> or <code>b</code> is 0-D (scalar), it is equivalent to :func:<code>multiply</code>
+and using <code>numpy.multiply(a, b)</code> or <code>a * b</code> is preferred.</p>
+</li>
+<li><p>...</p>
+</li>
 </ul>
 
 </div>
@@ -1266,6 +1309,214 @@ $\displaystyle \left[\begin{matrix}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{matrix}\r
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Submatrix from matrix:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>matrix([[ 5, -4,  0],
+        [-4,  7, -3],
+        [ 0, -3,  5]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Extract rows</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>matrix([[-4,  7, -3]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span><span class="p">[[</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>matrix([[-4,  7, -3]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>matrix([[ 5, -4,  0],
+        [ 0, -3,  5]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Extract columns</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>matrix([[-4],
+        [ 7],
+        [-3]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Matrix-object">Matrix object<a class="anchor-link" href="#Matrix-object"> </a></h3>
 </div>
 </div>
@@ -1511,20 +1762,32 @@ def row_swap( i, j, A ):
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>WARNING</strong><br/>
+In some cases a  reasignment of a list or array points to the same space in memory. To really copy an array to other variable it is always recommended to use the <code>.copy()</code> method.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Lambda function</span>
-<span class="k">def</span> <span class="nf">row_lamb</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="n">lamb</span><span class="p">,</span> <span class="n">A</span> <span class="p">):</span>
+<span class="k">def</span> <span class="nf">row_lamb</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="n">λ</span><span class="p">,</span> <span class="n">A</span> <span class="p">):</span>
     <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lamb</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">λ</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">B</span>
 
-<span class="k">def</span> <span class="nf">row_comb</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">lamb</span><span class="p">,</span> <span class="n">A</span> <span class="p">):</span>
+<span class="k">def</span> <span class="nf">row_comb</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">λ</span><span class="p">,</span> <span class="n">A</span> <span class="p">):</span>
     <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lamb</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">λ</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">B</span>
 
 <span class="k">def</span> <span class="nf">row_swap</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">A</span> <span class="p">):</span>
@@ -1537,6 +1800,17 @@ def row_swap( i, j, A ):
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example</strong><br/></p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -1563,9 +1837,9 @@ def row_swap( i, j, A ):
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 5, -4,  0],
-       [-4,  7, -3],
-       [ 0, -3,  5]])</pre>
+<pre>matrix([[ 5, -4,  0],
+        [-4,  7, -3],
+        [ 0, -3,  5]])</pre>
 </div>
 
 </div>
@@ -1583,7 +1857,7 @@ def row_swap( i, j, A ):
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">row_lamb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">M1</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1599,120 +1873,9 @@ def row_swap( i, j, A ):
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 5,  0],
-       [-4, -3],
-       [ 0,  5]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="WARNING">WARNING<a class="anchor-link" href="#WARNING"> </a></h3><p>In some cases a  reasignment of a list or array points to the same space in memory. To really copy an array to other variable it is always recommended to use the <code>.copy()</code> method.</p>
-<p><em>Example</em>:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;F&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]})</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>F</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<pre>array([[ 15, -12,   0],
+       [ -4,   7,  -3],
+       [  0,  -3,   5]])</pre>
 </div>
 
 </div>
@@ -1730,294 +1893,13 @@ def row_swap( i, j, A ):
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>1</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">B</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">5</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>F</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>F</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">B</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">A</span><span class="o">=</span><span class="n">B</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">3</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([1, 3])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">A</span><span class="o">=</span><span class="n">B</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">B</span><span class="o">=</span><span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">C</span><span class="o">=</span><span class="n">A</span>
 <span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">4</span>
-<span class="n">A</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;B:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">C</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2030,12 +1912,15 @@ def row_swap( i, j, A ):
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([1, 2])</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>A:
+ [1 2]
+B:
+ [4 2]
+C:
+ [1 2]
+</pre>
 </div>
-
 </div>
 </div>
 </div>
@@ -2128,7 +2013,134 @@ $$ \left[ \matrix{
 5 &amp; -4 &amp; 0 &amp; \vdots &amp; 1 \\
 -4 &amp; 7 &amp; -3 &amp; \vdots &amp; 0 \\
 0 &amp; -3 &amp; 5 &amp; \vdots &amp; -2
-}\right] $$<p>At this point, we can eliminate the coefficients of the variable $x_1$ in the second and third equations. For this, we apply the operations $\operatorname{Comb}(E_2,E_1,4/5)$.</p>
+}\right] $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="-Activity-"><span style="color:red"> Activity </span><a class="anchor-link" href="#-Activity-"> </a></h3><p>Use numpy functions to build the augmented matrix M1</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span> <span class="p">)</span>
+<span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">M1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left[\begin{matrix}5 & -4 & 0\\-4 & 7 & -3\\0 & -3 & 5\end{matrix}\right]$
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1],
+       [ 0],
+       [-2]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1_aug</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span> <span class="p">(</span><span class="n">M1</span><span class="p">,[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]))</span>
+<span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">M1_aug</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left[\begin{matrix}5 & -4 & 0 & 1\\-4 & 7 & -3 & 0\\0 & -3 & 5 & -2\end{matrix}\right]$
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At this point, we can eliminate the coefficients of the variable $x_1$ in the second and third equations. For this, we apply the operations $\operatorname{Comb}(E_2,E_1,4/5)$.</p>
 <p>$E_2$ → <code>[-4,7,-3⋮0]+[4,-16/5,0⋮4/5]=[0,19/5,-3⋮4/5]</code></p>
 <p>The coefficient in the third equation is already null. We then obtain:</p>
 $$ \left[ \matrix{
@@ -2147,17 +2159,6 @@ $$ \left[ \matrix{
 0 &amp; 3.8 &amp; -3 &amp; \vdots &amp; 0.8 \\
 0 &amp; 0 &amp; 1 &amp; \vdots &amp; -26/50
 }\right] $$<p>From this, it is direct to conclude that $x_3 = -26/50=-0.52$, for $x_2$ and $x_1$ it is only necessary to replace the found value of $x_3$.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Activity-"><font color="red"> Activity </font><a class="anchor-link" href="#-Activity-"> </a></h2><p>Use numpy functions to build the augmented matrix M1</p>
 
 </div>
 </div>
@@ -2299,112 +2300,6 @@ sympy.Matrix(M1a)
 <h3 id="Implementation-in-Scipy">Implementation in Scipy<a class="anchor-link" href="#Implementation-in-Scipy"> </a></h3>
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span> <span class="p">)</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">M1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}5 & -4 & 0\\-4 & 7 & -3\\0 & -3 & 5\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 1],
-       [ 0],
-       [-2]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1_aug</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span> <span class="p">(</span><span class="n">M1</span><span class="p">,[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]))</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">M1_aug</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}5 & -4 & 0 & 1\\-4 & 7 & -3 & 0\\0 & -3 & 5 & -2\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -3067,7 +2962,7 @@ $$\frac{n^3}{3}+\frac{n^2}{2}-\frac{5n}{6}$$<p>These numbers are calculated sepa
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/linear-algebra_122_2.png"
+<img src="../images/features/linear-algebra_121_2.png"
 >
 </div>
 
@@ -3515,7 +3410,7 @@ Evaluate the computing time of the `Determinant` routine for matrix sizes of $n=
 <p><strong>7.</strong> $\det A^t=\det A.$</p>
 <p><strong>8.</strong> $\det A^{-1}=(\det A)^{-1}$</p>
 <p><strong>9.</strong> Finally and most importantly: if $A$ is an upper, lower or diagonal matrix, then:</p>
-$$ det A = \prod_{i=1}^n a_{ii} $$
+$$ \operatorname{det} A = \prod_{i=1}^n a_{ii} $$
 </div>
 </div>
 </div>
