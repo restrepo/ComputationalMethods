@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-extra.html
 suffix: .ipynb
-search: boldsymbol v begin end dagger align u x diag b text equation m operatorname bmatrix t matrix np lambda prime eigenvalues w lambdai order where check diagonalization exists such n font e g eigenvector diagonal left right linalg eigenvectors example terms theta ldots lambdan diagonalized solution svd bi scipy implementation vi pmatrix zero sin unitary mass problem case nonumber not general since proper system python color redactivity define activity quadratic z cos sqrt theorem hermitic corollary symmetric de eigenvalue complex transformation adiag transformacin matrices times cdots final reshape solve means rebuild hstack beta deepnote com project bc f baeebe changing
+search: boldsymbol v begin end dagger align u diag bmatrix x text b operatorname equation m matrix t vdots lambda np eigenvalues n prime cdots lambdai w order where diagonalization ldots eigenvector check exists such lambdan eigenvectors font e g diagonal left right linalg example terms theta unitary diagonalized j not solution svd bi scipy implementation vi pmatrix zero sin theorem mass problem column eigenvalue nonumber general since proper system python color redactivity define activity quadratic z cos sqrt hermitic symmetric note associated th also change important ordering method therefore complex transformation adiag transformacin matrices times final reshape solve means rebuild
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -81,8 +81,48 @@ $\boldsymbol{A}_{\text{diag}}=\operatorname{diag}(\lambda_1,\lambda_2,\ldots \la
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Eigenvector-problem">Eigenvector problem<a class="anchor-link" href="#Eigenvector-problem"> </a></h2><p>The <strong>Corollary</strong> only guarantees existence. Tor really calculate de diagonalization matrix we must establish the eigenvector problem:</p>
-<p>In the case a symetric matrix, the eigenvalue equation is just:
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Eigenvector-problem">Eigenvector problem<a class="anchor-link" href="#Eigenvector-problem"> </a></h2><p>Note that each eigenvector, corresponding to each column of the matrix, is associated to each eigenvalue
+$$
+\boldsymbol{V}=\begin{bmatrix}
+\boldsymbol{V}_1 \vdots \boldsymbol{V}_2\cdots \vdots \boldsymbol{V}_i \vdots \boldsymbol{V}_j\vdots\cdots \vdots \boldsymbol{V}_n 
+\end{bmatrix}.
+$$
+where $\boldsymbol{V}_i$ is the $i$-th column of the matrix  $\boldsymbol{V}$.</p>
+<p>In this way, if we interchange the $i\leftrightarrow j$ columns of the diagonalization matrix $\boldsymbol{V}$, the order of the eigenvalues also change
+$$
+\begin{bmatrix}
+\boldsymbol{V}_1 \vdots \boldsymbol{V}_2\cdots \vdots \boldsymbol{V}_j \vdots \boldsymbol{V}_i\vdots\cdots \vdots \boldsymbol{V}_n 
+\end{bmatrix}^\dagger \boldsymbol{A} \begin{bmatrix}
+\boldsymbol{V}_1 \vdots \boldsymbol{V}_2\cdots \vdots \boldsymbol{V}_j \vdots \boldsymbol{V}_i\vdots\cdots \vdots \boldsymbol{V}_n 
+\end{bmatrix}=\operatorname{diag}(\lambda_1,\lambda_2,\ldots,\lambda_j,\lambda_i,\ldots \lambda_n).
+$$
+This property is very important because usually the diagonalizationn alghoritm gives not the desired ordering of the eigenvalues and eigenvectors. It is recommended to use the <code>np.c_</code> method for the eigenvector reoirdering</p>
+<p>However, the <strong>Theorem</strong> only guarantees existence. Tor really calculate the diagonalization matrix we must establish the eigenvector problem:</p>
+<p>We can use the unitary propery to write
+\begin{align}
+  \boldsymbol{V}\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{V}=&amp;\boldsymbol{V}\boldsymbol{A}_{\text{diag}}\\
+\boldsymbol{A}\,\boldsymbol{V}=&amp;\boldsymbol{V}\boldsymbol{A}_{\text{diag}}\,,
+\end{align}
+or
+$$
+\boldsymbol{A}\begin{bmatrix}
+\boldsymbol{V}_1 \vdots \boldsymbol{V}_2\cdots \vdots \boldsymbol{V}_n 
+\end{bmatrix} =\operatorname{diag}(\lambda_1,\lambda_2\ldots,\lambda_n)\begin{bmatrix}
+\boldsymbol{V}_1 \vdots \boldsymbol{V}_2\cdots  \vdots \boldsymbol{V}_n 
+\end{bmatrix}.
+$$
+Therefore, the eigenvalue equation is just:
 \begin{align}
 %$$
   \boldsymbol{A}\,\boldsymbol{V}_i=&amp;\lambda_i\boldsymbol{V}_i \nonumber\\

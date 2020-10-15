@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-diagonalization.html
 suffix: .ipynb
-search: n matrix vdots mathbf b cdots x m left right e computing j ij frac l times linear ei matrices det hat gaussian span equations elimination system operations determinant using r k operation determinants factorization inverse mbox systems example row order ej previous boldsymbol where lu rows lambda given equation nn diagonal algebra general activity u numpy both style color red solve next align coefficients upper necessary algorithm array arrays method operatorname associated obtain xn y colab not large errors pivoting also column begin end leq routine psi com vector python properties possible set new function return ib problem augmented
+search: n matrix vdots mathbf b cdots x m left right e computing j ij frac l times linear ei matrices det hat gaussian span equations elimination system operations determinant using r k operation determinants factorization example previous inverse mbox systems row order ej boldsymbol where lu rows lambda given equation nn diagonal algebra general array arrays next activity u numpy both style color red solve align coefficients upper necessary algorithm method operatorname associated obtain xn y colab not large errors pivoting also column begin end leq routine psi com vector python properties integer possible set new function return ib problem
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -270,6 +270,88 @@ M2=
  [ 1 -2  3]]
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note tha the previous definitions correspond to integer arrays.</p>
+<p><strong>WARNING</strong>: Be careful with integer arrays. In the next example, a single float entry convert the full matrix from an integer array to a float array:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+          <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.</span><span class="p">],</span>
+          <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>  <span class="mi">5</span><span class="p">]])[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5.0</pre>
+</div>
+
 </div>
 </div>
 </div>
@@ -2619,14 +2701,18 @@ def row_swap( i, j, A ):
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Lambda function</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Force the matrix has type float</span>
 <span class="k">def</span> <span class="nf">row_lamb</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="n">λ</span><span class="p">,</span> <span class="n">A</span> <span class="p">):</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">int64</span><span class="p">):</span>
+        <span class="n">B</span><span class="o">=</span><span class="n">B</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">λ</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">B</span>
 
 <span class="k">def</span> <span class="nf">row_comb</span><span class="p">(</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">λ</span><span class="p">,</span> <span class="n">A</span> <span class="p">):</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">int64</span><span class="p">):</span>
+        <span class="n">B</span><span class="o">=</span><span class="n">B</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">λ</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">B</span>
 
@@ -2670,53 +2756,6 @@ def row_swap( i, j, A ):
 </div>
 </div>
 
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">row_lamb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">M1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 15., -12.,   0.],
-       [ -4.,   7.,  -3.],
-       [  0.,  -3.,   5.]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
 </div>
 </div>
 
@@ -2918,6 +2957,41 @@ $\displaystyle \left[\begin{matrix}5 & -4 & 0 & 1\\-4 & 7 & -3 & 0\\0 & -3 & 5 &
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1_aug</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">M1</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span> <span class="p">]</span>
+<span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">M1_aug</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left[\begin{matrix}5 & -4 & 0 & 1\\-4 & 7 & -3 & 0\\0 & -3 & 5 & -2\end{matrix}\right]$
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>At this point, we can eliminate the coefficients of the variable $x_1$ in the second and third equations. For this, we apply the operations $\operatorname{Comb}(E_2,E_1,4/5)$.</p>
@@ -2994,9 +3068,46 @@ $$ \left[ \matrix{
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1_LU</span><span class="o">=</span><span class="n">row_comb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="mi">5</span><span class="o">/</span><span class="mi">19</span><span class="p">,</span><span class="n">M1_LU</span><span class="p">)</span>
+<span class="n">M1_LU</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M1_LU</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 5.        , -4.        ,  0.        ,  1.        ],
+       [ 0.        ,  3.8       , -3.        ,  0.8       ],
+       [ 0.        ,  0.        ,  2.63157895, -1.36842105]])</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -3070,7 +3181,7 @@ $$ \left[ \matrix{
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A linear system is a set of equations of $n$ variables that can be written in a general form:</p>
-$$ a_{11}x_1 + a_{12}x_2 + \cdots a_{1n}x_n = b_1 $$$$\vdots$$$$ a_{m1}x_1 + a_{m2}x_2 + \cdots a_{mn}x_n = b_m $$<p>where $n$ is, again, the number of variables, and $m$ the number of equations.</p>
+$$ a_{11}x_1 + a_{12}x_2 + \cdots +a_{1n}x_n = b_1 $$$$\vdots$$$$ a_{m1}x_1 + a_{m2}x_2 + \cdots +a_{mn}x_n = b_m $$<p>where $n$ is, again, the number of variables, and $m$ the number of equations.</p>
 <p>A linear system has solution if and only if $m\geq n$. This leads us to the main objetive of a linear system, find the set $\{x_i\}_{i=0}^n$ that fulfills all the equations.</p>
 <p>Although there is an intuitive way to solve this type of systems, by just adding and subtracting equations until reaching the desire result, the large number of variables of some systems found in physics and astronomy makes necessary to develop iterative and general approaches. Next, we shall introduce matrix and vector notation and some basic operations that will be the basis of the methods to be developed in this section.</p>
 <p>Quadratic eqution...</p>
@@ -3822,7 +3933,7 @@ $$\frac{n^3}{3}+\frac{n^2}{2}-\frac{5n}{6}$$<p>These numbers are calculated sepa
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/linear-algebra_158_2.png"
+<img src="../images/features/linear-algebra_161_2.png"
 >
 </div>
 
@@ -4365,6 +4476,40 @@ From the previous example</p>
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0.5507979 , 0.89629309, 0.02987621, 0.59086282])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">M</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]]</span>
 </pre></div>
 
@@ -4507,9 +4652,19 @@ A \boldsymbol{x}=&amp;\boldsymbol{b}\,,
 <div class="output_area">
 
 
+<div class="output_html rendered_html output_subarea ">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
 
 <div class="output_latex output_subarea output_execute_result">
-$\det(A)=-0.097\ne 0$
+$$\det(A)=-0.097\ne 0$$
 </div>
 
 </div>
