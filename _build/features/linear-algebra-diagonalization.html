@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-extra.html
 suffix: .ipynb
-search: boldsymbol v begin end dagger align u diag bmatrix x text b operatorname equation m matrix t vdots lambda np eigenvalues n prime cdots lambdai w order where diagonalization ldots eigenvector check exists such lambdan eigenvectors font e g diagonal left right linalg example terms theta unitary diagonalized j not solution svd bi scipy implementation vi pmatrix zero sin theorem mass problem column eigenvalue nonumber general since proper system python color redactivity define activity quadratic z cos sqrt hermitic symmetric note associated th also change important ordering method therefore complex transformation adiag transformacin matrices times final reshape solve means rebuild
+search: boldsymbol v begin end bmatrix u c align x matrix dagger s b text m diag operatorname np vdots e equation lambda t eigenvalues theta delta where n cp w cdots example pmatrix array mathrm order sin diagonalization j lambdai cos linalg z such eigenvector eigenvectors left right prime thetaw mass check theorem unitary ldots associated exists lambdan terms equiv python font color span basis com g eigenvalue not therefore pdf diagonal matrices zero redactivity rotation colab diagonalized ordering identity solution det times mixing ccc svd bi vi index eig l quadratic field hermitic symmetric problem note column th change
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -23,7 +23,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Matrix-diagonalization">Matrix diagonalization<a class="anchor-link" href="#Matrix-diagonalization"> </a></h1>
+<h1 id="Matrix-diagonalization">Matrix diagonalization<a class="anchor-link" href="#Matrix-diagonalization"> </a></h1><p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/linear-algebra-diagonalization.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
 </div>
 </div>
 </div>
@@ -92,7 +93,7 @@ $\boldsymbol{A}_{\text{diag}}=\operatorname{diag}(\lambda_1,\lambda_2,\ldots \la
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Eigenvector-problem">Eigenvector problem<a class="anchor-link" href="#Eigenvector-problem"> </a></h2><p>Note that each eigenvector, corresponding to each column of the matrix, is associated to each eigenvalue
+<h3 id="Eigenvector-problem">Eigenvector problem<a class="anchor-link" href="#Eigenvector-problem"> </a></h3><p>Note that each eigenvector, corresponding to each column of the matrix, is associated to each eigenvalue
 $$
 \boldsymbol{V}=\begin{bmatrix}
 \boldsymbol{V}_1 \vdots \boldsymbol{V}_2\cdots \vdots \boldsymbol{V}_i \vdots \boldsymbol{V}_j\vdots\cdots \vdots \boldsymbol{V}_n 
@@ -134,6 +135,68 @@ where $\boldsymbol{V}_i$ is the $i$-th column of the matrix  $\boldsymbol{V}$, a
 <p>To avoid the trivial solution $\boldsymbol{V}_i=\boldsymbol{0}$, we require that $\boldsymbol{A}-\lambda_i\, \boldsymbol{I}$
 does not have an inverse, or equivalently
 $$\det( \boldsymbol{A}-\lambda_i\, \boldsymbol{I})=0\,.$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example">Example<a class="anchor-link" href="#Example"> </a></h3><p>The observables associated to the three neutrinos are the entries of a $3\times 3$ unitary matrix $\boldsymbol{U}=\begin{pmatrix}\boldsymbol{U}_1\vdots\boldsymbol{U}_2\vdots\boldsymbol{U}_3\end{pmatrix}$ and the eigenvalues associated to each eigenvector $\boldsymbol{U}_1\to  m_1$, $\boldsymbol{U}_2\to m_2$, $\boldsymbol{U}_3\to m_3$. The normal ordering is $m_1&lt;m_2&lt;m_3$. The unitary matrix can be parameterized in terms of three mixing angles, $\theta_{12}$ $\theta_{13}$, $\theta_{13}$, and a complex phase, $\delta_{\text{CP}}$, such that
+$$
+\boldsymbol{U}=\left(\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; c_{23} &amp; s_{23} \\
+0 &amp; -s_{23} &amp; c_{23}
+\end{array}\right) \cdot\left(\begin{array}{ccc}
+c_{13} &amp; 0 &amp; s_{13} e^{-i \delta_{\mathrm{CP}}} \\
+0 &amp; 1 &amp; 0 \\
+-s_{13} e^{i \delta_{\mathrm{CP}}} &amp; 0 &amp; c_{13}
+\end{array}\right) \cdot\left(\begin{array}{ccc}
+c_{21} &amp; s_{12} &amp; 0 \\
+-s_{12} &amp; c_{12} &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right),
+$$
+where $c_{i j} \equiv \cos \theta_{i j}$ and $s_{i j} \equiv \sin \theta_{i j}$. Thus, we can write $\boldsymbol{U}$ as
+$$
+\boldsymbol{U}=\left(\begin{array}{ccc}c_{12} c_{13} &amp; s_{12} c_{13} &amp; s_{13} e^{-i \delta_{\mathrm{CP}}} \\ -s_{12} c_{23}-c_{12} s_{13} s_{23} e^{i \delta_{\mathrm{CP}}} &amp; c_{12} c_{23}-s_{12} s_{13} s_{23} e^{i \delta_{\mathrm{CP}}} &amp; c_{13} s_{23} \\ s_{12} s_{23}-c_{12} s_{13} c_{23} e^{i \delta_{\mathrm{CP}}} &amp; -c_{12} s_{23}-s_{12} s_{13} c_{23} e^{i \delta_{\mathrm{CP}}} &amp; c_{13} c_{23}\end{array}\right)
+$$
+so that
+$$
+\boldsymbol{U}_1=\begin{pmatrix}
+c_{12} c_{13} \\
+-s_{12} c_{23}-c_{12} s_{13} s_{23} e^{i \delta_{\mathrm{CP}}} \\
+s_{12} s_{23}-c_{12} s_{13} c_{23} e^{i \delta_{\mathrm{CP}}}
+\end{pmatrix},\qquad \boldsymbol{U}_2=\begin{pmatrix}
+s_{12} c_{13} \\
+c_{12} c_{23}-s_{12} s_{13} s_{23} e^{i \delta_{\mathrm{CP}}} \\
+-c_{12} s_{23}-s_{12} s_{13} c_{23} e^{i \delta_{\mathrm{CP}}}
+\end{pmatrix},\qquad
+\boldsymbol{U}_3=\begin{pmatrix}
+s_{13} e^{-i \delta_{\mathrm{CP}}} \\
+c_{13} s_{23} \\
+c_{13} c_{23}
+\end{pmatrix}
+$$</p>
+<p>After decades of experimental efforts with thousands of millions of dollars in investment and two recent Nobel prizes, most of the parameters are already measured (see <a href="https://pdg.lbl.gov/2018/reviews/rpp2018-rev-neutrino-mixing.pdf">PDG22020</a> ):</p>
+<p><img src="figures/nu.png" alt="IMAGE"></p>
+<p>where $\Delta m^2_{ij}=m^2_i-m^2_j$ is the squared mass difference between eigenvalues $i$ and $j$; and $\text{eV}$ is really $\text{eV}/c^2$ where $c$ is the speed of light  in vacuum in natural units with $c=1$, and $1\ \text{eV}=1.602\,176\,6208(98)\times 10^{-19}\ \text{J}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To a better measurement of $\delta_{CP}$ for example, a new large experiment called <a href="https://www.dunescience.org/">DUNE</a>, and with a cost of around <a href="https://web.fnal.gov/organization/OPSS/Projects/LBNFDUNE/LBNF%20APM%20Jul%202015/Review%20Documents/LBNF%20DUNE%20ICR_Final%20Report.pdf">$\$1\,500$ million of dollars</a>, is in construction in the United States
+<img src="figures/DUNE.jpg" alt="IMAGE"></p>
 
 </div>
 </div>
@@ -190,7 +253,7 @@ $\boldsymbol{A}_{\text{diag}}=\operatorname{diag}(\lambda_1,\lambda_2,\ldots \la
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Eigenvectors-and-eigenvalues">Eigenvectors and eigenvalues<a class="anchor-link" href="#Eigenvectors-and-eigenvalues"> </a></h3><p>If we make
-$$ \boldsymbol{U}=[\boldsymbol{U}_1,\boldsymbol{U}_2,\boldsymbol{U}_3], \qquad \boldsymbol{V}=[\boldsymbol{V}_1,\boldsymbol{V}_2,\boldsymbol{V}_3] $$</p>
+$$ \boldsymbol{U}=[\boldsymbol{U}_1\vdots\boldsymbol{U}_2\vdots\cdots\vdots\boldsymbol{U}_n], \qquad \boldsymbol{V}=[\boldsymbol{V}_1\vdots\boldsymbol{V}_2\vdots\cdots\vdots\boldsymbol{V}_n] $$</p>
 <p>We know that there exists a bi-diagonal transformación such that
 \begin{equation}
 %$$
@@ -226,7 +289,7 @@ not sum upon $i$. Here</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Transformation-of-a-linear-system">Transformation of a linear system<a class="anchor-link" href="#Transformation-of-a-linear-system"> </a></h2><p>We start again with the matrix equation, capitol bold letters denotes matrices
+<h3 id="Transformation-of-a-linear-system">Transformation of a linear system<a class="anchor-link" href="#Transformation-of-a-linear-system"> </a></h3><p>We start again with the matrix equation, capitol bold letters denotes matrices
 \begin{equation}
   \boldsymbol{A}\boldsymbol{X}=\boldsymbol{B}\,,
 \end{equation}
@@ -276,7 +339,7 @@ $$A^{-1}=U\boldsymbol{A}_{\text{diag}}^{-1}V^\dagger$$</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example"> </a></h2>
+<h3 id="Example">Example<a class="anchor-link" href="#Example"> </a></h3>
 </div>
 </div>
 </div>
@@ -481,6 +544,16 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Theorem-1-in-numpy">Theorem 1 in <code>numpy</code><a class="anchor-link" href="#Theorem-1-in-numpy"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -650,9 +723,9 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ -5.07191124e-01,  -6.18673713e-01,  -6.00000000e-01],
-       [  7.73342141e-01,  -6.33988906e-01,   1.91548674e-16],
-       [ -3.80393343e-01,  -4.64005285e-01,   8.00000000e-01]])</pre>
+<pre>array([[-5.07191124e-01, -6.18673713e-01, -6.00000000e-01],
+       [ 7.73342141e-01, -6.33988906e-01,  1.91548674e-16],
+       [-3.80393343e-01, -4.64005285e-01,  8.00000000e-01]])</pre>
 </div>
 
 </div>
@@ -842,7 +915,10 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can now check some properties</p>
+<p>We can now check some properties.</p>
+<ul>
+<li>Obtain $\theta_{12}$ for $\lambda_1&lt;\lambda_2&lt;\lambda_3$</li>
+</ul>
 
 </div>
 </div>
@@ -1313,7 +1389,7 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Activity</strong>: <a href="https://beta.deepnote.com/project/17b487c8-b092-4032-94f5-438ba4eeb1e9">https://beta.deepnote.com/project/17b487c8-b092-4032-94f5-438ba4eeb1e9</a></p>
+<p><span style="color:red">__Activity__</span>: <a href="https://beta.deepnote.com/project/17b487c8-b092-4032-94f5-438ba4eeb1e9">https://beta.deepnote.com/project/17b487c8-b092-4032-94f5-438ba4eeb1e9</a></p>
 
 </div>
 </div>
@@ -1373,6 +1449,104 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The order of eigenvalues can now be changed by changing the order of the eigenvectors and redifining the diagonalization matrix. For example, from small to large. We define first the eigenvalues</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-6.18673713e-01, -6.00000000e-01, -5.07191124e-01],
+       [-6.33988906e-01,  1.91548674e-16,  7.73342141e-01],
+       [-4.64005285e-01,  8.00000000e-01, -3.80393343e-01]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">θ_12</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span> <span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">θ_12</span><span class="p">,</span> <span class="n">θ_12</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(0.7700763823614476, 44.122126612013574)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Generalization of the reordering</p>
 
 </div>
 </div>
@@ -1729,7 +1903,7 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><font color="red">Activity</font>:  Build a function that diagonalize with increasing order in the eigenvalues as a replacement of <code>np.linalg.eig</code></p>
+<p><font color="red">__Activity__</font>:  Build a function that diagonalize with increasing order in the eigenvalues as a replacement of <code>np.linalg.eig</code></p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">argeig</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="n">l</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="o">....</span>
@@ -1743,173 +1917,83 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and check that</p>
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>np.linalg.eig<span class="o">??</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
-
 </div>
 </div>
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<!--
+def argeig(a):
+    """
+    Diagonalize with increasing order in the eigenvalues.
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">argeig</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Diagonalize with increasing order in the eigenvalues.</span>
-<span class="sd">  </span>
-<span class="sd">    See help(np.linalg.eig)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">l</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
-    <span class="n">argl</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="n">l</span><span class="p">)</span>
-    <span class="n">argV</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="nb">tuple</span><span class="p">([</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V</span><span class="p">[:,</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span>   <span class="p">])</span> <span class="p">]</span>
-    <span class="k">return</span> <span class="n">argl</span><span class="p">,</span> <span class="n">argV</span>
-</pre></div>
-
-    </div>
+    See help(np.linalg.eig)
+    """
+    l,V=np.linalg.eig(a)
+    index=np.abs(l).argsort()
+    argl= np.sort( l)
+    argV=np.c_[ tuple([ np.c_[ V[:,i]] for i in index   ]) ]
+    return argl, argV
+-->
 </div>
 </div>
-
 </div>
 </div>
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">argeig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1">#1.</span>
+<span class="n">λ</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">argeig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="n">λ</span><span class="p">,</span><span class="n">V</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+<span class="p">(</span><span class="n">array</span><span class="p">([</span> <span class="mf">0.90098049</span><span class="p">,</span>  <span class="mf">5.</span>        <span class="p">,</span> <span class="mf">11.09901951</span><span class="p">]),</span>
+ <span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">6.18673713e-01</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.00000000e-01</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.07191124e-01</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">6.33988906e-01</span><span class="p">,</span>  <span class="mf">1.91548674e-16</span><span class="p">,</span>  <span class="mf">7.73342141e-01</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">4.64005285e-01</span><span class="p">,</span>  <span class="mf">8.00000000e-01</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.80393343e-01</span><span class="p">]]))</span>
 </pre></div>
 
-    </div>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(array([ 0.90098049,  5.        , 11.09901951]),
- array([[-6.18673713e-01, -6.00000000e-01, -5.07191124e-01],
-        [-6.33988906e-01,  1.91548674e-16,  7.73342141e-01],
-        [-4.64005285e-01,  8.00000000e-01, -3.80393343e-01]]))</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span>  <span class="p">),</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1">#2.</span>
+<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>  <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span>  <span class="p">),</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">0.90098049</span><span class="p">,</span>  <span class="mf">0.</span>        <span class="p">,</span>  <span class="mf">0.</span>        <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span>        <span class="p">,</span>  <span class="mf">5.</span>        <span class="p">,</span>  <span class="mf">0.</span>        <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span>        <span class="p">,</span>  <span class="mf">0.</span>        <span class="p">,</span> <span class="mf">11.09901951</span><span class="p">]])</span>
 </pre></div>
 
-    </div>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.90098049,  0.        ,  0.        ],
-       [ 0.        ,  5.        ,  0.        ],
-       [ 0.        ,  0.        , 11.09901951]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="o">-</span> <span class="n">λ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1">#3.</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="o">-</span> <span class="n">λ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="o">-</span> <span class="n">λ</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="o">-</span> <span class="n">λ</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2.4376578809863825e-14
-1.6382973032562733e-14
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0.0</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="General-complex-matrix">General complex matrix<a class="anchor-link" href="#General-complex-matrix"> </a></h2>
 </div>
 </div>
 </div>
@@ -1919,28 +2003,7 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since
-\begin{equation}
-  \boldsymbol{A}_{\text{diag}}=\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U}
-\end{equation}</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-\begin{align}
-\boldsymbol{A}_{\text{diag}}\boldsymbol{A}^\dagger_{\text{diag}}=&amp;  (\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U})(\boldsymbol{V}^\dagger\boldsymbol{A}\,\boldsymbol{U})^\dagger\nonumber \\
- =&amp; \boldsymbol{V}^\dagger( \boldsymbol{A}\boldsymbol{A}^\dagger)\boldsymbol{V}
-\end{align}\begin{align}
-\boldsymbol{A}_{\text{diag}}^\dagger \boldsymbol{A}_{\text{diag}} 
- =&amp; \boldsymbol{U}^\dagger (\boldsymbol{A}^\dagger\boldsymbol{A})\boldsymbol{U}
-\end{align}<p>See</p>
-
+<h3 id="General-matrix">General matrix<a class="anchor-link" href="#General-matrix"> </a></h3>
 </div>
 </div>
 </div>
@@ -1982,8 +2045,8 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mf">2.5</span>       <span class="p">,</span>  <span class="mf">6.92820323</span><span class="p">],</span>
-       <span class="p">[</span><span class="o">-</span><span class="mf">4.33012702</span><span class="p">,</span>  <span class="mf">4.</span>        <span class="p">]])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#A=np.array([[ 2.5       ,  6.92820323],</span>
+<span class="c1">#            [-4.33012702,  4.        ]])</span>
 </pre></div>
 
     </div>
@@ -2002,6 +2065,23 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mf">6.66674644</span><span class="p">,</span>  <span class="mf">3.13121253</span><span class="p">],</span>
             <span class="p">[</span><span class="o">-</span><span class="mf">0.23343505</span><span class="p">,</span>  <span class="mf">5.8902893</span> <span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
 </pre></div>
 
     </div>
@@ -2184,8 +2264,8 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[1., 0.],
-       [0., 1.]])</pre>
+<pre>array([[ 1., -0.],
+       [-0.,  1.]])</pre>
 </div>
 
 </div>
@@ -2398,7 +2478,7 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Activity</strong>: <a href="https://beta.deepnote.com/project/17b487c8-b092-4032-94f5-438ba4eeb1e9">https://beta.deepnote.com/project/17b487c8-b092-4032-94f5-438ba4eeb1e9</a></p>
+<p><span style="color:red">__Activity__</span>: <a href="https://beta.deepnote.com/project/17b487c8-b092-4032-94f5-438ba4eeb1e9">https://beta.deepnote.com/project/17b487c8-b092-4032-94f5-438ba4eeb1e9</a></p>
 
 </div>
 </div>
@@ -2416,6 +2496,413 @@ $$\boldsymbol{B}=\begin{bmatrix}
    1\\
    -4\\
    \end{bmatrix}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Interpretations-of-Theorem-2">Interpretations of Theorem 2<a class="anchor-link" href="#Interpretations-of-Theorem-2"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Theorem 2 establishes a unique set of a matrix $A$ with its eigenvalues and eigenvectors. However, for a fixed set of eigenvalues and eigenvectors we can have several possibilities of $A'$ matrices. For example, if we fix $U'=\boldsymbol{1}$ 
+\begin{equation}
+  {V'}^\dagger \boldsymbol{A'}=\boldsymbol{A}_{\text{diag}}\,,
+\end{equation}
+so that
+\begin{equation}
+  \boldsymbol{A}'=V'\boldsymbol{A}_{\text{diag}}
+\end{equation}</p>
+<p>We can now choose any unitary matrix $V'$ and search for the matrix $A'$  which gives rise to the same eigenvalues.</p>
+<p><strong>Example</strong>
+Let $V'=U^{\operatorname{T}} V$ in the previous example. Find the matrix $A'$ which gives rise to the same eigenvalues</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Adiag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Vp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">orthogonal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">orthogonal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">Vp</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.96592583,  0.25881905],
+       [-0.25881905,  0.96592583]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">Vp</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Adiag</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">Ap</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 4.82962913,  2.07055236],
+       [-1.29409523,  7.72740661]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">Vp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">Ap</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[5., 0.],
+       [0., 8.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, we can use the full procedure of hermitic matrices to obtain the bidiagonal matrices $U,V$</p>
+<p><strong>Example</strong>:
+Diagonalize the matrix $A$ by using the Theorem 1 instead</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mf">6.66674644</span><span class="p">,</span>  <span class="mf">3.13121253</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">0.23343505</span><span class="p">,</span>  <span class="mf">5.8902893</span> <span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[54.25      , 16.88749537],
+       [16.88749537, 34.74999996]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[44.50000002, 19.50000001],
+       [19.50000001, 44.49999995]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>→ is obtained with <code>&lt;ALT GR&gt;+i</code> or, similarly: ↓←</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">λ2</span><span class="p">,</span><span class="s1">&#39;→&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ2</span><span class="p">))</span>
+<span class="c1">#V=np.c_[ -V[:,0],V[:,0]  ]</span>
+<span class="n">V</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[63.99999999 24.99999997] → [8. 5.]
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.8660254, -0.5      ],
+       [ 0.5      ,  0.8660254]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2p</span><span class="p">,</span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ2</span><span class="p">))</span>
+<span class="n">U</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[8. 5.]
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.70710678, -0.70710678],
+       [ 0.70710678,  0.70710678]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">),</span> <span class="n">U</span> <span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 8., -0.],
+       [ 0.,  5.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><span style="color:red">__Actividad:__</span> cambiar el orden de los autovectores para obtener un orden ascendente en los autovalores</p>
 
 </div>
 </div>
@@ -2469,11 +2956,55 @@ M_{12}B + M_{22}W \\
 B( M_{11}B + M_{12}W)+  W ( M_{12}B + M_{22}W )\\
 =&amp;M_{11} B^2 + 2M_{12} BW+ M_{22} W^2\,. 
 \end{align}
-The queadratic equation is in terms of: $M_{11}$, $M_{12}$ y $M_{22}$</p>
-<p>We can simplify this expression if we change to a new basis in which $M$ is diagonal, in such a case the crossed terms disappear</p>
+The quadratic equation is in terms of: $M_{11}$, $M_{12}$ y $M_{22}$</p>
+<p>We can simplify this expression if we change to a new basis 
+$$
+X=\begin{bmatrix}
+A\\
+Z
+\end{bmatrix}
+$$
+in which $M$ is diagonal, in such a case the crossed term would disappear. 
+The rotation from $X'\to X$ is defined by
 \begin{align}
-X^{\prime\operatorname{T}} M X^\prime=&amp;X^{\prime\operatorname{T}}V V^{\operatorname{T}} M V V^{\operatorname{T}} X^\prime=...
+X'=
+\begin{bmatrix}
+B\\
+W
+\end{bmatrix}\equiv
+\begin{bmatrix}
+\cos\theta &amp; \sin\theta\\
+-\sin\theta &amp; \cos\theta
+\end{bmatrix}
+\begin{bmatrix}
+A\\
+Z
+\end{bmatrix}=
+V X 
 \end{align}
+where $V$ is the rotation matrix
+$$
+V=\begin{bmatrix}
+\cos\theta &amp; \sin\theta\\
+-\sin\theta &amp; \cos\theta
+\end{bmatrix}.
+$$
+Therefore
+\begin{align}
+X\equiv
+\begin{bmatrix}
+A\\
+Z
+\end{bmatrix}=V^{\operatorname{T}} X' \to X^{\operatorname{T}}= X^{\prime\operatorname{T}} V\,,
+\end{align}</p>
+<p>In the new basis
+\begin{align}
+X^{\prime\operatorname{T}} M X^\prime=&amp;X^{\prime\operatorname{T}}V V^{\operatorname{T}} M V V^{\operatorname{T}} X^\prime\\
+=&amp;(X^{\prime\operatorname{T}}V) (V^{\operatorname{T}} M V) (V^{\operatorname{T}} X^\prime)\\
+=&amp; X^{\operatorname{T}} M_{\text{diag}} X \\
+=&amp;  \lambda_1 A^2+\lambda_2 Z^2\,.
+\end{align}</p>
+
 </div>
 </div>
 </div>
@@ -2483,47 +3014,17 @@ X^{\prime\operatorname{T}} M X^\prime=&amp;X^{\prime\operatorname{T}}V V^{\opera
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If we define
-\begin{align}
-X\equiv
-\begin{bmatrix}
-A\\
-Z
-\end{bmatrix}=V^{\operatorname{T}} X \to X^{\operatorname{T}}= X^{\prime\operatorname{T}} V\,,
-\end{align}
+<p>such that $|\lambda_1|\le|\lambda_2|$, where
 \begin{align}
 M_{\text{diag}}\equiv V^{\operatorname{T}} M V=\begin{bmatrix}
 \lambda_1 &amp; 0 \\ 
 0 &amp; \lambda_2 \\
 \end{bmatrix}\,,
 \end{align}</p>
-<p>then,
-\begin{align}
-X^{\prime\operatorname{T}} M X^\prime=&amp;(X^{\prime\operatorname{T}}V) (V^{\operatorname{T}} M V) (V^{\operatorname{T}} X^\prime)\\
-=&amp; X^{\operatorname{T}} M_{\text{diag}} X \\
-=&amp;  \lambda_1 A^2+\lambda_2 Z^2\,.
-\end{align}</p>
-<p>In this basis, the quadratic equation is in terms of eigenvalues and mixing angles, like $\theta$ in this case
-\begin{align}
-V=
-\begin{bmatrix}
-\cos\theta &amp; \sin\theta\\
--\sin\theta &amp; \cos\theta
-\end{bmatrix},
-\end{align}
-and there are not mixed terms.</p>
-<p>The diagonalization of quadratic equations can be straightforwardly  generalized to $n\times n$ matrices</p>
+<p>In this basis, the quadratic equation is in terms of eigenvalues and mixing angle, $\theta$.
+Therefore, there are not longer mixed terms.</p>
+<p>The diagonalization of quadratic equations can be straightforwardly  generalized to $n$-th degree equations in terms of $n\times n$ matrices</p>
 
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Activity:-Photon-and-$Z$-mixing">Activity: Photon and $Z$ mixing<a class="anchor-link" href="#Activity:-Photon-and-$Z$-mixing"> </a></h2>
 </div>
 </div>
 </div>
@@ -2536,13 +3037,35 @@ and there are not mixed terms.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Consider</span> <span class="n">the</span> <span class="n">following</span> <span class="n">symmetric</span> <span class="n">matrix</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">g</span> <span class="o">=</span><span class="mf">0.64996</span>
+<span class="n">gp</span><span class="o">=</span><span class="mf">0.35523</span>
+<span class="n">v</span><span class="o">=</span><span class="mf">246.22046</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example:-Electroweak-interactions">Example: Electroweak interactions<a class="anchor-link" href="#Example:-Electroweak-interactions"> </a></h3><p>To understand the electromagnetic and weak fundamental interactions, the mathematical formulation need to be done in one basis where the photon field, denoted with a symbol $A$, is still not well defined. Instead, the field $B$, the precursor of $A$, appears along with the weak field $W$, the precursor of the electroweak field $Z$. In the <em>mathematical</em> basis we have then
+\begin{align}
+X' = 
+\begin{bmatrix}
+B \\ 
+W \\
+\end{bmatrix},
+\end{align}
+and there, the symmetric mass matrix is calculated as (Details here: <a href="https://github.com/restrepo/TCC/releases/latest">PDF</a>)</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -2573,29 +3096,8 @@ gp
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">g</span> <span class="o">=</span><span class="mf">0.64996</span>
-<span class="n">gp</span><span class="o">=</span><span class="mf">0.35523</span>
-<span class="n">v</span><span class="o">=</span><span class="mf">246.22046</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M</span><span class="o">=</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="p">,</span><span class="o">-</span><span class="n">g</span><span class="o">*</span><span class="n">gp</span><span class="p">],</span>
-                     <span class="p">[</span><span class="o">-</span><span class="n">g</span><span class="o">*</span><span class="n">gp</span><span class="p">,</span> <span class="n">gp</span><span class="o">**</span><span class="mi">2</span><span class="p">]])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M</span><span class="o">=</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">gp</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">g</span><span class="o">*</span><span class="n">gp</span><span class="p">],</span>
+                     <span class="p">[</span><span class="o">-</span><span class="n">g</span><span class="o">*</span><span class="n">gp</span><span class="p">,</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span><span class="p">]])</span>
 </pre></div>
 
     </div>
@@ -2628,8 +3130,8 @@ gp
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 6402.67629426, -3499.32718938],
-       [-3499.32718938,  1912.52692086]])</pre>
+<pre>array([[ 1912.52692086, -3499.32718938],
+       [-3499.32718938,  6402.67629426]])</pre>
 </div>
 
 </div>
@@ -2644,7 +3146,7 @@ gp
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Chek that the determinant is zero</p>
+<p>Checking that the determinant is zero</p>
 
 </div>
 </div>
@@ -2674,7 +3176,7 @@ gp
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>-0.0</pre>
+<pre>0.0</pre>
 </div>
 
 </div>
@@ -2719,7 +3221,7 @@ gp
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([8315.20321512,   -0.        ])</pre>
+<pre>array([   0.        , 8315.20321512])</pre>
 </div>
 
 </div>
@@ -2734,7 +3236,7 @@ gp
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>which means that the matrix rank, the number of non-zero are eigenvalues is 1</p>
+<p>which means that the matrix rank, the number of non-zero eigenvalues, is 1</p>
 
 </div>
 </div>
@@ -2777,6 +3279,75 @@ gp
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To make the change to the <em>phyisical</em> basis,
+$$
+X=\begin{bmatrix}
+A\\
+Z
+\end{bmatrix}
+$$
+through the rotation matrix
+$$
+V=\begin{bmatrix}
+\cos\theta_W &amp; \sin\theta_W\\
+-\sin\theta_W &amp; \cos\theta_W
+\end{bmatrix},
+$$
+the following transformation need to be established
+\begin{align}
+X'=
+\begin{bmatrix}
+B\\
+W
+\end{bmatrix}\equiv
+\begin{bmatrix}
+\cos\theta_W &amp; \sin\theta_W\\
+-\sin\theta_W &amp; \cos\theta_W
+\end{bmatrix}
+\begin{bmatrix}
+A\\
+Z
+\end{bmatrix}=
+V X\,,
+\end{align}
+such that $V$ is the diagonalization matrix of $M$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$M_{\text{diag}}=V^{\operatorname{T}} M V$$<p>with the normal ordering: $|\lambda_1|\le|\lambda_2|$, and</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$V$ → Diagonalization matrix</li>
+<li>$V$ → Ortogonal matrix</li>
+<li>$V$ → Rotation matrix</li>
+</ul>
+<p>To obtain the eigensystem, we use</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -2794,12 +3365,23 @@ gp
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>which in fact satisfy</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">M</span><span class="p">)</span> <span class="p">,</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">M</span><span class="p">)</span> <span class="p">,</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2815,8 +3397,8 @@ gp
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[8315.20321512,    0.        ],
-       [   0.        ,   -0.        ]])</pre>
+<pre>array([[  -0.        ,    0.        ],
+       [  -0.        , 8315.20321512]])</pre>
 </div>
 
 </div>
@@ -2829,19 +3411,12 @@ gp
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since the first (zero) eigenvalue is the one associated to $A$, we can interpret directly the rotation matrix without changing the order of the eigenvectors</p>
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ1</span><span class="o">=</span><span class="n">λ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">λ2</span><span class="o">=</span><span class="n">λ</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
-
 </div>
 </div>
 
@@ -2852,7 +3427,7 @@ gp
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-</span><span class="n">V</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span>
 </pre></div>
 
     </div>
@@ -2868,8 +3443,8 @@ gp
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[-0.87749437, -0.47958694],
-       [ 0.47958694, -0.87749437]])</pre>
+<pre>array([[-0.87749437,  0.47958694],
+       [-0.47958694, -0.87749437]])</pre>
 </div>
 
 </div>
@@ -2882,18 +3457,23 @@ gp
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that in fact, the absolute value of the first element of the first eigenvector is the larger one and corresponds to the component along the $B$-axis.</p>
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">θ</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
+</div>
+</div>
 </div>
 </div>
 
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Therefore</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -2904,42 +3484,8 @@ gp
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">θ</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>-0.5001839211647364</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">θ</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">θ</span><span class="p">)],</span>
-            <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">θ</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">θ</span><span class="p">)]]</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">θ_W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">θ_W</span>
 </pre></div>
 
     </div>
@@ -2955,8 +3501,7 @@ gp
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.87749437, -0.47958694],
-       [ 0.47958694,  0.87749437]])</pre>
+<pre>0.5001839211647364</pre>
 </div>
 
 </div>
@@ -2969,13 +3514,24 @@ gp
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The eigenvalue associated to $Z$ is</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MZ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ1</span><span class="p">)</span>
-<span class="n">MZ</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mZ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">mZ</span>
 </pre></div>
 
     </div>
@@ -3004,12 +3560,24 @@ gp
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>corresponding to the  $Z$ mass in units of $\text{GeV}/c^2$. As a reference, the proton mass is approximately $1\ \text{GeV}/c^2$</p>
+<p>The physical observable associated to the <em>weak mixing angle</em>, $\theta_W$, is (see <a href="https://pdg.lbl.gov/2019/reviews/rpp2018-rev-phys-constants.pdf">PDF</a>, along with the $Z^0$ <em>boson mass</em>, $m_Z$)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">θ</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">θ_W</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 
     </div>
@@ -3030,951 +3598,6 @@ gp
 
 </div>
 </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>θ angulo de mezcla débil</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-\begin{equation}
-  V\boldsymbol{A}_{\text{diag}}=\boldsymbol{A}
-\end{equation}
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Adiag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
-                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">Vp</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Adiag</span> <span class="p">)</span> <span class="p">)</span>
-<span class="n">A</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 2.5       ,  6.92820323],
-       [-4.33012702,  4.        ]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">Vp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[5., 0.],
-       [0., 8.]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sqrt(λ2)=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ2</span><span class="p">)))</span>
-<span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="o">-</span><span class="n">V</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">V</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>  <span class="p">]</span>
-<span class="n">V</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>sqrt(λ2)=[8. 5.]
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.5      ,  0.8660254],
-       [-0.8660254,  0.5      ]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2p</span><span class="p">,</span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ2</span><span class="p">))</span>
-<span class="n">U</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[8. 5.]
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[1., 0.],
-       [0., 1.]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">),</span> <span class="n">U</span> <span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 5.,  0.],
-       [-0.,  8.]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 5.,  0.],
-       [-0.,  8.]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Bidiagonal</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Adiag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
-                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Vp</span><span class="o">=</span><span class="n">orthogonal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">Vp</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.5      ,  0.8660254],
-       [-0.8660254,  0.5      ]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Up</span><span class="o">=</span><span class="n">orthogonal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">Up</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.70710678,  0.70710678],
-       [-0.70710678,  0.70710678]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-\begin{equation}
-  \boldsymbol{V}\boldsymbol{A}_{\text{diag}}\boldsymbol{U}^\dagger=\boldsymbol{A}
-\end{equation}
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">Vp</span><span class="p">,</span><span class="n">Adiag</span> <span class="p">),</span><span class="n">Up</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 6.66674644,  3.13121253],
-       [-0.23343505,  5.8902893 ]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">λ2</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ2</span><span class="p">))</span>
-<span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="o">-</span><span class="n">V</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">V</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>  <span class="p">]</span>
-<span class="n">V</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[64. 25.] [8. 5.]
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.5      ,  0.8660254],
-       [-0.8660254,  0.5      ]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ2p</span><span class="p">,</span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">λ2</span><span class="p">))</span>
-<span class="n">U</span><span class="o">=-</span><span class="n">U</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[8. 5.]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">),</span> <span class="n">U</span> <span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[5., 0.],
-       [0., 8.]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span><span class="p">,</span><span class="n">U</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(array([[ 0.5      ,  0.8660254],
-        [-0.8660254,  0.5      ]]), array([[ 0.70710678,  0.70710678],
-        [-0.70710678,  0.70710678]]))</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Scipy implementation</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ</span><span class="p">,</span><span class="n">Vs</span><span class="o">=</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">λ</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([6.27851787+0.76171737j, 6.27851787-0.76171737j])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ</span><span class="p">,</span><span class="n">Vs</span><span class="o">=</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">λ</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([6.27851787+0.76171737j, 6.27851787-0.76171737j])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([ 0.46037849, -0.66083877])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 6.66674644,  3.13121253],
-       [-0.23343505,  5.8902893 ]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span><span class="p">,</span><span class="n">diag</span><span class="p">,</span><span class="n">Udagger</span><span class="o">=</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dotnp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(),</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">AA</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 4.4408921e-16,  8.0000000e+00],
-       [-5.0000000e+00,  8.8817842e-16]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">AA</span>  <span class="p">,</span><span class="n">Udagger</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 8.0000000e+00, -4.4408921e-16],
-       [ 8.8817842e-16,  5.0000000e+00]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Udagger</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 4.4408921e-16, -5.0000000e+00],
-       [ 8.0000000e+00,  8.8817842e-16]])</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">V</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">Udagger</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-29-4f003879e747&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>np<span class="ansi-blue-fg">.</span>dot<span class="ansi-blue-fg">(</span> V<span class="ansi-blue-fg">,</span>A<span class="ansi-blue-fg">,</span>Udagger<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">ValueError</span>: output array is not acceptable (must have the right datatype, number of dimensions, and be a C-Array)</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span><span class="p">,</span><span class="n">diag</span><span class="p">,</span><span class="n">Udagger</span><span class="o">=</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
