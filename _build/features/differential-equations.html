@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/medium_modelling_part_one.html
 suffix: .ipynb
-search: y t frac m boldsymbol f begin end align bmatrix p d order x u equations c problem dt r operatorname z leq differential value delta b k methods method example font system mathbf g second where equation solution initial dy h partial v rho using problems mass alpha pendulum com boundary runge kutta w previous quad theta motion set ti mbox color model point force numerical lets left right form red th ordinary eulers speed assume beta de activity ac space change approx times however yi uk cos phase around its hf material ipynb shall systems edu pdf sir
+search: y t frac boldsymbol begin end bmatrix f m align u p order d equations x c problem dt r operatorname differential value leq z method delta g b k methods example font second system v mathbf where equation solution initial dy h partial rho w using com problems mass alpha pendulum boundary runge kutta previous quad theta motion set mbox color colab model point speed force numerical lets ti left right form red th ordinary eulers assume beta de activity ac space material ipynb change approx times such baseball however yi uk cos phase around its hf github computationalmethods
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -44,6 +44,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/differential-equations.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <p>Differential equations is without doubt one of the more useful branch of mathematics in science. They are used to model problems involving the change of some variable with respect to another. Differential equations cover a wide range of different applications, ranging from ordinary differential equations (ODE) until boundary-value problems involving many variables. For the sake of simplicity, throughout this section we shall cover only ODE systems as they are more elemental and equally useful. First, we shall cover first order methods, then second order methods and finally, system of differential equations.</p>
 <p>See:</p>
 <ul>
@@ -197,18 +198,20 @@ This equation of motion is of general validity and can be applied numerically to
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Example:-Drag-force">Example: Drag force<a class="anchor-link" href="#Example:-Drag-force"> </a></h3><p>For a body falling in the air, in addition to the gravitiy force $\boldsymbol{W}$, there is a dragging force in the opposite direction given by <a href="https://en.wikipedia.org/wiki/Drag_(physics">[see here for details]</a>)<img src="https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/figures/friction.svg" alt="img">
 $$
-F_D=\frac{1}{2}{\rho A C_d} v^2=\frac{1}{2m^2}{\rho A C_d} p^2\,,
+F_D=\frac{1}{2}{\rho A C_d} v^2(t)=\frac{1}{2m^2}{\rho A C_d} p^2(t)\,,
 $$
 where</p>
 <ul>
 <li>$A$: is the frontal area on a plane perpendicular to the direction of motion—e.g. for objects with a simple shape, such as a sphere</li>
-<li>$\rho$ is the density o the air</li>
+<li>$\rho$ is the density of the air</li>
 <li>$C_d$: <em>Drag coefficient</em>. $C_d=0.346$ for a <a href="http://baseball.physics.illinois.edu/DragTPTMay2014.pdf">baseball</a></li>
+<li>$v(t)$: speed of the baseball</li>
+<li>$p(t)$: momentum of baseball</li>
 </ul>
 <p>The equation of motion is
 \begin{align}
 W-F_D=&amp; \frac{d p}{dt}\\
-m g - \frac{\rho A C_d}{2m^2} p^2 = \frac{d p}{dt}.
+\frac{d p}{dt}=&amp;m g - \frac{\rho A C_d}{2m^2} p^2(t). 
 \end{align}</p>
 <p>We see then that, in general
 $$
@@ -259,12 +262,12 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This method is the most basic of all methods, however, it is useful to understand basic concepts and definitions of differential equations problems.</p>
 <p>Suppose we have a well-posed initial-value problem given by:</p>
-$$ \frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha $$<p>Now, let's define a <strong>mesh points</strong> as a set of values $\{t_i\}t_i$ where we are going to approximate the solution $y(t)$. These points can be equal-spaced such that</p>
+$$ \frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha $$<p>Now, let's define a <strong>mesh points</strong> as a set of values $\{t_i\}$ where we are going to approximate the solution $y(t)$. These points can be equal-spaced such that</p>
 $$ t_i = a+ i \Delta t,\ \ \ \ \mbox{with}\ \ i=1,2,3,\cdots,N \ \ \mbox{and}\ \Delta t = \frac{b-a}{N}. $$<p>Here, $h$ is called the <strong>step size</strong> of the <strong>mesh points</strong>.</p>
 <p>Now, using the first-order approximation of the derivative that we saw in <a href="http://nbviewer.ipython.org/github/sbustamante/ComputationalMethods/blob/master/material/numerical-calculus.ipynb#Numerical-Differentiation">Numerical Differentiation</a>, we obtain</p>
 $$ \frac{dy}{dt}\approx \frac{y(t+\Delta t)-y(t)}{\Delta t} $$<p>or</p>
 $$ \left.\frac{dy}{dt}\right|_{t=t_i}\approx \frac{y(t_{i+1})-y(t_i)}{\Delta t} $$<p>The original problem can be rewritten as</p>
-$$ y_{i+1} = y_i + f(t_i, y_i)\Delta t \pm \frac{\Delta t^2}{2}y^{''}(\xi_i) $$<p>where the notation $y(t_i)\equiv y_i$ has been introduced and the last term (error term) can be obtained taking a second-order approximation of the derivative.</p>
+$$ y_{i+1} = y_i + f(t_i, y_i)\Delta t \pm \frac{\Delta t^2}{2}y^{''}(\xi_i) $$<p>where the notation $y(t_i)\equiv y_i$ has been introduced and the last term (error term) can be obtained taking a second-order approximation of the derivative. $\xi_i$ is the value that give the maximum in absolute value for $y''$</p>
 <p>This equation can be solved recursively as we know the initial value $y_0 = y(a) = \alpha$.</p>
 
 </div>
@@ -291,13 +294,41 @@ $$ \frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha $$<p>However,
 $$ \frac{d^2y}{dt^2}+ g(t,y)\frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ y'(a) = \beta$$<p>For this system we have to provide both, the initial value $y(a)$ and the initial derivative $y'(a)$.</p>
 <p>Now, let's define a new variable $w(t) = y'(t)$, the previous problem can be then written as</p>
 \begin{align}
-\frac{dw}{dt}=&amp;f(t,y)-g(t,y)w \\  
-\frac{dy}{dt}=&amp;w(t)\, ,\ \ \ a\leq t\leq b\,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
+\frac{dy}{dt}=&amp;w(t) \\  
+\frac{dw}{dt}=&amp;f(t,y)-g(t,y)w\, ,\ \ \ a\leq t\leq b\,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
 \end{align}<p>Each of this problem has now the form required by the Euler's algorithm, and the solution can be computed as:</p>
 \begin{align}
 w_{i+1}=&amp; w_{i} + [f(t_i,y_i)-g(t_i,y_i)w_i]\Delta t \\  
 y_{i+1}=&amp;y_i + w_i \Delta t\, ,\ \ \ a\leq t\leq b\,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
 \end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Euler-method-for-second-order-differential-equations">Euler method for second order differential equations<a class="anchor-link" href="#Euler-method-for-second-order-differential-equations"> </a></h3><p>We can define the column vectors
+\begin{align}
+\boldsymbol{U}=\begin{bmatrix}
+U_1\\
+U_2\\
+\end{bmatrix}=&amp;\begin{bmatrix}
+y(t)\\
+w(t)\\
+\end{bmatrix}\,,&amp; 
+\boldsymbol{V}(\boldsymbol{U},t)=\begin{bmatrix}
+w(t)\\
+f(t,y)-g(t,y)w(t)\\
+\end{bmatrix}=&amp;\begin{bmatrix}
+U_2\\
+f(t,U_1)-g(t,U_1)U_2\\
+\end{bmatrix}
+\end{align}
+such that</p>
+
 </div>
 </div>
 </div>
@@ -780,11 +811,28 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#py=df.p.str[1]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#               x       y</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="c1">#plt.grid()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -799,19 +847,8 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0,0.5,&#39;$y$ [m]&#39;)</pre>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_21_1.png"
+<img src="../images/features/differential-equations_23_0.png"
 >
 </div>
 
@@ -1181,7 +1218,7 @@ where $c$ can take the values 0 (not dragging force), 0.1 y  0.5</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5,0,&#39;$y$ [m]&#39;)</pre>
+<pre>Text(0.5, 0, &#39;$y$ [m]&#39;)</pre>
 </div>
 
 </div>
@@ -1192,7 +1229,7 @@ where $c$ can take the values 0 (not dragging force), 0.1 y  0.5</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_31_1.png"
+<img src="../images/features/differential-equations_33_1.png"
 >
 </div>
 
@@ -1219,7 +1256,7 @@ where $c$ can take the values 0 (not dragging force), 0.1 y  0.5</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">c</span><span class="o">==</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$ [m]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="c1">#plt.grid()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -1234,19 +1271,8 @@ where $c$ can take the values 0 (not dragging force), 0.1 y  0.5</p>
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0,0.5,&#39;$y$ [m]&#39;)</pre>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_32_1.png"
+<img src="../images/features/differential-equations_34_0.png"
 >
 </div>
 
@@ -1521,7 +1547,7 @@ where $k$ is constant</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_48_0.png"
+<img src="../images/features/differential-equations_50_0.png"
 >
 </div>
 
@@ -1582,7 +1608,7 @@ where $k$ is constant</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_50_0.png"
+<img src="../images/features/differential-equations_52_0.png"
 >
 </div>
 
@@ -1666,13 +1692,15 @@ where $k$ is constant</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Example</strong>: From <a href="http://sam-dolan.staff.shef.ac.uk/mas212/notebooks/ODE_Example.ipynb">http://sam-dolan.staff.shef.ac.uk/mas212/</a></p>
-<p>As explained before, we need to write a second order ordinary differential equations in terms of first order matricial ordinary differential equation. In terms of a parameter, $x$, this implay to have a column vector $U(y,z,x)$, of functions $y(x)$ and $z(x)$
+<p>As explained before, we need to write a second order ordinary differential equations in terms of first order matricial ordinary differential equation. In terms of a parameter, $x$, this implay to have a column vector 
 $$
 U=\begin{bmatrix}
 y\\
 z\\
-\end{bmatrix} \qquad\to \qquad
-\frac{dU}{dx}=U(z,y,x).
+\end{bmatrix}
+$$4
+$$
+\frac{dU}{dt}=V(U,t).
 $$</p>
 
 </div>
@@ -1768,14 +1796,165 @@ U_1\\
 <span class="sd">    Here U is a vector such that y=U[0] and z=U[1]. </span>
 <span class="sd">    This function should return [y&#39;, z&#39;]</span>
 <span class="sd">    &#39;&#39;&#39;</span>    
-    <span class="k">return</span> <span class="p">[</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)]</span>
-
-<span class="n">U0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">Us</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dx</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span>      <span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+            <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U0</span> <span class="c1"># → x=0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0, 0]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>x→0.1</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dx</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.        , 0.        ],
+       [0.00465902, 0.08970031]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[[</span><span class="mf">0.</span>        <span class="p">,</span> <span class="mf">0.</span>         <span class="p">],</span><span class="c1">#→ U(0)</span>
+         <span class="p">[</span><span class="mf">0.00465902</span><span class="p">,</span> <span class="mf">0.08970031</span><span class="p">]]</span> <span class="c1">#→ U(0.1)=[y(0.1),y&#39;(0.1)]</span>
+     <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.        , 0.        ],
+       [0.00465902, 0.08970031]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Us</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.        , 0.        ],
+       [0.02601336, 0.1841925 ],
+       [0.08083294, 0.229454  ]])</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -1800,7 +1979,97 @@ U_1\\
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ys</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> 
+      <span class="mi">0</span><span class="p">]</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">Us</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dU_dx</span><span class="p">,</span> <span class="n">U0</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Us</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.        , 0.        ],
+       [0.02601336, 0.1841925 ],
+       [0.08083294, 0.229454  ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0.        , 0.02601336, 0.08083294])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ys</span> <span class="o">=</span> <span class="n">Us</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#First column is extracted</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
@@ -1821,7 +2090,7 @@ U_1\\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_61_0.png"
+<img src="../images/features/differential-equations_71_0.png"
 >
 </div>
 
@@ -1861,7 +2130,7 @@ U_1\\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_62_0.png"
+<img src="../images/features/differential-equations_72_0.png"
 >
 </div>
 
@@ -1908,7 +2177,8 @@ z\\
 <span class="sd">    This function should return [y&#39;, z&#39;]</span>
 <span class="sd">    &#39;&#39;&#39;</span>    
     <span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="n">U</span> <span class="c1"># y → U[0]; z → U[1] </span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">z</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">z</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="p">[</span>        <span class="n">z</span><span class="p">,</span> 
+            <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">z</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)]</span>
 
 <span class="n">U0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
@@ -1950,7 +2220,7 @@ z\\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_65_0.png"
+<img src="../images/features/differential-equations_75_0.png"
 >
 </div>
 
@@ -2138,7 +2408,7 @@ $$\begin{align}
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_71_1.png"
+<img src="../images/features/differential-equations_81_1.png"
 >
 </div>
 
@@ -2240,7 +2510,7 @@ p_y/m\\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_73_1.png"
+<img src="../images/features/differential-equations_83_1.png"
 >
 </div>
 
@@ -2448,7 +2718,7 @@ En particular, 1000 números aleatorios entre  $3\times 10^{-6}$ hasta $5\times 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_82_1.png"
+<img src="../images/features/differential-equations_92_1.png"
 >
 </div>
 
@@ -2534,7 +2804,7 @@ En particular, 1000 números aleatorios entre  $3\times 10^{-6}$ hasta $5\times 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_84_0.png"
+<img src="../images/features/differential-equations_94_0.png"
 >
 </div>
 
@@ -2612,7 +2882,7 @@ which go from right to left represent clockwise rotations. The phase space have 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_87_1.png"
+<img src="../images/features/differential-equations_97_1.png"
 >
 </div>
 
@@ -2673,7 +2943,7 @@ which go from right to left represent clockwise rotations. The phase space have 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_89_1.png"
+<img src="../images/features/differential-equations_99_1.png"
 >
 </div>
 
@@ -2723,7 +2993,7 @@ which go from right to left represent clockwise rotations. The phase space have 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_90_1.png"
+<img src="../images/features/differential-equations_100_1.png"
 >
 </div>
 
@@ -2771,7 +3041,7 @@ which go from right to left represent clockwise rotations. The phase space have 
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_91_1.png"
+<img src="../images/features/differential-equations_101_1.png"
 >
 </div>
 
@@ -3165,7 +3435,7 @@ $$ \rho(R) = \rho_{surf},\ \ \ m(R) = M_p, \ \ \ g(R) = g_{surf},\ \ \ P(R) = P_
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/differential-equations_113_0.png"
+<img src="../images/features/differential-equations_123_0.png"
 >
 </div>
 

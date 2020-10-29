@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-extra.html
 suffix: .ipynb
-search: boldsymbol v begin end bmatrix u c align x matrix dagger s b text m diag operatorname np vdots e equation lambda t eigenvalues theta delta where n cp w cdots example pmatrix array mathrm order sin diagonalization j lambdai cos linalg z such eigenvector eigenvectors left right prime thetaw mass check theorem unitary ldots associated com exists lambdan terms equiv python font color span basis g eigenvalue not therefore pdf diagonal matrices zero redactivity rotation colab diagonalized ordering identity solution det times mixing ccc svd bi vi index eig l quadratic field github restrepo hermitic symmetric problem note column
+search: boldsymbol v begin end u bmatrix matrix c align x e dagger m left right s b text diag operatorname np vdots equation t nu array lambda rangle j eigenvalues pmatrix where n theta delta cp w mass cdots example mathrm diagonalization order sin such lambdai mu tau cos linalg z eigenvector eigenvectors l prime thetaw associated check theorem unitary ldots pdf alpha basis com exists lambdan mixing terms equiv diagonal python font color span rotation g eigenvalue not therefore neutrino matrices zero redactivity colab diagonalized symmetric ordering identity solution det org times ccc svd bi vi index eig quadratic
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -145,7 +145,26 @@ $$\det( \boldsymbol{A}-\lambda_i\, \boldsymbol{I})=0\,.$$</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Example">Example<a class="anchor-link" href="#Example"> </a></h3><p>The observables associated to the three neutrinos are the entries of a $3\times 3$ unitary matrix $\boldsymbol{U}=\begin{pmatrix}\boldsymbol{U}_1\vdots\boldsymbol{U}_2\vdots\boldsymbol{U}_3\end{pmatrix}$ and the eigenvalues associated to each eigenvector $\boldsymbol{U}_1\to  m_1$, $\boldsymbol{U}_2\to m_2$, $\boldsymbol{U}_3\to m_3$. The normal ordering is $m_1&lt;m_2&lt;m_3$. The unitary matrix can be parameterized in terms of three mixing angles, $\theta_{12}$ $\theta_{13}$, $\theta_{13}$, and a complex phase, $\delta_{\text{CP}}$, such that
+<h3 id="Example">Example<a class="anchor-link" href="#Example"> </a></h3><p>From <a href="https://arxiv.org/pdf/2010.06458.pdf">arXiv:2010.06458</a>:</p>
+<blockquote><p>In the three flavor neutrino oscillation, the neutrino flavor states $\left|\nu_{\alpha}\right\rangle(\alpha=e, \mu, \tau)$ are linear superposition of mass eigenstates $\left|\nu_{j}\right\rangle(j=1,2,3):\left|\nu_{\alpha}\right\rangle=\Sigma_{j} U_{\alpha j}\left|\nu_{j}\right\rangle,$ where $U_{\alpha j}$ are the elements of the lepton mixing matrix known as PMNS (Pontecorvo-Maki-Nakagawa-Sakita) matrix such that
+$$
+\left(\begin{array}{l}
+\left|\nu_{e}\right\rangle \\
+\left|\nu_{\mu}\right\rangle \\
+\left|\nu_{\tau}\right\rangle
+\end{array}\right)=\left(\begin{array}{lll}
+U_{e 1} &amp; U_{e 2} &amp; U_{e 3} \\
+U_{\mu 1} &amp; U_{\mu 2} &amp; U_{\mu 3} \\
+U_{\tau 1} &amp; U_{\tau 2} &amp; U_{\tau 3}
+\end{array}\right)\left(\begin{array}{l}
+\left|\nu_{1}\right\rangle \\
+\left|\nu_{2}\right\rangle \\
+\left|\nu_{3}\right\rangle
+\end{array}\right)
+$$
+The time evolution follows $\left|\nu_{\alpha}(t)\right\rangle=\Sigma_{j} e^{-i E_{j} t} U_{\alpha j}\left|\nu_{j}\right\rangle,$ where $E_{j}$ is the energy associated with the mass eigenstates $\left|\nu_{i}\right\rangle$ This is a superposition state.</p>
+</blockquote>
+<p>The observables associated to the three neutrinos are the entries of the $3\times 3$ unitary matrix $\boldsymbol{U}=\begin{pmatrix}\boldsymbol{U}_1\vdots\boldsymbol{U}_2\vdots\boldsymbol{U}_3\end{pmatrix}$, and the eigenvalues associated to each eigenvector $\boldsymbol{U}_1\to  m_1$, $\boldsymbol{U}_2\to m_2$, $\boldsymbol{U}_3\to m_3$. The normal ordering is $m_1&lt;m_2&lt;m_3$. The unitary matrix can be parameterized in terms of three mixing angles, $\theta_{12}$ $\theta_{13}$, $\theta_{13}$, and a complex phase, $\delta_{\text{CP}}$, such that
 $$
 \boldsymbol{U}=\left(\begin{array}{ccc}
 1 &amp; 0 &amp; 0 \\
@@ -167,16 +186,17 @@ $$
 $$
 so that
 $$
-\boldsymbol{U}_1=\begin{pmatrix}
+\boldsymbol{U}_1=\begin{pmatrix}U_{e1}\\ U_{\mu 1}\\ U_{\tau 1}\end{pmatrix}=\begin{pmatrix}
 c_{12} c_{13} \\
 -s_{12} c_{23}-c_{12} s_{13} s_{23} e^{i \delta_{\mathrm{CP}}} \\
 s_{12} s_{23}-c_{12} s_{13} c_{23} e^{i \delta_{\mathrm{CP}}}
-\end{pmatrix},\qquad \boldsymbol{U}_2=\begin{pmatrix}
+\end{pmatrix},\qquad 
+\boldsymbol{U}_2=\begin{pmatrix}U_{e2}\\ U_{\mu 2}\\ U_{\tau 2}\end{pmatrix}=\begin{pmatrix}
 s_{12} c_{13} \\
 c_{12} c_{23}-s_{12} s_{13} s_{23} e^{i \delta_{\mathrm{CP}}} \\
 -c_{12} s_{23}-s_{12} s_{13} c_{23} e^{i \delta_{\mathrm{CP}}}
 \end{pmatrix},\qquad
-\boldsymbol{U}_3=\begin{pmatrix}
+\boldsymbol{U}_3=\begin{pmatrix}U_{e3}\\ U_{\mu 3}\\ U_{\tau 3}\end{pmatrix}=\begin{pmatrix}
 s_{13} e^{-i \delta_{\mathrm{CP}}} \\
 c_{13} s_{23} \\
 c_{13} c_{23}
@@ -3601,6 +3621,40 @@ $$M_{\text{diag}}=V^{\operatorname{T}} M V$$<p>with the normal ordering: $|\lamb
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Neutrino-mass-matrix">Neutrino mass matrix<a class="anchor-link" href="#Neutrino-mass-matrix"> </a></h2><p>Returning back to the neutrino mixing discussion, it is worth noticing that in the mathematical basis
+$$
+N=\left(\begin{array}{l}
+\left|\nu_{e}\right\rangle \\
+\left|\nu_{\mu}\right\rangle \\
+\left|\nu_{\tau}\right\rangle
+\end{array}\right)
+$$
+the mass matrix, $\mathcal{M}_\nu$ is non-diagonal. However, if we assume that it is symmetric, then the previous rotation matrix there
+$$
+\left(\begin{array}{l}
+\left|\nu_{e}\right\rangle \\
+\left|\nu_{\mu}\right\rangle \\
+\left|\nu_{\tau}\right\rangle
+\end{array}\right)= \boldsymbol{U}\left(\begin{array}{l}
+\left|\nu_{1}\right\rangle \\
+\left|\nu_{2}\right\rangle \\
+\left|\nu_{3}\right\rangle
+\end{array}\right),
+$$
+corresponds to the diagonalization matrix
+$$
+\boldsymbol{U}^\dagger \mathcal{M}_\nu \boldsymbol{U}=\operatorname{diag}(m_1,m_2,m_3).
+$$</p>
+
+</div>
+</div>
 </div>
 </div>
 
