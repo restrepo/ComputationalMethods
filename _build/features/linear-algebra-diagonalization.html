@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-extra.html
 suffix: .ipynb
-search: boldsymbol v begin end u bmatrix matrix c align x e dagger m left right s b text diag operatorname np vdots equation t nu array lambda rangle j eigenvalues pmatrix where n theta delta cp w mass cdots example mathrm diagonalization order sin such lambdai mu tau cos linalg z eigenvector eigenvectors l prime thetaw associated check theorem unitary ldots pdf alpha basis com exists lambdan mixing terms equiv diagonal python font color span rotation g eigenvalue not therefore neutrino matrices zero redactivity colab diagonalized symmetric ordering identity solution det org times ccc svd bi vi index eig quadratic
+search: boldsymbol v u begin end bmatrix matrix align operatorname c x e left right dagger lambda m s diag t text b np vdots equation nu eigenvalues array rangle j where pmatrix n theta delta cp w y diagonalization such mass cdots eigenvectors example mathrm sqrt order lambdai sin mu tau cos linalg z ldots eigenvector associated therefore l check prime thetaw d theorem exists lambdan symmetric pdf alpha mixing terms basis rotation com unitary times equiv diagonal matrices python font color span r g eigenvalue not neutrino zero redactivity colab diagonalized ortogonal ordering identity solution det org ccc svd
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -2536,7 +2536,7 @@ $$\boldsymbol{B}=\begin{bmatrix}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In Theorem 2 establishes a unique set of a matrix $A$ with its eigenvalues and eigenvectors. However, for a fixed set of eigenvalues and eigenvectors we can have several possibilities of $A'$ matrices. For example, if we fix $U'=\boldsymbol{1}$ 
+<h4 id="Single-Diagonalization-matrix">Single Diagonalization matrix<a class="anchor-link" href="#Single-Diagonalization-matrix"> </a></h4><p>In Theorem 2 establishes a unique set of a matrix $A$ with its eigenvalues and eigenvectors. However, for a fixed set of eigenvalues and eigenvectors we can have several possibilities of $A'$ matrices. For example, if we fix $U'=\boldsymbol{1}$ 
 \begin{equation}
   {V'}^\dagger \boldsymbol{A'}=\boldsymbol{A}_{\text{diag}}\,,
 \end{equation}
@@ -2544,7 +2544,7 @@ so that
 \begin{equation}
   \boldsymbol{A}'=V'\boldsymbol{A}_{\text{diag}}
 \end{equation}</p>
-<p>We can now choose any unitary matrix $V'$ and search for the matrix $A'$  which gives rise to the same eigenvalues.</p>
+<p>Therefore: Under this conditions, for a fixed set of eigenvalues and eigenvectors (associated to the matrix $V'$) there is a unique $A'$ matrix</p>
 <p><strong>Example</strong>
 Let $V'=U^{\operatorname{T}} V$ in the previous example. Find the matrix $A'$ which gives rise to the same eigenvalues</p>
 
@@ -3652,6 +3652,309 @@ corresponds to the diagonalization matrix
 $$
 \boldsymbol{U}^\dagger \mathcal{M}_\nu \boldsymbol{U}=\operatorname{diag}(m_1,m_2,m_3).
 $$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Casas-Ibarra-parameterization">Casas-Ibarra parameterization<a class="anchor-link" href="#Casas-Ibarra-parameterization"> </a></h3><p>Consider a $n\times n$ symmetric matrix $A$. We can assumme without lost of generality that this can be generated from a matrix $Y$ such that
+$$
+A=Y^{\operatorname{T}}Y
+$$
+Theorem 1 gurantees that exists an ortogonal matrix $U$ such that
+$$
+U^{\operatorname{T}} A U=U^{\operatorname{T}} Y^{\operatorname{T}}Y U=D_\lambda
+$$
+where
+$$
+D_{\lambda}=A_{\text{diag}}=\operatorname{diag}\left(\lambda_1,\lambda_2,\ldots,\lambda_n\right)
+$$
+where $\lambda_i$ are the eigenvalues of $A$. Therefore
+\begin{align}
+ Y^{\operatorname{T}}Y =&amp;U D_\lambda U^{\operatorname{T}}\\
+ =&amp;U D_{\sqrt{\lambda}} D_{\sqrt{\lambda}} U^{\operatorname{T}}\\
+\end{align}
+where
+$$
+D_{\sqrt{\lambda}}=\operatorname{diag}\left(\sqrt{\lambda_1},\sqrt{\lambda_2},\ldots \sqrt{\lambda_n}\right)
+$$
+Therefore, exists an ortogonal arbitrary matrix $R$, such that
+$$
+ Y^{\operatorname{T}}Y =U D_{\sqrt{\lambda}}R^{\operatorname{T}}R D_{\sqrt{\lambda}} U^{\operatorname{T}}\\
+$$</p>
+<p>In this way, the matrix $Y$ can be parameterized in terms of $R$ as
+$$
+Y=R D_{\sqrt{\lambda}} U^{\operatorname{T}}
+$$</p>
+<p>1) By using the previous equations, build a $2\times 2$  $Y$ matrix  with the following conditions</p>
+<ul>
+<li>$R$ is an orthogonal matrix with a rotation angle as a random number between $(0,2\pi)$. Use your identification number as the seed of the random number generator.</li>
+<li>The eigenvalues are $\lambda_1=2$ and $\lambda_2=4$. </li>
+<li>$U$ is a diagonalization matrix with mixing angle $\pi/4$</li>
+</ul>
+<p>2) Build the matrix $A$ and check that has the proper eigenvalues and eigenvectors</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>1)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">98554576</span><span class="p">)</span>
+
+<span class="n">θ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">orthogonal</span><span class="p">(</span><span class="n">θ</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">θ</span><span class="p">),</span>  <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">θ</span><span class="p">)],</span>
+                      <span class="p">[</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">θ</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">θ</span><span class="p">)</span> <span class="p">]]</span>    <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ1</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">λ2</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">R</span><span class="o">=</span><span class="n">orthogonal</span><span class="p">(</span><span class="n">θ</span><span class="p">)</span>
+<span class="n">U</span><span class="o">=</span><span class="n">orthogonal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">D_sqrtλ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">([</span><span class="n">λ1</span><span class="p">,</span><span class="n">λ2</span><span class="p">])</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R=&#39;</span><span class="p">)</span>
+<span class="n">R</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>R=
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-0.81433017,  0.58040191],
+       [-0.58040191, -0.81433017]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From the equation for $Y$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">R</span><span class="p">,</span><span class="n">D_sqrtλ</span><span class="p">),</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The symmetric matrix is</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">Y</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">Y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">λ</span><span class="p">,</span><span class="n">Unew</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eigenvalues=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">λ</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;U=&#39;</span><span class="p">)</span>
+<span class="n">Unew</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Eigenvalues=[4. 2.]
+U=
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.70710678, -0.70710678],
+       [ 0.70710678,  0.70710678]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After the reordering of the eigenvalues, we would obtain the original $U$ and therefore</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">A</span> <span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[2., 0.],
+       [0., 4.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this way, there is an infinity set of symmetric matrices $A$ which have the same eigenvalues and eigenvectors</p>
 
 </div>
 </div>
