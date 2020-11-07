@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-extra.html
 suffix: .ipynb
-search: boldsymbol v u begin end bmatrix matrix align operatorname c x e left right dagger lambda m s diag t text b np vdots equation nu eigenvalues array rangle j where pmatrix n theta delta cp w y diagonalization such mass cdots eigenvectors example mathrm sqrt order lambdai sin mu tau cos linalg z ldots eigenvector associated therefore l check prime thetaw d theorem exists lambdan symmetric pdf alpha mixing terms basis rotation com unitary times equiv diagonal matrices python font color span r g eigenvalue not neutrino zero redactivity colab diagonalized ortogonal ordering identity solution det org ccc svd
+search: boldsymbol v u begin end matrix bmatrix c align left right m operatorname s x lambda e dagger diag t text array b np vdots alpha equation eigenvalues nu rangle j where pmatrix n diagonalization mass theta delta cp pdf w y such cdots eigenvectors example mathrm cos sin sqrt eigenvector order lambdai associated therefore mu tau linalg check basis z d ldots symmetric l prime thetaw theorem exists lambdan mixing times terms rotation arxiv org com unitary equiv diagonal matrices python font color span mathcal r g eigenvalue not neutrino proper zero redactivity obtain previous angle colab diagonalized ortogonal
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -1319,29 +1319,9 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V0</span><span class="p">,</span><span class="n">V1</span><span class="p">,</span><span class="n">V2</span><span class="p">]</span>
-<span class="n">U</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[-5.07191124e-01, -6.18673713e-01, -6.00000000e-01],
-       [ 7.73342141e-01, -6.33988906e-01,  1.91548674e-16],
-       [-3.80393343e-01, -4.64005285e-01,  8.00000000e-01]])</pre>
-</div>
-
-</div>
-</div>
 </div>
 </div>
 
@@ -1356,6 +1336,34 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that a sign of an egigenvalues can be changed:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V0</span><span class="p">,</span><span class="o">-</span><span class="n">V1</span><span class="p">,</span><span class="n">V2</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1382,9 +1390,9 @@ $$<p>As the matrix is symmetric $\boldsymbol{V}=\boldsymbol{U}$ and $\boldsymbol
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[11.09901951,  0.        ,  0.        ],
-       [ 0.        ,  0.90098049,  0.        ],
-       [ 0.        ,  0.        ,  5.        ]])</pre>
+<pre>array([[11.09901951, -0.        ,  0.        ],
+       [-0.        ,  0.90098049, -0.        ],
+       [ 0.        , -0.        ,  5.        ]])</pre>
 </div>
 
 </div>
@@ -3958,6 +3966,557 @@ U=
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="THDM-CP-even-masses-and-mixing">THDM CP-even masses and mixing<a class="anchor-link" href="#THDM-CP-even-masses-and-mixing"> </a></h3><p>The diagonalization of a symmetric $2\times 2$ matrix, can be obtained analitically.</p>
+<p>Here, we build a $2\times 2$ symmetric matrix from the eigenvalues, $m_H$ and $m_h$, and the rotation angle, $\alpha$, and check with the numerical results by using a benchmark point</p>
+<p><a href="https://twiki.cern.ch/twiki/pub/LHCPhysics/LHCHXSWG3Benchmarks2HDM/Exotic_Benchmarks.pdf">Benchmark point BP9</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="n">G_F</span><span class="o">=</span><span class="mf">1.1663787E-5</span> <span class="c1">#GeV^-2</span>
+<span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">G_F</span><span class="p">)</span> <span class="c1"># GeV</span>
+
+<span class="c1">#*********  BP9 ************</span>
+<span class="n">tanβ</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">sinβ_α</span><span class="o">=</span><span class="mf">0.6</span>
+<span class="n">m_h</span> <span class="o">=</span> <span class="mi">125</span> <span class="c1"># GeV/c^2 (c→1)</span>
+<span class="n">m_H</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># GeV/c^2 </span>
+<span class="n">m_A</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># GeV/c^2</span>
+<span class="n">m_Hp</span><span class="o">=</span> <span class="mi">400</span> <span class="c1"># GeV/c^2</span>
+<span class="n">m2_12</span><span class="o">=</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span>   <span class="c1"># (GeV/c^2)^2</span>
+<span class="c1">#***********************</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The formula for the mass matrix in terms of the previous parameters can be found in [<a href="https://arxiv.org/pdf/hep-ph/0207010.pdf">hep-ph/0207010</a>,<a href="https://arxiv.org/pdf/1507.00933.pdf">arXiv:1507.00933</a>]
+From : We assumme here that $\lambda_6=\lambda_7=0$. See Appendix D for full formulas</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">β</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">tanβ</span><span class="p">)</span>
+<span class="n">α</span><span class="o">=</span><span class="n">β</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">sinβ_α</span><span class="p">)</span> <span class="c1"># &lt;= np.pi/2~1.57</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;α=&#39;</span><span class="p">,</span><span class="n">α</span><span class="p">)</span>
+<span class="n">λ1</span>  <span class="o">=</span><span class="p">(</span><span class="n">m_H</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">m_h</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">m2_12</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">β</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">λ_2</span> <span class="o">=</span><span class="p">(</span><span class="n">m_H</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">m_h</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">m2_12</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">β</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">λ3</span>  <span class="o">=</span><span class="p">((</span><span class="n">m_H</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">m_h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">α</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">α</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">m_Hp</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">-</span><span class="n">m2_12</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">))</span>
+<span class="n">λ4</span>  <span class="o">=</span><span class="p">((</span><span class="n">m_A</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">m_Hp</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">+</span><span class="n">m2_12</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">))</span>
+<span class="n">λ5</span>  <span class="o">=</span><span class="p">(</span><span class="n">m2_12</span><span class="o">-</span><span class="n">m_A</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">))</span>
+<span class="n">λ345</span><span class="o">=</span><span class="n">λ3</span><span class="o">+</span><span class="n">λ4</span><span class="o">+</span><span class="n">λ5</span>
+<span class="n">λ345</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>α= 0.46364760900080604
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.63919914780058</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">M2</span><span class="p">(</span><span class="n">β</span><span class="p">,</span><span class="n">λ1</span><span class="p">,</span><span class="n">λ_2</span><span class="p">,</span><span class="n">λ5</span><span class="p">,</span><span class="n">λ345</span><span class="p">,</span><span class="n">m2_12</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="mf">246.2</span><span class="p">):</span>
+    <span class="n">mA2</span><span class="o">=</span><span class="n">m2_12</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">))</span><span class="o">-</span><span class="n">λ5</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">M11</span><span class="o">=</span><span class="n">λ1</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">mA2</span><span class="o">+</span><span class="n">λ5</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">M12</span><span class="o">=</span><span class="p">(</span><span class="n">λ345</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="p">(</span><span class="n">mA2</span><span class="o">+</span><span class="n">λ5</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">)</span>
+    <span class="n">M22</span><span class="o">=</span><span class="n">λ_2</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">mA2</span><span class="o">+</span><span class="n">λ5</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="n">M11</span><span class="p">,</span> <span class="n">M12</span><span class="p">],</span>
+                      <span class="p">[</span><span class="n">M12</span> <span class="p">,</span><span class="n">M22</span><span class="p">]</span> <span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M2ϕ</span><span class="o">=</span><span class="n">M2</span><span class="p">(</span><span class="n">β</span><span class="p">,</span><span class="n">λ1</span><span class="p">,</span><span class="n">λ_2</span><span class="p">,</span><span class="n">λ5</span><span class="p">,</span><span class="n">λ345</span><span class="p">,</span><span class="n">m2_12</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+<span class="n">M2ϕ</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[75125., 29750.],
+       [29750., 30500.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By using the proper basis
+$$
+\left(\begin{array}{cc}
+m_{H}^{2} &amp; 0 \\
+0 &amp; m_{h}^{2}
+\end{array}\right)=\left(\begin{array}{rr}
+c_{\alpha} &amp; s_{\alpha} \\
+-s_{\alpha} &amp; c_{\alpha}
+\end{array}\right)\left(\begin{array}{ll}
+\mathcal{M}_{11}^{2} &amp; \mathcal{M}_{12}^{2} \\
+\mathcal{M}_{12}^{2} &amp; \mathcal{M}_{22}^{2}
+\end{array}\right)\left(\begin{array}{lr}
+c_{\alpha} &amp; -s_{\alpha} \\
+s_{\alpha} &amp; c_{\alpha}
+\end{array}\right).
+$$
+Therefore
+$$
+U=\left(\begin{array}{lr}
+c_{\alpha} &amp; -s_{\alpha} \\
+s_{\alpha} &amp; c_{\alpha}
+\end{array}\right).
+$$
+Since $-\pi/2\le\alpha\le\pi/2$ then $\cos\alpha\ge 0$. Then we must obtain $\alpha$ from $\tan\alpha$  to avoid ambiguities with a global sign in the second eigenvector
+$$
+\tan\alpha=\frac{\sin\alpha}{\cos\alpha}=-\frac{U_{12}}{U_{22}}\,.
+$$</p>
+<p>The eigenvector with large projection in the second component along $\Phi_2$ ( Interaction basis $(\Phi_1,\Phi_2)$  → Mass basis $(H^0,h^0)$) is the associated with the SM higgs mass, $m_h$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">&lt;=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">H</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">h</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">H</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">h</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">H</span><span class="p">,</span><span class="n">h</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(0, 1)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">V</span><span class="p">[:,</span><span class="n">H</span><span class="p">],</span><span class="n">V</span><span class="p">[:,</span><span class="n">h</span><span class="p">]</span>  <span class="p">]</span>
+<span class="n">U</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.89442719, -0.4472136 ],
+       [ 0.4472136 ,  0.89442719]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M2diag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">M2ϕ</span><span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">mH</span><span class="p">,</span><span class="n">mh</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">M2diag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">M2diag</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">mH</span><span class="p">,</span><span class="n">mh</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(300.0, 125.0)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tanα</span><span class="o">=-</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">α</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">tanα</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">α</span><span class="o">&gt;=-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">α</span><span class="o">&lt;=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">α</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad α range&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.4636476090008061
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="o">-</span><span class="n">α</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.8</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="o">-</span><span class="n">α</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.5999999999999999</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Analytical diagonalization from [<a href="https://arxiv.org/pdf/1507.00933.pdf">arXiv:1507.00933</a>]</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Δ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>  <span class="p">(</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">[</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">Δ</span> <span class="p">),</span>
+          <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">Δ</span> <span class="p">)</span> <span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([300., 125.])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cosα</span><span class="p">,</span><span class="n">Sinα</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">Δ</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Δ</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Δ</span><span class="o">*</span><span class="p">(</span><span class="n">Δ</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">Cosα</span><span class="p">,</span><span class="o">-</span><span class="n">Sinα</span><span class="p">],[</span><span class="n">Sinα</span><span class="p">,</span><span class="n">Cosα</span><span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.89442719, -0.4472136 ],
+       [ 0.4472136 ,  0.89442719]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cos(β-α)=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">β</span><span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span> <span class="n">Sinα</span><span class="o">/</span><span class="n">Cosα</span><span class="p">)</span> <span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>cos(β-α)=0.8
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
