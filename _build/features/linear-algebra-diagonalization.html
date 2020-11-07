@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-extra.html
 suffix: .ipynb
-search: boldsymbol v u begin end matrix bmatrix c align left right m operatorname s x lambda e dagger diag t text array b np vdots alpha equation eigenvalues nu rangle j where pmatrix n pdf diagonalization mass theta delta cp w y such cdots eigenvectors example mathrm cos sin sqrt eigenvector order lambdai associated therefore mu tau linalg check basis z d ldots symmetric l prime thetaw theorem exists lambdan arxiv org mixing times terms rotation com unitary equiv diagonal matrices python font color span mathcal r g eigenvalue not neutrino proper zero redactivity obtain previous angle colab diagonalized ortogonal
+search: boldsymbol v u begin end matrix bmatrix m align left right operatorname c x lambda e dagger s diag t text array b alpha np vdots equation eigenvalues nu pmatrix rangle j cos sin where n mass pdf diagonalization theta delta cp w y such cdots eigenvectors example mathrm basis sqrt eigenvector order lambdai r symmetric associated therefore mu tau linalg check z d ldots l times prime rotation thetaw theorem exists lambdan arxiv org mixing terms mathcal com unitary equiv diagonal matrices python font color span h g eigenvalue not neutrino since proper zero redactivity obtain build previous angle
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -3973,9 +3973,24 @@ U=
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="THDM-CP-even-masses-and-mixing">THDM CP-even masses and mixing<a class="anchor-link" href="#THDM-CP-even-masses-and-mixing"> </a></h3><p>The diagonalization of a symmetric $2\times 2$ matrix, can be obtained analitically.</p>
-<p>Here, we build a $2\times 2$ symmetric matrix from the eigenvalues, $m_H$ and $m_h$, and the rotation angle, $\alpha$, and check with the numerical results by using a benchmark point</p>
-<p><a href="https://twiki.cern.ch/twiki/pub/LHCPhysics/LHCHXSWG3Benchmarks2HDM/Exotic_Benchmarks.pdf">Benchmark point BP9</a></p>
+<h3 id="THDM-CP-even-masses-and-mixing">THDM CP-even masses and mixing<a class="anchor-link" href="#THDM-CP-even-masses-and-mixing"> </a></h3><p>In this case we have the rotation between an interaction basis and a physical basis defined as
+$$
+\begin{pmatrix}
+R_1\\
+R_2\\
+\end{pmatrix}=
+\begin{pmatrix}
+\cos\alpha &amp; -\sin\alpha \\
+\sin\alpha &amp; \cos\alpha \\
+\end{pmatrix}
+\begin{pmatrix}
+H\\
+h\\
+\end{pmatrix}.
+$$
+Since the diagonalization of a symmetric $2\times 2$ matrix can be obtained analitically,
+here we build a $2\times 2$ symmetric matrix from the eigenvalues, $m_H$ and $m_h$, and the rotation angle, $\alpha$, and check with the numerical results by using a benchmark point:</p>
+<p>→ <a href="https://twiki.cern.ch/twiki/pub/LHCPhysics/LHCHXSWG3Benchmarks2HDM/Exotic_Benchmarks.pdf">Benchmark point BP9</a></p>
 
 </div>
 </div>
@@ -3996,12 +4011,12 @@ U=
 
 <span class="c1">#*********  BP9 ************</span>
 <span class="n">tanβ</span><span class="o">=</span><span class="mi">2</span>
-<span class="n">sinβ_α</span><span class="o">=</span><span class="mf">0.6</span>
-<span class="n">m_h</span> <span class="o">=</span> <span class="mi">125</span> <span class="c1"># GeV/c^2 (c→1)</span>
-<span class="n">m_H</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># GeV/c^2 </span>
-<span class="n">m_A</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># GeV/c^2</span>
-<span class="n">m_Hp</span><span class="o">=</span> <span class="mi">400</span> <span class="c1"># GeV/c^2</span>
-<span class="n">m2_12</span><span class="o">=</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span>   <span class="c1"># (GeV/c^2)^2</span>
+<span class="n">sinβ_α</span><span class="o">=</span><span class="mf">0.6</span>   <span class="c1"># sin(β-α)</span>
+<span class="n">m_h</span> <span class="o">=</span> <span class="mi">125</span>    <span class="c1"># GeV/c^2 (c→1)</span>
+<span class="n">m_H</span> <span class="o">=</span> <span class="mi">300</span>    <span class="c1"># GeV/c^2 </span>
+<span class="n">m_A</span> <span class="o">=</span> <span class="mi">300</span>    <span class="c1"># GeV/c^2</span>
+<span class="n">m_Hp</span><span class="o">=</span> <span class="mi">400</span>    <span class="c1"># GeV/c^2</span>
+<span class="n">m2_12</span><span class="o">=</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># (GeV/c^2)^2</span>
 <span class="c1">#***********************</span>
 </pre></div>
 
@@ -4100,13 +4115,24 @@ U=
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this way, from the BP point, we can build the $2\times2$ symmetric mass $\mathcal{M}$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M2ϕ</span><span class="o">=</span><span class="n">M2</span><span class="p">(</span><span class="n">β</span><span class="p">,</span><span class="n">λ1</span><span class="p">,</span><span class="n">λ_2</span><span class="p">,</span><span class="n">λ5</span><span class="p">,</span><span class="n">λ345</span><span class="p">,</span><span class="n">m2_12</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
-<span class="n">M2ϕ</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ℳ</span><span class="o">=</span><span class="n">M2</span><span class="p">(</span><span class="n">β</span><span class="p">,</span><span class="n">λ1</span><span class="p">,</span><span class="n">λ_2</span><span class="p">,</span><span class="n">λ5</span><span class="p">,</span><span class="n">λ345</span><span class="p">,</span><span class="n">m2_12</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+<span class="n">ℳ</span>
 </pre></div>
 
     </div>
@@ -4144,28 +4170,28 @@ $$
 m_{H}^{2} &amp; 0 \\
 0 &amp; m_{h}^{2}
 \end{array}\right)=\left(\begin{array}{rr}
-c_{\alpha} &amp; s_{\alpha} \\
--s_{\alpha} &amp; c_{\alpha}
+\cos{\alpha} &amp; \sin{\alpha} \\
+-\sin{\alpha} &amp; \cos{\alpha}
 \end{array}\right)\left(\begin{array}{ll}
 \mathcal{M}_{11}^{2} &amp; \mathcal{M}_{12}^{2} \\
 \mathcal{M}_{12}^{2} &amp; \mathcal{M}_{22}^{2}
 \end{array}\right)\left(\begin{array}{lr}
-c_{\alpha} &amp; -s_{\alpha} \\
-s_{\alpha} &amp; c_{\alpha}
+\cos{\alpha} &amp; -\sin{\alpha} \\
+\sin{\alpha} &amp; \cos{\alpha}
 \end{array}\right).
 $$
 Therefore
 $$
 U=\left(\begin{array}{lr}
-c_{\alpha} &amp; -s_{\alpha} \\
-s_{\alpha} &amp; c_{\alpha}
+\cos{\alpha} &amp; -\sin{\alpha} \\
+\sin{\alpha} &amp; \cos{\alpha}
 \end{array}\right).
 $$
-Since $-\pi/2\le\alpha\le\pi/2$ then $\cos\alpha\ge 0$. In this way, we must obtain $\alpha$ from $\tan\alpha$  to avoid ambiguities with a global sign in the second eigenvector
+Since $-\pi/2\le\alpha\le\pi/2$ then $\cos\alpha\ge 0$. In this way, we must obtain $\alpha$ from $\tan\alpha$  to avoid ambiguities with a global sign in the second eigenvector 
 $$
-\tan\alpha=\frac{\sin\alpha}{\cos\alpha}=-\frac{U_{12}}{U_{22}}\,.
+\tan\alpha=\frac{\sin\alpha}{\cos\alpha}=-\frac{U_{01}}{U_{11}}\,.
 $$</p>
-<p>The eigenvector with large projection in the second component along $\Phi_2$ ( Interaction basis $(\Phi_1,\Phi_2)$  → Mass basis $(H^0,h^0)$) is the associated with the standard model Higgs mass, $m_h$</p>
+<p>The eigenvector with large projection in the second component along $R_2$ ( Interaction basis $(R_1,R_2)$  → Mass basis $(H^0,h^0)$) is the associated with the standard model Higgs mass, $m_h$</p>
 
 </div>
 </div>
@@ -4253,7 +4279,7 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M2diag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">M2ϕ</span><span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M2diag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">ℳ</span><span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">mH</span><span class="p">,</span><span class="n">mh</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">M2diag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">M2diag</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">mH</span><span class="p">,</span><span class="n">mh</span>
 </pre></div>
@@ -4406,7 +4432,7 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Δ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>  <span class="p">(</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Δ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>  <span class="p">(</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -4423,8 +4449,8 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">[</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">Δ</span> <span class="p">),</span>
-          <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">Δ</span> <span class="p">)</span> <span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">[</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">Δ</span> <span class="p">),</span>
+          <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">Δ</span> <span class="p">)</span> <span class="p">])</span>
 </pre></div>
 
     </div>
@@ -4458,8 +4484,8 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cosα</span><span class="p">,</span><span class="n">Sinα</span><span class="o">=</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">Δ</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Δ</span><span class="p">)),</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Δ</span><span class="o">*</span><span class="p">(</span><span class="n">Δ</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cosα</span><span class="p">,</span><span class="n">Sinα</span><span class="o">=</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">Δ</span><span class="o">+</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Δ</span><span class="p">)),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Δ</span><span class="o">*</span><span class="p">(</span><span class="n">Δ</span><span class="o">+</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;U=&#39;</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">Cosα</span><span class="p">,</span><span class="o">-</span><span class="n">Sinα</span><span class="p">],[</span><span class="n">Sinα</span><span class="p">,</span><span class="n">Cosα</span><span class="p">]])</span>
 </pre></div>
