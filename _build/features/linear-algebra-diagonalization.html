@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/linear-algebra-extra.html
 suffix: .ipynb
-search: boldsymbol v u begin end matrix bmatrix c align left right m operatorname s x lambda e dagger diag t text array b np vdots alpha equation eigenvalues nu rangle j where pmatrix n diagonalization mass theta delta cp pdf w y such cdots eigenvectors example mathrm cos sin sqrt eigenvector order lambdai associated therefore mu tau linalg check basis z d ldots symmetric l prime thetaw theorem exists lambdan mixing times terms rotation arxiv org com unitary equiv diagonal matrices python font color span mathcal r g eigenvalue not neutrino proper zero redactivity obtain previous angle colab diagonalized ortogonal
+search: boldsymbol v u begin end matrix bmatrix c align left right m operatorname s x lambda e dagger diag t text array b np vdots alpha equation eigenvalues nu rangle j where pmatrix n pdf diagonalization mass theta delta cp w y such cdots eigenvectors example mathrm cos sin sqrt eigenvector order lambdai associated therefore mu tau linalg check basis z d ldots symmetric l prime thetaw theorem exists lambdan arxiv org mixing times terms rotation com unitary equiv diagonal matrices python font color span mathcal r g eigenvalue not neutrino proper zero redactivity obtain previous angle colab diagonalized ortogonal
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -4016,8 +4016,7 @@ U=
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The formula for the mass matrix in terms of the previous parameters can be found in [<a href="https://arxiv.org/pdf/hep-ph/0207010.pdf">hep-ph/0207010</a>,<a href="https://arxiv.org/pdf/1507.00933.pdf">arXiv:1507.00933</a>]
-From : We assumme here that $\lambda_6=\lambda_7=0$. See Appendix D for full formulas</p>
+<p>The formula for the mass matrix in terms of the previous parameters can be found in [<a href="https://arxiv.org/pdf/hep-ph/0207010.pdf">hep-ph/0207010</a>,<a href="https://arxiv.org/pdf/1507.00933.pdf">arXiv:1507.00933</a>]. We assumme here that $\lambda_6=\lambda_7=0$. See Appendix D of  [<a href="https://arxiv.org/pdf/hep-ph/0207010.pdf">hep-ph/0207010</a>] for full formulas</p>
 
 </div>
 </div>
@@ -4089,7 +4088,7 @@ From : We assumme here that $\lambda_6=\lambda_7=0$. See Appendix D for full for
     <span class="n">M12</span><span class="o">=</span><span class="p">(</span><span class="n">λ345</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="p">(</span><span class="n">mA2</span><span class="o">+</span><span class="n">λ5</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">)</span>
     <span class="n">M22</span><span class="o">=</span><span class="n">λ_2</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">mA2</span><span class="o">+</span><span class="n">λ5</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">β</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span><span class="n">M11</span><span class="p">,</span> <span class="n">M12</span><span class="p">],</span>
-                      <span class="p">[</span><span class="n">M12</span> <span class="p">,</span><span class="n">M22</span><span class="p">]</span> <span class="p">])</span>
+                      <span class="p">[</span><span class="n">M12</span><span class="p">,</span> <span class="n">M22</span><span class="p">]])</span>
 </pre></div>
 
     </div>
@@ -4162,11 +4161,11 @@ c_{\alpha} &amp; -s_{\alpha} \\
 s_{\alpha} &amp; c_{\alpha}
 \end{array}\right).
 $$
-Since $-\pi/2\le\alpha\le\pi/2$ then $\cos\alpha\ge 0$. Then we must obtain $\alpha$ from $\tan\alpha$  to avoid ambiguities with a global sign in the second eigenvector
+Since $-\pi/2\le\alpha\le\pi/2$ then $\cos\alpha\ge 0$. In this way, we must obtain $\alpha$ from $\tan\alpha$  to avoid ambiguities with a global sign in the second eigenvector
 $$
 \tan\alpha=\frac{\sin\alpha}{\cos\alpha}=-\frac{U_{12}}{U_{22}}\,.
 $$</p>
-<p>The eigenvector with large projection in the second component along $\Phi_2$ ( Interaction basis $(\Phi_1,\Phi_2)$  → Mass basis $(H^0,h^0)$) is the associated with the SM higgs mass, $m_h$</p>
+<p>The eigenvector with large projection in the second component along $\Phi_2$ ( Interaction basis $(\Phi_1,\Phi_2)$  → Mass basis $(H^0,h^0)$) is the associated with the standard model Higgs mass, $m_h$</p>
 
 </div>
 </div>
@@ -4184,7 +4183,7 @@ $$</p>
     <span class="n">H</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">h</span><span class="o">=</span><span class="mi">1</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">H</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">h</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">H</span><span class="p">,</span><span class="n">h</span>
+<span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -4459,7 +4458,9 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cosα</span><span class="p">,</span><span class="n">Sinα</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">Δ</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Δ</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Δ</span><span class="o">*</span><span class="p">(</span><span class="n">Δ</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cosα</span><span class="p">,</span><span class="n">Sinα</span><span class="o">=</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">Δ</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Δ</span><span class="p">)),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Δ</span><span class="o">*</span><span class="p">(</span><span class="n">Δ</span><span class="o">+</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">M2ϕ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;U=&#39;</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">Cosα</span><span class="p">,</span><span class="o">-</span><span class="n">Sinα</span><span class="p">],[</span><span class="n">Sinα</span><span class="p">,</span><span class="n">Cosα</span><span class="p">]])</span>
 </pre></div>
 
@@ -4470,6 +4471,15 @@ $$</p>
 <div class="output_wrapper">
 <div class="output">
 
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>U=
+</pre>
+</div>
+</div>
+</div>
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
