@@ -4131,8 +4131,8 @@ here we build a $2\times 2$ symmetric matrix from the eigenvalues, $m_H$ and $m_
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ℳ</span><span class="o">=</span><span class="n">M2</span><span class="p">(</span><span class="n">β</span><span class="p">,</span><span class="n">λ1</span><span class="p">,</span><span class="n">λ_2</span><span class="p">,</span><span class="n">λ5</span><span class="p">,</span><span class="n">λ345</span><span class="p">,</span><span class="n">m2_12</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
-<span class="n">ℳ</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ℳ2</span><span class="o">=</span><span class="n">M2</span><span class="p">(</span><span class="n">β</span><span class="p">,</span><span class="n">λ1</span><span class="p">,</span><span class="n">λ_2</span><span class="p">,</span><span class="n">λ5</span><span class="p">,</span><span class="n">λ345</span><span class="p">,</span><span class="n">m2_12</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+<span class="n">ℳ2</span>
 </pre></div>
 
     </div>
@@ -4154,6 +4154,23 @@ here we build a $2\times 2$ symmetric matrix from the eigenvalues, $m_H$ and $m_
 
 </div>
 </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m2</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">ℳ2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -4279,7 +4296,7 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M2diag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">ℳ</span><span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M2diag</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="n">ℳ2</span><span class="p">),</span> <span class="n">U</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">mH</span><span class="p">,</span><span class="n">mh</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">M2diag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">M2diag</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">mH</span><span class="p">,</span><span class="n">mh</span>
 </pre></div>
@@ -4432,7 +4449,7 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Δ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>  <span class="p">(</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Δ</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>  <span class="p">(</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -4449,8 +4466,8 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">[</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">Δ</span> <span class="p">),</span>
-          <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">Δ</span> <span class="p">)</span> <span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">[</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">ℳ2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">Δ</span> <span class="p">),</span>
+          <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span> <span class="n">ℳ2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">Δ</span> <span class="p">)</span> <span class="p">])</span>
 </pre></div>
 
     </div>
@@ -4484,8 +4501,8 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cosα</span><span class="p">,</span><span class="n">Sinα</span><span class="o">=</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">Δ</span><span class="o">+</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Δ</span><span class="p">)),</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Δ</span><span class="o">*</span><span class="p">(</span><span class="n">Δ</span><span class="o">+</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cosα</span><span class="p">,</span><span class="n">Sinα</span><span class="o">=</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">Δ</span><span class="o">+</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Δ</span><span class="p">)),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Δ</span><span class="o">*</span><span class="p">(</span><span class="n">Δ</span><span class="o">+</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ℳ2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;U=&#39;</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">Cosα</span><span class="p">,</span><span class="o">-</span><span class="n">Sinα</span><span class="p">],[</span><span class="n">Sinα</span><span class="p">,</span><span class="n">Cosα</span><span class="p">]])</span>
 </pre></div>
