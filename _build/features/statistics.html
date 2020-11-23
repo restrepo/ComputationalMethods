@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/Intro_clases.html
 suffix: .ipynb
-search: m sum xi yi random n e align frac data scipy left font right error least numbers xiyi com linear function polynomial begin end x square example partial color red not set using order approximation adjust html points functions going used value f where optimize parameters activity decay also necessary numpy take obtained procedure coefficients generated initial following generate seed colab github squares non fitting associated known equations curve docs starting c fit between wi drag d b google restrepo computationalmethods blob master material ipynb src only why raw stackoverflow given build certain axi minimize since solve resulting second org
+search: m sum xi yi random n e align frac data scipy left font right error least numbers xiyi com linear function polynomial begin end x square example partial color red not set using order approximation adjust html points functions going used value f where optimize parameters activity decay github also necessary numpy take obtained procedure coefficients generated fit initial following generate seed colab restrepo squares non fitting associated known equations curve docs starting c between wi drag d b google computationalmethods blob master material ipynb src only why raw stackoverflow given build certain axi minimize since solve resulting second org
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -485,6 +485,8 @@ times are compiled in table 1</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">t</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">v</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$ [s]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$v$ [m/s]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 
@@ -566,7 +568,7 @@ times are compiled in table 1</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">starting_parameters</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">35</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">starting_parameters</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -614,8 +616,9 @@ times are compiled in table 1</p>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Δa</span><span class="p">)</span>
+<span class="n">σ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Δa</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a1=</span><span class="si">{}</span><span class="s1">±</span><span class="si">{}</span><span class="s1">, a0=</span><span class="si">{}</span><span class="s1">±</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Δa</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Δa</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a1=</span><span class="si">{:.2f}</span><span class="s1">±</span><span class="si">{:.2f}</span><span class="s1">, a0=</span><span class="si">{:.2f}</span><span class="s1">±</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">σ</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">σ</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -629,12 +632,12 @@ times are compiled in table 1</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[-10.88597169  34.69190477]
+<pre>[-10.88597169  34.69190478]
 --------------------
-[[ 0.68398818 -1.89806718]
- [-1.89806718  7.72513335]]
+[[ 0.68398817 -1.89806718]
+ [-1.89806718  7.72513347]]
 --------------------
-a1=-10.885971687579287±0.6839881806555917, a0=34.69190476636586±7.725133349482567
+a1=-10.89±0.83, a0=34.69±2.78
 </pre>
 </div>
 </div>
@@ -775,7 +778,7 @@ a1=-10.885971687579287±0.6839881806555917, a0=34.69190476636586±7.725133349482
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span> <span class="s2">&quot;$v$  [m/s]&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Linear data adjust&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>    
 </pre></div>
 
     </div>
@@ -889,6 +892,74 @@ Let a=[a_0,a_1]</p>
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">E</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3105.6670999999997</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">E</span><span class="p">([</span><span class="mi">33</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>79.44340000000005</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">Ea0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a1</span><span class="o">=-</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">EE</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">a0</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
@@ -972,7 +1043,7 @@ Let a=[a_0,a_1]</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_37_1.png"
+<img src="../images/features/statistics_39_1.png"
 >
 </div>
 
@@ -1090,7 +1161,8 @@ Let a=[a_0,a_1]</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#========================================================</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xrange</span><span class="o">=</span><span class="nb">range</span>
+<span class="c1">#========================================================</span>
 <span class="c1"># Adjusting to a first order polynomy the data set v </span>
 <span class="c1">#========================================================</span>
 <span class="c1">#Setting figure</span>
@@ -1137,7 +1209,7 @@ Let a=[a_0,a_1]</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_41_0.png"
+<img src="../images/features/statistics_43_0.png"
 >
 </div>
 
@@ -1403,7 +1475,7 @@ by the body?
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_50_0.png"
+<img src="../images/features/statistics_52_0.png"
 >
 </div>
 
@@ -1529,6 +1601,7 @@ $$<p>Determinar: $A,c,d$</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;E]stimated Parameters&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>  
 
 <span class="c1"># Model</span>
+<span class="n">x_lin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">1350</span><span class="p">)</span>
 <span class="n">y_model</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x_lin</span><span class="p">,</span> <span class="o">*</span><span class="n">w</span><span class="p">)</span>
 </pre></div>
 
@@ -1585,7 +1658,7 @@ $$<p>Determinar: $A,c,d$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Text(0,0.5,&#39;f(x)&#39;)</pre>
+<pre>Text(0, 0.5, &#39;f(x)&#39;)</pre>
 </div>
 
 </div>
@@ -1596,7 +1669,7 @@ $$<p>Determinar: $A,c,d$</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_58_1.png"
+<img src="../images/features/statistics_60_1.png"
 >
 </div>
 
@@ -1751,6 +1824,17 @@ $$<p>where $a$ is the height of the gaussian, $\mu$ is the mean (expected value)
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>See solution: <a href="./gaussian_fit.ipynb">gaussian_fit.ipynb</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>See fit exponential: <a href="https://github.com/restrepo/COVID-19">https://github.com/restrepo/COVID-19</a></p>
 
 </div>
 </div>
@@ -1924,8 +2008,8 @@ in the last step.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>1591724183.1273613
-1591724185.1287963
+<pre>1605636036.2581604
+1605636038.2598178
 </pre>
 </div>
 </div>
@@ -1959,7 +2043,7 @@ in the last step.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.15497227080241027</pre>
+<pre>0.6982585360672241</pre>
 </div>
 
 </div>
@@ -2030,7 +2114,7 @@ in the last step.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([0.03064882, 0.47544126, 0.64271377, 0.8852139 , 0.03742761])</pre>
+<pre>array([0.74979577, 0.77025198, 0.1943525 , 0.418922  , 0.91964572])</pre>
 </div>
 
 </div>
@@ -2115,7 +2199,7 @@ To generate a random number between 0 and 1 initiallizing the seed with the actu
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.4047574839556839</pre>
+<pre>0.5246933156265494</pre>
 </div>
 
 </div>
@@ -2161,11 +2245,11 @@ To generate a random number between 0 and 1 initiallizing the seed with the actu
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[97.62744548,  0.62302552, 25.29823624, 43.47915324, 77.93829218],
-       [19.76850746, 86.29932356, 98.34006772, 16.38422414, 59.73339439],
-       [ 0.89860977, 38.65712826,  4.41600579, 95.66529677, 43.61466469],
-       [94.89773068, 78.63059859, 86.62892986, 17.31654215,  7.4948587 ],
-       [60.07427214, 16.79721837, 73.33801675, 40.84438602, 52.79088234]])</pre>
+<pre>array([[13.25980014, 10.85324426, 81.24657358, 73.5488896 , 76.84488754],
+       [34.51142695, 72.82941893, 61.76035147, 98.75100252, 77.34796303],
+       [28.27847299, 14.76777458, 55.78354501, 24.62013376, 36.56582928],
+       [81.08850504, 60.25923238, 71.22826739, 62.52388123, 56.28302001],
+       [89.37094444, 36.14415972, 16.15729293, 31.74634766, 24.41171835]])</pre>
 </div>
 
 </div>
@@ -2256,8 +2340,8 @@ To generate a random number between 0 and 1 initiallizing the seed with the actu
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[-10.96260164,   0.40734364],
-       [ -9.46680403,   8.56005443]])</pre>
+<pre>array([[  5.34784268,  -2.27612914],
+       [  7.8623893 , -13.88564232]])</pre>
 </div>
 
 </div>
@@ -2358,7 +2442,7 @@ They are normalized so each step is of unit length.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7fd10f4ea438&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x7f95f6040e10&gt;</pre>
 </div>
 
 </div>
@@ -2369,7 +2453,7 @@ They are normalized so each step is of unit length.</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_88_1.png"
+<img src="../images/features/statistics_91_1.png"
 >
 </div>
 
@@ -2385,7 +2469,8 @@ They are normalized so each step is of unit length.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-----**Activity**-"><font color="red">     **Activity** </font><a class="anchor-link" href="#-----**Activity**-"> </a></h2>
+<h2 id="-----"><font color="red">     </font><a class="anchor-link" href="#-----"> </a></h2><p><strong>Activity</strong></p>
+
 </div>
 </div>
 </div>
@@ -2432,8 +2517,8 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 5.20067392, 12.85732679],
-       [ 7.27298318,  4.58864122]])</pre>
+<pre>array([[ 1.56800444,  5.62105311],
+       [10.43483622, 14.89746624]])</pre>
 </div>
 
 </div>
@@ -2479,7 +2564,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7fd10f5e1ac8&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f95f5c66a90&gt;]</pre>
 </div>
 
 </div>
@@ -2490,7 +2575,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_93_1.png"
+<img src="../images/features/statistics_96_1.png"
 >
 </div>
 
@@ -2537,7 +2622,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7fd10f5dc3c8&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f95f5c42f98&gt;]</pre>
 </div>
 
 </div>
@@ -2548,7 +2633,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_95_1.png"
+<img src="../images/features/statistics_98_1.png"
 >
 </div>
 
@@ -2595,7 +2680,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7fd10f5aa208&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f95f5c00940&gt;]</pre>
 </div>
 
 </div>
@@ -2606,7 +2691,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_97_1.png"
+<img src="../images/features/statistics_100_1.png"
 >
 </div>
 
@@ -2690,7 +2775,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7fd120c1c9e8&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f95f6008dd8&gt;]</pre>
 </div>
 
 </div>
@@ -2701,7 +2786,7 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/statistics_100_1.png"
+<img src="../images/features/statistics_103_1.png"
 >
 </div>
 
@@ -2720,10 +2805,27 @@ $$<p>Determin when radioactive decay looks like exponential decay and when it lo
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>np.random.exponential<span class="o">?</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>38</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 

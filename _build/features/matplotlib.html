@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/ipython-notebooks.html
 suffix: .ipynb
-search: matplotlib colab figures gallery basic research google com interface src python ipython formating very href github restrepo computationalmethods blob master material ipynb target parentimg assets badge svg alt open div org plotting interactive scripts user easy things power etc matlab control line properties via functions appealing allowing always example style float right markdown img static logo png d library produces publication quality variety hardcopy formats environments across platforms used shell web application servers six graphical toolkits tries hard possible generate plots histograms spectra bar charts errorcharts scatterplots just few lines code sampling screenshots thumbnail examples directory simple pyplot provides particularly
+search: matplotlib colab figures gallery basic research google com interface src python ipython easy formating very href github restrepo computationalmethods blob master material ipynb target parentimg assets badge svg alt open div org plotting interactive scripts user things power etc matlab control line properties via functions appealing allowing always animmations example style float right markdown img static logo png d library produces publication quality variety hardcopy formats environments across platforms used shell web application servers six graphical toolkits tries hard possible generate plots histograms spectra bar charts errorcharts scatterplots just few lines code sampling screenshots thumbnail examples directory simple pyplot provides
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -811,6 +811,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
     <span class="n">l</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
 
+<span class="c1">#Avoid intial plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">ani</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -1014,42 +1016,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img44ba96585eeb4c718aab9f13cbe556a1">
+  <img id="_anim_img4f8540f68e4b419abc67745677a978bc">
   <div class="anim-controls">
-    <input id="_anim_slider44ba96585eeb4c718aab9f13cbe556a1" type="range" class="anim-slider"
+    <input id="_anim_slider4f8540f68e4b419abc67745677a978bc" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim44ba96585eeb4c718aab9f13cbe556a1.set_frame(parseInt(this.value));"></input>
+           oninput="anim4f8540f68e4b419abc67745677a978bc.set_frame(parseInt(this.value));"></input>
     <div class="anim-buttons">
-      <button title="Decrease speed" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.slower()">
+      <button title="Decrease speed" onclick="anim4f8540f68e4b419abc67745677a978bc.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.first_frame()">
+      <button title="First frame" onclick="anim4f8540f68e4b419abc67745677a978bc.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.previous_frame()">
+      <button title="Previous frame" onclick="anim4f8540f68e4b419abc67745677a978bc.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.reverse_animation()">
+      <button title="Play backwards" onclick="anim4f8540f68e4b419abc67745677a978bc.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.pause_animation()">
+      <button title="Pause" onclick="anim4f8540f68e4b419abc67745677a978bc.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.play_animation()">
+      <button title="Play" onclick="anim4f8540f68e4b419abc67745677a978bc.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.next_frame()">
+      <button title="Next frame" onclick="anim4f8540f68e4b419abc67745677a978bc.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.last_frame()">
+      <button title="Last frame" onclick="anim4f8540f68e4b419abc67745677a978bc.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" onclick="anim44ba96585eeb4c718aab9f13cbe556a1.faster()">
+      <button title="Increase speed" onclick="anim4f8540f68e4b419abc67745677a978bc.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" action="#n" name="_anim_loop_select44ba96585eeb4c718aab9f13cbe556a1"
+    <form title="Repetition mode" action="#n" name="_anim_loop_select4f8540f68e4b419abc67745677a978bc"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_44ba96585eeb4c718aab9f13cbe556a1"
+      <input type="radio" name="state" value="once" id="_anim_radio1_4f8540f68e4b419abc67745677a978bc"
              >
-      <label for="_anim_radio1_44ba96585eeb4c718aab9f13cbe556a1">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_44ba96585eeb4c718aab9f13cbe556a1"
+      <label for="_anim_radio1_4f8540f68e4b419abc67745677a978bc">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_4f8540f68e4b419abc67745677a978bc"
              checked>
-      <label for="_anim_radio2_44ba96585eeb4c718aab9f13cbe556a1">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_44ba96585eeb4c718aab9f13cbe556a1"
+      <label for="_anim_radio2_4f8540f68e4b419abc67745677a978bc">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_4f8540f68e4b419abc67745677a978bc"
              >
-      <label for="_anim_radio3_44ba96585eeb4c718aab9f13cbe556a1">Reflect</label>
+      <label for="_anim_radio3_4f8540f68e4b419abc67745677a978bc">Reflect</label>
     </form>
   </div>
 </div>
@@ -1059,9 +1061,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img44ba96585eeb4c718aab9f13cbe556a1";
-    var slider_id = "_anim_slider44ba96585eeb4c718aab9f13cbe556a1";
-    var loop_select_id = "_anim_loop_select44ba96585eeb4c718aab9f13cbe556a1";
+    var img_id = "_anim_img4f8540f68e4b419abc67745677a978bc";
+    var slider_id = "_anim_slider4f8540f68e4b419abc67745677a978bc";
+    var loop_select_id = "_anim_loop_select4f8540f68e4b419abc67745677a978bc";
     var frames = new Array(50);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAYAAADVKCZpAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -9045,7 +9047,7 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim44ba96585eeb4c718aab9f13cbe556a1 = new Animation(frames, img_id, slider_id, 200.0,
+        anim4f8540f68e4b419abc67745677a978bc = new Animation(frames, img_id, slider_id, 200.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -9055,14 +9057,137 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
 
 </div>
 </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Easy-animmations-with-video-output">Easy animmations with video output<a class="anchor-link" href="#Easy-animmations-with-video-output"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#See </span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">celluloid</span> <span class="kn">import</span> <span class="n">Camera</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">snap</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">animate</span><span class="p">()</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;animation.mp4&#39;</span><span class="p">)</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">animation</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
-
-<div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_24_1.png"
->
+<div class="output_html rendered_html output_subarea output_execute_result">
+<video width="432" height="288" controls autoplay loop>
+  <source type="video/mp4" src="data:video/mp4;base64,AAAAHGZ0eXBNNFYgAAACAGlzb21pc28yYXZjMQAAAAhmcmVlAAANEm1kYXQAAAKtBgX//6ncRem9
+5tlIt5Ys2CDZI+7veDI2NCAtIGNvcmUgMTU1IHIyOTE3IDBhODRkOTggLSBILjI2NC9NUEVHLTQg
+QVZDIGNvZGVjIC0gQ29weWxlZnQgMjAwMy0yMDE4IC0gaHR0cDovL3d3dy52aWRlb2xhbi5vcmcv
+eDI2NC5odG1sIC0gb3B0aW9uczogY2FiYWM9MSByZWY9MyBkZWJsb2NrPTE6MDowIGFuYWx5c2U9
+MHgzOjB4MTEzIG1lPWhleCBzdWJtZT03IHBzeT0xIHBzeV9yZD0xLjAwOjAuMDAgbWl4ZWRfcmVm
+PTEgbWVfcmFuZ2U9MTYgY2hyb21hX21lPTEgdHJlbGxpcz0xIDh4OGRjdD0xIGNxbT0wIGRlYWR6
+b25lPTIxLDExIGZhc3RfcHNraXA9MSBjaHJvbWFfcXBfb2Zmc2V0PS0yIHRocmVhZHM9OSBsb29r
+YWhlYWRfdGhyZWFkcz0xIHNsaWNlZF90aHJlYWRzPTAgbnI9MCBkZWNpbWF0ZT0xIGludGVybGFj
+ZWQ9MCBibHVyYXlfY29tcGF0PTAgY29uc3RyYWluZWRfaW50cmE9MCBiZnJhbWVzPTMgYl9weXJh
+bWlkPTIgYl9hZGFwdD0xIGJfYmlhcz0wIGRpcmVjdD0xIHdlaWdodGI9MSBvcGVuX2dvcD0wIHdl
+aWdodHA9MiBrZXlpbnQ9MjUwIGtleWludF9taW49NSBzY2VuZWN1dD00MCBpbnRyYV9yZWZyZXNo
+PTAgcmNfbG9va2FoZWFkPTQwIHJjPWNyZiBtYnRyZWU9MSBjcmY9MjMuMCBxY29tcD0wLjYwIHFw
+bWluPTAgcXBtYXg9NjkgcXBzdGVwPTQgaXBfcmF0aW89MS40MCBhcT0xOjEuMDAAgAAABNFliIQA
+Ef/+94gfMstp+TrXchHnrS6tH1DuRnFepL3+IAAAAwAWnJlD+2HHTlrDQABDJGM7gcH/xAG1/HuT
++aEEKtDnN2ol7vpnW5xyHFltbbDGah0jbwn+w/9xgxXahSelk79rudJKSxpfeKeM7DRlbQabjZZz
+SsNd2L2TjJUVnpG1MHrcnXt5bz3SZhD2qYKCkuTFUwAC/eyNKB7aAxkn0uj9ipTeqqh9uPGScY46
+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
+HWRhdGEAAAABAAAAAExhdmY1OC4yMC4xMDA=
+">
+  Your browser does not support the video tag.
+</video>
 </div>
 
 </div>
@@ -9172,7 +9297,7 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_27_0.png"
+<img src="../images/features/matplotlib_29_0.png"
 >
 </div>
 
@@ -9240,7 +9365,7 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_31_0.png"
+<img src="../images/features/matplotlib_33_0.png"
 >
 </div>
 
@@ -9275,7 +9400,7 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_32_0.png"
+<img src="../images/features/matplotlib_34_0.png"
 >
 </div>
 
@@ -9310,7 +9435,7 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_33_0.png"
+<img src="../images/features/matplotlib_35_0.png"
 >
 </div>
 
@@ -9345,7 +9470,7 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_34_0.png"
+<img src="../images/features/matplotlib_36_0.png"
 >
 </div>
 
@@ -9380,7 +9505,7 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_35_0.png"
+<img src="../images/features/matplotlib_37_0.png"
 >
 </div>
 
