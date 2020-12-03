@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: de la clase el que python es en una un se objeto para self super del com y como con funcin puede mtodos mtodo por ser main vector clases programa ejemplo los class atributos nombre las def func google instancia atributo dentro espacio ayuda especial subclass decir cada objetos list diferentes pueda desde inicializar dataframe init none automticamente var colab tambin variables nombres usar drive programacin org funcional name debe ejecuta continuacin especiales herencia web github o algunos pueden caracteres si tipo paradigma principal su permite x mdulos cuando import m forma uso sus data usp sharing general funciones print
+search: de la clase el que python es n en una un se objeto y com para self super del boldsymbol k como class vector con funcin puede ell solutions main mtodos mtodo por ser google clases programa ejemplo los x colab atributos nombre las def func z ldots instancia atributo dentro integers espacio org ayuda especial subclass sum begin align alpha beta end left right decir cada objetos list diferentes pueda name desde inicializar dataframe init none automticamente var object research github tambin variables nombres usar drive programacin general funcional debe ejecuta continuacin especiales herencia web cases frac text even
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -2273,6 +2273,829 @@ Las variables globales de la clase pasán a ser automáticamente atributos del o
 <pre>False</pre>
 </div>
 
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Implementation-of-arXiv:1905.13729">Implementation of <a href="https://arxiv.org/abs/1905.13729">arXiv:1905.13729</a><a class="anchor-link" href="#Implementation-of-arXiv:1905.13729"> </a></h1><p>See also: DOI: <a href="http://doi.org/10.1103/PhysRevD.101.095032">10.1103/PhysRevD.101.095032</a></p>
+<h2 id="General-solution-to-the-U(1)-anomaly-equations">General solution to the U(1) anomaly equations<a class="anchor-link" href="#General-solution-to-the-U(1)-anomaly-equations"> </a></h2><p>Let a vector $\boldsymbol{z}$ with $N$ integer entries such that
+$$ \sum_{i=1}^N z_i=0\,,\qquad \sum_{i=1}^N z_i^3=0\,.$$
+We like to build this set of of $N$ from two subsets $\boldsymbol{\ell}$ and $\boldsymbol{k}$ with sizes</p>
+\begin{align}
+\operatorname{dim}(\boldsymbol{\ell})=&amp;
+\begin{cases}
+\alpha=\frac{N}{2}-1\,, &amp; \text{ if $N$  even } \\
+\beta=\frac{N-3}{2}\,, &amp; \text{ if $N$  odd }\\
+\end{cases};&amp;
+\operatorname{dim}(\boldsymbol{k})=&amp;
+\begin{cases}
+\alpha=\frac{N}{2}-1\,, &amp; \text{ if $N$  even } \\
+\beta+1=\frac{N-1}{2}\,, &amp; \text{ if $N$  odd }\\
+\end{cases};
+\end{align}<ul>
+<li>$N$ even: Consider the following two examples of $\boldsymbol{z}$ with vector-like solutions, i.e, with opposite integeres which automatically satisfy the equations 
+\begin{align}
+\boldsymbol{x}=&amp;\left(\ell_{1}, {k}_{1}, \ldots, k_{\alpha},-\ell_{1},-k_{1}, \ldots,-k_{\alpha}\right)\\
+\boldsymbol{y}=&amp;\left(0,0,\ell_{1},  \ldots, \ell_{\alpha},-\ell_1, \ldots,-\ell_{\alpha}\right)\,.
+\end{align}</li>
+<li>$N$ odd: Consider the two vector-like solutions
+\begin{align}
+\begin{array}
+\boldsymbol{x}=&amp;\left(0, k_{1}, \ldots, k_{\beta+1},-k_{1}, \ldots,-k_{\beta+1}\right) \\
+\boldsymbol{y}=&amp;\left(\ell_{1}, \ldots, \ell_{\beta}, k_{1}, 0,-\ell_{1}, \ldots,-\ell_{\beta},-k_{1}\right)
+\end{array}
+\end{align}</li>
+</ul>
+<p>From any of this, we can build a final $\boldsymbol{z}$ which can includes <em>chiral</em> solutions, i.e, non vector-like solutions</p>
+$$
+\boldsymbol{x} \oplus \boldsymbol{y} \equiv\left(\sum_{i=1}^{N} x_{i} y_{i}^{2}\right)\boldsymbol{x}-\left(\sum_{i=1}^{N} x_{i}^{2} y_{i}\right)\boldsymbol{y}\,.
+$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-implmentation">Python implmentation<a class="anchor-link" href="#Python-implmentation"> </a></h2><p>Obtain a numpy array <code>z</code> of <code>N</code> integers which satisfy the Diophantine equations</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">z</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">z</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="mi">0</span>
+</pre></div>
+<p>The input is two lists <code>l</code> and <code>k</code> with any <code>(N-3)/2</code> and <code>(N-1)/2</code> integers for <code>N</code> odd, or <code>N/2-1</code> and <code>N/2-1</code> for <code>N</code> even (<code>N&gt;4</code>).
+The function is implemented below under the name: <code>free(l,k)</code></p>
+<p><a href="https://colab.research.google.com/github/restrepo/anomaly/blob/main/anomalysolutions-class.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://stackoverflow.com/a/43793179/2268280">https://stackoverflow.com/a/43793179/2268280</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install anomalies <span class="m">2</span>&gt;/dev/null &gt; /dev/null
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">anomalies</span> <span class="kn">import</span> <span class="n">anomaly</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">anomaly</span><span class="o">.</span><span class="n">free</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([  3,   3,   3, -12, -12,  15])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">anomaly</span><span class="o">.</span><span class="n">free</span><span class="o">.</span><span class="n">gcd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">anomaly</span><span class="o">.</span><span class="n">free</span><span class="o">.</span><span class="n">simplified</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1,  1,  1, -4, -4,  5])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">z</span><span class="o">=</span><span class="n">anomaly</span><span class="o">.</span><span class="n">free</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis"> </a></h2><p><code>solutions</code> class → Initialize the object to obtain anomaly free solutions for any set of <code>N</code> integers</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TODO: inherit from free class</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">def</span> <span class="nf">_get_chiral</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">q_max</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>
+    <span class="c1">#Normalize to positive minimum</span>
+    <span class="k">if</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">q</span><span class="o">=-</span><span class="n">q</span>
+    <span class="c1">#Divide by GCD</span>
+    <span class="n">GCD</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">gcd</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">GCD</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="c1">#not 0 in z and </span>
+          <span class="mi">0</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">]</span> <span class="ow">and</span> <span class="c1">#avoid vector-like and multiple 0&#39;s</span>
+          <span class="c1">#q.size &gt; np.unique(q).size and # check for at least a duplicated entry</span>
+          <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">&lt;=</span><span class="n">q_max</span>
+           <span class="p">):</span>
+        <span class="k">return</span> <span class="n">q</span><span class="p">,</span><span class="n">GCD</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span><span class="kc">None</span>
+<span class="k">class</span> <span class="nc">solutions</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Obtain anomaly free solutions with N chiral fields</span>
+<span class="sd">    </span>
+<span class="sd">    Call the initialize object with N and get the solutions:</span>
+<span class="sd">    Example:</span>
+<span class="sd">    &gt;&gt;&gt; s=solutions()</span>
+<span class="sd">    &gt;&gt;&gt; s(6) # N = 6</span>
+<span class="sd">    </span>
+<span class="sd">    Redefine the self.chiral function to implement further restrictions:</span>
+<span class="sd">    inherit from this class and define the new chiral function</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nmin</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span><span class="n">nmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nmin</span><span class="o">=</span><span class="n">nmin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nmax</span><span class="o">=</span><span class="n">nmax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zmax</span><span class="o">=</span><span class="n">zmax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CALL</span><span class="o">=</span><span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CALL</span><span class="o">=</span><span class="kc">True</span>
+        <span class="k">if</span> <span class="n">N</span><span class="o">%</span><span class="k">2</span>!=0: #odd
+            <span class="n">N_l</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+            <span class="n">N_k</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1">#even</span>
+            <span class="n">N_l</span><span class="o">=</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
+            <span class="n">N_k</span><span class="o">=</span><span class="n">N_l</span>
+        <span class="n">r</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nmin</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">nmax</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ls</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span> <span class="o">*</span><span class="p">(</span><span class="n">r</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_l</span><span class="p">))</span> <span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ks</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span> <span class="o">*</span><span class="p">(</span><span class="n">r</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_k</span><span class="p">))</span> <span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chiral</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        
+        
+    <span class="k">def</span> <span class="nf">chiral</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">CALL</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s1">&#39;Call the initialized object first:</span><span class="se">\n</span><span class="s1">&gt;&gt;&gt; s=solutions()</span><span class="se">\n</span><span class="s1">&gt;&gt;&gt; self(5)&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">solt</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ls</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ks</span><span class="p">:</span>
+                <span class="n">l</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+                <span class="n">k</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                <span class="n">q</span><span class="p">,</span><span class="n">gcd</span><span class="o">=</span><span class="n">_get_chiral</span><span class="p">(</span> <span class="n">z</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="p">)</span>
+                <span class="c1">#print(z(l,k))</span>
+                <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="ow">and</span> <span class="nb">list</span><span class="p">(</span><span class="o">-</span><span class="n">q</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+                    <span class="n">solt</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;l&#39;</span><span class="p">:</span><span class="n">l</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">:</span><span class="n">k</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">),</span><span class="s1">&#39;gcd&#39;</span><span class="p">:</span><span class="n">gcd</span><span class="p">})</span>
+        <span class="k">return</span> <span class="n">solt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Chiral solutions for l and k in the range [-2,2]</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">solutions</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>solutions for $N=5$ integers</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;l&#39;: [-2], &#39;k&#39;: [-1, 2], &#39;z&#39;: [2, 4, -7, -9, 10], &#39;gcd&#39;: 1},
+ {&#39;l&#39;: [-2], &#39;k&#39;: [2, -1], &#39;z&#39;: [1, 5, -7, -8, 9], &#39;gcd&#39;: 4}]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>  <span class="n">s</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>l</th>
+      <th>k</th>
+      <th>z</th>
+      <th>gcd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[-2]</td>
+      <td>[-1, 2]</td>
+      <td>[2, 4, -7, -9, 10]</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[-2]</td>
+      <td>[2, -1]</td>
+      <td>[1, 5, -7, -8, 9]</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To filter solutions with duplicate or triplicate integers, let us create a class <code>dark</code> that inherits from <code>solutions</code>. Therefore, in the argument of the new class is the old class instead of just <code>object</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">dark</span><span class="p">(</span><span class="n">solutions</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Modify the self.chiral function to obtain solutions</span>
+<span class="sd">    with either duplicate or triplicate integers</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">chiral</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">print_step</span><span class="o">=</span><span class="mi">100000</span><span class="p">):</span>
+        <span class="n">m</span><span class="o">=</span><span class="mi">2</span>
+        <span class="k">if</span> <span class="n">X</span><span class="p">:</span>
+            <span class="n">m</span><span class="o">=</span><span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">solt</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">tot</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ls</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ks</span><span class="p">)</span>
+        <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ls</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ks</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                    <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+                    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">print_step</span>==0:
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">tot</span><span class="p">))</span>
+                <span class="n">l</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+                <span class="n">k</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                <span class="n">q</span><span class="p">,</span><span class="n">gcd</span><span class="o">=</span><span class="n">_get_chiral</span><span class="p">(</span> <span class="n">z</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="p">)</span>
+                <span class="c1">#print(z(l,k))</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> 
+                    <span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="ow">and</span> <span class="nb">list</span><span class="p">(</span><span class="o">-</span><span class="n">q</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="ow">and</span>
+                    <span class="mi">1</span> <span class="ow">in</span> <span class="p">[</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="p">]</span> <span class="ow">and</span>
+                    <span class="c1">#q.size-np.unique(q).size&gt;m</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">&lt;=</span><span class="bp">self</span><span class="o">.</span><span class="n">zmax</span>
+                   <span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+                    <span class="n">solt</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;l&#39;</span><span class="p">:</span><span class="n">l</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">:</span><span class="n">k</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">q</span><span class="p">),</span><span class="s1">&#39;gcd&#39;</span><span class="p">:</span><span class="n">gcd</span><span class="p">})</span>
+        <span class="k">return</span> <span class="n">solt</span>        
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Chiral solutions with repeated integers</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">dark</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Example: Force solutions with triplicate integers</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>   <span class="n">s</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="n">X</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>l</th>
+      <th>k</th>
+      <th>z</th>
+      <th>gcd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[-2, 2]</td>
+      <td>[-2, -1]</td>
+      <td>[1, 1, 1, -4, -4, 5]</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">s</span><span class="o">=</span><span class="n">dark</span><span class="p">(</span><span class="n">nmin</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span><span class="n">nmax</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">s</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 16.5 s, sys: 7.15 ms, total: 16.5 s
+Wall time: 16.6 s
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">s</span><span class="o">=</span><span class="n">dark</span><span class="p">(</span><span class="n">nmin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span><span class="n">nmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">s</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="n">X</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>100000/194481
+CPU times: user 19.9 s, sys: 0 ns, total: 19.9 s
+Wall time: 19.9 s
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;l&#39;: [-10, 5], &#39;k&#39;: [-2, 4], &#39;z&#39;: [1, 1, 1, -4, -4, 5], &#39;gcd&#39;: 1500},
+ {&#39;l&#39;: [-10, 5], &#39;k&#39;: [3, 4], &#39;z&#39;: [3, 3, 3, -10, -17, 18], &#39;gcd&#39;: 250}]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">s</span><span class="o">=</span><span class="n">dark</span><span class="p">(</span><span class="n">nmin</span><span class="o">=-</span><span class="mi">21</span><span class="p">,</span><span class="n">nmax</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">slt</span><span class="o">=</span><span class="n">s</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">print_step</span><span class="o">=</span><span class="mi">500000</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>500000/3418801
+1000000/3418801
+1500000/3418801
+2000000/3418801
+2500000/3418801
+3000000/3418801
+CPU times: user 4min 20s, sys: 27.1 ms, total: 4min 20s
+Wall time: 4min 20s
+</pre>
+</div>
 </div>
 </div>
 </div>
