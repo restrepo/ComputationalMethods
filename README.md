@@ -1,4 +1,4 @@
-Computational Methods for Astronomy
+Computational Methods for Physics & Astronomy
 ===================================
 
 ## Book version at:
