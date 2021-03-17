@@ -1,5 +1,10 @@
 #!/bin/bash
-#conda activate base
+if [ ! "$(which python| grep anaconda)" ]; then
+    echo ERROR: conda activate base
+    exit
+fi
+
+
 jupyter-book build --overwrite .
 jupyter-book build .
 git add _build/*
