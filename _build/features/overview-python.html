@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/scientific-libraries.html
 suffix: .ipynb
-search: python functions list function lists variable example activity org end colab not better hello print x method elements com want integer world dictionary google float methods string tuples f check also useful attributes complex dictionaries html used format values previous create tuple research where its conditionals input type called define docs sum times extract index element condition keys using master src right www something different program wikipedia en wiki implicit special although should never implementation idea arithmetics bucles types variables standard output another begin strings code help library name here certain data log set l given start comprehensions accessed key
+search: python functions list function lists variable example activity org not end colab better hello print x method elements com want methods integer world input check attributes dictionary google float complex string tuples f also useful dictionaries html used format values previous create tuple research where implicit its conditionals type called define docs sum times extract index element condition keys using master src right www something different program wikipedia en wiki special although should never implementation idea arithmetics bucles types variables standard output must another begin strings code help library name here certain data log set l given start comprehensions accessed
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -272,40 +272,6 @@ predefined function</p>
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="print"><code>print</code><a class="anchor-link" href="#print"> </a></h2>
@@ -433,6 +399,39 @@ In particular there is a function called <code>print</code> which takes strings 
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hello</span><span class="o">=</span><span class="s1">&#39;Hello World!&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hello</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello World!
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Activity</strong>: Change the values of the previous string variables to print <code>Hello World!</code> in Spanish</p>
@@ -446,8 +445,28 @@ In particular there is a function called <code>print</code> which takes strings 
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Functions">Functions<a class="anchor-link" href="#Functions"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>In <code>Python</code> it is possible also to create new <a href="https://en.wikibooks.org/wiki/Python_Programming/Functions">functions</a>. We illustrate the format to define a function in <code>Python</code> with the implementation of the function $f(x)=x^2$, where to write an exponent: ${}^2$, in Python we must use the format: <code>**2</code>.</p>
 
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Implicit-functions">Implicit functions<a class="anchor-link" href="#Implicit-functions"> </a></h2>
 </div>
 </div>
 </div>
@@ -576,6 +595,16 @@ In particular there is a function called <code>print</code> which takes strings 
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Explicit-functions">Explicit functions<a class="anchor-link" href="#Explicit-functions"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>The standard function build may include the help for the function</p>
 
 </div>
@@ -659,6 +688,297 @@ f(x)
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Multiply two numbers</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#It is possible to assign default arguments</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Multiply two numbers. By default the second is 2</span>
+<span class="sd">    &#39;&#39;&#39;</span>    
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="c1">#When evaluating, we can omit the default argument</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>10</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#It is possible to specify explicitly the order of the arguments</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    evaluates x to the power y</span>
+<span class="sd">    &#39;&#39;&#39;</span>    
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;f(1,2)=&#39;</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;f(2,1)=&#39;</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>f(1,2)= 1
+f(2,1)= 2
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Implicit-functions-of-several-arguments">Implicit functions of several arguments<a class="anchor-link" href="#Implicit-functions-of-several-arguments"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Implicit functions are usdeful when we want to use a function once.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>9</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#It is possible to pass functions as arguments of other function</span>
+<span class="k">def</span> <span class="nf">f2</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">x</span> <span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1">#We can define a new function explicitly</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+
+<span class="c1">#Or define the function implicitly</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Implicit: f(2)^2 =&quot;</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4
+16
+Implicit: f(2)^2 = 16
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1411,6 +1731,7 @@ $$\frac{ \dfrac{10^{24}}{3}+2.9\times 10^{23}}{10^2}$$
 <span class="kn">import</span> <span class="nn">cmath</span> <span class="k">as</span> <span class="nn">cm</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="c1">#Recommended option:</span>
 <span class="kn">import</span> <span class="nn">numpy.lib.scimath</span> <span class="k">as</span> <span class="nn">sc</span>
 </pre></div>
 
@@ -1618,6 +1939,40 @@ $$\frac{ \dfrac{10^{24}}{3}+2.9\times 10^{23}}{10^2}$$
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="n">j</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(-1+0j)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">z</span><span class="o">=</span><span class="mi">2</span><span class="o">+</span><span class="mf">3.2</span><span class="n">j</span>
 </pre></div>
 
@@ -1666,27 +2021,10 @@ $$\frac{ \dfrac{10^{24}}{3}+2.9\times 10^{23}}{10^2}$$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>which</p>
+<p>Attributes and methods:</p>
 
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">z</span><span class="o">.</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1828,18 +2166,12 @@ $$\frac{ \dfrac{10^{24}}{3}+2.9\times 10^{23}}{10^2}$$
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>math</code> does not work with complex numbers</p>
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
-
 </div>
 </div>
 
@@ -1867,7 +2199,7 @@ $$\frac{ \dfrac{10^{24}}{3}+2.9\times 10^{23}}{10^2}$$
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-13-1385535d58fd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-162-1385535d58fd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>m<span class="ansi-blue-fg">.</span>asin<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">+</span><span class="ansi-cyan-fg">0j</span><span class="ansi-blue-fg">)</span>
 
 <span class="ansi-red-fg">TypeError</span>: can&#39;t convert complex to float</pre>
@@ -1911,6 +2243,17 @@ $$\frac{ \dfrac{10^{24}}{3}+2.9\times 10^{23}}{10^2}$$
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>numpy</code> requires proper input</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -2049,6 +2392,40 @@ Function with some parts of its domain in the complex plane like, <code>sqrt</co
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1.5707963267948966+1.3169578969248166j)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
 </pre></div>
 
@@ -2081,10 +2458,21 @@ Function with some parts of its domain in the complex plane like, <code>sqrt</co
 <div class="jb_output_wrapper output_widget_view  }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1.5707963267948966
-</pre>
+
+
+
+ 
+ 
+<div id="f44eb201-1415-4a22-b704-edb37c125b67"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#f44eb201-1415-4a22-b704-edb37c125b67');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c7649e6b09e544169692a5bd523dd0d2", "version_major": 2, "version_minor": 0}
+</script>
 </div>
+
 </div>
 </div>
 </div>
@@ -2254,6 +2642,40 @@ Function with some parts of its domain in the complex plane like, <code>sqrt</co
 
 <div class="output_text output_subarea output_execute_result">
 <pre>3.1415</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span><span class="nb">bool</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
 </div>
 
 </div>
@@ -2572,6 +2994,40 @@ Function with some parts of its domain in the complex plane like, <code>sqrt</co
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lista</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;xyz&#39;, &#39;I am second&#39;, 42, True]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#also as</span>
 <span class="n">lista</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 <span class="n">lista</span>
@@ -2794,41 +3250,6 @@ A_{10} &amp; A_{11}\\
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="o">+</span><span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]]</span>
-<span class="n">A</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[[1, 2], [3, 4], [5, 7]]</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>An additional ingredient is the <code>append</code> method of a Python list. It update the elements of the list without update explicitly the variable with some equal reasignment.</p>
@@ -3044,6 +3465,40 @@ after append 5 to [2]: [2, 5]
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lista</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[True, 42, &#39;I am second&#39;, &#39;xyz&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;reversed: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">lista</span><span class="p">))</span> <span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lista</span><span class="p">))</span>
 </pre></div>
@@ -3146,6 +3601,40 @@ original: [True, 42, &#39;I am second&#39;, &#39;xyz&#39;]
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#equivalent to 2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)</span>
 </pre></div>
 
@@ -3197,7 +3686,7 @@ original: [True, 42, &#39;I am second&#39;, &#39;xyz&#39;]
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -3210,15 +3699,12 @@ original: [True, 42, &#39;I am second&#39;, &#39;xyz&#39;]
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">IndexError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-29-ffcf538a4606&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>t<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
 
-<span class="ansi-red-fg">IndexError</span>: tuple index out of range</pre>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2</pre>
 </div>
+
 </div>
 </div>
 </div>
@@ -3309,6 +3795,74 @@ In fact, for the following nested list:</p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">ll</span> <span class="k">for</span> <span class="n">ll</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;], [&#39;D&#39;, &#39;E&#39;, &#39;F&#39;], [&#39;G&#39;, &#39;H&#39;, &#39;I&#39;]]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">any</span><span class="p">((</span><span class="n">s</span><span class="o">==</span><span class="s1">&#39;L&#39;</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -3450,7 +4004,7 @@ In fact, for the following nested list:</p>
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-65-dd567ac24edd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-87-4cc56b436273&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg">#It is not possible to add more elements</span>
 <span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>tupla<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;xy&#34;</span><span class="ansi-blue-fg">)</span>
 
@@ -3489,7 +4043,7 @@ In fact, for the following nested list:</p>
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-66-17ab9d47366f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-88-c05ec550c1d0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg">#It is not possible to delete an element</span>
 <span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">del</span> tupla<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
 
@@ -3528,7 +4082,7 @@ In fact, for the following nested list:</p>
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-67-87de1a05f9b3&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-89-4e97d1641827&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg">#It is not possible to modify an existing element</span>
 <span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>tupla<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#34;xy&#34;</span>
 
@@ -3571,14 +4125,14 @@ In fact, for the following nested list:</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#A dictionary is declared using {}, and specifying the name of the component, then the character : followed by the element to store.</span>
-<span class="n">dictionary</span><span class="o">=</span><span class="p">{</span> <span class="s1">&#39;Alemania&#39;</span>      <span class="p">:</span><span class="s1">&#39;Berlin&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;Kenia&#39;</span>         <span class="p">:</span><span class="s1">&#39;Nairobi&#39;</span><span class="p">,</span>
+<span class="n">dictionary</span><span class="o">=</span><span class="p">{</span> <span class="s1">&#39;Kenia&#39;</span>         <span class="p">:</span><span class="s1">&#39;Nairobi&#39;</span><span class="p">,</span>
              <span class="s1">&#39;Noruega&#39;</span>       <span class="p">:</span><span class="s1">&#39;Oslo&#39;</span><span class="p">,</span>
              <span class="s1">&#39;Finlandia&#39;</span>     <span class="p">:</span><span class="s1">&#39;Helsinski&#39;</span><span class="p">,</span>
              <span class="s1">&#39;Rusia&#39;</span>         <span class="p">:</span><span class="s1">&#39;Moscú&#39;</span><span class="p">,</span>
              <span class="s1">&#39;Rio de Janeiro&#39;</span><span class="p">:</span><span class="s1">&#39;Rio&#39;</span><span class="p">,</span>
              <span class="s1">&#39;Japón&#39;</span>         <span class="p">:</span><span class="s1">&#39;Tokio&#39;</span><span class="p">,</span>
              <span class="s1">&#39;Colorado&#39;</span>      <span class="p">:</span><span class="s1">&#39;Denver&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;Alemania&#39;</span>      <span class="p">:</span><span class="s1">&#39;Berlin&#39;</span><span class="p">,</span>
              <span class="s1">&#39;Colombia&#39;</span>      <span class="p">:</span><span class="s1">&#39;Bogotá&#39;</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
 <span class="c1">#Note the order in a dictionary does not matter as one identifies a single element through a string, not a number</span>
@@ -3595,7 +4149,7 @@ In fact, for the following nested list:</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;Alemania&#39;: &#39;Berlin&#39;, &#39;Kenia&#39;: &#39;Nairobi&#39;, &#39;Noruega&#39;: &#39;Oslo&#39;, &#39;Finlandia&#39;: &#39;Helsinski&#39;, &#39;Rusia&#39;: &#39;Moscú&#39;, &#39;Rio de Janeiro&#39;: &#39;Rio&#39;, &#39;Japón&#39;: &#39;Tokio&#39;, &#39;Colorado&#39;: &#39;Denver&#39;, &#39;Colombia&#39;: &#39;Bogotá&#39;}
+<pre>{&#39;Kenia&#39;: &#39;Nairobi&#39;, &#39;Noruega&#39;: &#39;Oslo&#39;, &#39;Finlandia&#39;: &#39;Helsinski&#39;, &#39;Rusia&#39;: &#39;Moscú&#39;, &#39;Rio de Janeiro&#39;: &#39;Rio&#39;, &#39;Japón&#39;: &#39;Tokio&#39;, &#39;Colorado&#39;: &#39;Denver&#39;, &#39;Alemania&#39;: &#39;Berlin&#39;, &#39;Colombia&#39;: &#39;Bogotá&#39;}
 </pre>
 </div>
 </div>
@@ -3614,6 +4168,48 @@ In fact, for the following nested list:</p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dictionary</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;Kenia&#39;: &#39;Nairobi&#39;,
+ &#39;Noruega&#39;: &#39;Oslo&#39;,
+ &#39;Finlandia&#39;: &#39;Helsinski&#39;,
+ &#39;Rusia&#39;: &#39;Moscú&#39;,
+ &#39;Rio de Janeiro&#39;: &#39;Rio&#39;,
+ &#39;Japón&#39;: &#39;Tokio&#39;,
+ &#39;Colorado&#39;: &#39;Denver&#39;,
+ &#39;Alemania&#39;: &#39;Berlin&#39;,
+ &#39;Colombia&#39;: &#39;Bogotá&#39;}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -3859,6 +4455,94 @@ In fact, for the following nested list:</p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l</span><span class="o">=</span><span class="p">{}</span>
+<span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;xyz&#39;</span>
+<span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mf">4.5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{0: &#39;xyz&#39;, 1: 3, 2: 4.5}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;xyz&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -4193,17 +4877,40 @@ Java
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before we check the functions <code>input</code> and <code>int</code> of Python</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#! /usr/bin/python</span>
-<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Write a positive number: &quot;</span><span class="p">))</span>
-<span class="k">while</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You wrote a negative number. Do it again&quot;</span><span class="p">)</span>
-    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Write a positive number: &quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thank you!&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">edad</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;¿What is your age, Jesus?:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="n">edad</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -4216,17 +4923,69 @@ Java
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Write a positive number: -5
-You wrote a negative number. Do it again
-Write a positive number: -4
-You wrote a negative number. Do it again
-Write a positive number: -7
-You wrote a negative number. Do it again
-Write a positive number: 4
-Thank you!
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>33</pre>
 </div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Bonus: some time the input must be hidden</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s1">&#39;Contraseña&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
 </div>
 </div>
 </div>
@@ -4242,10 +5001,77 @@ Thank you!
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;1234&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now the <code>while</code> examples</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#! /usr/bin/python</span>
+<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Write a negative number: &quot;</span><span class="p">))</span>
+<span class="k">while</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You wrote a positive number. Do it again&quot;</span><span class="p">)</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Write a negative number: &quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thank you!&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">x</span><span class="o">&lt;</span><span class="mf">0.9</span><span class="p">:</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The selected number was&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="p">)</span>
 </pre></div>
@@ -4261,15 +5087,14 @@ Thank you!
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0.7567774839447602
-0.5746096709751466
-0.6598740801181456
-0.3961599228884616
-0.5812834707225231
-0.49020831558515254
-0.4043811020807291
-0.9368000162923413
-The selected number was 0.9368000162923413
+<pre>0.8014478544604644
+0.16730340110095598
+0.22609305175080763
+0.3910061658713566
+0.16471583849093963
+0.03893794385343341
+0.9631958511875766
+The selected number was 0.9631958511875766
 </pre>
 </div>
 </div>
@@ -4284,309 +5109,7 @@ The selected number was 0.9368000162923413
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Functions">Functions<a class="anchor-link" href="#Functions"> </a></h1>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Explicit-functions"><strong>Explicit functions</strong><a class="anchor-link" href="#Explicit-functions"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
-<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>6</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#It is possible to assign default arguments</span>
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
-<span class="c1">#When evaluating, we can omit the default argument</span>
-<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>6</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>6</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>10</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#It is possible to specify explicitly the order of the arguments</span>
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
-<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;f(1,2)=&#39;</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;f(2,1)=&#39;</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>f(1,2)= 1
-f(2,1)= 2
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Implicit-functions">Implicit functions<a class="anchor-link" href="#Implicit-functions"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Implicit functions are usdeful when we want to use a function once.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
-<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>9</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#It is possible to pass functions as arguments of other function</span>
-<span class="k">def</span> <span class="nf">f2</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">x</span> <span class="p">):</span>
-    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-
-<span class="c1">#We can define a new function explicitly</span>
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-
-
-<span class="c1">#Or define the function implicitly</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Implicit: f(2)^2 =&quot;</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>4
-16
-Implicit: f(2)^2 = 16
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Methods-and-attributes">Methods and attributes<a class="anchor-link" href="#Methods-and-attributes"> </a></h1><p>All the objects in <code>Python</code>, including the function and variable types discussed here, are enhanced with special functions called <em>methods</em>, which are implemented after a point of the name of the variable, in the format:</p>
+<h1 id="Methods-and-attributes-of-objects-in-Python">Methods and attributes of objects in Python<a class="anchor-link" href="#Methods-and-attributes-of-objects-in-Python"> </a></h1><p>All the objects in <code>Python</code>, including the function and variable types discussed here, are enhanced with special functions called <em>methods</em>, which are implemented after a point of the name of the variable, in the format:</p>
 <div class="highlight"><pre><span></span><span class="n">variable</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
 </pre></div>
 <p>Some times, the method can even accept some arguments.</p>
@@ -4633,7 +5156,7 @@ Implicit: f(2)^2 = 16
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>dict_keys([&#39;Alemania&#39;, &#39;Kenia&#39;, &#39;Noruega&#39;, &#39;Finlandia&#39;, &#39;Rusia&#39;, &#39;Rio de Janeiro&#39;, &#39;Japón&#39;, &#39;Colorado&#39;, &#39;Colombia&#39;])</pre>
+<pre>dict_keys([&#39;Kenia&#39;, &#39;Noruega&#39;, &#39;Finlandia&#39;, &#39;Rusia&#39;, &#39;Rio de Janeiro&#39;, &#39;Japón&#39;, &#39;Colorado&#39;, &#39;Alemania&#39;, &#39;Colombia&#39;])</pre>
 </div>
 
 </div>
@@ -4678,7 +5201,7 @@ Implicit: f(2)^2 = 16
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>dict_values([&#39;Berlin&#39;, &#39;Nairobi&#39;, &#39;Oslo&#39;, &#39;Helsinski&#39;, &#39;Moscú&#39;, &#39;Rio&#39;, &#39;Tokio&#39;, &#39;Denver&#39;, &#39;Bogotá&#39;])</pre>
+<pre>dict_values([&#39;Nairobi&#39;, &#39;Oslo&#39;, &#39;Helsinski&#39;, &#39;Moscú&#39;, &#39;Rio&#39;, &#39;Tokio&#39;, &#39;Denver&#39;, &#39;Berlin&#39;, &#39;Bogotá&#39;])</pre>
 </div>
 
 </div>
@@ -4693,7 +5216,7 @@ Implicit: f(2)^2 = 16
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://">link text</a>For strings we have for example the conversion to lower case</p>
+<p>For strings we have for example the conversion to lower case</p>
 
 </div>
 </div>
@@ -4724,6 +5247,74 @@ Implicit: f(2)^2 = 16
 
 <div class="output_text output_subarea output_execute_result">
 <pre>&#39;juan valdez&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;juan valdez&quot;</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Juan Valdez&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;juan valdez&quot;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;JUAN VALDEZ&#39;</pre>
 </div>
 
 </div>
@@ -4785,6 +5376,40 @@ Implicit: f(2)^2 = 16
 
 <div class="output_text output_subarea output_execute_result">
 <pre>1.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">real</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.0</pre>
 </div>
 
 </div>
@@ -5185,10 +5810,27 @@ Implicit: f(2)^2 = 16
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">sqrt</span><span class="p">)(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">sqrt</span><span class="p">)(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
