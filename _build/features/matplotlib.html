@@ -133,6 +133,38 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Populating the interactive namespace from numpy and matplotlib
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The line <strong>%pylab inline</strong> is always necessary when using a IPython notebook. If you are working on the interpreter or with scripts, always use the function <strong>plt.show()</strong> in order to display the resulting image.</p>
@@ -150,7 +182,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Ploting a function</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span> <span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">500</span> <span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">)</span>
 <span class="c1">#plt.plot( x, y,&#39;.&#39; )</span>
@@ -169,7 +201,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7ffb7c872ef0&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f35a49404e0&gt;]</pre>
 </div>
 
 </div>
@@ -180,7 +212,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_8_1.png"
+<img src="../images/features/matplotlib_9_1.png"
 >
 </div>
 
@@ -202,7 +234,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Scatter of points</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -218,7 +250,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7ffb7c720c50&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f35a4899400&gt;]</pre>
 </div>
 
 </div>
@@ -229,7 +261,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_9_1.png"
+<img src="../images/features/matplotlib_10_1.png"
 >
 </div>
 
@@ -268,7 +300,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7ffb7c6ca828&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f35a404c898&gt;]</pre>
 </div>
 
 </div>
@@ -279,7 +311,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_10_1.png"
+<img src="../images/features/matplotlib_11_1.png"
 >
 </div>
 
@@ -317,7 +349,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_11_0.png"
+<img src="../images/features/matplotlib_12_0.png"
 >
 </div>
 
@@ -340,6 +372,23 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.lines.Line2D at 0x7f359ee7c908&gt;</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -441,7 +490,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7ffb8055df60&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f359ec94518&gt;]</pre>
 </div>
 
 </div>
@@ -452,7 +501,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_15_1.png"
+<img src="../images/features/matplotlib_16_1.png"
 >
 </div>
 
@@ -490,7 +539,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7ffb7e463d30&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f359ec514a8&gt;]</pre>
 </div>
 
 </div>
@@ -501,7 +550,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_16_1.png"
+<img src="../images/features/matplotlib_17_1.png"
 >
 </div>
 
@@ -550,7 +599,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_17_1.png"
+<img src="../images/features/matplotlib_18_1.png"
 >
 </div>
 
@@ -590,7 +639,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7ffb7c1f7208&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f359ef9dda0&gt;]</pre>
 </div>
 
 </div>
@@ -601,7 +650,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_18_1.png"
+<img src="../images/features/matplotlib_19_1.png"
 >
 </div>
 
@@ -640,7 +689,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.collections.PolyCollection at 0x7ffb7c093eb8&gt;</pre>
+<pre>&lt;matplotlib.collections.PolyCollection at 0x7f359ef43b00&gt;</pre>
 </div>
 
 </div>
@@ -651,7 +700,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_19_1.png"
+<img src="../images/features/matplotlib_20_1.png"
 >
 </div>
 
@@ -693,7 +742,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7ffb7e86e828&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7f359eb243c8&gt;]</pre>
 </div>
 
 </div>
@@ -704,7 +753,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_20_1.png"
+<img src="../images/features/matplotlib_21_1.png"
 >
 </div>
 
@@ -741,10 +790,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(array([44., 44., 49., 44., 55., 43., 69., 51., 45., 56.]),
- array([0.00750381, 0.10667668, 0.20584956, 0.30502243, 0.4041953 ,
-        0.50336818, 0.60254105, 0.70171392, 0.8008868 , 0.90005967,
-        0.99923254]),
+<pre>(array([54., 54., 48., 53., 40., 53., 47., 46., 51., 54.]),
+ array([0.0026303 , 0.10221054, 0.20179078, 0.30137101, 0.40095125,
+        0.50053148, 0.60011172, 0.69969195, 0.79927219, 0.89885243,
+        0.99843266]),
  &lt;BarContainer object of 10 artists&gt;)</pre>
 </div>
 
@@ -756,7 +805,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_21_1.png"
+<img src="../images/features/matplotlib_22_1.png"
 >
 </div>
 
@@ -1016,42 +1065,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img4f8540f68e4b419abc67745677a978bc">
+  <img id="_anim_img6cf4ad09491040a289750ac0522fb4d3">
   <div class="anim-controls">
-    <input id="_anim_slider4f8540f68e4b419abc67745677a978bc" type="range" class="anim-slider"
+    <input id="_anim_slider6cf4ad09491040a289750ac0522fb4d3" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim4f8540f68e4b419abc67745677a978bc.set_frame(parseInt(this.value));"></input>
+           oninput="anim6cf4ad09491040a289750ac0522fb4d3.set_frame(parseInt(this.value));"></input>
     <div class="anim-buttons">
-      <button title="Decrease speed" onclick="anim4f8540f68e4b419abc67745677a978bc.slower()">
+      <button title="Decrease speed" onclick="anim6cf4ad09491040a289750ac0522fb4d3.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" onclick="anim4f8540f68e4b419abc67745677a978bc.first_frame()">
+      <button title="First frame" onclick="anim6cf4ad09491040a289750ac0522fb4d3.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" onclick="anim4f8540f68e4b419abc67745677a978bc.previous_frame()">
+      <button title="Previous frame" onclick="anim6cf4ad09491040a289750ac0522fb4d3.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" onclick="anim4f8540f68e4b419abc67745677a978bc.reverse_animation()">
+      <button title="Play backwards" onclick="anim6cf4ad09491040a289750ac0522fb4d3.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" onclick="anim4f8540f68e4b419abc67745677a978bc.pause_animation()">
+      <button title="Pause" onclick="anim6cf4ad09491040a289750ac0522fb4d3.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" onclick="anim4f8540f68e4b419abc67745677a978bc.play_animation()">
+      <button title="Play" onclick="anim6cf4ad09491040a289750ac0522fb4d3.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" onclick="anim4f8540f68e4b419abc67745677a978bc.next_frame()">
+      <button title="Next frame" onclick="anim6cf4ad09491040a289750ac0522fb4d3.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" onclick="anim4f8540f68e4b419abc67745677a978bc.last_frame()">
+      <button title="Last frame" onclick="anim6cf4ad09491040a289750ac0522fb4d3.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" onclick="anim4f8540f68e4b419abc67745677a978bc.faster()">
+      <button title="Increase speed" onclick="anim6cf4ad09491040a289750ac0522fb4d3.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" action="#n" name="_anim_loop_select4f8540f68e4b419abc67745677a978bc"
+    <form title="Repetition mode" action="#n" name="_anim_loop_select6cf4ad09491040a289750ac0522fb4d3"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_4f8540f68e4b419abc67745677a978bc"
+      <input type="radio" name="state" value="once" id="_anim_radio1_6cf4ad09491040a289750ac0522fb4d3"
              >
-      <label for="_anim_radio1_4f8540f68e4b419abc67745677a978bc">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_4f8540f68e4b419abc67745677a978bc"
+      <label for="_anim_radio1_6cf4ad09491040a289750ac0522fb4d3">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_6cf4ad09491040a289750ac0522fb4d3"
              checked>
-      <label for="_anim_radio2_4f8540f68e4b419abc67745677a978bc">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_4f8540f68e4b419abc67745677a978bc"
+      <label for="_anim_radio2_6cf4ad09491040a289750ac0522fb4d3">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_6cf4ad09491040a289750ac0522fb4d3"
              >
-      <label for="_anim_radio3_4f8540f68e4b419abc67745677a978bc">Reflect</label>
+      <label for="_anim_radio3_6cf4ad09491040a289750ac0522fb4d3">Reflect</label>
     </form>
   </div>
 </div>
@@ -1061,9 +1110,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img4f8540f68e4b419abc67745677a978bc";
-    var slider_id = "_anim_slider4f8540f68e4b419abc67745677a978bc";
-    var loop_select_id = "_anim_loop_select4f8540f68e4b419abc67745677a978bc";
+    var img_id = "_anim_img6cf4ad09491040a289750ac0522fb4d3";
+    var slider_id = "_anim_slider6cf4ad09491040a289750ac0522fb4d3";
+    var loop_select_id = "_anim_loop_select6cf4ad09491040a289750ac0522fb4d3";
     var frames = new Array(50);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAYAAADVKCZpAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -9047,7 +9096,7 @@ RETEl/4fPZ3FlvtZmgoAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim4f8540f68e4b419abc67745677a978bc = new Animation(frames, img_id, slider_id, 200.0,
+        anim6cf4ad09491040a289750ac0522fb4d3 = new Animation(frames, img_id, slider_id, 200.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -9297,7 +9346,7 @@ HWRhdGEAAAABAAAAAExhdmY1OC4yMC4xMDA=
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/matplotlib_29_0.png"
+<img src="../images/features/matplotlib_30_0.png"
 >
 </div>
 
@@ -9365,7 +9414,7 @@ HWRhdGEAAAABAAAAAExhdmY1OC4yMC4xMDA=
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_33_0.png"
+<img src="../images/features/matplotlib_34_0.png"
 >
 </div>
 
@@ -9400,7 +9449,7 @@ HWRhdGEAAAABAAAAAExhdmY1OC4yMC4xMDA=
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_34_0.png"
+<img src="../images/features/matplotlib_35_0.png"
 >
 </div>
 
@@ -9435,7 +9484,7 @@ HWRhdGEAAAABAAAAAExhdmY1OC4yMC4xMDA=
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_35_0.png"
+<img src="../images/features/matplotlib_36_0.png"
 >
 </div>
 
@@ -9470,7 +9519,7 @@ HWRhdGEAAAABAAAAAExhdmY1OC4yMC4xMDA=
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_36_0.png"
+<img src="../images/features/matplotlib_37_0.png"
 >
 </div>
 
@@ -9505,7 +9554,7 @@ HWRhdGEAAAABAAAAAExhdmY1OC4yMC4xMDA=
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/matplotlib_37_0.png"
+<img src="../images/features/matplotlib_38_0.png"
 >
 </div>
 

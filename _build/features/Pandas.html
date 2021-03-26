@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/matplotlib.html
 suffix: .ipynb
-search: pandas data dataframe com dictionary series web file python analysis list github dictionaries open used lists column excel spreadsheet key json colab google restrepo just example keys activity apply relational level also structures even row function any already machine similar odd previous resulting format string authors research blob master ipynb org flexible labeled goal pbpython drive load structure new rows columns before dataframes df cell index same values instead obtain databases quotes easy world html numpy based png dimensional corresponds indices programming creating main check formats link specific value note methods double option not empty true add save try lines
+search: pandas data dataframe com dictionary series web file python analysis list github dictionaries open used lists column restrepo excel spreadsheet key example json colab google relational just keys activity apply level also structures even row function master any already machine similar odd previous resulting format databases string authors research blob ipynb org flexible labeled world goal pbpython drive png load structure new rows columns before dataframes df cell index same values instead img obtain quotes computationalmethods material docs easy real html numpy based dimensional corresponds indices programming creating main check formats link specific value note methods double microsoft option not
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -59,6 +59,16 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <li><a href="https://github.com/restrepo/PythonTipsAndTricks">https://github.com/restrepo/PythonTipsAndTricks</a></li>
 <li><a href="https://pbpython.com/excel-pandas-comp.html">https://pbpython.com/excel-pandas-comp.html</a> [<a href="https://web.archive.org/web/20201126143453/https://pbpython.com/excel-pandas-comp.html">archive.org</a>]</li>
 </ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>A good and practice book about <code>Pandas</code> possibilities is:</p>
 <p><a href="https://drive.google.com/open?id=0BxoOXsn2EUNIWExXbVc4SDN0YTQ"><strong>Python for Data Analysis</strong></a><br/>
 Data Wrangling with Pandas, NumPy, and IPython<br/>
@@ -243,8 +253,41 @@ By Sarah Guido, Andreas Müller</p>
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numbers</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;even&#39;: [0, 2, 4, 6, 8], &#39;odd&#39;: [1, 3, 5, 7, 9]}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
@@ -259,18 +302,61 @@ By Sarah Guido, Andreas Müller</p>
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-57e7f49176a9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">import</span> pandas <span class="ansi-green-fg">as</span> pd
-<span class="ansi-green-intense-fg ansi-bold">      2</span> pd<span class="ansi-blue-fg">.</span>set_option<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;display.max_colwidth&#39;</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">200</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>df<span class="ansi-blue-fg">=</span>pd<span class="ansi-blue-fg">.</span>DataFrame<span class="ansi-blue-fg">(</span>numbers<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> df
 
-<span class="ansi-red-fg">NameError</span>: name &#39;numbers&#39; is not defined</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 </div>
 </div>
@@ -287,6 +373,123 @@ By Sarah Guido, Andreas Müller</p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;even&#39;: {0: 0, 1: 2, 2: 4, 3: 6, 4: 8}, &#39;odd&#39;: {0: 1, 1: 3, 2: 5, 3: 7, 4: 9}}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>  <span class="p">{</span><span class="s1">&#39;even&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span> <span class="s1">&#39;odd&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">9</span><span class="p">}}</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -472,6 +675,90 @@ By Sarah Guido, Andreas Müller</p>
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">newdf</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;example.xlsx&#39;</span><span class="p">)</span>
+<span class="n">newdf</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>even</th>
+      <th>odd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Activity</strong>: Open the resulting spreadsheet in Google Drive, publish it and open from the resulting link with Pandas in the next cell</p>
@@ -583,7 +870,8 @@ By Sarah Guido, Andreas Müller</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#df[&#39;even&#39;]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">even</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -599,7 +887,7 @@ By Sarah Guido, Andreas Müller</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>6</pre>
+<pre>8</pre>
 </div>
 
 </div>
@@ -804,6 +1092,26 @@ Name: 0, dtype: int64</pre>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Name           Juan Valdez
+Nacionality       Colombia
+Age                     23
+dtype: object</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -1333,6 +1641,7 @@ dtype: object</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Edad&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">32</span>
+<span class="c1">#df.at[0,&#39;Edad&#39;]=32</span>
 <span class="n">df</span>
 </pre></div>
 
@@ -1670,6 +1979,19 @@ dtype: object</pre>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1832,7 +2154,7 @@ dtype: object</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Age</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -1848,7 +2170,7 @@ dtype: object</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>pandas.core.series.Series</pre>
+<pre>numpy.float64</pre>
 </div>
 
 </div>
@@ -1961,13 +2283,13 @@ dtype: object</pre>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Name:
-Diego
+Diego Restrepo
 Nacionality:
 Colombia
 Age:
-34
+33
 Company:
-UdeA
+Universidad de Antioquia
 </pre>
 </div>
 </div>
@@ -2006,6 +2328,81 @@ UdeA
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Nacionality</th>
+      <th>Name</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23</td>
+      <td>Colombia</td>
+      <td>Juan Valdez</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>33</td>
+      <td>Colombia</td>
+      <td>Diego Restrepo</td>
+      <td>Universidad de Antioquia</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
@@ -2014,6 +2411,23 @@ UdeA
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -2032,6 +2446,23 @@ UdeA
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;prof.xlsx&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
@@ -2040,6 +2471,80 @@ UdeA
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;prof.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Nacionality</th>
+      <th>Name</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23</td>
+      <td>Colombia</td>
+      <td>Juan Valdez</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>33</td>
+      <td>Colombia</td>
+      <td>Diego Restrepo</td>
+      <td>Universidad de Antioquia</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -2074,7 +2579,7 @@ UdeA
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Company&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Federación de Caferos&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Company&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Federación de Caferos&#39;</span>
 </pre></div>
 
     </div>
@@ -2107,6 +2612,19 @@ UdeA
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2120,10 +2638,17 @@ UdeA
   <tbody>
     <tr>
       <th>0</th>
-      <td>23.0</td>
+      <td>23</td>
       <td>Colombia</td>
       <td>Juan Valdez</td>
       <td>Federación de Caferos</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>33</td>
+      <td>Colombia</td>
+      <td>Diego Restrepo</td>
+      <td>Universidad de Antioquia</td>
     </tr>
   </tbody>
 </table>
@@ -2211,6 +2736,40 @@ UdeA
   </tbody>
 </table>
 </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Edad&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>numpy.int64</pre>
 </div>
 
 </div>
@@ -2462,20 +3021,20 @@ Juan Valdez,23,Café de Colombia
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Age</th>
       <th>Name</th>
+      <th>Age</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>74</td>
       <td>Donald Trump</td>
+      <td>74</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>59</td>
       <td>Barak Obama</td>
+      <td>59</td>
     </tr>
   </tbody>
 </table>
@@ -2522,7 +3081,7 @@ Juan Valdez,23,Café de Colombia
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[{&#34;Age&#34;:74,&#34;Name&#34;:&#34;Donald Trump&#34;},{&#34;Age&#34;:59,&#34;Name&#34;:&#34;Barak Obama&#34;}]
+<pre>[{&#34;Name&#34;:&#34;Donald Trump&#34;,&#34;Age&#34;:74},{&#34;Name&#34;:&#34;Barak Obama&#34;,&#34;Age&#34;:59}]
 </pre>
 </div>
 </div>
@@ -2618,20 +3177,20 @@ load the resulting file with <code>pd.read_json</code></li>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Age</th>
       <th>Name</th>
+      <th>Age</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>74</td>
       <td>Donald Trump</td>
+      <td>74</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>59</td>
       <td>Barak Obama</td>
+      <td>59</td>
     </tr>
   </tbody>
 </table>
@@ -2814,8 +3373,8 @@ load the resulting file with <code>pd.read_json</code></li>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#34;Age&#34;:74,&#34;Name&#34;:&#34;Donald Trump&#34;}
-{&#34;Age&#34;:59,&#34;Name&#34;:&#34;Barak Obama&#34;}
+<pre>{&#34;Name&#34;:&#34;Donald Trump&#34;,&#34;Age&#34;:74}
+{&#34;Name&#34;:&#34;Barak Obama&#34;,&#34;Age&#34;:59}
 </pre>
 </div>
 </div>
@@ -2869,20 +3428,20 @@ load the resulting file with <code>pd.read_json</code></li>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Age</th>
       <th>Name</th>
+      <th>Age</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>73</td>
       <td>Donald Trump</td>
+      <td>73</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>58</td>
       <td>Barak Obama</td>
+      <td>58</td>
     </tr>
   </tbody>
 </table>
@@ -3797,7 +4356,7 @@ Name: even, dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;even&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;odd&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;even&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;odd&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -3831,6 +4390,45 @@ dtype: int64</pre>
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;even&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;odd&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0     1
+1    11
+2    29
+3    43
+4    89
+dtype: int64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Chain-tools-for-data-analysis">Chain tools for data analysis<a class="anchor-link" href="#Chain-tools-for-data-analysis"> </a></h2><p>There are several chain tools for data analyis like the</p>
@@ -3850,9 +4448,489 @@ dtype: int64</pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Relational-databases">Relational databases<a class="anchor-link" href="#Relational-databases"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;http://bit.ly/spreadsheet_xlsx&#39;</span><span class="p">)</span>
+<span class="n">persona</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Nombre&#39;</span><span class="p">,</span><span class="s1">&#39;Edad&#39;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">persona</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="mi">888</span><span class="p">,</span><span class="mi">666</span><span class="p">]</span>
+<span class="n">persona</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Juan Valdez</td>
+      <td>23</td>
+      <td>888</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Álvaro Uribe Vélez</td>
+      <td>65</td>
+      <td>666</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d1</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="mi">888</span><span class="p">,</span> <span class="s1">&#39;Inicio&#39;</span><span class="p">:</span><span class="mi">2010</span><span class="p">,</span><span class="s1">&#39;Fin:&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Cargo&#39;</span><span class="p">:</span><span class="s1">&#39;Arriero&#39;</span><span class="p">,</span><span class="s1">&#39;Compañía&#39;</span><span class="p">:</span><span class="s1">&#39;Café de Colombia&#39;</span><span class="p">}</span>
+<span class="n">d2</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="mi">666</span><span class="p">,</span> <span class="s1">&#39;Inicio&#39;</span><span class="p">:</span><span class="mi">2013</span><span class="p">,</span><span class="s1">&#39;Fin:&#39;</span><span class="p">:</span><span class="mi">2020</span><span class="p">,</span><span class="s1">&#39;Cargo&#39;</span><span class="p">:</span><span class="s1">&#39;Senador&#39;</span><span class="p">,</span><span class="s1">&#39;Compañía&#39;</span><span class="p">:</span><span class="s1">&#39;Senado de la República de Colombia&#39;</span><span class="p">}</span>
+<span class="n">d3</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="mi">666</span><span class="p">,</span> <span class="s1">&#39;Inicio&#39;</span><span class="p">:</span><span class="mi">2020</span><span class="p">,</span><span class="s1">&#39;Fin:&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Cargo&#39;</span><span class="p">:</span><span class="s1">&#39;Influencer&#39;</span><span class="p">,</span><span class="s1">&#39;Compañía&#39;</span><span class="p">:</span><span class="s1">&#39;Twitter&#39;</span><span class="p">}</span>
+<span class="n">trabajo</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="p">[</span><span class="n">d1</span><span class="p">,</span><span class="n">d2</span><span class="p">,</span><span class="n">d3</span><span class="p">]</span> <span class="p">)</span>  
+<span class="n">trabajo</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>Inicio</th>
+      <th>Fin:</th>
+      <th>Cargo</th>
+      <th>Compañía</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>888</td>
+      <td>2010</td>
+      <td>NaN</td>
+      <td>Arriero</td>
+      <td>Café de Colombia</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>666</td>
+      <td>2013</td>
+      <td>2020.0</td>
+      <td>Senador</td>
+      <td>Senado de la República de Colombia</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>666</td>
+      <td>2020</td>
+      <td>NaN</td>
+      <td>Influencer</td>
+      <td>Twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/figures/relation.jpg" alt="img"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Actividad">Actividad<a class="anchor-link" href="#Actividad"> </a></h3><p>Obtenga el último trabajo de Álvaro Uribe Vélez</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cc</span><span class="o">=</span><span class="n">persona</span><span class="p">[</span><span class="n">persona</span><span class="p">[</span><span class="s1">&#39;Nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;álvaro uribe vélez&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span class="n">trabajo</span><span class="p">[</span><span class="n">trabajo</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">cc</span><span class="p">][</span><span class="s1">&#39;Cargo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Influencer&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Non-relational-databases">Non-relational databases<a class="anchor-link" href="#Non-relational-databases"> </a></h2>
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">persona</span><span class="o">=</span><span class="n">persona</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">persona</span><span class="p">[</span><span class="s1">&#39;Trabajo&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="c1">#Column need to be converted to object to assign an advance object like a list</span>
+<span class="n">persona</span><span class="p">[</span><span class="s1">&#39;Trabajo&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">persona</span><span class="p">[</span><span class="s1">&#39;Trabajo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">)</span>
+<span class="n">persona</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Trabajo&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">d1</span><span class="p">]</span>
+<span class="n">persona</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Trabajo&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">d2</span><span class="p">,</span><span class="n">d3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">persona</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Trabajo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Juan Valdez</td>
+      <td>23</td>
+      <td>[{'id': 888, 'Inicio': 2010, 'Fin:': None, 'Cargo': 'Arriero', 'Compañía': 'Café de Colombia'}]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Álvaro Uribe Vélez</td>
+      <td>65</td>
+      <td>[{'id': 666, 'Inicio': 2013, 'Fin:': 2020, 'Cargo': 'Senador', 'Compañía': 'Senado de la República de Colombia'}, {'id': 666, 'Inicio': 2020, 'Fin:': None, 'Cargo': 'Influencer', 'Compañía': 'Twit...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="n">persona</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Trabajo&#39;</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>Inicio</th>
+      <th>Fin:</th>
+      <th>Cargo</th>
+      <th>Compañía</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>666</td>
+      <td>2013</td>
+      <td>2020.0</td>
+      <td>Senador</td>
+      <td>Senado de la República de Colombia</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>666</td>
+      <td>2020</td>
+      <td>NaN</td>
+      <td>Influencer</td>
+      <td>Twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Actividad">Actividad<a class="anchor-link" href="#Actividad"> </a></h3><p>Obtenga el último trabajo de Álvaro Uribe Vélez</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">persona</span><span class="p">[</span><span class="n">persona</span><span class="p">[</span><span class="s1">&#39;Nombre&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Álvaro Uribe Vélez&#39;</span>
+       <span class="p">]</span><span class="o">.</span><span class="n">Trabajo</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Cargo&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">l</span> <span class="p">])</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1    Influencer
+Name: Trabajo, dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -3902,7 +4980,7 @@ dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 
     </div>
@@ -3927,57 +5005,78 @@ dtype: int64</pre>
         vertical-align: top;
     }
 
-    .dataframe thead tr th {
-        text-align: left;
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr>
+    <tr style="text-align: right;">
       <th></th>
-      <th colspan="2" halign="left">Location[a]</th>
-      <th>Cases[b]</th>
-      <th>Deaths[c]</th>
-      <th>Recov.[d]</th>
-      <th>Ref.</th>
-    </tr>
-    <tr>
-      <th></th>
-      <th>Unnamed: 0_level_1</th>
-      <th>World[e]</th>
-      <th>27,911,537</th>
-      <th>904,675</th>
-      <th>18,817,081</th>
-      <th>[4]</th>
+      <th>COVID-19 pandemic</th>
+      <th>COVID-19 pandemic.1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>NaN</td>
-      <td>United States[f]</td>
-      <td>6458047</td>
-      <td>193892</td>
-      <td>3509263</td>
-      <td>[13]</td>
-    </tr>
-    <tr>
       <th>1</th>
-      <td>NaN</td>
-      <td>India</td>
-      <td>4465863</td>
-      <td>75062</td>
-      <td>3471783</td>
-      <td>[14]</td>
+      <td>Disease</td>
+      <td>COVID-19</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>NaN</td>
-      <td>Brazil[g]</td>
-      <td>4202191</td>
-      <td>128694</td>
-      <td>3453336</td>
-      <td>[17][18]</td>
+      <td>Virus strain</td>
+      <td>SARS-CoV-2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Source</td>
+      <td>Probably bats, possibly via pangolins[1][2]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Location</td>
+      <td>Worldwide</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>First outbreak</td>
+      <td>Mainland China[3]</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Index case</td>
+      <td>Wuhan, Hubei, China.mw-parser-output .geo-default,.mw-parser-output .geo-dms,.mw-parser-output .geo-dec{display:inline}.mw-parser-output .geo-nondefault,.mw-parser-output .geo-multi-punct{display:...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Date</td>
+      <td>1 December 2019[3] – present(1 year, 3 months, 3 weeks and 3 days)</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Confirmed cases</td>
+      <td>124,971,776[4]</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Active cases</td>
+      <td>51,331,455[4]</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Recovered</td>
+      <td>70,893,740[4]</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Deaths</td>
+      <td>2,746,581[4]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Territories</td>
+      <td>192[4]</td>
     </tr>
   </tbody>
 </table>
@@ -3989,6 +5088,18 @@ dtype: int64</pre>
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Real world example: microsoft academics
+<img src="https://docs.microsoft.com/en-us/academic-services/graph/media/erd/entity-relationship-diagram.png" alt="img"></p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -4079,53 +5190,53 @@ dtype: int64</pre>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>FIXME_OAI</th>
-      <th>abstract</th>
-      <th>accelerator_experiment</th>
-      <th>authors</th>
-      <th>cataloguer_info</th>
-      <th>collection</th>
       <th>comment</th>
-      <th>corporate_name</th>
-      <th>coyright</th>
-      <th>creation_date</th>
-      <th>...</th>
-      <th>publication_info</th>
-      <th>recid</th>
       <th>reference</th>
-      <th>source_of_acquisition</th>
+      <th>abstract</th>
+      <th>creation_date</th>
+      <th>imprint</th>
+      <th>primary_report_number</th>
+      <th>keywords</th>
+      <th>publication_info</th>
+      <th>coyright</th>
       <th>subject</th>
-      <th>system_control_number</th>
-      <th>thesaurus_terms</th>
-      <th>title</th>
+      <th>...</th>
+      <th>number_of_authors</th>
+      <th>license</th>
+      <th>accelerator_experiment</th>
+      <th>number_of_comments</th>
       <th>url</th>
-      <th>version_id</th>
+      <th>recid</th>
+      <th>collection</th>
+      <th>thesaurus_terms</th>
+      <th>filetypes</th>
+      <th>prepublication</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>{'set': ['CERN', 'INSPIRE:HEP', 'CERN:arXiv', 'CDS'], 'id': 'oai:inspirehep.net:1718338'}</td>
-      <td>[{'number': 'arXiv', 'summary': 'Signals consistent with the B$^+_\mathrm{c}$(2S) and B$^{*+}_\mathrm{c}$(2S) states are observed in proton-proton collisions at $\sqrt{s} =$ 13 TeV, in an event sa...</td>
-      <td>{'experiment': 'CERN-LHC-CMS'}</td>
-      <td>[{'INSPIRE_number': 'INSPIRE-00312131', 'affiliation': 'Yerevan Phys. Inst.', 'first_name': 'Albert M', 'last_name': 'Sirunyan', 'full_name': 'Sirunyan, Albert M'}, {'INSPIRE_number': 'INSPIRE-001...</td>
-      <td>{'creation_date': '2019-02-05'}</td>
-      <td>[{'primary': 'HEP'}, {'primary': 'Citeable'}, {'primary': 'CORE'}, {'primary': 'Fermilab'}, {'primary': 'Published'}]</td>
       <td>Submitted to Phys. Rev. Lett. All figures and tables can be found at http://cms-results.web.cern.ch/cms-results/public-results/publications/BPH-18-007 (CMS Public Pages). This version corrects the...</td>
-      <td>[{'collaboration': 'CMS'}]</td>
-      <td>{'date': '2019', 'holder_contact': 'Article', 'holder': 'CERN'}</td>
-      <td>2019-02-05T04:03:36</td>
-      <td>...</td>
-      <td>{'volume': '122', 'pagination': '132001', 'title': 'Phys.Rev.Lett.', 'year': '2019'}</td>
-      <td>1718338</td>
       <td>[{'title': 'Phys.Rev.Lett.,81,2432', 'year': '1998', 'doi': 'doi:10.1103/PhysRevLett.81.2432', 'order_number': '1', 'authors': 'F. Abe'}, {'title': 'Phys.Rev.,D49,5845', 'year': '1994', 'doi': 'do...</td>
-      <td>{'source_of_acquisition': 'arXiv', 'date': '2019-02-13T03:35:35.632671', 'accession_number': '1447042'}</td>
+      <td>[{'number': 'arXiv', 'summary': 'Signals consistent with the B$^+_\mathrm{c}$(2S) and B$^{*+}_\mathrm{c}$(2S) states are observed in proton-proton collisions at $\sqrt{s} =$ 13 TeV, in an event sa...</td>
+      <td>2019-02-05T04:03:36</td>
+      <td>{'date': '2019-04-03'}</td>
+      <td>[arXiv:1902.00571, None, CMS-BPH-18-007, CERN-EP-2019-014]</td>
+      <td>[{'institute': 'publisher', 'term': 'Elementary Particles and Fields'}]</td>
+      <td>{'volume': '122', 'pagination': '132001', 'title': 'Phys.Rev.Lett.', 'year': '2019'}</td>
+      <td>{'date': '2019', 'holder_contact': 'publication', 'holder': 'CERN'}</td>
       <td>[{'source': 'INSPIRE', 'term': 'Experiment-HEP'}, {'source': 'arXiv', 'term': 'hep-ex'}, {'source': 'INSPIRE', 'term': 'Experiment-HEP'}]</td>
-      <td>[{'institute': 'INSPIRETeX', 'value': 'Sirunyan:2019osb'}, {'institute': 'arXiv', 'value': 'oai:arXiv.org:1902.00571'}, {'institute': 'CDS', 'value': '2655521'}, {'institute': 'HAL', 'value': 'hal...</td>
-      <td>[{'term': 'p p: scattering'}, {'term': 'p p: colliding beams'}, {'term': 'B/c+: hadroproduction'}, {'term': 'B/c: excited state'}, {'term': 'B/c+: hadronic decay'}, {'term': 'excited state: hadron...</td>
-      <td>{'title': 'Observation of Two Excited B$^+_\mathrm{c}$ States and Measurement of the B$^+_\mathrm{c}$(2S) Mass in pp Collisions at $\sqrt{s} =$ 13 TeV'}</td>
+      <td>...</td>
+      <td>2279</td>
+      <td>[{'url': 'http://creativecommons.org/licenses/by/4.0/', 'material': 'preprint', 'license': 'CC BY 4.0'}, {'imposing': 'APS', 'url': 'https://creativecommons.org/licenses/by/4.0/', 'license': 'Crea...</td>
+      <td>{'experiment': 'CERN-LHC-CMS'}</td>
+      <td>0</td>
       <td>[{'url': 'http://inspirehep.net/record/1718338/files/Figure_001.png', 'description': '00002 Transitions between the lightest \BC states, with solid and dashed lines indicating the emission of phot...</td>
-      <td>2020-06-04T17:41:04</td>
+      <td>1718338</td>
+      <td>[{'primary': 'HEP'}, {'primary': 'Citeable'}, {'primary': 'CORE'}, {'primary': 'Fermilab'}, {'primary': 'Published'}]</td>
+      <td>[{'term': 'p p: scattering'}, {'term': 'p p: colliding beams'}, {'term': 'B/c+: hadroproduction'}, {'term': 'B/c: excited state'}, {'term': 'B/c+: hadronic decay'}, {'term': 'excited state: hadron...</td>
+      <td>[xml, pdf, pdf, pdf, png, png, png]</td>
+      <td>{'date': '2019-02-01'}</td>
     </tr>
   </tbody>
 </table>
@@ -4175,16 +5286,16 @@ dtype: int64</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Index([&#39;FIXME_OAI&#39;, &#39;abstract&#39;, &#39;accelerator_experiment&#39;, &#39;authors&#39;,
-       &#39;cataloguer_info&#39;, &#39;collection&#39;, &#39;comment&#39;, &#39;corporate_name&#39;,
-       &#39;coyright&#39;, &#39;creation_date&#39;, &#39;doi&#39;, &#39;filenames&#39;, &#39;files&#39;, &#39;filetypes&#39;,
-       &#39;imprint&#39;, &#39;keywords&#39;, &#39;license&#39;, &#39;number_of_authors&#39;,
-       &#39;number_of_citations&#39;, &#39;number_of_comments&#39;, &#39;number_of_reviews&#39;,
-       &#39;other_report_number&#39;, &#39;persistent_identifiers_keys&#39;,
-       &#39;physical_description&#39;, &#39;prepublication&#39;, &#39;primary_report_number&#39;,
-       &#39;publication_info&#39;, &#39;recid&#39;, &#39;reference&#39;, &#39;source_of_acquisition&#39;,
-       &#39;subject&#39;, &#39;system_control_number&#39;, &#39;thesaurus_terms&#39;, &#39;title&#39;, &#39;url&#39;,
-       &#39;version_id&#39;],
+<pre>Index([&#39;comment&#39;, &#39;reference&#39;, &#39;abstract&#39;, &#39;creation_date&#39;, &#39;imprint&#39;,
+       &#39;primary_report_number&#39;, &#39;keywords&#39;, &#39;publication_info&#39;, &#39;coyright&#39;,
+       &#39;subject&#39;, &#39;cataloguer_info&#39;, &#39;physical_description&#39;,
+       &#39;number_of_citations&#39;, &#39;other_report_number&#39;, &#39;title&#39;,
+       &#39;persistent_identifiers_keys&#39;, &#39;corporate_name&#39;, &#39;files&#39;,
+       &#39;system_control_number&#39;, &#39;filenames&#39;, &#39;source_of_acquisition&#39;,
+       &#39;number_of_reviews&#39;, &#39;version_id&#39;, &#39;FIXME_OAI&#39;, &#39;authors&#39;, &#39;doi&#39;,
+       &#39;number_of_authors&#39;, &#39;license&#39;, &#39;accelerator_experiment&#39;,
+       &#39;number_of_comments&#39;, &#39;url&#39;, &#39;recid&#39;, &#39;collection&#39;, &#39;thesaurus_terms&#39;,
+       &#39;filetypes&#39;, &#39;prepublication&#39;],
       dtype=&#39;object&#39;)</pre>
 </div>
 
@@ -4285,6 +5396,41 @@ Name: authors, dtype: object</pre>
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    2279
+Name: authors, dtype: int64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">authors</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
@@ -4304,8 +5450,8 @@ Name: authors, dtype: object</pre>
 <pre>{&#39;INSPIRE_number&#39;: &#39;INSPIRE-00312131&#39;,
  &#39;affiliation&#39;: &#39;Yerevan Phys. Inst.&#39;,
  &#39;first_name&#39;: &#39;Albert M&#39;,
- &#39;full_name&#39;: &#39;Sirunyan, Albert M&#39;,
- &#39;last_name&#39;: &#39;Sirunyan&#39;}</pre>
+ &#39;last_name&#39;: &#39;Sirunyan&#39;,
+ &#39;full_name&#39;: &#39;Sirunyan, Albert M&#39;}</pre>
 </div>
 
 </div>
@@ -4325,6 +5471,49 @@ Name: authors, dtype: object</pre>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;affiliation&#39;</span><span class="p">)</span><span class="o">==</span><span class="s1">&#39;Antioquia U.&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;INSPIRE_number&#39;: &#39;INSPIRE-00343518&#39;,
+  &#39;affiliation&#39;: &#39;Antioquia U.&#39;,
+  &#39;first_name&#39;: &#39;Jhovanny&#39;,
+  &#39;last_name&#39;: &#39;Mejia Guisao&#39;,
+  &#39;full_name&#39;: &#39;Mejia Guisao, Jhovanny&#39;},
+ {&#39;INSPIRE_number&#39;: &#39;INSPIRE-00355050&#39;,
+  &#39;affiliation&#39;: &#39;Antioquia U.&#39;,
+  &#39;first_name&#39;: &#39;José David&#39;,
+  &#39;last_name&#39;: &#39;Ruiz Alvarez&#39;,
+  &#39;full_name&#39;: &#39;Ruiz Alvarez, José David&#39;}]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
