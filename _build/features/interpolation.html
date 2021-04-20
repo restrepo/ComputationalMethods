@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/LagrangePoly.html
 suffix: .ipynb
-search: x xi frac y f interpolation n polynomial t right plt left l m function points yi linear p xm com polynomials smallmatrix lagrange example end degree text plot b ipynb numpy begin np prod colab error font where pn leq google data activity roots align set such xn df max xj github www steps define e neq master implementation cdot color value using both fit de research restrepo computationalmethods blob discrete drive math derivation print org given details s defined interval kind cdots en wikipedia blue matter material methods however pdf br lp divided differences object latex its variable
+search: x xi frac y f interpolation n polynomial t right plt left l m function points yi linear xm com polynomials p smallmatrix lagrange example end degree plot b ipynb numpy begin np text prod colab error font where pn leq google data activity roots align set such xn df max xj github www steps define de e neq master es implementation cdot color te value interval using both fit research restrepo computationalmethods blob discrete drive math derivation print org given details s polinomio defined kind cdots en wikipedia blue matter material methods however pdf br lp divided differences object
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -45,7 +45,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Due to the discrete (and sometimes sparse) nature of experiments and observations, data taking procedures will always produce discrete data as well. Even, as we have seen before, information only can be discretely presented into a computer due to the binary representation. However, when we are dealing with physical models, continuous and smooth properties are of course preferred. Interpolation techniques allow then to recover a continuous field (intermediate values) from sparse datasets. Throughout this section we shall cover some of these interpolation methods.</p>
+<p>Due to the discrete, and sometimes sparse, nature of experiments and observations, data taking procedures will always produce discrete data as well. Even, as we have seen before, information only can be discretely presented into a computer due to the binary representation. However, when we are dealing with physical models, continuous and smooth properties are of course preferred. Interpolation techniques allow then to recover a continuous field from sparse datasets. Throughout this section we shall cover some of these interpolation methods.</p>
 <hr>
 <p><!-- __Homework__: https://classroom.github.com/a/SB94rDVJ --></p>
 <h2 id="Bibliography:">Bibliography:<a class="anchor-link" href="#Bibliography:"> </a></h2><p>[1a] Gonzalo Galiano Casas, Esperanza García Gonzalo <a href="https://www.unioviedo.es/compnum/expositive/handbook/metnum.pdf">Numerical Computation</a> - <a href="https://drive.google.com/file/d/1gwHYLx5aBf3oXRhmGeG-n1toTtAUhvfX/view?usp=sharing">GD</a> - <a href="https://www.unioviedo.es/compnum/index.php/english-menu">Web page with notebooks</a><br/>
@@ -413,7 +413,7 @@ mundo\
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In a text cell: $(-3) + 2 \;x + x^{2}$</p>
+<p>Copy an Paster in a MarkDown cell: $(-3) + 2 \;x + x^{2}$</p>
 
 </div>
 </div>
@@ -641,6 +641,40 @@ $(-3) + 2 \;x + x^{2}$
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">coef</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1,  2, -3])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">coef</span><span class="p">,</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pp</span><span class="p">)</span>
 </pre></div>
@@ -726,18 +760,6 @@ p1(x)+p2(x)=
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The object have in particular methods for <br/>
-<strong>Integration</strong>:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -767,6 +789,51 @@ p1(x)+p2(x)=
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">p1</span><span class="o">+</span><span class="n">p2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> 
+2
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The object have in particular methods for <br/>
+<strong>Integration</strong>:</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -810,39 +877,6 @@ p1(x)+p2(x)=
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>   4             2
-1 x - 6.221e+04 x + 9.698e+07
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span> <span class="n">p</span><span class="o">.</span><span class="n">integ</span><span class="p">()</span> <span class="p">)</span>
 </pre></div>
@@ -862,6 +896,40 @@ p1(x)+p2(x)=
 0.3333 x + 1 x - 3 x
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">integ</span><span class="p">()</span><span class="o">.</span><span class="n">coef</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.33333333,  1.        , -3.        ,  0.        ])</pre>
+</div>
+
 </div>
 </div>
 </div>
@@ -934,8 +1002,6 @@ p1(x)+p2(x)=
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">setup_typeset</span><span class="p">()</span> <span class="c1">#active colab pretty print</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">roots</span><span class="p">)</span>
-<span class="n">Latex</span><span class="p">(</span> <span class="s1">&#39;$p(</span><span class="si">{}</span><span class="s1">)$=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">),</span>
-                                      <span class="n">p</span><span class="p">((</span><span class="n">p</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>  <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -990,6 +1056,65 @@ p1(x)+p2(x)=
 </div>
 </div>
 </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Latex</span><span class="p">(</span> <span class="s1">&#39;$p(</span><span class="si">{}</span><span class="s1">)$=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">),</span>
+                                      <span class="n">p</span><span class="p">((</span><span class="n">p</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>  <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$p(-3.0)$=1.7763568394002505e-15
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Latex</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;$p(</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s1">)$=</span><span class="si">{</span><span class="n">p</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)</span>
+                                    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
@@ -1054,6 +1179,40 @@ $p(-3.0)$=1.7763568394002505e-15
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.4901161193847656e-08</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For further details check the official help:</p>
@@ -1107,6 +1266,98 @@ x(t)=x_0-v_0t_0+\frac{1}{2}at_0^2 +(v_0-at_0)t+\tfrac{1}{2} a t^2
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x0</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">t0</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">v0</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">6</span> <span class="c1">#m/s^2</span>
+<span class="n">x_1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">([</span><span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="n">v0</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t0</span><span class="p">,</span><span class="n">x0</span><span class="o">-</span><span class="n">v0</span><span class="o">*</span><span class="n">t0</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t0</span><span class="o">**</span><span class="mi">2</span><span class="p">],</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">x0</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">t0</span><span class="o">=</span><span class="mi">10</span> <span class="c1">#s</span>
+<span class="n">v0</span><span class="o">=</span><span class="mi">10</span> <span class="c1">#m/s</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">10</span> <span class="c1">#m/s^2</span>
+<span class="n">x_2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">([</span><span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="n">v0</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t0</span><span class="p">,</span><span class="n">x0</span><span class="o">-</span><span class="n">v0</span><span class="o">*</span><span class="n">t0</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t0</span><span class="o">**</span><span class="mi">2</span><span class="p">],</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>   2
+3 t
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>   2
+5 t - 90 t + 400
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <!-- ### <font color=red>Solution</font>
@@ -1135,6 +1386,386 @@ Latex(r'meeting time $t_{\rm end}=$ %g s; meeting point $x_{\rm end}=$ %g m'
           -->
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sea el tiempo de encuentro definido $t_e$
+$$x_1(t_e)=x_2(t_e)\,,$$
+que se interpreta como
+$$x_1(t_e)-x_2(t_e)=0\,,$$
+Puedo definir un nuevo polinomio
+$$
+x(t)=x_1(t)-x_2(t)
+$$
+Entonces $t_e$, es la raíz del polinomio $x(t)$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">x_1</span><span class="o">-</span><span class="n">x_2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>    2
+-2 x + 90 x - 400
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">roots</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([40.,  5.])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La raíz 5 no es física porque el tiempo incial para el segundo carro es 10</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_1</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_2</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">setup_typeset</span><span class="p">()</span> <span class="c1">#active colab pretty print</span>
+<span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="n">v0</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span> <span class="p">[</span><span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="n">v0</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t0</span><span class="p">,</span><span class="n">x0</span><span class="o">-</span><span class="n">v0</span><span class="o">*</span><span class="n">t0</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t0</span><span class="o">**</span><span class="mi">2</span><span class="p">],</span>
+                     <span class="n">variable</span><span class="o">=</span><span class="s1">&#39;t&#39;</span>  <span class="p">)</span>
+<span class="n">x1</span><span class="o">=</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">x2</span><span class="o">=</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Latex</span><span class="p">(</span><span class="s1">&#39;$x_1(t)=$&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">Latex</span><span class="p">(</span><span class="s1">&#39;$x_2(t)=$&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x2</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">x1</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$t$ [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$x_2(t)-x_1(t)$ [m]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="c1">#plt.plot(t,(x2-x1)(t))</span>
+<span class="c1">#plt.grid()</span>
+<span class="c1">#Physica solution is the one after 10s</span>
+<span class="n">Latex</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;meeting time $t_{\rm end}=$ </span><span class="si">%g</span><span class="s1"> s; meeting point $x_{\rm end}=$ </span><span class="si">%g</span><span class="s1"> m&#39;</span> 
+          <span class="o">%</span><span class="p">(</span>  <span class="p">(</span><span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="p">,</span>  <span class="n">x2</span><span class="p">(</span>  <span class="p">(</span><span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="p">)</span>   <span class="p">))</span> 
+<span class="c1">#plt.plot(t,x2(t),&#39;ro&#39;)</span>
+<span class="c1">#plt.plot(t,x2(t),&#39;k-&#39;)</span>
+<span class="c1">#plt.xlim(10,15)</span>
+<span class="c1">#plt.ylim(0,200)          </span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<script src="https://www.gstatic.com/external_hosted/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full,Safe&delayStartupUntil=configured"></script>
+<script>
+  (() => {
+    const mathjax = window.MathJax;
+    mathjax.Hub.Config({
+    'tex2jax': {
+      'inlineMath': [['$', '$'], ['\(', '\)']],
+      'displayMath': [['$$', '$$'], ['\[', '\]']],
+      'processEscapes': true,
+      'processEnvironments': true,
+      'skipTags': ['script', 'noscript', 'style', 'textarea', 'code'],
+      'displayAlign': 'center',
+    },
+    'HTML-CSS': {
+      'styles': {'.MathJax_Display': {'margin': 0}},
+      'linebreaks': {'automatic': true},
+      // Disable to prevent OTF font loading, which aren't part of our
+      // distribution.
+      'imageFont': null,
+    },
+    'messageStyle': 'none'
+  });
+  mathjax.Hub.Configured();
+})();
+</script>
+
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea ">
+$x_1(t)=$
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>   2
+3 t
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea ">
+$x_2(t)=$
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>   2
+5 t - 90 t + 400
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+meeting time $t_{\rm end}=$ 40 s; meeting point $x_{\rm end}=$ 4800 m
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/interpolation_58_6.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v</span><span class="o">=</span><span class="n">x_2</span><span class="o">.</span><span class="n">deriv</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> 
+10 x - 90
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">deriv</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> 
+10
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1370,7 +2001,7 @@ sp.interpolate.interp1d<span class="o">?</span>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_58_0.png"
+<img src="../images/features/interpolation_75_0.png"
 >
 </div>
 
@@ -1461,6 +2092,13 @@ sp.interpolate.interp1d<span class="o">?</span>
 <span class="c1">#         &#39;k:&#39;,lw=1,label=&#39;quadratic interpolation&#39;)</span>
 
 <span class="c1">#Formatting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">2.35</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="mf">2.35</span><span class="p">),</span><span class="s1">&#39;y*&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;sample point&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span> <span class="s2">&quot;Linear interpolation of $\sin(x)$&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span> <span class="s2">&quot;$x$&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span> <span class="s2">&quot;$y$&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
+
+<span class="c1">#Formatting</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span> <span class="s2">&quot;Linear interpolation of $\sin(x)$&quot;</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span> <span class="s2">&quot;$x$&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
@@ -1481,7 +2119,7 @@ sp.interpolate.interp1d<span class="o">?</span>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_61_0.png"
+<img src="../images/features/interpolation_78_0.png"
 >
 </div>
 
@@ -1788,7 +2426,7 @@ plt.plot(2.35,f(2.35),'y*',markersize=10)
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_73_0.png"
+<img src="../images/features/interpolation_90_0.png"
 >
 </div>
 
@@ -1807,7 +2445,41 @@ plt.plot(2.35,f(2.35),'y*',markersize=10)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>sp.interpolate.interp1d<span class="o">?</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1820,10 +2492,50 @@ plt.plot(2.35,f(2.35),'y*',markersize=10)
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Object `sp.interpolate.interp1d` not found.
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array(-2.)</pre>
 </div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="s1">&#39;y*&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/interpolation_94_0.png"
+>
+</div>
+
 </div>
 </div>
 </div>
@@ -1997,7 +2709,7 @@ In fact, we can try with a polynomial of degree two with roots at 1 and 22.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(-15, 20)</pre>
+<pre>(-15.0, 20.0)</pre>
 </div>
 
 </div>
@@ -2008,7 +2720,7 @@ In fact, we can try with a polynomial of degree two with roots at 1 and 22.</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_82_1.png"
+<img src="../images/features/interpolation_102_1.png"
 >
 </div>
 
@@ -2126,6 +2838,40 @@ the squared error.</p>
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">coeffs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-0.15217542,  3.42463858, -0.904337  ])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span><span class="o">.</span><span class="n">roots</span>
 </pre></div>
 
@@ -2193,7 +2939,8 @@ the squared error.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">P</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">coeffs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">P</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
 <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">P</span><span class="p">(</span> <span class="n">x</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">)</span>
@@ -2214,7 +2961,7 @@ the squared error.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(-20, 20)</pre>
+<pre>(-20.0, 20.0)</pre>
 </div>
 
 </div>
@@ -2225,7 +2972,7 @@ the squared error.</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_92_1.png"
+<img src="../images/features/interpolation_113_1.png"
 >
 </div>
 
@@ -2281,7 +3028,7 @@ the squared error.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Algebraic polynomials are very special functions as they have properties like differentiability (unlike linear interpolation) and continuity that make them useful for approximations like interpolation. A Polynomial is defined as a function given by the general expression:</p>
 $$P_n(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1 x + a_0$$<p>where $n$ is the polynomial degree.</p>
-<p>Another important property of polynomials is given by the <a href="http://en.wikipedia.org/wiki/Stone%E2%80%93Weierstrass_theorem">Weierstrass Approximation Theorem</a>, which states given a cotinuous function $f$ defined on a interval $[a,b]$, for all $\epsilon &gt;0$, there exits a polynomial $P(x)$ such that</p>
+<p>Another important property of polynomials is given by the <a href="http://en.wikipedia.org/wiki/Stone%E2%80%93Weierstrass_theorem">Weierstrass Approximation Theorem</a>, which states given a continuous function $f$ defined on a interval $[a,b]$, for all $\epsilon &gt;0$, there exits a polynomial $P(x)$ such that</p>
 $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<p>This theorem guarantees the existence of such a polynomial, however it is necessary to propose a scheme to build it.</p>
 
 </div>
@@ -2386,7 +3133,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_98_0.png"
+<img src="../images/features/interpolation_119_0.png"
 >
 </div>
 
@@ -2451,7 +3198,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_100_1.png"
+<img src="../images/features/interpolation_121_1.png"
 >
 </div>
 
@@ -2516,7 +3263,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_102_1.png"
+<img src="../images/features/interpolation_123_1.png"
 >
 </div>
 
@@ -2579,8 +3326,8 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.5/dist-packages/ipykernel_launcher.py:1: RankWarning: Polyfit may be poorly conditioned
-  &#34;&#34;&#34;Entry point for launching an IPython kernel.
+<pre>/usr/local/lib/python3.7/dist-packages/IPython/core/interactiveshell.py:3418: RankWarning: Polyfit may be poorly conditioned
+  exec(code_obj, self.user_global_ns, self.user_ns)
 </pre>
 </div>
 </div>
@@ -2591,7 +3338,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_104_2.png"
+<img src="../images/features/interpolation_125_2.png"
 >
 </div>
 
@@ -2720,7 +3467,7 @@ $$|f(x) - P(x)|&lt;\epsilon\ \ \ \ \  \mbox{for all }\ x\ \mbox{ in }\ [a,b].$$<
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_106_1.png"
+<img src="../images/features/interpolation_127_1.png"
 >
 </div>
 
@@ -2857,7 +3604,7 @@ $$L_{n,i}(x_j) = \prod_{\begin{smallmatrix}m=0\\ m\neq i\end{smallmatrix}}^n \fr
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>$i=0$, $n=1$
 $$ L_{1,0}=\prod_{\begin{smallmatrix}m=0\\ m\neq 0\end{smallmatrix}}^1 \frac{x-x_m}{x_i-x_m}=\prod_{\begin{smallmatrix}m=1\end{smallmatrix}}^1 \frac{x-x_m}{x_0-x_m}=\frac{x-x_1}{x_0-x_1}$$
-$i=i$, $n=1$
+$i=1$, $n=1$
 $$ L_{1,1}=\prod_{\begin{smallmatrix}m=0\\ m\neq 1\end{smallmatrix}}^1 \frac{x-x_m}{x_i-x_m}=\prod_{\begin{smallmatrix}m=0\end{smallmatrix}}^0 \frac{x-x_m}{x_1-x_m}=\frac{x-x_0}{x_1-x_0}$$</p>
 
 </div>
@@ -3079,7 +3826,7 @@ $$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0, 12)</pre>
+<pre>(0.0, 12.0)</pre>
 </div>
 
 </div>
@@ -3090,7 +3837,7 @@ $$</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_121_1.png"
+<img src="../images/features/interpolation_142_1.png"
 >
 </div>
 
@@ -3107,7 +3854,7 @@ $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Example-of-error-calculation">Example of error calculation<a class="anchor-link" href="#Example-of-error-calculation"> </a></h3><p>See details <a href="https://math.stackexchange.com/a/1151599/790274">here</a></p>
-<p>Consider $f(x) = \operatorname{e}^{2x} - x$ interpolation in the interval $(1,1.6)$</p>
+<p>Consider $f(x) = \operatorname{e}^{2x} - x$ interpolation in the interval $[1,1.6]$</p>
 <ol>
 <li>Construct the Lagrange Polynomial for the points $x_0=1$, $x_1=1.25$, $x_2=1.6$. </li>
 <li>Find the approximate value at $f(1.5)$ and the error bound for the approximation</li>
@@ -3159,6 +3906,74 @@ $$</p>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([2.71828183, 3.49034296, 4.95303242, 2.71828183, 3.49034296,
        4.95303242])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">+</span><span class="n">x</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[1, 1.25, 1.6, 1, 1.25, 1.6]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[1, 1.25, 1.6, 1, 1.25, 1.6]</pre>
 </div>
 
 </div>
@@ -3420,7 +4235,7 @@ $$
 $$
 we need just to build the numpy polynomial with roots at $(x_0,x_1,x_2)$
 $$
-p(x)=(x-x_0)(x-x_1)(x-x_2)\,,
+p_e(x)=(x-x_0)(x-x_1)(x-x_2)\,,
 $$</p>
 
 </div>
@@ -3435,10 +4250,49 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p_e</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">p_e</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">p_e</span><span class="o">.</span><span class="n">deriv</span><span class="p">()(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/interpolation_159_0.png"
+>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -3463,7 +4317,7 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">deriv</span><span class="p">()</span><span class="o">.</span><span class="n">roots</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p_e</span><span class="o">.</span><span class="n">deriv</span><span class="p">()</span><span class="o">.</span><span class="n">roots</span>
 </pre></div>
 
     </div>
@@ -3492,12 +4346,24 @@ $$</p>
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The point in the interval $[1,1.6]$ for which $|p_e(x)|$ is maximum corresponds to the root</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">deriv</span><span class="p">()</span><span class="o">.</span><span class="n">roots</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xmax</span><span class="o">=</span><span class="n">p_e</span><span class="o">.</span><span class="n">deriv</span><span class="p">()</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">xmax</span>
 </pre></div>
 
     </div>
@@ -3513,7 +4379,7 @@ $$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([-0.01352772,  0.00754624])</pre>
+<pre>1.4573384418151778</pre>
 </div>
 
 </div>
@@ -3531,10 +4397,89 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">p</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">deriv</span><span class="p">()</span><span class="o">.</span><span class="n">roots</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">p_e</span><span class="p">(</span><span class="n">xmax</span><span class="p">))</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.013527716754363928</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Or</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p_emax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">p_e</span><span class="p">(</span><span class="n">p_e</span><span class="o">.</span><span class="n">deriv</span><span class="p">()</span><span class="o">.</span><span class="n">roots</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p_emax</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.013527716754363928</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -3573,41 +4518,7 @@ $$</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pmax</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0.013527716754363928</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">E_2</span><span class="o">=</span><span class="n">fppp</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">pmax</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">E_2</span><span class="o">=</span><span class="n">fppp</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">p_emax</span>
 <span class="n">E_2</span>
 </pre></div>
 
@@ -3774,6 +4685,79 @@ $$</p>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>0.26182823963596036</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">P_2</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/interpolation_176_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">P_2</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/interpolation_177_0.png"
+>
 </div>
 
 </div>
@@ -4341,7 +5325,7 @@ A
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_170_1.png"
+<img src="../images/features/interpolation_199_1.png"
 >
 </div>
 
@@ -4419,7 +5403,7 @@ A
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_173_1.png"
+<img src="../images/features/interpolation_202_1.png"
 >
 </div>
 
@@ -4466,7 +5450,7 @@ A
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_174_1.png"
+<img src="../images/features/interpolation_203_1.png"
 >
 </div>
 
@@ -4549,7 +5533,7 @@ A
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_176_1.png"
+<img src="../images/features/interpolation_205_1.png"
 >
 </div>
 
@@ -4597,7 +5581,7 @@ A
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/interpolation_177_1.png"
+<img src="../images/features/interpolation_206_1.png"
 >
 </div>
 
