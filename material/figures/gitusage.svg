@@ -600,7 +600,7 @@ RU5ErkJggg==
          style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Nimbus Mono L;-inkscape-font-specification:Nimbus Mono L"
          y="219.63062"
          x="364.31461"
-         sodipodi:role="line">$ git merge master</tspan></text>
+         sodipodi:role="line">$ git merge upstream/master</tspan></text>
     <image
        width="244.4782"
        height="96.428902"
