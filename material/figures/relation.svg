@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -37,16 +37,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="999"
+     inkscape:window-height="1031"
      id="namedview646"
      showgrid="false"
-     inkscape:zoom="0.4609375"
-     inkscape:cx="420.63997"
-     inkscape:cy="256"
+     inkscape:zoom="2.6074563"
+     inkscape:cx="721.73255"
+     inkscape:cy="282.74656"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg644" />
+     inkscape:current-layer="surface912" />
   <defs
      id="defs151">
     <g
@@ -495,120 +495,12 @@
        id="path171" />
     <g
        style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g175">
-      <use
-         xlink:href="#glyph0-1"
-         x="427.887966"
-         y="211.494964"
-         id="use173" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g179">
-      <use
-         xlink:href="#glyph0-2"
-         x="436.888009"
-         y="211.494964"
-         id="use177" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g183">
-      <use
-         xlink:href="#glyph0-3"
-         x="446.804649"
-         y="211.494964"
-         id="use181" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g187">
-      <use
-         xlink:href="#glyph0-2"
-         x="455.804692"
-         y="211.494964"
-         id="use185" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g191">
-      <use
-         xlink:href="#glyph0-4"
-         x="465.721332"
-         y="211.494964"
-         id="use189" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
        id="g195">
       <use
          xlink:href="#glyph0-5"
          x="470.027765"
          y="211.494964"
          id="use193" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g199">
-      <use
-         xlink:href="#glyph0-6"
-         x="474.23147"
-         y="211.494964"
-         id="use197" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g203">
-      <use
-         xlink:href="#glyph0-7"
-         x="478.324551"
-         y="211.494964"
-         id="use201" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g207">
-      <use
-         xlink:href="#glyph0-8"
-         x="488.256994"
-         y="211.494964"
-         id="use205" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g211">
-      <use
-         xlink:href="#glyph0-9"
-         x="493.96993"
-         y="211.494964"
-         id="use209" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g215">
-      <use
-         xlink:href="#glyph0-10"
-         x="503.04899"
-         y="211.494964"
-         id="use213" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g219">
-      <use
-         xlink:href="#glyph0-9"
-         x="511.914698"
-         y="211.494964"
-         id="use217" />
-    </g>
-    <g
-       style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
-       id="g223">
-      <use
-         xlink:href="#glyph0-11"
-         x="520.993758"
-         y="211.494964"
-         id="use221" />
     </g>
     <g
        style="fill:rgb(10.198975%,10.198975%,10.198975%);fill-opacity:1;"
@@ -1558,5 +1450,21 @@
        d="M 0.000147772 0.800137 L 0.000147772 7.903362 "
        transform="matrix(1.902488,0,0,1.901095,203.628625,81.041363)"
        id="path641" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75"
+       x="427.42804"
+       y="207.67873"
+       id="text353"><tspan
+         sodipodi:role="line"
+         id="tspan351"
+         x="427.42804"
+         y="207.67873"
+         style="font-size:15px;stroke-width:0.75">Fecha de nacimiento:</tspan><tspan
+         sodipodi:role="line"
+         x="427.42804"
+         y="226.42874"
+         style="font-size:15px;stroke-width:0.75"
+         id="tspan355">Fecha</tspan></text>
   </g>
 </svg>
