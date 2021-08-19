@@ -1,2 +1,4 @@
 # Exams reposotory:
-See: https://github.com/restrepo/examenes
+DEPRECATED:
+
+See instead: https://github.com/restrepo/examenes
