@@ -3,6 +3,17 @@
 
 format: jb-book
 root: index
+options:  # The options key will be applied to all chapters, but not sub-sections
+  numbered: True
+
 chapters:
 - file: material/overview-python
+- file: material/computer-arithmetics
+- file: material/one-variable-equations
+- file: material/interpolation
+- file: material/numerical-calculus
+- file: material/linear-algebra
+- file: material/differential-equations
+- file: material/statistics
+- file: material/Intro_clases
 
