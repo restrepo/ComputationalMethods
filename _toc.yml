@@ -1,0 +1,13 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: Multiprocessing
+- file: DevOps
+- file: Data_Analysis
+- file: Intro_clases
+- file: fullstack
+- file: markdown-notebooks
+
