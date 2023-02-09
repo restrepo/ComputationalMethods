@@ -32,3 +32,5 @@ html:
   use_repository_button: true
 
 only_build_toc_files: true
+
+exclude_patterns: [Evaluacion*/*,material/node_modules/*]
