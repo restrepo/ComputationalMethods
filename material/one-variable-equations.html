@@ -1,0 +1,1883 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. One Variable Equations &#8212; Computational Methods</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Interpolation Methods" href="interpolation.html" />
+    <link rel="prev" title="2. Computer Arithmetics and Round-off Methods" href="computer-arithmetics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Methods</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Computational Methods for Physics & Astronomy
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview-python.html">
+   1. Python Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="computer-arithmetics.html">
+   2. Computer Arithmetics and Round-off Methods
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. One Variable Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   4. Interpolation Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numerical-calculus.html">
+   5. Numerical Calculus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra.html">
+   6. Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="differential-equations.html">
+   7. Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics.html">
+   8. Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_clases.html">
+   9. Clases
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/restrepo/ComputationalMethods/master?urlpath=tree/docs/material/one-variable-equations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/restrepo/ComputationalMethods"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/restrepo/ComputationalMethods/issues/new?title=Issue%20on%20page%20%2Fmaterial/one-variable-equations.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/material/one-variable-equations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   3.1. Bibliography
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bisection-method">
+   3.2. Bisection Method
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steps-bm">
+     3.2.1. Steps BM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stop-condition-bm">
+     3.2.2. Stop condition BM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-analysis-bm">
+     3.2.3. Error analysis BM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     3.2.4. Example 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-arguments-and-options-of-a-scipy-function">
+   3.3. General arguments and options of a SciPy function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     3.3.1. Example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#font-color-red-activity-font">
+       3.3.1.1.
+       <font color="red">
+        ACTIVITY
+       </font>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     3.3.2. Example 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>One Variable Equations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   3.1. Bibliography
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bisection-method">
+   3.2. Bisection Method
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steps-bm">
+     3.2.1. Steps BM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stop-condition-bm">
+     3.2.2. Stop condition BM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-analysis-bm">
+     3.2.3. Error analysis BM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     3.2.4. Example 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-arguments-and-options-of-a-scipy-function">
+   3.3. General arguments and options of a SciPy function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     3.3.1. Example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#font-color-red-activity-font">
+       3.3.1.1.
+       <font color="red">
+        ACTIVITY
+       </font>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     3.3.2. Example 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/one-variable-equations.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="one-variable-equations">
+<h1><span class="section-number">3. </span>One Variable Equations<a class="headerlink" href="#one-variable-equations" title="Permalink to this headline">#</a></h1>
+<p>Throughout this section and the next ones we shall cover the topic of solutions to one variable equations. Many different problems in physics and astronomy require the use of complex expressions, even with implicit dependence of variables. When it is necessary to solve for one of those variable, an analytical approach is not usually the best solution, because of its complexity or even because it does not exist at all. Different approaches for dealing with this comprehend series expansions and numerical solutions. Among the most widely used numerical approaches are the Bisection or Binary-search method, fixed-point iteration, Newton’s methods.</p>
+<p>For further details see for example Chap. 5 of Ref. (<a class="reference external" href="../index.ipynb#Bibliography">1</a>) or Chap. 4 of Ref. (<a class="reference external" href="../index.ipynb#Bibliography">3</a>)</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><a class="reference external" href="#Bisection-Method">Bisection Method</a></p>
+<ul>
+<li><p><a class="reference external" href="#Steps-BM">Steps</a></p></li>
+<li><p><a class="reference external" href="#Stop-condition-BM">Stop condition</a></p></li>
+<li><p><a class="reference external" href="#Error-analysis-BM">Error analysis</a></p></li>
+<li><p><a class="reference external" href="#Example-1">Example 1</a></p></li>
+<li><p><a class="reference external" href="#Example-2">Example 2</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Fixed-point-Iteration">Fixed-point Iteration</a></p>
+<ul>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Steps-FP">Steps</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Example-3">Example 3</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Stop-condition-FP">Stop condition</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Example-4">Example 4</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#ACTIVITY-FP">Activity</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Newton-Raphson-Method">Newton-Raphson Method</a></p>
+<ul>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Derivation-NM">Derivation</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Steps-NM">Steps</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Example-5">Example 5</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Stop-condition-NM">Stop condition</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Convergence-NM">Convergence</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Secant-Method">Secant Method</a></p>
+<ul>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Derivation-SM">Derivation</a></p></li>
+<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Steps-SM">Steps</a></p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<section id="bibliography">
+<h2><span class="section-number">3.1. </span>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h2>
+<p>[1] <a class="reference external" href="https://drive.google.com/file/d/0BxoOXsn2EUNIQUdFVkctR2xWRUk/view?usp=sharing">Kiusalaas, Numerical Methods in Engineering with Python</a><br/>
+[2] <a class="reference external" href="https://drive.google.com/file/d/0BxoOXsn2EUNIekRUMFVPYXVsSTg/view?usp=sharing">Jensen, Computational_Physics</a>.  Companion repos: <a class="reference external" href="https://github.com/mhjensen">https://github.com/mhjensen</a> <a class="reference external" href="http://compphysics.github.io/ComputationalPhysics/doc/web/course">Web page</a>  <br/>
+[3] E. Ayres, <a class="reference external" href="http://bit.ly/CPwPython">Computational Physics With Python</a><br/></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+<span class="n">rc</span><span class="p">(</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="s1">&#39;jshtml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In /home/usuario/.local/lib/python3.6/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle: 
+The text.latex.preview rcparam was deprecated in Matplotlib 3.3 and will be removed two minor releases later.
+In /home/usuario/.local/lib/python3.6/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle: 
+The mathtext.fallback_to_cm rcparam was deprecated in Matplotlib 3.3 and will be removed two minor releases later.
+In /home/usuario/.local/lib/python3.6/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle: Support for setting the &#39;mathtext.fallback_to_cm&#39; rcParam is deprecated since 3.3 and will be removed two minor releases later; use &#39;mathtext.fallback : &#39;cm&#39; instead.
+In /home/usuario/.local/lib/python3.6/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle: 
+The validate_bool_maybe_none function was deprecated in Matplotlib 3.3 and will be removed two minor releases later.
+In /home/usuario/.local/lib/python3.6/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle: 
+The savefig.jpeg_quality rcparam was deprecated in Matplotlib 3.3 and will be removed two minor releases later.
+In /home/usuario/.local/lib/python3.6/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle: 
+The keymap.all_axes rcparam was deprecated in Matplotlib 3.3 and will be removed two minor releases later.
+In /home/usuario/.local/lib/python3.6/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle: 
+The animation.avconv_path rcparam was deprecated in Matplotlib 3.3 and will be removed two minor releases later.
+In /home/usuario/.local/lib/python3.6/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle: 
+The animation.avconv_args rcparam was deprecated in Matplotlib 3.3 and will be removed two minor releases later.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
+</pre></div>
+</div>
+</div>
+</div>
+<p>JSAnimation import available at <a class="reference external" href="https://github.com/jakevdp/JSAnimation">https://github.com/jakevdp/JSAnimation</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from JSAnimation import IPython_display</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bisection-method">
+<h2><span class="section-number">3.2. </span>Bisection Method<a class="headerlink" href="#bisection-method" title="Permalink to this headline">#</a></h2>
+<p>The Bisection method exploits the <a class="reference external" href="http://en.wikipedia.org/wiki/Intermediate_value_theorem">intermediate value theorem</a>, where a continuous and differentiable function <span class="math notranslate nohighlight">\(f\)</span> must have a zero between an interval <span class="math notranslate nohighlight">\([a,b]\)</span> such that <span class="math notranslate nohighlight">\(f(a)f(b)&lt;0\)</span>, or equivalently, there must be a value <span class="math notranslate nohighlight">\(p\in[a,b]\)</span> such that <span class="math notranslate nohighlight">\(f(p)=0\)</span>. Below the algorithmm is stated explicitly.</p>
+<section id="steps-bm">
+<h3><span class="section-number">3.2.1. </span>Steps BM<a class="headerlink" href="#steps-bm" title="Permalink to this headline">#</a></h3>
+<div style="float: right;" markdown="1">
+    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Bisection_method.svg/300px-Bisection_method.svg.png">
+</div>
+<ol>
+<li><p>There must be selected two values <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> such that <span class="math notranslate nohighlight">\(f(a)f(b)&lt;0\)</span> and <span class="math notranslate nohighlight">\(p\in[a,b]\)</span> where <span class="math notranslate nohighlight">\(f(p)=0\)</span>. In other words, though we do not know the value of the root, we must know that there is at least one within the selected interval.</p></li>
+<li><p>To begin, it must be set <span class="math notranslate nohighlight">\(a_1=a\)</span> and <span class="math notranslate nohighlight">\(b_1=b\)</span>.</p></li>
+<li><p>Calculate the mid-point <span class="math notranslate nohighlight">\(p_1\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[p_1 = a_1 + \frac{b_1-a_1}{2} = \frac{a_1+b_1}{2}\]</div>
+</li>
+<li><p>Evaluate the function in <span class="math notranslate nohighlight">\(p_1\)</span>, if the <a class="reference external" href="#Stop-Condition">stop condition</a> is true, go to step 6.</p></li>
+<li><p>If the <a class="reference external" href="#Stop-Condition">stop condition</a> is not satisfied, then:</p>
+<ol class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(f(p_1)f(a_1) &gt; 0\)</span>, <span class="math notranslate nohighlight">\(p\in(p_1,b_1)\)</span>. Then set <span class="math notranslate nohighlight">\(a_2=p_1\)</span> and <span class="math notranslate nohighlight">\(b_2=b_1\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(f(p_1)f(a_1) &lt; 0\)</span>, <span class="math notranslate nohighlight">\(p\in(a_1,p_1)\)</span>. Then set <span class="math notranslate nohighlight">\(a_2=a_1\)</span> and <span class="math notranslate nohighlight">\(b_2=p_1\)</span></p></li>
+<li><p>Go to step 3 using <span class="math notranslate nohighlight">\(p_2\)</span>, <span class="math notranslate nohighlight">\(a_2\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> instead of <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(b_1\)</span>. For next iterations the index increases until the <a class="reference external" href="#Stop-Condition">stop condition</a> is reached.</p></li>
+</ol>
+</li>
+<li><p>The End!</p></li>
+</ol>
+</section>
+<section id="stop-condition-bm">
+<h3><span class="section-number">3.2.2. </span>Stop condition BM<a class="headerlink" href="#stop-condition-bm" title="Permalink to this headline">#</a></h3>
+<p>There are several different stop conditions for this algorithm. The most used are stated below:</p>
+<ul>
+<li><p>A fixed distance between the last two steps (absolute convergence): → <code class="docutils literal notranslate"><span class="pre">xtol</span></code></p>
+<div class="math notranslate nohighlight">
+\[|p_i - p_{i-1}|&lt;\epsilon\]</div>
+</li>
+<li><p>A fixed relative distance between the last two steps (relative convergence): → <code class="docutils literal notranslate"><span class="pre">rtol</span></code></p>
+<div class="math notranslate nohighlight">
+\[\frac{|p_i - p_{i-1}|}{|p_i|}&lt;\epsilon\ \ \ \ \ p_i \neq 0\]</div>
+</li>
+<li><p>Function tolerance:</p>
+<div class="math notranslate nohighlight">
+\[f(p_i)&lt; \epsilon\]</div>
+</li>
+</ul>
+<p>All these conditions should lead to a desired convergence expressed by the <span class="math notranslate nohighlight">\(\epsilon\)</span> value. However, the first and the third conditions present some problems when the function has a derivative very large or close to <span class="math notranslate nohighlight">\(0\)</span> as evaluated in the root value. When the function is very inclined, the first condition fails as a convergence in the <span class="math notranslate nohighlight">\(x\)</span> axis does not guarantee a convergence in the <span class="math notranslate nohighlight">\(y\)</span> axis, so the found root <span class="math notranslate nohighlight">\(p\)</span> may be far from the real value. When the function is very flat (<span class="math notranslate nohighlight">\(dF/dx\rightarrow 0\)</span>), the third condition fails due to an analogous reason.</p>
+<p>A final stop condition which does not have mathematical motivation but a computational one, is a maximum number of allowed iterations. This condition should be used not only for this algorithm but for all iteration-based numerical methods. This condition guarantees a finite computing time and prevents undesired infinite bucles.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(N&gt;N_{max}\)</span>, stop!</p></li>
+</ul>
+</section>
+<section id="error-analysis-bm">
+<h3><span class="section-number">3.2.3. </span>Error analysis BM<a class="headerlink" href="#error-analysis-bm" title="Permalink to this headline">#</a></h3>
+<p>If we suppose <span class="math notranslate nohighlight">\(f\in C[a,b]\)</span> and <span class="math notranslate nohighlight">\(f(a)f(b)&lt;0\)</span>, the Bisection method generates a sequence of numbers <span class="math notranslate nohighlight">\(\left\{p_i\right\}_{i=1}^\infty\)</span> approximating a root <span class="math notranslate nohighlight">\(p\)</span> of <span class="math notranslate nohighlight">\(f\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[|p_i-p|\leq \frac{b-a}{2^n},\ \ \ \ \ i\geq 1\]</div>
+<p>From this, we can conclude the convergence rate of the method is</p>
+<div class="math notranslate nohighlight">
+\[p_i = p + \mathcal{O}\left( \frac{1}{2^i} \right)\]</div>
+<p>This expression allows us to estimate the maximum number of required iterations for achieving a desired precision. The next figure sketches the number of iterations required for some precision.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">i</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### plt.plot( x,y  ) # points joined with straight lines </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### 1/2**i → exp2(-i)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp2</span><span class="p">(</span><span class="o">-</span><span class="n">i</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/one-variable-equations_20_0.png" src="../_images/one-variable-equations_20_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="c1">#Array of iterations</span>
+<span class="n">Niter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span> <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="p">)</span>
+<span class="c1">#plt.semilogy( Niter, 2.0**-Niter, color=&quot;green&quot;, lw = 2 )</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span> <span class="n">Niter</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp2</span><span class="p">(</span><span class="o">-</span><span class="n">Niter</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Iterations&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absolute Error $|p_n-p|$&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">f</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/one-variable-equations_21_0.png" src="../_images/one-variable-equations_21_0.png" />
+</div>
+</div>
+</section>
+<section id="example-1">
+<h3><span class="section-number">3.2.4. </span>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h3>
+<p>Find the root of the function <span class="math notranslate nohighlight">\(f\)</span></p>
+<p><span class="math notranslate nohighlight">\(f(x) = x^3 - 2\)</span></p>
+<p>for <span class="math notranslate nohighlight">\(20\)</span> iterations, show the result and the relative error in each iteration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2599210498948732
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Defining Bisection function</span>
+<span class="k">def</span> <span class="nf">Bisection</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Nmax</span><span class="p">,</span> <span class="n">printer</span><span class="o">=</span><span class="kc">False</span> <span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the root of function f between a and b</span>
+<span class="sd">    </span>
+<span class="sd">    f: function</span>
+<span class="sd">    a,b: the initial interval</span>
+<span class="sd">    Nmax: Nmax de interations</span>
+<span class="sd">    printer: bool, to print internal steps</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#verifying the STEP1, a and b with different signs</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Error, f(a) and f(b) should have opposite signs&quot;</span><span class="p">)</span>
+    <span class="c1">#Assigning the current extreme values, STEP2</span>
+    <span class="n">ai</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">bi</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="c1">#Iterations</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span><span class="o">&lt;=</span><span class="n">Nmax</span><span class="p">:</span>
+        <span class="c1">#Bisection, STEP3</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="p">(</span><span class="n">ai</span><span class="o">+</span><span class="n">bi</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span>
+        <span class="c1">#Evaluating function in pi, STEP4 and STEP5</span>
+        <span class="k">if</span> <span class="n">printer</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;Value for </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> iterations: </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+        <span class="c1">#Condition A</span>
+        <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">ai</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">ai</span> <span class="o">=</span> <span class="n">pi</span>
+        <span class="c1">#Condition B</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bi</span> <span class="o">=</span> <span class="n">pi</span>
+        <span class="c1">#Condition C: repeat the cycle</span>
+        <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="c1">#Final result</span>
+    <span class="k">return</span> <span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Defining function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mf">3.0</span> <span class="o">-</span> <span class="mf">2.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finding the root of the function. The real root is <span class="math notranslate nohighlight">\(\sqrt[3]{2}\)</span>, so <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> should enclose this value</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Defining a and b</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">Nmax</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">Bisection</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Nmax</span><span class="p">,</span> <span class="n">printer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot;Real value:&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot;Absolute error&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">-</span><span class="n">result</span><span class="p">))</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value for 1 iterations: 1.0
+Value for 2 iterations: 1.5
+Value for 3 iterations: 1.25
+Value for 4 iterations: 1.375
+Value for 5 iterations: 1.3125
+Value for 6 iterations: 1.28125
+Value for 7 iterations: 1.265625
+Value for 8 iterations: 1.2578125
+Value for 9 iterations: 1.26171875
+Value for 10 iterations: 1.259765625
+Value for 11 iterations: 1.2607421875
+Value for 12 iterations: 1.26025390625
+Value for 13 iterations: 1.260009765625
+Value for 14 iterations: 1.2598876953125
+Value for 15 iterations: 1.25994873046875
+Value for 16 iterations: 1.259918212890625
+Value for 17 iterations: 1.2599334716796875
+Value for 18 iterations: 1.2599258422851562
+Value for 19 iterations: 1.2599220275878906
+Value for 20 iterations: 1.2599201202392578
+Real value: 1.2599210498948732
+Absolute error 9.296556153781665e-07
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the error analysis, we can predict the produced error at <span class="math notranslate nohighlight">\(20\)</span> iterations by computing:</p>
+<div class="math notranslate nohighlight">
+\[ \left( \frac{1}{2^{20}}\right) \approx 9.53674316\times 10^{-7} \]</div>
+<p>This value is very close to the obtained relative error.</p>
+<p>If we were interested in a double precision, i.e. <span class="math notranslate nohighlight">\(\epsilon \sim 10^{-17}\)</span>, the number of required iterations would be:</p>
+<div class="math notranslate nohighlight">
+\[ 10^{-17} = \left( \frac{1}{2^{N}}\right) \longrightarrow N = \frac{17}{\log_{10}(2)} \approx 56 \]</div>
+<p>Now the same but using scipy implementation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Defining a and b</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">Nmax</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">Bisection</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Nmax</span><span class="p">,</span> <span class="n">printer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot;Real value:&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot;Absolute error&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">-</span><span class="n">result</span><span class="p">))</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value for 1 iterations: 1.0
+Value for 2 iterations: 1.5
+Value for 3 iterations: 1.25
+Value for 4 iterations: 1.375
+Value for 5 iterations: 1.3125
+Value for 6 iterations: 1.28125
+Value for 7 iterations: 1.265625
+Value for 8 iterations: 1.2578125
+Value for 9 iterations: 1.26171875
+Value for 10 iterations: 1.259765625
+Value for 11 iterations: 1.2607421875
+Value for 12 iterations: 1.26025390625
+Value for 13 iterations: 1.260009765625
+Value for 14 iterations: 1.2598876953125
+Value for 15 iterations: 1.25994873046875
+Value for 16 iterations: 1.259918212890625
+Value for 17 iterations: 1.2599334716796875
+Value for 18 iterations: 1.2599258422851562
+Value for 19 iterations: 1.2599220275878906
+Value for 20 iterations: 1.2599201202392578
+Value for 21 iterations: 1.2599210739135742
+Value for 22 iterations: 1.259920597076416
+Value for 23 iterations: 1.2599208354949951
+Value for 24 iterations: 1.2599209547042847
+Value for 25 iterations: 1.2599210143089294
+Value for 26 iterations: 1.2599210441112518
+Value for 27 iterations: 1.259921059012413
+Value for 28 iterations: 1.2599210515618324
+Value for 29 iterations: 1.2599210478365421
+Value for 30 iterations: 1.2599210496991873
+Value for 31 iterations: 1.2599210506305099
+Value for 32 iterations: 1.2599210501648486
+Value for 33 iterations: 1.259921049932018
+Value for 34 iterations: 1.2599210498156026
+Value for 35 iterations: 1.2599210498738103
+Value for 36 iterations: 1.259921049902914
+Value for 37 iterations: 1.2599210498883622
+Value for 38 iterations: 1.2599210498956381
+Value for 39 iterations: 1.2599210498920002
+Value for 40 iterations: 1.2599210498938191
+Value for 41 iterations: 1.2599210498947286
+Value for 42 iterations: 1.2599210498951834
+Value for 43 iterations: 1.259921049894956
+Value for 44 iterations: 1.2599210498948423
+Value for 45 iterations: 1.2599210498948992
+Value for 46 iterations: 1.2599210498948707
+Value for 47 iterations: 1.259921049894885
+Value for 48 iterations: 1.2599210498948779
+Value for 49 iterations: 1.2599210498948743
+Value for 50 iterations: 1.2599210498948725
+Value for 51 iterations: 1.2599210498948734
+Value for 52 iterations: 1.259921049894873
+Value for 53 iterations: 1.2599210498948732
+Value for 54 iterations: 1.259921049894873
+Value for 55 iterations: 1.259921049894873
+Value for 56 iterations: 1.259921049894873
+Real value: 1.2599210498948732
+Absolute error 2.220446049250313e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>See help with <code class="docutils literal notranslate"><span class="pre">optimize?:</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Bisection<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> Bisection<span class=" -Color -Color-Blue">(</span>f<span class=" -Color -Color-Blue">,</span> a<span class=" -Color -Color-Blue">,</span> b<span class=" -Color -Color-Blue">,</span> Nmax<span class=" -Color -Color-Blue">,</span> printer<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Find the root of function f between a and b
+
+f: function
+a,b: the initial interval
+Nmax: Nmax de interations
+printer: bool, to print internal steps
+<span class=" -Color -Color-Red">File:</span>      ~/ComputationalMethods/material/&lt;ipython-input-17-364950e282c6&gt;
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>optimize.bisect<span class="o">??</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+optimize<span class=" -Color -Color-Blue">.</span>bisect<span class=" -Color -Color-Blue">(</span>
+    f<span class=" -Color -Color-Blue">,</span>
+    a<span class=" -Color -Color-Blue">,</span>
+    b<span class=" -Color -Color-Blue">,</span>
+    args<span class=" -Color -Color-Blue">=(),</span>
+    xtol<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">2e-12</span><span class=" -Color -Color-Blue">,</span>
+    rtol<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">8.881784197001252e-16</span><span class=" -Color -Color-Blue">,</span>
+    maxiter<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">100</span><span class=" -Color -Color-Blue">,</span>
+    full_output<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    disp<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Source:</span>   
+<span class=" -Color -Color-Green">def</span> bisect<span class=" -Color -Color-Blue">(</span>f<span class=" -Color -Color-Blue">,</span> a<span class=" -Color -Color-Blue">,</span> b<span class=" -Color -Color-Blue">,</span> args<span class=" -Color -Color-Blue">=(),</span>
+           xtol<span class=" -Color -Color-Blue">=</span>_xtol<span class=" -Color -Color-Blue">,</span> rtol<span class=" -Color -Color-Blue">=</span>_rtol<span class=" -Color -Color-Blue">,</span> maxiter<span class=" -Color -Color-Blue">=</span>_iter<span class=" -Color -Color-Blue">,</span>
+           full_output<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span> disp<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">):</span>
+    <span class=" -Color -Color-Blue">&quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">    Find root of a function within an interval using bisection.</span>
+
+<span class=" -Color -Color-Blue">    Basic bisection routine to find a zero of the function `f` between the</span>
+<span class=" -Color -Color-Blue">    arguments `a` and `b`. `f(a)` and `f(b)` cannot have the same signs.</span>
+<span class=" -Color -Color-Blue">    Slow but sure.</span>
+
+<span class=" -Color -Color-Blue">    Parameters</span>
+<span class=" -Color -Color-Blue">    ----------</span>
+<span class=" -Color -Color-Blue">    f : function</span>
+<span class=" -Color -Color-Blue">        Python function returning a number.  `f` must be continuous, and</span>
+<span class=" -Color -Color-Blue">        f(a) and f(b) must have opposite signs.</span>
+<span class=" -Color -Color-Blue">    a : scalar</span>
+<span class=" -Color -Color-Blue">        One end of the bracketing interval [a,b].</span>
+<span class=" -Color -Color-Blue">    b : scalar</span>
+<span class=" -Color -Color-Blue">        The other end of the bracketing interval [a,b].</span>
+<span class=" -Color -Color-Blue">    xtol : number, optional</span>
+<span class=" -Color -Color-Blue">        The computed root ``x0`` will satisfy ``np.allclose(x, x0,</span>
+<span class=" -Color -Color-Blue">        atol=xtol, rtol=rtol)``, where ``x`` is the exact root. The</span>
+<span class=" -Color -Color-Blue">        parameter must be nonnegative.</span>
+<span class=" -Color -Color-Blue">    rtol : number, optional</span>
+<span class=" -Color -Color-Blue">        The computed root ``x0`` will satisfy ``np.allclose(x, x0,</span>
+<span class=" -Color -Color-Blue">        atol=xtol, rtol=rtol)``, where ``x`` is the exact root. The</span>
+<span class=" -Color -Color-Blue">        parameter cannot be smaller than its default value of</span>
+<span class=" -Color -Color-Blue">        ``4*np.finfo(float).eps``.</span>
+<span class=" -Color -Color-Blue">    maxiter : int, optional</span>
+<span class=" -Color -Color-Blue">        if convergence is not achieved in `maxiter` iterations, an error is</span>
+<span class=" -Color -Color-Blue">        raised.  Must be &gt;= 0.</span>
+<span class=" -Color -Color-Blue">    args : tuple, optional</span>
+<span class=" -Color -Color-Blue">        containing extra arguments for the function `f`.</span>
+<span class=" -Color -Color-Blue">        `f` is called by ``apply(f, (x)+args)``.</span>
+<span class=" -Color -Color-Blue">    full_output : bool, optional</span>
+<span class=" -Color -Color-Blue">        If `full_output` is False, the root is returned.  If `full_output` is</span>
+<span class=" -Color -Color-Blue">        True, the return value is ``(x, r)``, where x is the root, and r is</span>
+<span class=" -Color -Color-Blue">        a `RootResults` object.</span>
+<span class=" -Color -Color-Blue">    disp : bool, optional</span>
+<span class=" -Color -Color-Blue">        If True, raise RuntimeError if the algorithm didn&#39;t converge.</span>
+<span class=" -Color -Color-Blue">        Otherwise the convergence status is recorded in a `RootResults`</span>
+<span class=" -Color -Color-Blue">        return object.</span>
+
+<span class=" -Color -Color-Blue">    Returns</span>
+<span class=" -Color -Color-Blue">    -------</span>
+<span class=" -Color -Color-Blue">    x0 : float</span>
+<span class=" -Color -Color-Blue">        Zero of `f` between `a` and `b`.</span>
+<span class=" -Color -Color-Blue">    r : `RootResults` (present if ``full_output = True``)</span>
+<span class=" -Color -Color-Blue">        Object containing information about the convergence.  In particular,</span>
+<span class=" -Color -Color-Blue">        ``r.converged`` is True if the routine converged.</span>
+
+<span class=" -Color -Color-Blue">    Examples</span>
+<span class=" -Color -Color-Blue">    --------</span>
+
+<span class=" -Color -Color-Blue">    &gt;&gt;&gt; def f(x):</span>
+<span class=" -Color -Color-Blue">    ...     return (x**2 - 1)</span>
+
+<span class=" -Color -Color-Blue">    &gt;&gt;&gt; from scipy import optimize</span>
+
+<span class=" -Color -Color-Blue">    &gt;&gt;&gt; root = optimize.bisect(f, 0, 2)</span>
+<span class=" -Color -Color-Blue">    &gt;&gt;&gt; root</span>
+<span class=" -Color -Color-Blue">    1.0</span>
+
+<span class=" -Color -Color-Blue">    &gt;&gt;&gt; root = optimize.bisect(f, -2, 0)</span>
+<span class=" -Color -Color-Blue">    &gt;&gt;&gt; root</span>
+<span class=" -Color -Color-Blue">    -1.0</span>
+
+<span class=" -Color -Color-Blue">    See Also</span>
+<span class=" -Color -Color-Blue">    --------</span>
+<span class=" -Color -Color-Blue">    brentq, brenth, bisect, newton</span>
+<span class=" -Color -Color-Blue">    fixed_point : scalar fixed-point finder</span>
+<span class=" -Color -Color-Blue">    fsolve : n-dimensional root-finding</span>
+
+<span class=" -Color -Color-Blue">    &quot;&quot;&quot;</span>
+    <span class=" -Color -Color-Green">if</span> <span class=" -Color -Color-Green">not</span> isinstance<span class=" -Color -Color-Blue">(</span>args<span class=" -Color -Color-Blue">,</span> tuple<span class=" -Color -Color-Blue">):</span>
+        args <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">(</span>args<span class=" -Color -Color-Blue">,)</span>
+    <span class=" -Color -Color-Green">if</span> xtol <span class=" -Color -Color-Blue">&lt;=</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">:</span>
+        <span class=" -Color -Color-Green">raise</span> ValueError<span class=" -Color -Color-Blue">(&quot;xtol too small (%g &lt;= 0)&quot;</span> <span class=" -Color -Color-Blue">%</span> xtol<span class=" -Color -Color-Blue">)</span>
+    <span class=" -Color -Color-Green">if</span> rtol <span class=" -Color -Color-Blue">&lt;</span> _rtol<span class=" -Color -Color-Blue">:</span>
+        <span class=" -Color -Color-Green">raise</span> ValueError<span class=" -Color -Color-Blue">(&quot;rtol too small (%g &lt; %g)&quot;</span> <span class=" -Color -Color-Blue">%</span> <span class=" -Color -Color-Blue">(</span>rtol<span class=" -Color -Color-Blue">,</span> _rtol<span class=" -Color -Color-Blue">))</span>
+    r <span class=" -Color -Color-Blue">=</span> _zeros<span class=" -Color -Color-Blue">.</span>_bisect<span class=" -Color -Color-Blue">(</span>f<span class=" -Color -Color-Blue">,</span> a<span class=" -Color -Color-Blue">,</span> b<span class=" -Color -Color-Blue">,</span> xtol<span class=" -Color -Color-Blue">,</span> rtol<span class=" -Color -Color-Blue">,</span> maxiter<span class=" -Color -Color-Blue">,</span> args<span class=" -Color -Color-Blue">,</span> full_output<span class=" -Color -Color-Blue">,</span> disp<span class=" -Color -Color-Blue">)</span>
+    <span class=" -Color -Color-Green">return</span> results_c<span class=" -Color -Color-Blue">(</span>full_output<span class=" -Color -Color-Blue">,</span> r<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">File:</span>      /etc/anaconda3/lib/python3.6/site-packages/scipy/optimize/zeros.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the help: See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.bisect.html">here</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="n">n</span><span class="o">-</span><span class="n">c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2599210498938191
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2599210498938191
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function bisect in module scipy.optimize.zeros:
+
+bisect(f, a, b, args=(), xtol=2e-12, rtol=8.881784197001252e-16, maxiter=100, full_output=False, disp=True)
+    Find root of a function within an interval using bisection.
+    
+    Basic bisection routine to find a zero of the function `f` between the
+    arguments `a` and `b`. `f(a)` and `f(b)` cannot have the same signs.
+    Slow but sure.
+    
+    Parameters
+    ----------
+    f : function
+        Python function returning a number.  `f` must be continuous, and
+        f(a) and f(b) must have opposite signs.
+    a : scalar
+        One end of the bracketing interval [a,b].
+    b : scalar
+        The other end of the bracketing interval [a,b].
+    xtol : number, optional
+        The computed root ``x0`` will satisfy ``np.allclose(x, x0,
+        atol=xtol, rtol=rtol)``, where ``x`` is the exact root. The
+        parameter must be nonnegative.
+    rtol : number, optional
+        The computed root ``x0`` will satisfy ``np.allclose(x, x0,
+        atol=xtol, rtol=rtol)``, where ``x`` is the exact root. The
+        parameter cannot be smaller than its default value of
+        ``4*np.finfo(float).eps``.
+    maxiter : int, optional
+        If convergence is not achieved in `maxiter` iterations, an error is
+        raised. Must be &gt;= 0.
+    args : tuple, optional
+        Containing extra arguments for the function `f`.
+        `f` is called by ``apply(f, (x)+args)``.
+    full_output : bool, optional
+        If `full_output` is False, the root is returned. If `full_output` is
+        True, the return value is ``(x, r)``, where x is the root, and r is
+        a `RootResults` object.
+    disp : bool, optional
+        If True, raise RuntimeError if the algorithm didn&#39;t converge.
+        Otherwise, the convergence status is recorded in a `RootResults`
+        return object.
+    
+    Returns
+    -------
+    x0 : float
+        Zero of `f` between `a` and `b`.
+    r : `RootResults` (present if ``full_output = True``)
+        Object containing information about the convergence. In particular,
+        ``r.converged`` is True if the routine converged.
+    
+    Examples
+    --------
+    
+    &gt;&gt;&gt; def f(x):
+    ...     return (x**2 - 1)
+    
+    &gt;&gt;&gt; from scipy import optimize
+    
+    &gt;&gt;&gt; root = optimize.bisect(f, 0, 2)
+    &gt;&gt;&gt; root
+    1.0
+    
+    &gt;&gt;&gt; root = optimize.bisect(f, -2, 0)
+    &gt;&gt;&gt; root
+    -1.0
+    
+    See Also
+    --------
+    brentq, brenth, bisect, newton
+    fixed_point : scalar fixed-point finder
+    fsolve : n-dimensional root-finding
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="general-arguments-and-options-of-a-scipy-function">
+<h2><span class="section-number">3.3. </span>General arguments and options of a SciPy function<a class="headerlink" href="#general-arguments-and-options-of-a-scipy-function" title="Permalink to this headline">#</a></h2>
+<p>Let define a general multiparameter</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code>
+with a mandatory parameter and two optional parameters, corresponding to a straight line with the slope and the intercept as parameters
+$<span class="math notranslate nohighlight">\(
+f(x)=mx+b\,,
+\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">b</span><span class="o">=-</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mf">0.66666666666666666</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have at least three ways to use a multiparameter function, the first two with the implicit <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666671972
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666671972
+</pre></div>
+</div>
+</div>
+</div>
+<p>and the recommended way to used the designed implementation in Scipy through the <code class="docutils literal notranslate"><span class="pre">args</span></code> parameter which is common to many methods</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666671972
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xtol</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1E-17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666666671
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">maxiter</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1E-17</span><span class="p">,</span><span class="n">maxiter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666666671
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1E-17</span><span class="p">,</span><span class="n">rtol</span><span class="o">=</span><span class="mf">1E-15</span><span class="p">,</span><span class="n">maxiter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666666671
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">full_output</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1E-17</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666666671
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>scipy.optimize.zeros.RootResults
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the code</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">root</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666666671
+</pre></div>
+</div>
+</div>
+</div>
+<p>The help of the function is write directly in the code of the Scipy method <code class="docutils literal notranslate"><span class="pre">bisect</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>optimize.bisect<span class="o">??</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the internal referenced code</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>optimize._zeros<span class="o">??</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Type:</span>        module
+<span class=" -Color -Color-Red">String form:</span> &lt;module &#39;scipy.optimize._zeros&#39; from &#39;/usr/local/lib/python3.7/dist-packages/scipy/optimize/_zeros.cpython-37m-x86_64-linux-gnu.so&#39;&gt;
+<span class=" -Color -Color-Red">File:</span>        /usr/local/lib/python3.7/dist-packages/scipy/optimize/_zeros.cpython-37m-x86_64-linux-gnu.so
+</pre></div>
+</div>
+</div>
+</div>
+<section id="example">
+<h3><span class="section-number">3.3.1. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<p>Find the roots of
+$<span class="math notranslate nohighlight">\(x^3=2\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mf">3.0</span> <span class="o">-</span> <span class="mf">2.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">todo</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">function</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">todo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">todo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">=</span><span class="n">todo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2599210498938191
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">=</span><span class="n">todo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      converged: True
+           flag: &#39;converged&#39;
+ function_calls: 42
+     iterations: 40
+           root: 1.2599210498938191
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>scipy.optimize.zeros.RootResults
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">iterations</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">todo</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">function</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">todo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="n">result</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">function</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2599210498938191
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2599210498948732
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check <code class="docutils literal notranslate"><span class="pre">r</span></code> object by using the <code class="docutils literal notranslate"><span class="pre">&lt;TAB&gt;</span></code> key next</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">iterations</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">function_calls</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">.</span><span class="n">iterations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.094947017729282e-13
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span><span class="o">-</span><span class="n">result</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0540457395791236e-12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">converged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">function</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">xtol</span><span class="o">=</span><span class="mf">1E-17</span><span class="p">,</span><span class="n">full_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">iterations</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span><span class="o">-</span><span class="n">result</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.220446049250313e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">.</span><span class="n">iterations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.440892098500626e-16
+</pre></div>
+</div>
+</div>
+</div>
+<section id="font-color-red-activity-font">
+<h4><span class="section-number">3.3.1.1. </span><font color='red'> ACTIVITY </font><a class="headerlink" href="#font-color-red-activity-font" title="Permalink to this headline">#</a></h4>
+<font color='red'>
+In an IPython notebook, use the scipy implementation and find the first solution to the equation
+<p><span class="math notranslate nohighlight">\( 7 = \sqrt{x^2+1}+e^x\sin x \)</span></p>
+<p>CLUE: Check graphically (with matplotlib) that the solution is within the interval <span class="math notranslate nohighlight">\([0,2]\)</span>.
+</font></p>
+<p><span class="xref myst">solution</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Solo usar para constante</span>
+<span class="n">np</span><span class="o">.</span><span class="n">e</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.718281828459045
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.718281828459045
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-2">
+<h3><span class="section-number">3.3.2. </span>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">#</a></h3>
+<p>In orbital mechanics, when solving the central-force problem it becomes necessary to solve the Kepler’s equation. This is a transcendental equation that relates the orbital parameters of the trajectory.</p>
+<p><em>Kepler equation:</em> <span class="math notranslate nohighlight">\(M = E - \epsilon \sin E\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> is the mean anomaly, <span class="math notranslate nohighlight">\(E\)</span> the eccentric anomaly and <span class="math notranslate nohighlight">\(\epsilon\)</span> the eccentricity. The mean anomaly can be computed with the expression</p>
+<div class="math notranslate nohighlight">
+\[M = n\ t = \sqrt{ \frac{GM}{a^3} } t\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the mean motion, <span class="math notranslate nohighlight">\(G\)</span> the gravitational constant, <span class="math notranslate nohighlight">\(M\)</span> the mass of the central body and <span class="math notranslate nohighlight">\(a\)</span> the semi-major axis. <span class="math notranslate nohighlight">\(t\)</span> is the time where the position in the trajectory will be computed.</p>
+<p>The coordinates <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> as time functions can be recovered by means of the next expressions</p>
+<div class="math notranslate nohighlight">
+\[x(t) = a(\cos E - \epsilon)\]</div>
+<div class="math notranslate nohighlight">
+\[y(t) = b\sin E\]</div>
+<p>where <span class="math notranslate nohighlight">\(b = a \sqrt{1-\epsilon^2}\)</span> is the semi-minor axis of the orbit and the implicit time-dependence of the eccentric anomaly <span class="math notranslate nohighlight">\(E\)</span> is computed through the Kepler’s equation.</p>
+<p><strong>Problem:</strong></p>
+<p>For a stallite orbiting the earth in a equatorial trajectory with eccentricity <span class="math notranslate nohighlight">\(\epsilon = 0.5\)</span> at a geostationary distance for the semi-major axis, tabulate the positions <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> within the orbital plane in intervals of <span class="math notranslate nohighlight">\(15\)</span> min during <span class="math notranslate nohighlight">\(5\)</span> hours.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\epsilon = 0.5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a = 35900\)</span> km</p></li>
+<li><p><span class="math notranslate nohighlight">\(G = 6.67384 \times 10^{-11}\)</span> m<span class="math notranslate nohighlight">\(^3\)</span> kg<span class="math notranslate nohighlight">\(^{-1}\)</span> s<span class="math notranslate nohighlight">\(^{-2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{\oplus} = 5.972\times 10^{24}\)</span> kg</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#====================================================================</span>
+<span class="c1">#Parameters</span>
+<span class="c1">#====================================================================</span>
+<span class="c1">#Eccentricity</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="c1">#Semi-major axis    [m]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">35900e3</span>
+<span class="c1">#Gravitational constant    [m3kg-1s-2]</span>
+<span class="n">GC</span> <span class="o">=</span> <span class="mf">6.67384e-11</span>
+<span class="c1">#Earth mass    [kg]</span>
+<span class="n">Me</span> <span class="o">=</span> <span class="mf">5.972e24</span>
+
+<span class="c1">#Semi-minor axis    [m]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">eps</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="c1">#Mean motion</span>
+<span class="n">n</span> <span class="o">=</span> <span class="p">(</span> <span class="n">GC</span><span class="o">*</span><span class="n">Me</span><span class="o">/</span><span class="n">a</span><span class="o">**</span><span class="mf">3.0</span> <span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="c1">#Hour to Second</span>
+<span class="n">HR2SC</span> <span class="o">=</span> <span class="mf">3600.</span>
+<span class="c1">#Initial time    [hr]</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">HR2SC</span>
+<span class="c1">#Final time    [hr]</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">HR2SC</span>
+<span class="c1">#Time step    [hr]</span>
+<span class="n">tstep</span> <span class="o">=</span> <span class="mf">0.25</span><span class="o">*</span><span class="n">HR2SC</span>
+<span class="c1">#Number of maxim iterations</span>
+<span class="n">Niter</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="c1">#Root interval</span>
+<span class="n">a0</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="n">b0</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1">#====================================================================</span>
+<span class="c1">#Kepler Function</span>
+<span class="c1">#====================================================================</span>
+<span class="k">def</span> <span class="nf">kepler</span><span class="p">(</span> <span class="n">E</span> <span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">E</span> <span class="o">-</span> <span class="n">eps</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span><span class="o">*</span><span class="n">t</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+<span class="c1">#====================================================================</span>
+<span class="c1">#Position function</span>
+<span class="c1">#====================================================================</span>
+<span class="k">def</span> <span class="nf">r</span><span class="p">(</span><span class="n">E</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">-</span><span class="n">eps</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">/</span><span class="mf">1.e3</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mf">1.e3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#====================================================================</span>
+<span class="c1">#Solving for different times</span>
+<span class="c1">#====================================================================</span>
+<span class="c1">#Time array</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">tstep</span> <span class="p">)</span>
+
+<span class="n">rpos</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">times</span><span class="p">:</span>
+    <span class="c1">#Finding the new eccentric anomaly</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span> <span class="n">kepler</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">b0</span> <span class="p">)</span>
+    <span class="c1">#Computing coordinates at this time</span>
+    <span class="n">ri</span> <span class="o">=</span> <span class="n">r</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;In </span><span class="si">%f</span><span class="s2"> hours, the satellite is located at (</span><span class="si">%f</span><span class="s2">,</span><span class="si">%f</span><span class="s2">) km&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="n">HR2SC</span><span class="p">,</span> <span class="n">ri</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ri</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>
+    <span class="n">rpos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">ri</span> <span class="p">)</span>
+<span class="n">rpos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rpos</span><span class="p">)</span>    
+
+<span class="c1">#Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">rpos</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">rpos</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$ coordinate [km]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$ coordinate [km]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In 0.000000 hours, the satellite is located at (17950.000000,0.000000) km
+In 0.250000 hours, the satellite is located at (17454.741542,5146.426647) km
+In 0.500000 hours, the satellite is located at (16033.097675,10023.437750) km
+In 0.750000 hours, the satellite is located at (13848.847528,14430.262364) km
+In 1.000000 hours, the satellite is located at (11104.379909,18261.701894) km
+In 1.250000 hours, the satellite is located at (7989.437466,21493.410338) km
+In 1.500000 hours, the satellite is located at (4657.168469,24151.489610) km
+In 1.750000 hours, the satellite is located at (1221.066166,26286.121177) km
+In 2.000000 hours, the satellite is located at (-2238.747501,27954.872718) km
+In 2.250000 hours, the satellite is located at (-5667.264143,29214.008624) km
+In 2.500000 hours, the satellite is located at (-9027.373695,30114.739827) km
+In 2.750000 hours, the satellite is located at (-12294.392344,30702.085866) km
+In 3.000000 hours, the satellite is located at (-15452.164136,31014.965936) km
+In 3.250000 hours, the satellite is located at (-18490.361033,31086.789919) km
+In 3.500000 hours, the satellite is located at (-21402.633716,30946.195086) km
+In 3.750000 hours, the satellite is located at (-24185.347784,30617.769816) km
+In 4.000000 hours, the satellite is located at (-26836.717825,30122.702148) km
+In 4.250000 hours, the satellite is located at (-29356.211228,29479.336137) km
+In 4.500000 hours, the satellite is located at (-31744.135350,28703.638662) km
+In 4.750000 hours, the satellite is located at (-34001.350021,27809.586870) km
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y$ coordinate [km]&#39;)
+</pre></div>
+</div>
+<img alt="../_images/one-variable-equations_102_2.png" src="../_images/one-variable-equations_102_2.png" />
+</div>
+</div>
+<hr class="docutils" />
+<a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=f91b818d-f536-4b8f-81de-61752e0979b7' target="_blank">
+<img alt='Created in deepnote.com' style='display:inline;max-height:16px;margin:0px;margin-right:7.5px;' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+' > </img>
+Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./material"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="computer-arithmetics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Computer Arithmetics and Round-off Methods</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="interpolation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Interpolation Methods</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Diego Restrepo (UdeA)<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

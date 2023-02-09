@@ -1,0 +1,2128 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Numerical Calculus &#8212; Computational Methods</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Linear Algebra" href="linear-algebra.html" />
+    <link rel="prev" title="4. Interpolation Methods" href="interpolation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Methods</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Computational Methods for Physics & Astronomy
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview-python.html">
+   1. Python Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="computer-arithmetics.html">
+   2. Computer Arithmetics and Round-off Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="one-variable-equations.html">
+   3. One Variable Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   4. Interpolation Methods
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Numerical Calculus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra.html">
+   6. Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="differential-equations.html">
+   7. Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics.html">
+   8. Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_clases.html">
+   9. Clases
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/restrepo/ComputationalMethods/master?urlpath=tree/docs/material/numerical-calculus.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/restrepo/ComputationalMethods"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/restrepo/ComputationalMethods/issues/new?title=Issue%20on%20page%20%2Fmaterial/numerical-calculus.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/material/numerical-calculus.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   5.1. Bibliography
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-differentiation">
+   5.2. Numerical Differentiation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     5.2.1. Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation-of-the-derivate-of-the-function-inside-a-full-range">
+     5.2.2. Implementation of the derivate of the function inside a full range
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#try-and-except-python-progamming-sctructure">
+       5.2.2.1.
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         try
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         except
+        </span>
+       </code>
+       python progamming sctructure
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing">
+     5.2.3. Testing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function-parameters">
+       5.2.3.1. Function parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function-definition-with-generic-mandatory-and-optional-arguments">
+       5.2.3.2. Function definition with generic mandatory and optional arguments
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#conversion-of-a-float-function-into-a-vectorized-function">
+       5.2.3.3. Conversion of a float function into a vectorized function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectorization-of-scipy-method-derivative">
+       5.2.3.4. Vectorization of Scipy method
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         derivative
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-for-the-derivate-of-the-function-inside-a-full-range">
+     5.2.4. Code for the derivate of the function inside a full range
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#test">
+       5.2.4.1. Test
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       5.2.4.2. Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-heat-transfer-in-a-1d-bar">
+     5.2.5. Example: Heat transfer in a 1D bar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activity">
+     5.2.6. Activity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     5.2.7. Activity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     5.2.8. Activity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-integration">
+   5.3.
+   <span class="xref myst">
+    Numerical Integration
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix">
+   5.4. Appendix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-implementation-of-derivative-algorithm">
+     5.4.1. One implementation of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       derivative
+      </span>
+     </code>
+     algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#n-1-point-formula">
+     5.4.2. n+1-point formula
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#endpoint-formulas">
+     5.4.3. Endpoint formulas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#midpoint-formulas">
+     5.4.4. Midpoint formulas
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Numerical Calculus</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   5.1. Bibliography
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-differentiation">
+   5.2. Numerical Differentiation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     5.2.1. Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation-of-the-derivate-of-the-function-inside-a-full-range">
+     5.2.2. Implementation of the derivate of the function inside a full range
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#try-and-except-python-progamming-sctructure">
+       5.2.2.1.
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         try
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         except
+        </span>
+       </code>
+       python progamming sctructure
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing">
+     5.2.3. Testing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function-parameters">
+       5.2.3.1. Function parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function-definition-with-generic-mandatory-and-optional-arguments">
+       5.2.3.2. Function definition with generic mandatory and optional arguments
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#conversion-of-a-float-function-into-a-vectorized-function">
+       5.2.3.3. Conversion of a float function into a vectorized function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectorization-of-scipy-method-derivative">
+       5.2.3.4. Vectorization of Scipy method
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         derivative
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-for-the-derivate-of-the-function-inside-a-full-range">
+     5.2.4. Code for the derivate of the function inside a full range
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#test">
+       5.2.4.1. Test
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       5.2.4.2. Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-heat-transfer-in-a-1d-bar">
+     5.2.5. Example: Heat transfer in a 1D bar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activity">
+     5.2.6. Activity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     5.2.7. Activity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     5.2.8. Activity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-integration">
+   5.3.
+   <span class="xref myst">
+    Numerical Integration
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix">
+   5.4. Appendix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-implementation-of-derivative-algorithm">
+     5.4.1. One implementation of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       derivative
+      </span>
+     </code>
+     algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#n-1-point-formula">
+     5.4.2. n+1-point formula
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#endpoint-formulas">
+     5.4.3. Endpoint formulas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#midpoint-formulas">
+     5.4.4. Midpoint formulas
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/numerical-calculus.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="numerical-calculus">
+<h1><span class="section-number">5. </span>Numerical Calculus<a class="headerlink" href="#numerical-calculus" title="Permalink to this headline">#</a></h1>
+<p>Throughout this section and the next ones, we shall cover the topic of numerical calculus. Calculus has been identified since ancient times as a powerful toolkit for analysing and handling geometrical problems. Since differential calculus was developed by Newton and Leibniz (in its actual notation), many different applications have been found, at the point that most of the current science is founded on it (e.g. differential and integral equations). Due to the ever increasing complexity of analytical expressions used in physics and astronomy, their usage becomes more and more impractical, and numerical approaches are more than necessary when one wants to go deeper. This issue has been identified since long ago and many numerical techniques have been developed. We shall cover only the most basic schemes, but also providing a basis for more formal approaches.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://cocalc.com/projects/a8330cfb-9dfb-442e-9b2b-ba664e31a685/files/numerical-calculus.ipynb?fullscreen=default&amp;session=default">Class activities with CoCalc</a></p></li>
+</ul>
+<hr class="docutils" />
+<section id="bibliography">
+<h2><span class="section-number">5.1. </span>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/restrepo/Calculus">https://github.com/restrepo/Calculus</a></p></li>
+<li><p>Thomas J. Sargent John Stachurski, <a class="reference external" href="https://python-programming.quantecon.org/scipy.html">Python Programming for Quantitative Economics GitHub</a></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><a class="reference external" href="#Numerical-Differentiation">Numerical Differentiation</a></p>
+<ul>
+<li><p><a class="reference external" href="#Example-1">Example 1</a></p></li>
+<li><p><a class="reference external" href="#n+1-point-formula">(n+1)-point formula</a></p></li>
+<li><p><a class="reference external" href="#Endpoint-formulas">Endpoint formulas</a></p></li>
+<li><p><a class="reference external" href="#Midpoint-formulas">Midpoint formulas</a></p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">Numerical Integration</span></p></li>
+</ul>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.interpolate</span> <span class="k">as</span> <span class="nn">interp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>%pylab is deprecated, use %matplotlib inline and import the required libraries.
+Populating the interactive namespace from numpy and matplotlib
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="numerical-differentiation">
+<h2><span class="section-number">5.2. </span>Numerical Differentiation<a class="headerlink" href="#numerical-differentiation" title="Permalink to this headline">#</a></h2>
+<p>According to the formal definition of differentiation, given a function <span class="math notranslate nohighlight">\(f(x)\)</span> such that <span class="math notranslate nohighlight">\(f(x)\in C^1[a,b]\)</span>, the first order derivative is given by</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx}f(x) = f'(x) = \lim_{h\rightarrow 0} \frac{f(x+h)-f(x)}{h}\]</div>
+<p>However, when <span class="math notranslate nohighlight">\(f(x)\)</span> exhibits a complex form or is a numerical function (only a discrete set of points are known), this expression becomes unfeasible. In spite of this, this formula gives us a very first rough way to calculate numerical derivatives by taking a finite interval <span class="math notranslate nohighlight">\(h\)</span>, i.e.</p>
+<div class="math notranslate nohighlight">
+\[f'(x) \approx \frac{f(x+h)-f(x)}{h}\]</div>
+<p>where the function must be known at least in <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1 = x_0+h\)</span>, and <span class="math notranslate nohighlight">\(h\)</span> should be small enough.</p>
+<section id="example-1">
+<h3><span class="section-number">5.2.1. </span>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h3>
+<p>Evaluate the first derivative of the next function using the previous numerical scheme at the point <span class="math notranslate nohighlight">\(x_0=2.0\)</span> and using <span class="math notranslate nohighlight">\(h=0.5,\ 0.1,\  0.05,...\)</span></p>
+<p><span class="math notranslate nohighlight">\(f(x) = \sqrt{1+\cos^2(x)}\)</span></p>
+<p>Compare with the real function and plot the tangent line using the found values of the slope.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is used as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters</strong><br/>
+<code class="docutils literal notranslate"><span class="pre">func</span></code> : function →
+Input function.<br/>
+<code class="docutils literal notranslate"><span class="pre">x0</span></code> : float →
+The point at which <code class="docutils literal notranslate"><span class="pre">n</span></code>-th derivative is found.<br/>
+<code class="docutils literal notranslate"><span class="pre">dx</span></code> : float, optional →
+Spacing.<br/>
+<code class="docutils literal notranslate"><span class="pre">n</span></code> : int, optional →
+Order of the derivative. Default is 1.<br/>
+<code class="docutils literal notranslate"><span class="pre">args</span></code> : tuple, optional →
+Arguments<br/>
+<code class="docutils literal notranslate"><span class="pre">order</span></code> : int, optional →
+Number of points to use, must be odd.<br/></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Activity</strong>: We now check for the impact of the change of the spacing <code class="docutils literal notranslate"><span class="pre">dx</span></code>.  Try from <code class="docutils literal notranslate"><span class="pre">dx=0.5</span></code> and then small values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;np.cos(np.pi)/np.sqrt(2)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.7071067811865475
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">dx</span><span class="o">=</span><span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;dx=&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="n">dx</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dx= 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.13526274947015327
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dx= 0.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3462499420237386
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dx= 0.01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3493266965195363
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dx= 1e-3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.34935758881293744
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dx= 1e-6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3493579009417047
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.34935789816614715
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[f'(x)=-\frac{\cos x\sin x }{\sqrt{1+\cos^2x}}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">fp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3493579008690488
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">=</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[y_0=f(x_0)=m x_0+b\]</div>
+<div class="math notranslate nohighlight">
+\[b=f(x_0)-m x_0\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">x0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">1.6</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mf">2.4</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">100</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;derivative at $x=</span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">),</span><span class="s1">&#39;y*&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$f(x) = \sqrt{1+\cos^2(x)}$&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$f(x) = \\sqrt{1+\\cos^2(x)}$&#39;)
+</pre></div>
+</div>
+<img alt="../_images/numerical-calculus_23_1.png" src="../_images/numerical-calculus_23_1.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="implementation-of-the-derivate-of-the-function-inside-a-full-range">
+<h3><span class="section-number">5.2.2. </span>Implementation of the derivate of the function inside a full range<a class="headerlink" href="#implementation-of-the-derivate-of-the-function-inside-a-full-range" title="Permalink to this headline">#</a></h3>
+<p>We now generalize the <code class="docutils literal notranslate"><span class="pre">derivative</span></code> function to allow the evaluation of the derivate in a full range of values. It will be designed such that the evaluation in just one point can be still possible. In this way, the new function  can be used as a full replacement of <code class="docutils literal notranslate"><span class="pre">derivative</span></code> function.</p>
+<p>To implement this function we need three keys ingredients of <code class="docutils literal notranslate"><span class="pre">python</span></code>:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code> python progamming sctructure</p></li>
+<li><p>Function definition with generic mandatory and optional arguments</p></li>
+<li><p>Conversion of a float function into a vectorized fuction</p></li>
+</ol>
+<section id="try-and-except-python-progamming-sctructure">
+<h4><span class="section-number">5.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code> python progamming sctructure<a class="headerlink" href="#try-and-except-python-progamming-sctructure" title="Permalink to this headline">#</a></h4>
+<p>First we introduce the <code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code> python progamming sctructure, wich is used to bypass one python error. For example a zero dimension array has not a shape attribute, so that the following error, of type <code class="docutils literal notranslate"><span class="pre">IndexError</span></code>, is generated:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [20],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="ne">IndexError</span>: tuple index out of range
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">nn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [33],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">nn</span>
+
+<span class="ne">IndexError</span>: tuple index out of range
+</pre></div>
+</div>
+</div>
+</div>
+<p>To bypass that error we use the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mi">3</span>
+<span class="nb">len</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_57720</span><span class="o">/</span><span class="mf">4138546388.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span><span class="o">=</span><span class="mi">3</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">len</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: object of type &#39;int&#39; has no len()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;3&#39;</span> <span class="c1">#[2,3] #3 #[2,3], array([])</span>
+<span class="k">try</span><span class="p">:</span> 
+    <span class="n">nn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="n">nn</span><span class="o">=-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>so that <code class="docutils literal notranslate"><span class="pre">nn</span></code> takes the values assigned in the <code class="docutils literal notranslate"><span class="pre">except</span></code> part:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Activity</strong>: A float has the method <code class="docutils literal notranslate"><span class="pre">is_integer()</span></code> to check if the decimal part is zero. Creates a function <code class="docutils literal notranslate"><span class="pre">is_integer(x)</span></code> which works even in the case that the number is already an integer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mf">2.</span>
+<span class="n">x</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">x</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [50],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">x</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;is_integer&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mf">2.3</span>
+<span class="n">x</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Objetos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="nb">float</span><span class="p">,</span><span class="nb">list</span><span class="p">,</span><span class="nb">dict</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="nb">list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;hola&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [58],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;hola&#39;</span><span class="p">)</span>
+
+<span class="n">File</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="ne">NameError</span>: name &#39;hola&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;hola mundo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+
+  <span class="n">File</span> <span class="o">~/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">IPython</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">interactiveshell</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3369</span> <span class="ow">in</span> <span class="n">run_code</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">code_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_global_ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_ns</span><span class="p">)</span>
+
+  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">59</span><span class="p">]</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">cell</span> <span class="n">line</span><span class="p">:</span> <span class="mi">1</span><span class="o">&gt;</span>
+    <span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;hola mundo&#39;</span><span class="p">)</span>
+
+  <span class="n">File</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span>
+    <span class="n">hola</span> <span class="n">mundo</span>
+         <span class="o">^</span>
+<span class="ne">SyntaxError</span>: unexpected EOF while parsing
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_integer</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Returns true if x is integer even if x is integer</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="nb">str</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1">#recursive</span>
+                <span class="k">return</span> <span class="n">is_integer</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">NameError</span><span class="p">,</span><span class="ne">SyntaxError</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+<span class="c1">## Test the functions for typical cases        </span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="s1">&#39;3+9+11&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="s1">&#39;3.5&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="s1">&#39;a b&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="s1">&#39;1/2+1/2&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span><span class="o">==</span><span class="kc">False</span>
+<span class="k">assert</span> <span class="n">is_integer</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span><span class="o">==</span><span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="testing">
+<h3><span class="section-number">5.2.3. </span>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [61],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">assert</span> <span class="kc">False</span>
+
+<span class="ne">AssertionError</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">is_integer</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">assert</span></code> is trivial for <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">assert</span></code> generates an error for <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<hr class="docutils" />
+<section id="function-parameters">
+<h4><span class="section-number">5.2.3.1. </span>Function parameters<a class="headerlink" href="#function-parameters" title="Permalink to this headline">#</a></h4>
+<p>In python the function can be defined with mandatory and optional arguments</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">-</span><span class="n">c</span><span class="o">+</span><span class="n">d</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>,<code class="docutils literal notranslate"><span class="pre">b</span></code>: is like a <em>tuple</em> of mandatory arguments → <code class="docutils literal notranslate"><span class="pre">(a,b)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c=2</span></code>,<code class="docutils literal notranslate"><span class="pre">d=3</span></code>: is like a <em>dictionary</em> of optional arguments → <code class="docutils literal notranslate"><span class="pre">{'c':2,'d':3}</span></code></p></li>
+</ul>
+</section>
+<section id="function-definition-with-generic-mandatory-and-optional-arguments">
+<h4><span class="section-number">5.2.3.2. </span>Function definition with generic mandatory and optional arguments<a class="headerlink" href="#function-definition-with-generic-mandatory-and-optional-arguments" title="Permalink to this headline">#</a></h4>
+<p>We need to introduce another important concept about functions. There is a powerfull way to define a function with generic arguments:</p>
+<ol class="simple">
+<li><p>Instead of the mandatory arguments we can use the generic list pointer: <code class="docutils literal notranslate"><span class="pre">*args</span></code></p></li>
+<li><p>Instead of the optional arguments we can use the generic dictionary pointer: <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*args is the tuple of mandatory arguments: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This allows to have a dynamic return according to input:&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*kwargs is the dictionary of optional arguments: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This allows to have a dynamic return according to input:&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">type</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Activity</strong>; Check the function with any type of mandatory or optional argument</p>
+<ul class="simple">
+<li><p>Check the function without arguments</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Check the function with  a mandatory argument</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="s1">&#39;hola mundo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*args is the tuple of mandatory arguments: (&#39;hola mundo&#39;,)
+This allows to have a dynamic return according to input:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Check the function with several mandatory arguments</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="mi">1</span><span class="o">+</span><span class="mi">3</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*args is the tuple of mandatory arguments: (2, [1, 2], (1+3j))
+This allows to have a dynamic return according to input:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Check the function with several optional arguments</p></li>
+</ul>
+<ul class="simple">
+<li><p>Check the function with one of the optional arguments equal to some list</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">h</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;kk&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*kwargs is the dictionary of optional arguments: {&#39;d&#39;: 3, &#39;h&#39;: [1, 2], &#39;k&#39;: &#39;kk&#39;}
+This allows to have a dynamic return according to input:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(str, int)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Check the function with one string as mandatory argument, and with one of the optional arguments equal to some list</p></li>
+</ul>
+</section>
+<section id="conversion-of-a-float-function-into-a-vectorized-function">
+<h4><span class="section-number">5.2.3.3. </span>Conversion of a float function into a vectorized function<a class="headerlink" href="#conversion-of-a-float-function-into-a-vectorized-function" title="Permalink to this headline">#</a></h4>
+<p>An important <code class="docutils literal notranslate"><span class="pre">numpy</span></code> function is:</p>
+<p>Which convert a function which takes a float as an argument into a new function which que takes <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">arrays</span></code> as an argument. The problem is that the converted function does not longer return a float when the argument is a float:</p>
+<p>It is used as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">pyfunc</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters</strong>:
+<code class="docutils literal notranslate"><span class="pre">pyfunc</span></code>: A python function or method.</p>
+<p>…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="n">m</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.479425538604203
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">sin</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.7</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [80],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">m</span><span class="o">.</span><span class="n">sin</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.7</span><span class="p">])</span>
+
+<span class="ne">TypeError</span>: must be real number, not list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="n">sin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sin</span><span class="p">)</span>
+<span class="n">sin</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.7</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.47942554, 0.64421769])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.47942554)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="vectorization-of-scipy-method-derivative">
+<h4><span class="section-number">5.2.3.4. </span>Vectorization of Scipy method <code class="docutils literal notranslate"><span class="pre">derivative</span></code><a class="headerlink" href="#vectorization-of-scipy-method-derivative" title="Permalink to this headline">#</a></h4>
+<p>The problem is that <code class="docutils literal notranslate"><span class="pre">derivative</span></code> only works for one a point</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5403023058958567
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.2</span><span class="p">],</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [84],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.2</span><span class="p">],</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.9/site-packages/scipy/misc/_common.py:144,</span> in <span class="ni">derivative</span><span class="nt">(func, x0, dx, n, args, order)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="n">ho</span> <span class="o">=</span> <span class="n">order</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">144</span>     <span class="n">val</span> <span class="o">+=</span> <span class="n">weights</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="n">x0</span><span class="o">+</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">ho</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span> <span class="k">return</span> <span class="n">val</span> <span class="o">/</span> <span class="n">prod</span><span class="p">((</span><span class="n">dx</span><span class="p">,)</span><span class="o">*</span><span class="n">n</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: can only concatenate list (not &quot;float&quot;) to list
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is easily fixed with <code class="docutils literal notranslate"><span class="pre">np.vectorize</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.2</span><span class="p">],</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.54030231, 0.36235775])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.54030231)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5403023058958567
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="code-for-the-derivate-of-the-function-inside-a-full-range">
+<h3><span class="section-number">5.2.4. </span>Code for the derivate of the function inside a full range<a class="headerlink" href="#code-for-the-derivate-of-the-function-inside-a-full-range" title="Permalink to this headline">#</a></h3>
+<p>To recover the evaluation of a float into a float we can force the <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> in order to use of the pure <code class="docutils literal notranslate"><span class="pre">scipy</span></code> <code class="docutils literal notranslate"><span class="pre">derivative</span></code> function when a float is given as input. The full implemention combine the three previos ingredients into a very compact pythonic-way function definition as shwon below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="k">def</span> <span class="nf">derivative</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Vectorized replacement of scipy.misc derivative:</span>
+<span class="sd">        from scipy.misc import derivative</span>
+<span class="sd">    For usage check the derivative help, e.g, in jupyter: </span>
+<span class="sd">        from scipy.misc import derivative</span>
+<span class="sd">        derivative?</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1">#x0: can be an array or a list  </span>
+        <span class="n">nn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">## force error if float is used </span>
+        <span class="n">fp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="n">fp</span><span class="o">=</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span>
+        
+    <span class="k">return</span> <span class="n">fp</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">),</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="o">.</span><span class="n">Real</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numbers.Real
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numbers</span>
+<span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="c1">#A[0]</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Real</span><span class="p">)</span><span class="c1">#numbers.Integral)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="k">def</span> <span class="nf">derivative</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Vectorized replacement of scipy.misc derivative:</span>
+<span class="sd">        from scipy.misc import derivative</span>
+<span class="sd">    For usage check the derivative help, e.g, in jupyter: </span>
+<span class="sd">        from scipy.misc import derivative</span>
+<span class="sd">        derivative?</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1">#x0: can be an array or a list  </span>
+        <span class="n">nn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">## force error if float is used </span>
+        <span class="n">fp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="n">fp</span><span class="o">=</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span>
+        
+    <span class="k">return</span> <span class="n">fp</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">),</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>which behaves exactly as the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> <code class="docutils literal notranslate"><span class="pre">derivative</span></code> function when a float argument is used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5403023058958567
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.54030231, 0.0707372 ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>and as a vectorized function when an array argument is used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">),</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5403023058958567, 0.0707372017072494)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.54030231, 0.0707372 ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-7.77156117e+08, -1.11022302e+09])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let see now the implementation of the <code class="docutils literal notranslate"><span class="pre">derivate</span></code> function as full replacement of the <code class="docutils literal notranslate"><span class="pre">derivative</span></code> function:</p>
+<section id="test">
+<h4><span class="section-number">5.2.4.1. </span>Test<a class="headerlink" href="#test" title="Permalink to this headline">#</a></h4>
+<p>Let us check the implementation with the previous function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>but now evaluated for a list of values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mf">1.8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">2.2</span><span class="p">]</span>
+<span class="n">funcp</span><span class="o">=</span><span class="n">derivative</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-3</span><span class="p">)</span>
+<span class="n">funcp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.21576117, 0.34935759, 0.41006125])
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the prevous <code class="docutils literal notranslate"><span class="pre">X</span></code> array:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="mf">1.6</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mf">2.4</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">100</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-3</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">1.6</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mf">2.4</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">100</span> <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">func</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">derivative</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-3</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$f&#39;(x)$&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">derivative</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-3</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$f&#39;&#39;(x)$&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/numerical-calculus_108_0.png" src="../_images/numerical-calculus_108_0.png" />
+</div>
+</div>
+</section>
+<section id="example">
+<h4><span class="section-number">5.2.4.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h4>
+<p>Finally we check the function <span class="math notranslate nohighlight">\(f(x)=\cos x\)</span> in the range <span class="math notranslate nohighlight">\([0,2\pi]\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">100</span> <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">,</span> <span class="s2">&quot;g-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$f(x)=\cos x$&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-3</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$f&#39;(x)$&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">,</span> <span class="s1">&#39;b:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$-\sin x$&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-3</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="s1">&#39;k:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$f^{(iv)}(x)$&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;$x$&#39;)
+</pre></div>
+</div>
+<img alt="../_images/numerical-calculus_110_1.png" src="../_images/numerical-calculus_110_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-3</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.3010426069826051e-06
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Activity</strong>: Implement the full derivative function by using <code class="docutils literal notranslate"><span class="pre">isinstance()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+
+<span class="k">def</span> <span class="nf">derivate</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Vectorized replacement of scipy.misc derivative:</span>
+<span class="sd">        from scipy.misc import derivative</span>
+<span class="sd">    For usage check the derivative help, e.g, in jupyter: </span>
+<span class="sd">        from scipy.misc import derivative</span>
+<span class="sd">        derivative?</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="nb">list</span><span class="p">):</span> <span class="c1">## or ... or ...</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+        <span class="n">fp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fp</span><span class="o">=</span><span class="n">misc</span><span class="o">.</span><span class="n">derivative</span>
+    <span class="k">return</span> <span class="n">fp</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span><span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.90929743, -0.14112001])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-heat-transfer-in-a-1d-bar">
+<h3><span class="section-number">5.2.5. </span>Example: Heat transfer in a 1D bar<a class="headerlink" href="#example-heat-transfer-in-a-1d-bar" title="Permalink to this headline">#</a></h3>
+<p>Fourier’s Law of thermal conduction describes the diffusion of heat. Situations in which there are gradients of heat, a flux that tends to homogenise the temperature arises as a consequence of collisions of particles within a body. The Fourier’s Law is giving by</p>
+<div class="math notranslate nohighlight">
+\[ q = -k\nabla T = -k\left( \frac{dT}{dx}\hat{i} + \frac{dT}{dy}\hat{j} + \frac{dT}{dz}\hat{k}\right)\]</div>
+<p>where T is the temperature, <span class="math notranslate nohighlight">\(\nabla T\)</span> its gradient and k is the material’s conductivity. In the next example it is shown the magnitud of the heat flux in a 1D bar(wire).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Temp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Temperature profile </span>
+<span class="k">def</span> <span class="nf">Temp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c1">## Points where function is known</span>
+<span class="n">Xn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xn</span><span class="p">,</span><span class="n">derivate</span><span class="p">(</span><span class="n">Temp</span><span class="p">,</span><span class="n">Xn</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span> <span class="s2">&quot;$x$&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span> <span class="sa">r</span><span class="s2">&quot;$\frac</span><span class="si">{dT}{dx}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span><span class="mi">20</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span> <span class="s2">&quot; Magnitud heat flux transfer in 1D bar&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39; Magnitud heat flux transfer in 1D bar&#39;)
+</pre></div>
+</div>
+<img alt="../_images/numerical-calculus_120_1.png" src="../_images/numerical-calculus_120_1.png" />
+</div>
+</div>
+</section>
+<section id="activity">
+<h3><span class="section-number">5.2.6. </span>Activity<a class="headerlink" href="#activity" title="Permalink to this headline">#</a></h3>
+<p>Construct a density map of the magnitud of the heat flux of a 2D bar. Consider the temperature profile as
+$<span class="math notranslate nohighlight">\( T(x,y) = x^3 + 3x-1+y^2  \)</span>$</p>
+</section>
+<section id="id1">
+<h3><span class="section-number">5.2.7. </span>Activity<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>The Poisson’s equation relates the matter content of a body with the gravitational potential through the next equation</p>
+<div class="math notranslate nohighlight">
+\[\nabla^2 \phi = 4\pi G \rho\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d\phi}{dr}\right)= 4\pi G \rho\]</div>
+<p>where <span class="math notranslate nohighlight">\(\phi\)</span> is the potential, <span class="math notranslate nohighlight">\(\rho\)</span> the density and <span class="math notranslate nohighlight">\(G\)</span> the gravitational constant.</p>
+<p>Taking <a class="reference external" href="https://raw.githubusercontent.com/sbustamante/ComputationalMethods/master/data/M1.00-STRUC.dat">these data</a> and using the three-point Midpoint formula, find the density field from the potential (seventh column in the file) and plot it against the radial coordinate. (<strong>Tip:</strong> Use <span class="math notranslate nohighlight">\(G=1\)</span>)</p>
+</section>
+<section id="id2">
+<h3><span class="section-number">5.2.8. </span>Activity<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>The radar stations A and B, separated by the distance a = 500 m, track the plane
+C by recording the angles <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> at 1-second intervals. The successive readings are</p>
+<img src="https://github.com/restrepo/ComputationalMethods/blob/master/material/figures/table.png?raw=1">
+<p>calculate the speed v using the 3 point approximantion at t = 10 ,12 and 14 s. Calculate the x component of the acceleration of the plane at = 12 s. The coordinates of the plane can be shown to be</p>
+<p>\begin{equation}
+x = a\frac{\tan \beta}{\tan \beta- \tan \alpha}\
+y = a\frac{\tan \alpha\tan \beta}{\tan \beta- \tan \alpha}
+\end{equation}</p>
+<img src="https://github.com/restrepo/ComputationalMethods/blob/master/material/figures/radar.png?raw=1">
+</section>
+</section>
+<hr class="docutils" />
+<section id="numerical-integration">
+<h2><span class="section-number">5.3. </span><span class="xref myst">Numerical Integration</span><a class="headerlink" href="#numerical-integration" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="appendix">
+<h2><span class="section-number">5.4. </span>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h2>
+<section id="one-implementation-of-derivative-algorithm">
+<h3><span class="section-number">5.4.1. </span>One implementation of <code class="docutils literal notranslate"><span class="pre">derivative</span></code> algorithm<a class="headerlink" href="#one-implementation-of-derivative-algorithm" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Function to evaluate</span>
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+
+<span class="c1">#X value</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="mf">1.8</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mf">2.2</span>
+<span class="c1">#h step</span>
+<span class="n">hs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">]</span>
+
+<span class="c1">#Calculating derivatives</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hs</span><span class="p">:</span>
+    <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">x0</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">function</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span><span class="o">/</span><span class="n">h</span> <span class="p">)</span>
+    
+<span class="c1">#Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span> <span class="p">)</span>
+<span class="c1">#X array</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">100</span> <span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span> <span class="p">)</span>
+<span class="c1">#Slopes</span>
+<span class="n">Xslp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">Yslp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">df</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+    <span class="c1">#First point</span>
+    <span class="n">Yslp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">+</span><span class="n">df</span><span class="o">*</span><span class="p">(</span><span class="n">Xslp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">Xslp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1">#Second point</span>
+    <span class="n">Yslp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="c1">#Third point</span>
+    <span class="n">Yslp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">+</span><span class="n">df</span><span class="o">*</span><span class="p">(</span><span class="n">Xslp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">Xslp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1">#Plotting this slope</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">Xslp</span><span class="p">,</span> <span class="n">Yslp</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;slope$=</span><span class="si">%1.2f</span><span class="s2">$ for $h=</span><span class="si">%1.2f</span><span class="s2">$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1">#Format</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.15</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span> <span class="s2">&quot;upper left&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f2790fe7990&gt;
+</pre></div>
+</div>
+<img alt="../_images/numerical-calculus_131_1.png" src="../_images/numerical-calculus_131_1.png" />
+</div>
+</div>
+</section>
+<section id="n-1-point-formula">
+<h3><span class="section-number">5.4.2. </span>n+1-point formula<a class="headerlink" href="#n-1-point-formula" title="Permalink to this headline">#</a></h3>
+<p>A generalization of the previous formula is given by the (n+1)-point formula, where first-order derivatives are calculated using more than one point, what makes it a much better approximation for many problems. it is controled by the <code class="docutils literal notranslate"><span class="pre">order</span></code> option of the <code class="docutils literal notranslate"><span class="pre">derivative</span></code> function of <code class="docutils literal notranslate"><span class="pre">scipy.misc</span></code></p>
+<p><strong>Theorem</strong></p>
+<p>For a function <span class="math notranslate nohighlight">\(f(x)\)</span> such that <span class="math notranslate nohighlight">\(f(x)\in C^{n+1}[a,b]\)</span>, the next expression is always satisfied</p>
+<div class="math notranslate nohighlight">
+\[f(x) = P(x) + \frac{f^{(n+1)}(\xi(x))}{(n+1)!}(x-x_0)(x-x_1)\cdots(x-x_n)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{x_i\}_i\)</span> is a set of point where the function is mapped, <span class="math notranslate nohighlight">\(\xi(x)\)</span> is some function of <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(\xi\in[a,b]\)</span>, and <span class="math notranslate nohighlight">\(P(x)\)</span> is the associated Lagrange interpolant polynomial.</p>
+<p>As <span class="math notranslate nohighlight">\(n\)</span> becomes higher, the approximation should be better as the error term becomes neglectable.</p>
+<p>Taking the previous expression, and differenciating, we obtain</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \sum_{k=0}^n f(x_k)L_{n,k}(x) + \frac{(x-x_0)(x-x_1)\cdots(x-x_n)}{(n+1)!}f^{(n+1)}(\xi(x))\]</div>
+<div class="math notranslate nohighlight">
+\[f'(x_j) = \sum_{k=0}^n f(x_k)L'_{n,k}(x_j) + \frac{f^{(n+1)}(\xi(x_j))}{(n+1)!} \prod_{k=0,k\neq j}^{n}(x_j-x_k)\]</div>
+<p>where <span class="math notranslate nohighlight">\(L_{n,k}\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>-th Lagrange basis functions for <span class="math notranslate nohighlight">\(n\)</span> points, <span class="math notranslate nohighlight">\(L'_{n,k}\)</span> is its first derivative.</p>
+<p>Note that the last expressions is evaluated in <span class="math notranslate nohighlight">\(x_j\)</span> rather than a general <span class="math notranslate nohighlight">\(x\)</span> value, the cause of this is because this expression is not longer valid for another value not within the set <span class="math notranslate nohighlight">\(\{x_i\}_i\)</span>, however this is not an inconvenient when handling real applications.</p>
+<p>This formula constitutes the <strong>(n+1)-point approximation</strong> and it comprises a generalization of almost all the existing schemes to differentiate numerically. Next, we shall derive some very used formulas.</p>
+<p>For example, the form that takes this derivative polynomial for 3 points <span class="math notranslate nohighlight">\((x_i,y_i)\)</span> is the following</p>
+<div class="math notranslate nohighlight">
+\[f'(x_j) = f(x_0)\left[ \frac{2x_j-x_1-x_2}{(x_0-x_1)(x_0-x_2)}\right] + 
+f(x_1)\left[ \frac{2x_j-x_0-x_2}{(x_1-x_0)(x_1-x_2)}\right] +
+f(x_2)\left[ \frac{2x_j-x_0-x_1}{(x_2-x_0)(x_2-x_1)}\right] \]</div>
+<div class="math notranslate nohighlight">
+\[\hspace{2cm} + \frac{1}{6} f^{(3)}(\epsilon_j) \prod_{k=0,k\neq j}^{n}(x_j-x_k)\]</div>
+</section>
+<section id="endpoint-formulas">
+<h3><span class="section-number">5.4.3. </span>Endpoint formulas<a class="headerlink" href="#endpoint-formulas" title="Permalink to this headline">#</a></h3>
+<p>Endpoint formulas are based on evaluating the derivative at the first of a set of points, i.e., if we want to evaluate <span class="math notranslate nohighlight">\(f'(x)\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span>, we then need <span class="math notranslate nohighlight">\((x_i\)</span>, <span class="math notranslate nohighlight">\(x_{i+1}=x_i+h\)</span>, <span class="math notranslate nohighlight">\(x_{i+2}=x_i+2h\)</span>, <span class="math notranslate nohighlight">\(\cdots)\)</span>. For the sake of simplicity, it is usually assumed that the set <span class="math notranslate nohighlight">\(\{x_i\}_i\)</span> is equally spaced such that <span class="math notranslate nohighlight">\(x_k = x_0+k\cdot h\)</span>.</p>
+<p><strong>Three-point Endpoint Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[f'(x_i) = \frac{1}{2h}[-3f(x_i)+4f(x_i+h)-f(x_i+2h)] + \frac{h^2}{3}f^{(3)}(\xi)\]</div>
+<p>with <span class="math notranslate nohighlight">\(\xi\in[x_i,x_i+2h]\)</span></p>
+<p><strong>Five-point Endpoint Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[f'(x_i) = \frac{1}{12h}[-25f(x_i)+48f(x_i+h)-36f(x_i+2h)+16f(x_i+3h)-3f(x_i+4h)] + \frac{h^4}{5}f^{(5)}(\xi)\]</div>
+<p>with <span class="math notranslate nohighlight">\(\xi\in[x_i,x_i+4h]\)</span></p>
+<p>Endpoint formulas are especially useful near to the end of a set of points, where no further points exist.</p>
+</section>
+<section id="midpoint-formulas">
+<h3><span class="section-number">5.4.4. </span>Midpoint formulas<a class="headerlink" href="#midpoint-formulas" title="Permalink to this headline">#</a></h3>
+<p>On the other hand, Midpoint formulas are based on evaluating the derivative at the middle of a set of points, i.e., if we want to evaluate <span class="math notranslate nohighlight">\(f'(x)\)</span> at <span class="math notranslate nohighlight">\(x_i\)</span>, we then need <span class="math notranslate nohighlight">\((\cdots\)</span>, <span class="math notranslate nohighlight">\(x_{i-2} = x_i - 2h\)</span>, <span class="math notranslate nohighlight">\(x_{i-1} = x_i - h\)</span>, <span class="math notranslate nohighlight">\(x_i\)</span>, <span class="math notranslate nohighlight">\(x_{i+1}=x_i+h\)</span>, <span class="math notranslate nohighlight">\(x_{i+2}=x_i+2h\)</span>, <span class="math notranslate nohighlight">\(\cdots)\)</span>.</p>
+<p><strong>Three-point Midpoint Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[f'(x_i) = \frac{1}{2h}[f(x_i+h)-f(x_i-h)] + \frac{h^2}{6}f^{(3)}(\xi)\]</div>
+<p>with <span class="math notranslate nohighlight">\(\xi\in[x_i-h,x_i+h]\)</span></p>
+<p><strong>Five-point Midpoint Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[f'(x_i) = \frac{1}{12h}[f(x_i-2h)-8f(x_i-h)+8f(x_i+h)-f(x_i+2h)] + \frac{h^4}{30}f^{(5)}(\xi)\]</div>
+<p>with <span class="math notranslate nohighlight">\(\xi\in[x_i-2h,x_i+2h]\)</span></p>
+<p>As Midpoint formulas required one iteration less than Endpoint ones, they are more often used for numerical applications. Furthermore, the round-off error is smaller as well. However, near to the end of a set of points, they are no longer useful as no further points exists, and Endpoint formulas are preferable.</p>
+<p>Example with custom implementation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Temperature profile </span>
+<span class="k">def</span> <span class="nf">Temp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c1">#Derivative three end point </span>
+
+<span class="k">def</span> <span class="nf">TEP</span><span class="p">(</span> <span class="n">Yn</span><span class="p">,</span><span class="n">i</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">0</span> <span class="p">):</span>
+    <span class="n">suma</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">Yn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">Yn</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">right</span><span class="o">*</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">Yn</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">right</span><span class="o">*</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">suma</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">right</span><span class="p">)</span>
+
+<span class="c1">#Derivative mid point </span>
+<span class="k">def</span> <span class="nf">TMP</span><span class="p">(</span> <span class="n">Ynh</span><span class="p">,</span><span class="n">Ynmh</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="p">):</span>    
+    <span class="k">return</span> <span class="p">(</span><span class="n">Ynh</span><span class="o">-</span><span class="n">Ynmh</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+
+<span class="c1">## Points where function is known</span>
+<span class="n">Xn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">Tn</span> <span class="o">=</span> <span class="n">Temp</span><span class="p">(</span><span class="n">Xn</span><span class="p">)</span>
+<span class="c1">#Magnitude of heat flux array</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Xn</span><span class="p">))</span>
+<span class="c1">#Left end derivative</span>
+<span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">TEP</span><span class="p">(</span><span class="n">Tn</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">#Mid point derivatives</span>
+<span class="n">index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Xn</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span><span class="n">index</span> <span class="p">):</span>    
+    <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="n">TMP</span><span class="p">(</span> <span class="n">Tn</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">Tn</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="c1">#Right end derivative      </span>
+<span class="n">Q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">TEP</span><span class="p">(</span> <span class="n">Tn</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">1</span> <span class="p">)</span> 
+
+<span class="c1">#Plotting </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xn</span><span class="p">,</span><span class="n">Q</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span> <span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">frac</span><span class="si">{dT}{dx}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span><span class="mi">20</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span> <span class="s2">&quot; Magnitud heat flux transfer in 1D bar&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.text.Text at 0x7f87263de3d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/numerical-calculus_141_1.png" src="../_images/numerical-calculus_141_1.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./material"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="interpolation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Interpolation Methods</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="linear-algebra.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Linear Algebra</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Diego Restrepo (UdeA)<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

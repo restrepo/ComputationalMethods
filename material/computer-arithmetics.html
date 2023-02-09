@@ -1,0 +1,1464 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Computer Arithmetics and Round-off Methods &#8212; Computational Methods</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. One Variable Equations" href="one-variable-equations.html" />
+    <link rel="prev" title="1. Python Overview" href="overview-python.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Methods</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Computational Methods for Physics & Astronomy
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview-python.html">
+   1. Python Overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Computer Arithmetics and Round-off Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="one-variable-equations.html">
+   3. One Variable Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   4. Interpolation Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numerical-calculus.html">
+   5. Numerical Calculus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra.html">
+   6. Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="differential-equations.html">
+   7. Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics.html">
+   8. Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_clases.html">
+   9. Clases
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/restrepo/ComputationalMethods/master?urlpath=tree/docs/material/computer-arithmetics.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/restrepo/ComputationalMethods"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/restrepo/ComputationalMethods/issues/new?title=Issue%20on%20page%20%2Fmaterial/computer-arithmetics.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/material/computer-arithmetics.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-about-float-values">
+   2.1. More About Float Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binary-machine-numbers">
+   2.2. Binary machine numbers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integers">
+     2.2.1. Integers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#floats">
+     2.2.2. Floats
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#full-implementation">
+       2.2.2.1. Full implementation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.2.3. Binary machine numbers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#single-precision-numbers">
+       2.2.3.1. Single-precision numbers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activity">
+     2.2.4. ACTIVITY
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#double-precision-numbers">
+       2.2.4.1. Double-precision numbers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     2.2.5. ACTIVITY
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-arithmetic">
+   2.3. Finite Arithmetic
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addition">
+     2.3.1. Addition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplication">
+     2.3.2. Multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.3.3. ACTIVITY
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Computer Arithmetics and Round-off Methods</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-about-float-values">
+   2.1. More About Float Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binary-machine-numbers">
+   2.2. Binary machine numbers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integers">
+     2.2.1. Integers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#floats">
+     2.2.2. Floats
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#full-implementation">
+       2.2.2.1. Full implementation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.2.3. Binary machine numbers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#single-precision-numbers">
+       2.2.3.1. Single-precision numbers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activity">
+     2.2.4. ACTIVITY
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#double-precision-numbers">
+       2.2.4.1. Double-precision numbers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     2.2.5. ACTIVITY
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-arithmetic">
+   2.3. Finite Arithmetic
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addition">
+     2.3.1. Addition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplication">
+     2.3.2. Multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.3.3. ACTIVITY
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/computer-arithmetics.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="computer-arithmetics-and-round-off-methods">
+<h1><span class="section-number">2. </span>Computer Arithmetics and Round-off Methods<a class="headerlink" href="#computer-arithmetics-and-round-off-methods" title="Permalink to this headline">#</a></h1>
+<p>Actividades: <a class="reference external" href="https://classroom.github.com/a/2v-HnNqn">https://classroom.github.com/a/2v-HnNqn</a></p>
+<p>In a symbolic computation programs, implemented in SymPy or Mathematica for example, operatios like <span class="math notranslate nohighlight">\(1/3+4/3=5/3\)</span>, <span class="math notranslate nohighlight">\(2\times 3/4 = 3/2\)</span>, <span class="math notranslate nohighlight">\((\sqrt{2})^2 = 2\)</span> are unambiguously defined, However, when one numerical programming languages are used to represent numbers in a computer, this is no longer true. The main reason of this is the so-called <em>finite arithmetic</em>, what is the way in which a numerical computer programs performs basic operations. Some features of <em>finite arithmetic</em> are stated below:</p>
+<ul class="simple">
+<li><p>Only integer and rational numbers can be exactly represented.</p></li>
+<li><p>The elements of the set in which arithmetic is performed is necessarily finite.</p></li>
+<li><p>Any arithmetic operation between two or more numbers of this set should be another element of the set.</p></li>
+<li><p>Non-representable numbers like irrational numbers are approximated to the closest rational number within the defined set.</p></li>
+<li><p>Extremely large numbers produce overflows and extremely small numbers produce underflows, which are taken as null.</p></li>
+<li><p>Operations over non-representable numbers are not exact.</p></li>
+</ul>
+<p>In spite of this, defining adequately the set of elements in which our computer will operate, round-off methods can be systematically neglected, yielding correct results within reasonable error margins. In some pathological cases, when massive iterations are required, these errors must be taken into account more seriously.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><a class="reference external" href="#Binary-machine-numbers">Binary machine numbers</a></p>
+<ul>
+<li><p><a class="reference external" href="#Single-precision-numbers">Single-precision numbers</a></p></li>
+<li><p><a class="reference external" href="#Double-precision-numbers">Double-precision numbers</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#Finite-Arithmetic">Finite Arithmetic</a></p>
+<ul>
+<li><p><a class="reference external" href="#Addition">Addition</a></p></li>
+<li><p><a class="reference external" href="#Multiplication">Multiplication</a></p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<section id="more-about-float-values">
+<h2><span class="section-number">2.1. </span>More About Float Values<a class="headerlink" href="#more-about-float-values" title="Permalink to this headline">#</a></h2>
+<p>See also <a class="reference external" href="https://www.inferentialthinking.com/chapters/04/1/Numbers.html">here</a></p>
+<p>In Python a float only represents 15 or 16 significant digits for any number; the remaining precision is lost. This limited precision is enough for the vast majority of applications.</p>
+<p>In the next evaluation extra digits are discarded before any arithmetic is carried out.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.6666666666666666</span> <span class="o">-</span> <span class="mf">0.6666666666666666123456789</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>After combining float values with arithmetic, the last few digits may be incorrect. Small rounding errors are often confusing when first encountered. For example, the expression <code class="docutils literal notranslate"><span class="pre">2**0.5</span></code> computes the square root of <code class="docutils literal notranslate"><span class="pre">2</span></code>, but squaring this value does not exactly recover <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4142135623730951
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0000000000000004
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.440892098500626e-16
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="binary-machine-numbers">
+<h2><span class="section-number">2.2. </span>Binary machine numbers<a class="headerlink" href="#binary-machine-numbers" title="Permalink to this headline">#</a></h2>
+<p>We will obtain the general algorithm to obtain the binary r</p>
+<section id="integers">
+<h3><span class="section-number">2.2.1. </span>Integers<a class="headerlink" href="#integers" title="Permalink to this headline">#</a></h3>
+<p>From <a class="reference external" href="https://www.techcareerbooster.com/blog/binary-representation-of-an-integer">here</a>: If you recall your mathematics, then it will be easy for you to find out how we turn an integer number to its binary representation. Let’s take for example the number 47. (see ‘//’ operator <a class="reference external" href="https://stackoverflow.com/a/1535601">here</a>)</p>
+<ol class="simple">
+<li><p>We divide 47 by 2. The quotient is <code class="docutils literal notranslate"><span class="pre">int(47//2)</span> <span class="pre">→</span> <span class="pre">23</span></code> and the remainder is <code class="docutils literal notranslate"><span class="pre">47%2</span> <span class="pre">→</span> <span class="pre">1</span></code></p></li>
+<li><p>We divide the quotient of the previous step by 2. The new quotient is <code class="docutils literal notranslate"><span class="pre">int(23//2)</span> <span class="pre">→</span> <span class="pre">11</span></code> and the remainder is <code class="docutils literal notranslate"><span class="pre">23%2</span> <span class="pre">→</span> <span class="pre">1</span></code>.</p></li>
+<li><p>We divide the quotient of the previous step by 2. The new quotient is <code class="docutils literal notranslate"><span class="pre">int(11/2)</span> <span class="pre">→</span> <span class="pre">5</span></code> and the remainder is <code class="docutils literal notranslate"><span class="pre">11%2</span> <span class="pre">→</span> <span class="pre">1</span></code>.</p></li>
+<li><p>We divide the quotient of the previous step by 2. The new quotient is <code class="docutils literal notranslate"><span class="pre">int(5//2)</span> <span class="pre">→</span> <span class="pre">2</span></code> and the remainder is <code class="docutils literal notranslate"><span class="pre">5%2</span> <span class="pre">→</span> <span class="pre">1</span></code>.</p></li>
+<li><p>We divide the quotient of the previous step by 2. The new quotient is <code class="docutils literal notranslate"><span class="pre">int(2//2)</span> <span class="pre">→</span> <span class="pre">1</span></code> and the remainder is <code class="docutils literal notranslate"><span class="pre">2%2</span> <span class="pre">→</span> <span class="pre">0</span></code>.</p></li>
+<li><p>We divide the quotient of the previous step by 2. The new quotient is <code class="docutils literal notranslate"><span class="pre">int(1//2)</span> <span class="pre">→</span> <span class="pre">0</span></code> and the remainder is <code class="docutils literal notranslate"><span class="pre">1%2</span> <span class="pre">→</span> <span class="pre">1</span></code></p></li>
+<li><p>We stop here, when the last quotient is <code class="docutils literal notranslate"><span class="pre">1//2→0</span></code>.</p></li>
+</ol>
+<p>Then, the binary representation is the series of __1__s and __0__s of the remainders, taken in reverse order to the one produced, from latest to earliest: <strong>101111</strong>.</p>
+<!-- https://www.geeksforgeeks.org/bin-in-python/ --><p><strong>Activity</strong>: Implement a function that get the binary representation of an integer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mi">47</span>
+<span class="n">b</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="k">while</span> <span class="n">x</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+    <span class="n">oldx</span><span class="o">=</span><span class="n">x</span>
+    <span class="n">b</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">%</span><span class="k">2</span>)+b
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">//</span><span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x=</span><span class="si">{</span><span class="n">oldx</span><span class="si">}</span><span class="s1">/2=</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> → b=</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=47/2=23 → b=1
+x=23/2=11 → b=11
+x=11/2=5 → b=111
+x=5/2=2 → b=1111
+x=2/2=1 → b=01111
+x=1/2=0 → b=101111
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Activity</strong>: Return as a string with 8 charactes completed with leading zeroes. Use the string method: <code class="docutils literal notranslate"><span class="pre">.rjust(8,&quot;0&quot;)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;b=</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b=00101111
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Activity</strong> Write your function in the following format</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="k">def</span> <span class="nf">mybin</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__name__ = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__name__</span><span class="p">))</span>
+    <span class="c1">#Write your code here and change the next line as required</span>
+    <span class="k">return</span> <span class="nb">bin</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">n</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Escriba un entero:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">b</span><span class="o">=</span><span class="n">mybin</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Su representación binaria es: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting mybin.py
+</pre></div>
+</div>
+</div>
+</div>
+<p>The advantage of this standard format is that can be used directly as a python module, because in that case the variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code> evaluates to the name
+of the function. To check this, we first use a cell of the notebook just as a editor with the Jupyter magic function <code class="docutils literal notranslate"><span class="pre">%%writefile</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> mybin.py
+<span class="ch">#!/usr/bin/env python3</span>
+<span class="k">def</span> <span class="nf">mybin</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__name__ = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__name__</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">bin</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">n</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Escriba un entero;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">b</span><span class="o">=</span><span class="n">mybin</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Su representación binaria es: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting mybin.py
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now can use the full contents of the file as an usual python module, it it is
+in the working directory</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mybin</span> <span class="k">as</span> <span class="nn">my</span>
+<span class="n">my</span><span class="o">.</span><span class="n">mybin</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__name__ = mybin
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00101101&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>while here, or in a terminal:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="vm">__name__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;__main__&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check with <code class="docutils literal notranslate"><span class="pre">bin</span></code></p>
+<p>The binary representation of a float in 32 bits done by the following steps</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span><span class="p">(</span><span class="mi">47</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0b101111&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The format is not the standard one. We need drop the first ‘0b’</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span><span class="p">(</span><span class="mi">47</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;101111&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We must enforce the 8 bits representation by padding any additional leading zeroes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span><span class="p">(</span><span class="mi">47</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00101111&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To convert a binary into the integer we can use the <code class="docutils literal notranslate"><span class="pre">int</span></code> function with <code class="docutils literal notranslate"><span class="pre">base=0</span></code> upont the proper Python formatted string, starting with: <font color='red'><code class="docutils literal notranslate"><span class="pre">0b</span></code></font></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;0b101111&#39;</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47
+</pre></div>
+</div>
+</div>
+</div>
+<p>or with any number of padding zeroes in between</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;0b0000000101111&#39;</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is rather straightforward to check that the binary representation is consistent:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>0</p></th>
+<th class="text-align:center head"><p>0</p></th>
+<th class="text-align:center head"><p>1</p></th>
+<th class="text-align:center head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="text-align:right head"><p>Total</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>128</p></td>
+<td class="text-align:center"><p>64</p></td>
+<td class="text-align:center"><p>32</p></td>
+<td class="text-align:center"><p>16</p></td>
+<td><p>8</p></td>
+<td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>32</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td><p>8</p></td>
+<td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td class="text-align:right"><p>47</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="floats">
+<h3><span class="section-number">2.2.2. </span>Floats<a class="headerlink" href="#floats" title="Permalink to this headline">#</a></h3>
+<p>Floats in 32 bits are representated trough 4 8-bit integers.</p>
+<p>The processes of obtain the binary representation for a float can be complicated because the design used to really  store the number  in one specific programming language like Python. In fact, from <a class="reference external" href="https://stackoverflow.com/a/16444778/2268280:">https://stackoverflow.com/a/16444778/2268280:</a></p>
+<ul class="simple">
+<li><p>To obtain the four integers associated to a real number we need first to ask for the packed structure : <code class="docutils literal notranslate"><span class="pre">'!'</span></code>, in 32 bits: <code class="docutils literal notranslate"><span class="pre">'f'</span></code>, with the full string <code class="docutils literal notranslate"><span class="pre">'!f'</span></code> as</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">struct</span>
+<span class="n">packed</span><span class="o">=</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;!f&#39;</span><span class="p">,</span><span class="mf">0.15625</span><span class="p">)</span>
+<span class="n">packed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;&gt; \x00\x00&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">packed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bytes
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a packed Python list with the four integers inside</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">packed</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[62, 32, 0, 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the previous function to convert into a list of 8-bit strings</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lb</span><span class="o">=</span><span class="p">[</span> <span class="n">mybin</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">packed</span><span class="p">]</span>
+<span class="n">lb</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__name__ = __main__
+__name__ = __main__
+__name__ = __main__
+__name__ = __main__
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;00111110&#39;, &#39;00100000&#39;, &#39;00000000&#39;, &#39;00000000&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The float representation is just the string formed with the four binaries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00111110001000000000000000000000&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="32-bits" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/590px-Float_example.svg.png" /></p>
+<section id="full-implementation">
+<h4><span class="section-number">2.2.2.1. </span>Full implementation<a class="headerlink" href="#full-implementation" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">struct</span>
+
+<span class="k">def</span> <span class="nf">binary</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+<span class="c1">#num=3</span>
+<span class="c1">#if True:</span>
+    <span class="c1"># Struct can provide us with the float packed into bytes. The &#39;!&#39; ensures that</span>
+    <span class="c1"># it&#39;s in network byte order (big-endian) and the &#39;f&#39; says that it should be</span>
+    <span class="c1"># packed as a float: 32 bites. Alternatively, for double-precision, you could use &#39;d&#39;.</span>
+    <span class="n">packed</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;!f&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Packed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">repr</span><span class="p">(</span><span class="n">packed</span><span class="p">))</span>
+
+    <span class="c1"># For each character in the returned string, we&#39;ll turn it into its corresponding</span>
+    <span class="c1"># integer code point</span>
+    <span class="c1"># </span>
+    <span class="n">integers</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">packed</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Integers: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">integers</span><span class="p">)</span>
+
+    <span class="c1"># For each integer, we&#39;ll convert it to its binary representation.</span>
+    <span class="n">binaries</span> <span class="o">=</span> <span class="p">[</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">integers</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Binaries: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">binaries</span><span class="p">)</span>
+
+    <span class="c1"># Now strip off the &#39;0b&#39; from each of these</span>
+    <span class="n">stripped_binaries</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;0b&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">binaries</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Stripped: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">stripped_binaries</span><span class="p">)</span>
+
+    <span class="c1"># Pad each byte&#39;s binary representation&#39;s with 0&#39;s to make sure it has all 8 bits:</span>
+    <span class="c1">#</span>
+    <span class="c1"># [&#39;00111110&#39;, &#39;10100011&#39;, &#39;11010111&#39;, &#39;00001010&#39;]</span>
+    <span class="n">padded</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stripped_binaries</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Padded: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">padded</span><span class="p">)</span>
+
+    <span class="c1"># At this point, we have each of the bytes for the network byte ordered float</span>
+    <span class="c1"># in an array as binary strings. Now we just concatenate them to get the total</span>
+    <span class="c1"># representation of the float:</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">padded</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BIN</span><span class="o">=</span><span class="n">binary</span><span class="p">(</span><span class="mf">0.15625</span><span class="p">)</span>
+<span class="n">BIN</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Packed: b&#39;&gt; \x00\x00&#39;
+Integers: [62, 32, 0, 0]
+Binaries: [&#39;0b111110&#39;, &#39;0b100000&#39;, &#39;0b0&#39;, &#39;0b0&#39;]
+Stripped: [&#39;111110&#39;, &#39;100000&#39;, &#39;0&#39;, &#39;0&#39;]
+Padded: [&#39;00111110&#39;, &#39;00100000&#39;, &#39;00000000&#39;, &#39;00000000&#39;]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00111110001000000000000000000000&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="32-bits" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/590px-Float_example.svg.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="n">BIN</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="c1">#inverted list joined into a string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00000000000000000000010001111100&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h3><span class="section-number">2.2.3. </span>Binary machine numbers<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>As everyone knows, the base of the modern computation is the binary numbers. The binary base or base-2 numeral system is the simplest one among the existing numeral bases. As every electronic devices are based on logic circuits (circuits operating with <a class="reference external" href="#LogicGates">logic gates</a>), the implementation of a binary base is straightforward, besides, any other numeral system can be reduced to a binary representation.</p>
+<p><img alt="LogicGates" src="http://www.ee.surrey.ac.uk/Projects/CAL/digital-logic/gatesfunc/graphics/symtab.gif" /></p>
+<p>According to the standard <a class="reference external" href="http://en.wikipedia.org/wiki/IEEE_floating_point">IEEE 754-2008</a>, representation of real numbers can be done in several ways, <a class="reference external" href="http://en.wikipedia.org/wiki/Single-precision_floating-point_format">single-precision</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/Double-precision_floating-point_format">double precision</a> are the most used ones.</p>
+<section id="single-precision-numbers">
+<h4><span class="section-number">2.2.3.1. </span>Single-precision numbers<a class="headerlink" href="#single-precision-numbers" title="Permalink to this headline">#</a></h4>
+<p>Single-precision numbers are used when one does not need very accurate results and/or need to save memory. These numbers are represented by a <strong>32-bits</strong> (Binary digIT) lenght binary number, where the real number is stored following the next rules:</p>
+<p><img alt="32-bits" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/590px-Float_example.svg.png" /></p>
+<ol class="simple">
+<li><p>The last 23 bits represent the fractional part of the number, <code class="docutils literal notranslate"><span class="pre">b_i</span></code>, with <code class="docutils literal notranslate"><span class="pre">i=0,...22</span></code></p></li>
+<li><p>The next 8 bits represent the exponent of the number, <code class="docutils literal notranslate"><span class="pre">e</span></code>, given by
+$<span class="math notranslate nohighlight">\(e = \sum_{i=0}^7 b_{23+i}2^i\)</span>$</p></li>
+<li><p>The fist digit (called <code class="docutils literal notranslate"><span class="pre">s</span></code>) indicates the sign of the number (<code class="docutils literal notranslate"><span class="pre">s=0</span></code> means a positive number, <code class="docutils literal notranslate"><span class="pre">s=1</span></code> a negative one).</p></li>
+</ol>
+<p>The formula for recovering the real number is then given by:</p>
+<div class="math notranslate nohighlight">
+\[r = \frac{(-1)^s}{2^{127-e}} \left( 1 + \sum_{i=0}^{22}\frac{b_{i}}{2^{23-i}} \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(s\)</span> is the sign, <span class="math notranslate nohighlight">\(b_{23-i}\)</span> the fraction bits and <span class="math notranslate nohighlight">\(e\)</span> is given by:</p>
+<p>Next, it is shown a little routine for calculating the value of the represented 32-bits number</p>
+</section>
+</section>
+<section id="activity">
+<h3><span class="section-number">2.2.4. </span>ACTIVITY<a class="headerlink" href="#activity" title="Permalink to this headline">#</a></h3>
+<p>With the binary representation please try to implement the formula to recover the number.</p>
+<p><strong>Hint</strong>: Use as input the binary representation as a string and invert its order</p>
+<p><strong>SOLUTION</strong>:</p>
+<p>The goal of this course is try to implement all the algorithms in terms of array operations, instead of use the loops of Pyhton like the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<p>In this way, we need to interpret the formula in terms of  arrays operations. If we manage to achieve that, then NumPy will be take care of the internal loops, which are much faster than the Python loops. As a bonus, the code is more compact and readable.</p>
+<p>For example:</p>
+<p>\begin{align}
+\sum_{i=0}^{22}\frac{b_{i}}{2^{23-i}}=&amp;\frac{b[0]}{2^{23}}+\frac{b[1]}{2^{22}}
++\cdots +\frac{b[21]}{2^2}+\frac{b[22]}{2^1}\nonumber\
+=&amp;\frac{b[0:23]}{2^{[23,22,…,1]}}.\operatorname{sum()}\nonumber\
+=&amp;\frac{b[0:23]}{2^{[1,2,…,23][::-1]}}.\operatorname{sum()}
+\end{align}</p>
+<p>To implement the full formula:
+$<span class="math notranslate nohighlight">\(r = \frac{(-1)^s}{2^{127-e}} \left( 1 + \sum_{i=0}^{22}\frac{b_{i}}{2^{23-i}} \right)\)</span><span class="math notranslate nohighlight">\(
+with 
+\)</span><span class="math notranslate nohighlight">\(e = \sum_{i=0}^7 b_{23+i}2^i\)</span>$</p>
+<p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">e=(b[23:30]*2**(np.arange(8))).sum()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">number32</span><span class="p">(</span><span class="n">BIN</span><span class="p">):</span>
+<span class="c1">#if True:</span>
+    <span class="c1">#BIN=&#39;00111110001000000000000000000000&#39;</span>
+    <span class="c1">#Inverting binary string</span>
+    <span class="n">b_inverted</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">BIN</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    
+    <span class="n">s</span><span class="o">=</span><span class="n">b_inverted</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span>
+    <span class="c1">#Exponent part</span>
+    <span class="n">be</span><span class="o">=</span><span class="n">b_inverted</span><span class="p">[</span><span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span>
+    <span class="n">i</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">be</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">e</span><span class="o">=</span><span class="p">(</span><span class="n">be</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="n">bf</span><span class="o">=</span><span class="n">b_inverted</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">23</span><span class="p">]</span>
+    <span class="n">i_inverted</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">bf</span><span class="o">.</span><span class="n">size</span><span class="o">+</span><span class="mi">1</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">numero</span><span class="o">=</span><span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">s</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">127</span><span class="o">-</span><span class="n">e</span><span class="p">)</span>  <span class="p">)</span><span class="o">*</span><span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">bf</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="n">i_inverted</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="p">)</span> 
+    <span class="k">return</span> <span class="n">numero</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">number32</span><span class="p">(</span><span class="s1">&#39;00111110001000000000000000000000&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.15625
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check aginst the implementation with <code class="docutils literal notranslate"><span class="pre">for</span></code>’s</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## %load numtobin.py</span>
+<span class="k">def</span> <span class="nf">num32</span><span class="p">(</span> <span class="n">binary</span> <span class="p">):</span>
+    <span class="c1">#Inverting binary string</span>
+    <span class="n">binary</span> <span class="o">=</span> <span class="n">binary</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">s</span><span class="o">=</span><span class="n">binary</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span>
+    <span class="c1">#Decimal part</span>
+    <span class="n">dec</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">):</span>
+        <span class="n">dec</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">binary</span><span class="p">[</span><span class="mi">23</span><span class="o">-</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="mi">2</span><span class="o">**-</span><span class="n">i</span>
+    <span class="c1">#Exponent part</span>
+    <span class="n">exp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+        <span class="n">exp</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">binary</span><span class="p">[</span><span class="mi">23</span><span class="o">+</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span>
+    <span class="c1">#Total number</span>
+    <span class="n">number</span> <span class="o">=</span><span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">127</span><span class="o">-</span><span class="n">exp</span><span class="p">)</span> <span class="p">)</span><span class="o">*</span><span class="n">dec</span>
+    <span class="k">return</span> <span class="n">number</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">num32</span><span class="p">(</span><span class="s1">&#39;00111110001000000000000000000000&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.15625
+</pre></div>
+</div>
+</div>
+</div>
+<p>Single-precision system can represent real numbers within the interval <span class="math notranslate nohighlight">\(\pm 10^{-38} \cdots 10^{38}\)</span>, with <span class="math notranslate nohighlight">\(7-8\)</span> decimal digits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Decimal digits </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;Decimal digits contributions for single precision number&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="mi">2</span><span class="o">**-</span><span class="mf">23.</span><span class="p">,</span> <span class="mi">2</span><span class="o">**-</span><span class="mf">15.</span><span class="p">,</span> <span class="mi">2</span><span class="o">**-</span><span class="mf">5.</span> <span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#Largest and smallest exponent  </span>
+<span class="n">emax</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">emax</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">**</span><span class="n">i</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;Largest and smallest exponent for single precision number&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">emax</span><span class="o">-</span><span class="mf">127.</span><span class="p">),</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">127.</span><span class="p">),</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal digits contributions for single precision number
+1.1920928955078125e-07 3.0517578125e-05 0.03125 
+
+Largest and smallest exponent for single precision number
+3.402823669209385e+38 5.877471754111438e-39 
+</pre></div>
+</div>
+</div>
+</div>
+<section id="double-precision-numbers">
+<h4><span class="section-number">2.2.4.1. </span>Double-precision numbers<a class="headerlink" href="#double-precision-numbers" title="Permalink to this headline">#</a></h4>
+<p>Double-precision numbers are used when high accuracy is required. These numbers are represented by a <strong>64-bits</strong> (Binary digIT) lenght binary number, where the real number is stored following the next rules:</p>
+<p><img alt="64-bits" src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/IEEE_754_Double_Floating_Point_Format.svg/618px-IEEE_754_Double_Floating_Point_Format.svg.png" /></p>
+<ol class="simple">
+<li><p>The fist digit (called <em>s</em>) indicates the sign of the number (s=0 means a positive number, s=1 a negative one).</p></li>
+<li><p>The next 11 bits represent the exponent of the number.</p></li>
+<li><p>The last  bits represent the fractional part of the number.</p></li>
+</ol>
+<p>The formula for recovering the real number is then given by:</p>
+<div class="math notranslate nohighlight">
+\[r = (-1)^s\times \left( 1 + \sum_{i=1}^{52}b_{52-i}2^{-i} \right)\times 2^{e-1023}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s\)</span> is the sign, <span class="math notranslate nohighlight">\(b_{23-i}\)</span> the fraction bits and <span class="math notranslate nohighlight">\(e\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[e = \sum_{i=0}^{10} b_{52+i}2^i\]</div>
+<p>Double-precision system can represent real numbers within the interval <span class="math notranslate nohighlight">\(\pm 10^{-308} \cdots 10^{308}\)</span>, with <span class="math notranslate nohighlight">\(16-17\)</span> decimal digits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e307</span> <span class="o">*</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1e+308
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e307</span> <span class="o">*</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inf
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e-323</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1e-323
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e-324</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id2">
+<h3><span class="section-number">2.2.5. </span>ACTIVITY<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p><strong>1.</strong> Write a python script that calculates the double precision number represented by a 64-bits binary.</p>
+<p><strong>2.</strong> What is the number represented by:</p>
+<p>0 10000000011 1011100100001111111111111111111111111111111111111111</p>
+<font color='white'>
+    **ANSWER:**  27.56640625</section>
+</section>
+<section id="finite-arithmetic">
+<h2><span class="section-number">2.3. </span>Finite Arithmetic<a class="headerlink" href="#finite-arithmetic" title="Permalink to this headline">#</a></h2>
+<p>The most basic arithmetic operations are addition and multiplication. Further operations such as subtraction, division and power are secondary as they can be reached by iteratively use the latter ones.</p>
+<section id="addition">
+<h3><span class="section-number">2.3.1. </span>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">#</a></h3>
+<!-- As mentioned before, arithmetic operations are not exact in a computer due to the inherent limitations in number representing. Even when adding two already approximate numbers, say a single-precision couple of numbers, the result may not be a representable number, being necessary to apply approximation rules.
+```python
+N = 9
+xe=0; x = 0; 
+for i in range(N):
+    xe += np.float(1.0/N)
+    x += np.float16(1.0/N)
+print('expected: {}; obtained: {}'.format(xe,x))
+xe
+```
+Note that the sucessive application of rounded-off numbers produces a final result less precise.
+```python
+print( "5/7".format( np.float32(5/7.) ) )
+print( "1/3", np.float32(1/3.) )
+print( np.float32(5/7.+1/3.), 22/21. )
+```
+--><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mf">7.</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span><span class="o">-</span><span class="mi">22</span><span class="o">/</span><span class="mf">21.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: 5.676632830464712e-08
+</pre></div>
+</div>
+</div>
+</div>
+<p>Therefore, at the numerical computation level we must be aware that an expected
+zero result is really
+$<span class="math notranslate nohighlight">\(0\approx 10^{-16}\)</span>$</p>
+</section>
+<section id="multiplication">
+<h3><span class="section-number">2.3.2. </span>Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this headline">#</a></h3>
+<p>For multiplication it is applied the same round-off rules as the addition, however, be aware that multiplicative errors propagate more quickly than additive errors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">xe</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">xe</span> <span class="o">*=</span> <span class="nb">float</span><span class="p">(</span><span class="mf">2.0</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mf">2.0</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">N</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expected: </span><span class="si">{}</span><span class="s1">; obtained: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xe</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>expected: 2.000000000000003; obtained: 1.9958053041750938
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">xe</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">xe</span> <span class="o">*=</span> <span class="mf">2.0</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1415927
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">float128</span><span class="p">(</span><span class="mf">3.1415926535897932384626433832795028841971</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793116
+</pre></div>
+</div>
+</div>
+</div>
+<p>The final result has an error at the third decimal digit, one more than the case of addition.</p>
+</section>
+<section id="id3">
+<h3><span class="section-number">2.3.3. </span>ACTIVITY<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>Find the error associated to the finite representation in the next operations</p>
+<div class="math notranslate nohighlight">
+\[
+x-u, \frac{x-u}{w}, (x-u)*v, u+v 
+\]</div>
+<p>considering the values</p>
+<div class="math notranslate nohighlight">
+\[
+x = \frac{5}{7}, y = \frac{1}{3}, u = 0.71425
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+v = 0.98765\times 10^5, w = 0.111111\times 10^{-4}
+\]</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./material"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="overview-python.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Python Overview</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="one-variable-equations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>One Variable Equations</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Diego Restrepo (UdeA)<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
