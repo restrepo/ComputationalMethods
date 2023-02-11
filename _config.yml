@@ -33,4 +33,4 @@ html:
 
 only_build_toc_files: true
 
-exclude_patterns: [Evaluacion*/*,material/node_modules/*]
+exclude_patterns: [Evaluacion*/*,material/node_modules/*,.trunk/*]
