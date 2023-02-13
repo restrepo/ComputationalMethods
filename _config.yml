@@ -34,3 +34,10 @@ html:
 only_build_toc_files: true
 
 exclude_patterns: [Evaluacion*/*,material/node_modules/*,.trunk/*]
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - amsmath
+    - dollarmath
