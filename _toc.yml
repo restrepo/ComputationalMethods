@@ -4,6 +4,7 @@
 
 format: jb-book
 root: index
+
 parts:
 - numbered: true
   chapters:
@@ -23,7 +24,7 @@ parts:
 - numbered: true
   chapters:
   - file:  material/linear-algebra
-- numbered: true
+- chapters:numbered: true
   chapters:
   - file:  material/differential-equations
 - numbered: true
