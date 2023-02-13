@@ -1,19 +1,39 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 
+
 format: jb-book
 root: index
-options:  # The options key will be applied to all chapters, but not sub-sections
-  numbered: True
-
-chapters:
-- file: material/overview-python
-- file: material/computer-arithmetics
-- file: material/one-variable-equations
-- file: material/interpolation
-- file: material/numerical-calculus
-- file: material/linear-algebra
-- file: material/differential-equations
-- file: material/statistics
-- file: material/Intro_clases
-
+parts:
+- numbered: true
+  chapters:
+  - file:  material/overview-python
+- numbered: true
+  chapters:
+  - file:  material/computer-arithmetics
+- numbered: true
+  chapters:
+  - file:  material/one-variable-equations
+- numbered: true
+  chapters:
+  - file:  material/interpolation
+- numbered: true
+  chapters:
+  - file:  material/numerical-calculus
+- numbered: true
+  chapters:
+  - file:  material/linear-algebra
+- numbered: true
+  chapters:
+  - file:  material/differential-equations
+- numbered: true
+  chapters:
+  - file:  material/statistics
+- numbered: true
+  chapters:
+  - file:  material/Intro_clases
+- numbered: false
+  caption: Appendix
+  chapters:
+  - file:  material/linear-algebra-diagonalization
+  
