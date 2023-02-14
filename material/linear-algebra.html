@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Differential Equations" href="differential-equations.html" />
+    <link rel="next" title="Differential Equations" href="differential-equations.html" />
     <link rel="prev" title="5. Numerical Calculus" href="numerical-calculus.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -115,50 +115,106 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview-python.html">
    1. Python Overview
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="computer-arithmetics.html">
    2. Computer Arithmetics and Round-off Methods
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="one-variable-equations.html">
    3. One Variable Equations
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="interpolation.html">
    4. Interpolation Methods
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numerical-calculus.html">
    5. Numerical Calculus
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    6. Linear Algebra
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="differential-equations.html">
-   7. Differential Equations
+   Differential Equations
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="statistics.html">
-   8. Statistics
+   7. Statistics
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Intro_clases.html">
-   9. Clases
+   8. Clases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="scientific-libraries.html">
+   Scientific Libraries with Python
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pandas.html">
+   Pandas
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="matplotlib.html">
+   Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ipython-notebooks.html">
+   Notebooks
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra-diagonalization.html">
+   Matrix diagonalization
   </a>
  </li>
 </ul>
@@ -969,7 +1025,7 @@ title="Print to PDF"
 <h1><span class="section-number">6. </span>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">#</a></h1>
 <p>Linear Algebra is a discipline where vector spaces and linear mapping between them are studied. In physics and astronomy, several phenomena can be readily written in terms of linear variables, what makes Computational Linear Algebra a very important topic to be covered throughout this course. We shall cover linear systems of equations, techniques for calculating inverses and determinants and factorization methods.</p>
 <p>An interesting fact of Computational Linear Algebra is that it does not comprises numerical approaches as most of the methods are exact. The usage of a computer is then necessary because of the large number of calculations rather than the non-soluble nature of the problems. Numerical errors come then from round-off approximations.</p>
-<p>See: <a class="reference external" href="http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture14.pdf">http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture14.pdf</a></p>
+<p>See: http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture14.pdf</p>
 <hr class="docutils" />
 <ul class="simple">
 <li><p><a class="reference external" href="#Linear-Systems-of-Equations">Linear Systems of Equations</a></p>
@@ -987,7 +1043,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="#Example-2">Example 2</a></p></li>
 </ul>
 </li>
-<li><p><span class="xref myst">Matrix diagonalization</span></p></li>
+<li><p><a class="reference internal" href="linear-algebra-diagonalization.html"><span class="doc std std-doc">Matrix diagonalization</span></a></p></li>
 <li><p><a class="reference external" href="#Pivoting-Strategies">Pivoting Strategies</a></p>
 <ul>
 <li><p><a class="reference external" href="#Partial-pivoting">Partial pivoting</a></p></li>
@@ -1032,7 +1088,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 </div>
-<p><a class="reference external" href="https://stackoverflow.com/a/50748163">https://stackoverflow.com/a/50748163</a></p>
+<p>https://stackoverflow.com/a/50748163</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -2291,23 +2347,26 @@ def row_swap( i, j, A ):
 <p>Using Kirchhoff’s circuit laws, it is possible to solve the next system:</p>
 <p><img alt="" src="https://raw.githubusercontent.com/sbustamante/ComputationalMethods/master/material/figures/circuit.png" /></p>
 <p>obtaining the next equations:</p>
-<p>\begin{align}
-A:&amp;&amp;I_A( R+4R ) - I_B( 4R ) =&amp; E \
-C:&amp;&amp;-I_A( 4R ) + I_B( 4R + 3R ) - I_C(3R) =&amp; 0 \
-B:&amp;&amp;-I_B( 3R ) + I_C(3R+2R) =&amp; -2E,
-\end{align}
-or
-\begin{align}
-5\frac{I_A R }{E} - 4\frac{I_B R }{E} =&amp; 1 \
--4 \frac{I_A R }{E} + 7\frac{I_B R }{E} - 3 \frac{I_C R }{E} =&amp; 0 \
--3 \frac{I_B R }{E} + 5 \frac{I_C R }{E} =&amp; -2,.
-\end{align}</p>
-<p>Defining the variables <span class="math notranslate nohighlight">\(x_1 = R I_A/E\)</span>, <span class="math notranslate nohighlight">\(x_2 = R I_B/E\)</span> and <span class="math notranslate nohighlight">\(x_3 = R I_C/E\)</span> we have
-\begin{align}
-5x_1 - 4x_2 =&amp; 1 \
--4 x_1 + 7x_2 - 3 x_3 =&amp; 0 \
--3x_2 + 5 x_3 =&amp; -2,.
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a2b91bd5-afb2-4258-bc4b-83dc405efa63">
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-a2b91bd5-afb2-4258-bc4b-83dc405efa63" title="Permalink to this equation">#</a></span>\[\begin{align}
+A:&amp;&amp;I_A( R+4R ) - I_B( 4R ) =&amp; E \\
+C:&amp;&amp;-I_A( 4R ) + I_B( 4R + 3R ) - I_C(3R) =&amp; 0 \\
+B:&amp;&amp;-I_B( 3R ) + I_C(3R+2R) =&amp; -2E\,
+\end{align}\]</div>
+<p>or</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f6db8056-f4e2-46b7-80f1-4c38671c5e8a">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-f6db8056-f4e2-46b7-80f1-4c38671c5e8a" title="Permalink to this equation">#</a></span>\[\begin{align}
+5\frac{I_A R }{E} - 4\frac{I_B R }{E} =&amp; 1 \\
+-4 \frac{I_A R }{E} + 7\frac{I_B R }{E} - 3 \frac{I_C R }{E} =&amp; 0 \\
+-3 \frac{I_B R }{E} + 5 \frac{I_C R }{E} =&amp; -2\,.
+\end{align}\]</div>
+<p>Defining the variables <span class="math notranslate nohighlight">\(x_1 = R I_A/E\)</span>, <span class="math notranslate nohighlight">\(x_2 = R I_B/E\)</span> and <span class="math notranslate nohighlight">\(x_3 = R I_C/E\)</span> we have</p>
+<div class="amsmath math notranslate nohighlight" id="equation-64737625-69ac-4f43-8835-31e8c22a1b56">
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-64737625-69ac-4f43-8835-31e8c22a1b56" title="Permalink to this equation">#</a></span>\[\begin{align}
+5x_1 - 4x_2 =&amp; 1 \\
+-4 x_1 + 7x_2 - 3 x_3 =&amp; 0 \\
+-3x_2 + 5 x_3 =&amp; -2\,.
+\end{align}\]</div>
 <p>A first method to solve linear systems of equations is the Gaussian elimination. This procedure consists of a set of recursive steps performed in order to diagonalise the matrix of the problem. A suitable way to introduce this method is applying it to some basic problem. To do so, let’s take the result of the <a class="reference external" href="#Example-1">Example 1</a>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \left[ \matrix{
@@ -3096,12 +3155,13 @@ a_{21} &amp; a_{22}}\right]\end{split}\]</div>
 <section id="existence-of-inverse">
 <h3><span class="section-number">6.5.6. </span>Existence of inverse<a class="headerlink" href="#existence-of-inverse" title="Permalink to this headline">#</a></h3>
 <p>A matrix <span class="math notranslate nohighlight">\(A\)</span> has an inverse if <span class="math notranslate nohighlight">\(\det{A}\ne 0\)</span>. See for example <a class="reference external" href="http://www.sosmath.com/matrix/inverse/inverse.html">here</a></p>
-<p>If the matrix <span class="math notranslate nohighlight">\(A\)</span> has an inverse, then
-\begin{align}
-A \boldsymbol{x}=&amp;\boldsymbol{b}\
-A^{-1}A\boldsymbol{x}=&amp;A^{-1}\boldsymbol{b}\
-\boldsymbol{x}=&amp;A^{-1}\boldsymbol{b},,
-\end{align}</p>
+<p>If the matrix <span class="math notranslate nohighlight">\(A\)</span> has an inverse, then</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cdc0a5c5-f499-433d-8eb6-667455bacbd5">
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-cdc0a5c5-f499-433d-8eb6-667455bacbd5" title="Permalink to this equation">#</a></span>\[\begin{align}
+A \boldsymbol{x}=&amp;\boldsymbol{b}\\
+A^{-1}A\boldsymbol{x}=&amp;A^{-1}\boldsymbol{b}\\
+\boldsymbol{x}=&amp;A^{-1}\boldsymbol{b}\,,
+\end{align}\]</div>
 <p><strong>Example</strong>
 From the previous example</p>
 <div class="cell docutils container">
@@ -3180,10 +3240,11 @@ From the previous example</p>
 </div>
 </div>
 </div>
-<p>such that
-\begin{align}
-A \boldsymbol{x}=&amp;\boldsymbol{b},,
-\end{align}</p>
+<p>such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a00feb85-0251-4792-8326-0562e9249591">
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-a00feb85-0251-4792-8326-0562e9249591" title="Permalink to this equation">#</a></span>\[\begin{align}
+A \boldsymbol{x}=&amp;\boldsymbol{b}\,,
+\end{align}\]</div>
 <p>Check that <span class="math notranslate nohighlight">\(A\)</span> has an inverse and calculate <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3241,7 +3302,7 @@ A \boldsymbol{x}=&amp;\boldsymbol{b},,
 </section>
 <section id="matrix-diagonalization">
 <h2><span class="section-number">6.6. </span>Matrix diagonalization<a class="headerlink" href="#matrix-diagonalization" title="Permalink to this headline">#</a></h2>
-<p>See <span class="xref myst">linear-algebra-diagonalization</span></p>
+<p>See <a class="reference internal" href="linear-algebra-diagonalization.html"><span class="doc std std-doc">linear-algebra-diagonalization</span></a></p>
 </section>
 <hr class="docutils" />
 <section id="lu-factorization">
@@ -3418,15 +3479,17 @@ m_{ij} = \frac{a^{(j)}_{ij}}{a^{(j)}_{jj}} &amp; \mbox{if}\ \ j=k\ \ \mbox{and}\
 <section id="electron-interacting-with-a-magnetic-field">
 <h4><span class="section-number">6.7.5.1. </span>Electron interacting with a magnetic field<a class="headerlink" href="#electron-interacting-with-a-magnetic-field" title="Permalink to this headline">#</a></h4>
 <p>An electron is placed to interact with an uniform magnetic field. To give account of the possible allowed levels of the electron in the presence of the magnetic field it is necessary to solve the next equation</p>
-<p>\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5b7dbc80-2e98-4315-8eec-62e159b4c75f">
+<span class="eqno">(6.6)<a class="headerlink" href="#equation-5b7dbc80-2e98-4315-8eec-62e159b4c75f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{H}|\Psi\rangle = E|\Psi\rangle
-\end{equation}</p>
+\end{equation}\]</div>
 <p>where the hamiltonian is equal to <span class="math notranslate nohighlight">\(H = -\mu \cdot B = -\gamma B \cdot S\)</span>, with the gyromagnetic ratio <span class="math notranslate nohighlight">\(\gamma\)</span>, <span class="math notranslate nohighlight">\(\textbf{B}\)</span> the magnetic field and <span class="math notranslate nohighlight">\(\textbf{S}\)</span> the spin. It can be shown that the hamiltonian expression is transformed in</p>
-<p>\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-33b1ff45-e9b9-405d-b39d-215be1275867">
+<span class="eqno">(6.7)<a class="headerlink" href="#equation-33b1ff45-e9b9-405d-b39d-215be1275867" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{\textbf{H}} = - \frac{\gamma \hbar}{2} \left( \begin{array}{cc}
-B_z  &amp; B_x -i B_y \
-B_x + i B_y  &amp; -B_z  \end{array} \right)
-\end{equation}</p>
+B_z  &amp; B_x -i B_y \\
+B_x + i B_y  &amp; -B_z  \end{array} \right) 
+\end{equation}\]</div>
 <p>Then, by solving the problem <span class="math notranslate nohighlight">\(|H - EI|=0\)</span> is found the allowed energy levels, i.e., finding the determinant of the
 matrix <span class="math notranslate nohighlight">\(H - EI\)</span> allows to get the values <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.</p>
 <p>And solving the problem <span class="math notranslate nohighlight">\(\hat{H}\Psi\)</span> - E<span class="math notranslate nohighlight">\(\Psi = 0\)</span> gives the autofunctions <span class="math notranslate nohighlight">\(\Psi\)</span>, i.e., the column vector <span class="math notranslate nohighlight">\(\Psi= \{\Psi_1, \Psi_2\}\)</span>.</p>
@@ -3478,7 +3541,7 @@ matrix <span class="math notranslate nohighlight">\(H - EI\)</span> allows to ge
     <a class='right-next' id="next-link" href="differential-equations.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Differential Equations</p>
+        <p class="prev-next-title">Differential Equations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

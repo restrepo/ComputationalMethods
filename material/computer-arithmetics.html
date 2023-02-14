@@ -115,50 +115,106 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview-python.html">
    1. Python Overview
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    2. Computer Arithmetics and Round-off Methods
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="one-variable-equations.html">
    3. One Variable Equations
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="interpolation.html">
    4. Interpolation Methods
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numerical-calculus.html">
    5. Numerical Calculus
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="linear-algebra.html">
    6. Linear Algebra
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="differential-equations.html">
-   7. Differential Equations
+   Differential Equations
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="statistics.html">
-   8. Statistics
+   7. Statistics
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Intro_clases.html">
-   9. Clases
+   8. Clases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="scientific-libraries.html">
+   Scientific Libraries with Python
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pandas.html">
+   Pandas
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="matplotlib.html">
+   Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ipython-notebooks.html">
+   Notebooks
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra-diagonalization.html">
+   Matrix diagonalization
   </a>
  </li>
 </ul>
@@ -559,7 +615,7 @@ title="Print to PDF"
   <p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/computer-arithmetics.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="computer-arithmetics-and-round-off-methods">
 <h1><span class="section-number">2. </span>Computer Arithmetics and Round-off Methods<a class="headerlink" href="#computer-arithmetics-and-round-off-methods" title="Permalink to this headline">#</a></h1>
-<p>Actividades: <a class="reference external" href="https://classroom.github.com/a/2v-HnNqn">https://classroom.github.com/a/2v-HnNqn</a></p>
+<p>Actividades: https://classroom.github.com/a/2v-HnNqn</p>
 <p>In a symbolic computation programs, implemented in SymPy or Mathematica for example, operatios like <span class="math notranslate nohighlight">\(1/3+4/3=5/3\)</span>, <span class="math notranslate nohighlight">\(2\times 3/4 = 3/2\)</span>, <span class="math notranslate nohighlight">\((\sqrt{2})^2 = 2\)</span> are unambiguously defined, However, when one numerical programming languages are used to represent numbers in a computer, this is no longer true. The main reason of this is the so-called <em>finite arithmetic</em>, what is the way in which a numerical computer programs performs basic operations. Some features of <em>finite arithmetic</em> are stated below:</p>
 <ul class="simple">
 <li><p>Only integer and rational numbers can be exactly represented.</p></li>
@@ -877,7 +933,7 @@ in the working directory</p>
 <section id="floats">
 <h3><span class="section-number">2.2.2. </span>Floats<a class="headerlink" href="#floats" title="Permalink to this headline">#</a></h3>
 <p>Floats in 32 bits are representated trough 4 8-bit integers.</p>
-<p>The processes of obtain the binary representation for a float can be complicated because the design used to really  store the number  in one specific programming language like Python. In fact, from <a class="reference external" href="https://stackoverflow.com/a/16444778/2268280:">https://stackoverflow.com/a/16444778/2268280:</a></p>
+<p>The processes of obtain the binary representation for a float can be complicated because the design used to really  store the number  in one specific programming language like Python. In fact, from https://stackoverflow.com/a/16444778/2268280:</p>
 <ul class="simple">
 <li><p>To obtain the four integers associated to a real number we need first to ask for the packed structure : <code class="docutils literal notranslate"><span class="pre">'!'</span></code>, in 32 bits: <code class="docutils literal notranslate"><span class="pre">'f'</span></code>, with the full string <code class="docutils literal notranslate"><span class="pre">'!f'</span></code> as</p></li>
 </ul>
@@ -1062,12 +1118,13 @@ $<span class="math notranslate nohighlight">\(e = \sum_{i=0}^7 b_{23+i}2^i\)</sp
 <p>The goal of this course is try to implement all the algorithms in terms of array operations, instead of use the loops of Pyhton like the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
 <p>In this way, we need to interpret the formula in terms of  arrays operations. If we manage to achieve that, then NumPy will be take care of the internal loops, which are much faster than the Python loops. As a bonus, the code is more compact and readable.</p>
 <p>For example:</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-83040423-1eb5-4576-92bc-aaed65c95f75">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-83040423-1eb5-4576-92bc-aaed65c95f75" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{i=0}^{22}\frac{b_{i}}{2^{23-i}}=&amp;\frac{b[0]}{2^{23}}+\frac{b[1]}{2^{22}}
-+\cdots +\frac{b[21]}{2^2}+\frac{b[22]}{2^1}\nonumber\
-=&amp;\frac{b[0:23]}{2^{[23,22,…,1]}}.\operatorname{sum()}\nonumber\
-=&amp;\frac{b[0:23]}{2^{[1,2,…,23][::-1]}}.\operatorname{sum()}
-\end{align}</p>
+ +\cdots +\frac{b[21]}{2^2}+\frac{b[22]}{2^1}\nonumber\\
+=&amp;\frac{b[0:23]}{2^{[23,22,...,1]}}.\operatorname{sum()}\nonumber\\
+=&amp;\frac{b[0:23]}{2^{[1,2,...,23][::-1]}}.\operatorname{sum()}
+\end{align}\]</div>
 <p>To implement the full formula:
 $<span class="math notranslate nohighlight">\(r = \frac{(-1)^s}{2^{127-e}} \left( 1 + \sum_{i=0}^{22}\frac{b_{i}}{2^{23-i}} \right)\)</span><span class="math notranslate nohighlight">\(
 with 

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Differential Equations &#8212; Computational Methods</title>
+    <title>Differential Equations &#8212; Computational Methods</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Statistics" href="statistics.html" />
+    <link rel="next" title="7. Statistics" href="statistics.html" />
     <link rel="prev" title="6. Linear Algebra" href="linear-algebra.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -115,50 +115,106 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview-python.html">
    1. Python Overview
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="computer-arithmetics.html">
    2. Computer Arithmetics and Round-off Methods
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="one-variable-equations.html">
    3. One Variable Equations
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="interpolation.html">
    4. Interpolation Methods
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numerical-calculus.html">
    5. Numerical Calculus
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="linear-algebra.html">
    6. Linear Algebra
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7. Differential Equations
+   Differential Equations
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="statistics.html">
-   8. Statistics
+   7. Statistics
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Intro_clases.html">
-   9. Clases
+   8. Clases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="scientific-libraries.html">
+   Scientific Libraries with Python
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pandas.html">
+   Pandas
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="matplotlib.html">
+   Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ipython-notebooks.html">
+   Notebooks
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra-diagonalization.html">
+   Matrix diagonalization
   </a>
  </li>
 </ul>
@@ -369,78 +425,77 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#physical-motivation">
-   7.1. Physical motivation
+   Physical motivation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#momentum">
-     7.1.1. Momentum
+     Momentum
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#equation-of-motion">
-     7.1.2. Equation of motion
+     Equation of motion
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constant-mass">
-     7.1.3. Constant mass
+     Constant mass
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-drag-force">
-     7.1.4. Example: Drag force
+     Example: Drag force
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mathematical-background">
-   7.2. Mathematical background
+   Mathematical background
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#euler-s-method">
-   7.3. Euler’s method
+   Euler’s method
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#first-order-differential-equations">
-     7.3.1. First order differential equations
+     First order differential equations
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#second-order-differential-equations">
-       7.3.1.1. Second order differential equations
+       Second order differential equations
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#euler-method-for-second-order-differential-equations">
-       7.3.1.2. Euler method for second order differential equations
+       Euler method for second order differential equations
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#newton-s-second-law-of-motion">
-     7.3.2. Newton’s second law of motion
+     Newton’s second law of motion
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example">
-     7.3.3. Example:
+     Example:
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#example-spring">
-       7.3.3.1. Example. Spring
+       Example. Spring
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#font-color-red-activity-font">
-     7.3.4.
      <font color="red">
       <strong>
        Activity
@@ -450,46 +505,45 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation-in-scipy">
-     7.3.5. Implementation in Scipy
+     Implementation in Scipy
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#first-order-ordinary-differential-equations">
-       7.3.5.1. First order ordinary differential equations
+       First order ordinary differential equations
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       7.3.5.2. Example
+       Example
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       7.3.5.3. Second order differential equations
+       Second order differential equations
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#some-examples">
-       7.3.5.4. Some examples
+       Some examples
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-2">
-     7.3.6. Example 2
+     Example 2
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#appendix">
-   7.4. Appendix
+   Appendix
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     7.4.1.
      <font color="red">
       <strong>
        Activity
@@ -499,12 +553,11 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fourth-order-runge-kutta-method">
-     7.4.2. Fourth-order Runge-Kutta method
+     Fourth-order Runge-Kutta method
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     7.4.3.
      <font color="red">
       <strong>
        Activity
@@ -514,24 +567,24 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#second-order-runge-kutta-methods">
-     7.4.4. Second-order Runge-Kutta methods
+     Second-order Runge-Kutta methods
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#two-point-boundary-value-problems">
-   7.5. Two-Point Boundary Value Problems
+   Two-Point Boundary Value Problems
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-3">
-     7.5.1. Example 3
+     Example 3
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation-of-the-pendulum-phase-space">
-     7.5.2. Implementation of the pendulum phase space
+     Implementation of the pendulum phase space
     </a>
    </li>
   </ul>
@@ -557,78 +610,77 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#physical-motivation">
-   7.1. Physical motivation
+   Physical motivation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#momentum">
-     7.1.1. Momentum
+     Momentum
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#equation-of-motion">
-     7.1.2. Equation of motion
+     Equation of motion
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constant-mass">
-     7.1.3. Constant mass
+     Constant mass
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-drag-force">
-     7.1.4. Example: Drag force
+     Example: Drag force
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mathematical-background">
-   7.2. Mathematical background
+   Mathematical background
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#euler-s-method">
-   7.3. Euler’s method
+   Euler’s method
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#first-order-differential-equations">
-     7.3.1. First order differential equations
+     First order differential equations
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#second-order-differential-equations">
-       7.3.1.1. Second order differential equations
+       Second order differential equations
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#euler-method-for-second-order-differential-equations">
-       7.3.1.2. Euler method for second order differential equations
+       Euler method for second order differential equations
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#newton-s-second-law-of-motion">
-     7.3.2. Newton’s second law of motion
+     Newton’s second law of motion
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example">
-     7.3.3. Example:
+     Example:
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#example-spring">
-       7.3.3.1. Example. Spring
+       Example. Spring
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#font-color-red-activity-font">
-     7.3.4.
      <font color="red">
       <strong>
        Activity
@@ -638,46 +690,45 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation-in-scipy">
-     7.3.5. Implementation in Scipy
+     Implementation in Scipy
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#first-order-ordinary-differential-equations">
-       7.3.5.1. First order ordinary differential equations
+       First order ordinary differential equations
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       7.3.5.2. Example
+       Example
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       7.3.5.3. Second order differential equations
+       Second order differential equations
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#some-examples">
-       7.3.5.4. Some examples
+       Some examples
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-2">
-     7.3.6. Example 2
+     Example 2
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#appendix">
-   7.4. Appendix
+   Appendix
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     7.4.1.
      <font color="red">
       <strong>
        Activity
@@ -687,12 +738,11 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fourth-order-runge-kutta-method">
-     7.4.2. Fourth-order Runge-Kutta method
+     Fourth-order Runge-Kutta method
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     7.4.3.
      <font color="red">
       <strong>
        Activity
@@ -702,24 +752,24 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#second-order-runge-kutta-methods">
-     7.4.4. Second-order Runge-Kutta methods
+     Second-order Runge-Kutta methods
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#two-point-boundary-value-problems">
-   7.5. Two-Point Boundary Value Problems
+   Two-Point Boundary Value Problems
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-3">
-     7.5.1. Example 3
+     Example 3
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation-of-the-pendulum-phase-space">
-     7.5.2. Implementation of the pendulum phase space
+     Implementation of the pendulum phase space
     </a>
    </li>
   </ul>
@@ -736,12 +786,12 @@ title="Print to PDF"
                 
   <p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/differential-equations.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="differential-equations">
-<h1><span class="section-number">7. </span>Differential Equations<a class="headerlink" href="#differential-equations" title="Permalink to this headline">#</a></h1>
+<h1>Differential Equations<a class="headerlink" href="#differential-equations" title="Permalink to this headline">#</a></h1>
 <p>Differential equations is without doubt one of the more useful branch of mathematics in science. They are used to model problems involving the change of some variable with respect to another. Differential equations cover a wide range of different applications, ranging from ordinary differential equations (ODE) until boundary-value problems involving many variables. For the sake of simplicity, throughout this section we shall cover only ODE systems as they are more elemental and equally useful. First, we shall cover first order methods, then second order methods and finally, system of differential equations.</p>
 <p>See:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture21.pdf">http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture21.pdf</a></p></li>
-<li><p><a class="reference external" href="http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture22.pdf">http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture22.pdf</a></p></li>
+<li><p>http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture21.pdf</p></li>
+<li><p>http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture22.pdf</p></li>
 <li><p>Infectious Disease Modelling:</p>
 <ul>
 <li><p><a class="reference external" href="https://towardsdatascience.com/infectious-disease-modelling-part-i-understanding-sir-28d60e29fdfc">Understanding the models that are used to model Coronavirus</a>: Explaining the background and deriving the formulas of the SIR model from scratch. Coding and visualizing the model in Python.</p></li>
@@ -796,22 +846,24 @@ title="Print to PDF"
 </div>
 <hr class="docutils" />
 <section id="physical-motivation">
-<h2><span class="section-number">7.1. </span>Physical motivation<a class="headerlink" href="#physical-motivation" title="Permalink to this headline">#</a></h2>
+<h2>Physical motivation<a class="headerlink" href="#physical-motivation" title="Permalink to this headline">#</a></h2>
 <section id="momentum">
-<h3><span class="section-number">7.1.1. </span>Momentum<a class="headerlink" href="#momentum" title="Permalink to this headline">#</a></h3>
+<h3>Momentum<a class="headerlink" href="#momentum" title="Permalink to this headline">#</a></h3>
 <p>In absence a forces a body moves freely to a constant velocity (See figure)</p>
-<p>The quantity which can be associated with the change of speed of a body is the instantaneous <em>momentum</em> of a particle of mass <span class="math notranslate nohighlight">\(m\)</span> moving with instantaneous velocity <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>, given by
-\begin{align}
-\boldsymbol{p}=&amp;\gamma m \mathbf{v},, &amp;\text{where: } \gamma=&amp;\frac{1}{\sqrt{1-{|\boldsymbol{v}|^2}/{c^2}}},,
-\end{align}
-and <span class="math notranslate nohighlight">\(c\approx 3\times 10^8\ \)</span>m/s is the speed of light.</p>
-<p>If <span class="math notranslate nohighlight">\(\gamma\approx1\)</span>, or equivalent, sif <span class="math notranslate nohighlight">\(|\boldsymbol{v}|\ll c\)</span>:
-\begin{align}
-\boldsymbol{p}\approx &amp;m \boldsymbol{v}
-\end{align}</p>
+<p>The quantity which can be associated with the change of speed of a body is the instantaneous <em>momentum</em> of a particle of mass <span class="math notranslate nohighlight">\(m\)</span> moving with instantaneous velocity <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>, given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-95b4e3c0-1230-4d66-8e81-d149e31b432f">
+<span class="eqno">(1)<a class="headerlink" href="#equation-95b4e3c0-1230-4d66-8e81-d149e31b432f" title="Permalink to this equation">#</a></span>\[\begin{align}
+   \boldsymbol{p}=&amp;\gamma m \mathbf{v}\,, &amp;\text{where: } \gamma=&amp;\frac{1}{\sqrt{1-{|\boldsymbol{v}|^2}/{c^2}}}\,,
+\end{align}\]</div>
+<p>and <span class="math notranslate nohighlight">\(c\approx 3\times 10^8\ \)</span>m/s is the speed of light.</p>
+<p>If <span class="math notranslate nohighlight">\(\gamma\approx1\)</span>, or equivalent, sif <span class="math notranslate nohighlight">\(|\boldsymbol{v}|\ll c\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7386fa5d-13e4-4866-b906-e90ce89d4cfb">
+<span class="eqno">(2)<a class="headerlink" href="#equation-7386fa5d-13e4-4866-b906-e90ce89d4cfb" title="Permalink to this equation">#</a></span>\[\begin{align}
+  \boldsymbol{p}\approx &amp;m \boldsymbol{v}
+\end{align}\]</div>
 </section>
 <section id="equation-of-motion">
-<h3><span class="section-number">7.1.2. </span>Equation of motion<a class="headerlink" href="#equation-of-motion" title="Permalink to this headline">#</a></h3>
+<h3>Equation of motion<a class="headerlink" href="#equation-of-motion" title="Permalink to this headline">#</a></h3>
 <p>Any change of the momentum can be atribuited to some force, <span class="math notranslate nohighlight">\(\boldsymbol{F}\)</span>. In fact, the Newton’s second law can be defined in a general way as</p>
 <blockquote>
 <div><p>The change of the momentum of particle is equal to the net force acting upon the system times the duration of the interaction</p>
@@ -820,22 +872,24 @@ and <span class="math notranslate nohighlight">\(c\approx 3\times 10^8\ \)</span
 $<span class="math notranslate nohighlight">\(
 \Delta \boldsymbol{p} = \boldsymbol{F}\Delta t,\qquad \Delta t \to 0 
 \)</span>$
-or as the <em>equation of motion</em>, which is the <em>differential equation</em>
-\begin{align}
-\boldsymbol{F}=&amp;\lim_{t\to 0} \frac{\Delta \boldsymbol{p}}{\Delta t} \
-\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} ,.
-\end{align}
-This equation of motion is of general validity and can be applied numerically to solve any problem.</p>
+or as the <em>equation of motion</em>, which is the <em>differential equation</em></p>
+<div class="amsmath math notranslate nohighlight" id="equation-2e3b161c-321f-407d-80d7-ec78573ea4ef">
+<span class="eqno">(3)<a class="headerlink" href="#equation-2e3b161c-321f-407d-80d7-ec78573ea4ef" title="Permalink to this equation">#</a></span>\[\begin{align}
+\boldsymbol{F}=&amp;\lim_{t\to 0} \frac{\Delta \boldsymbol{p}}{\Delta t} \\
+\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} \,.
+\end{align}\]</div>
+<p>This equation of motion is of general validity and can be applied numerically to solve any problem.</p>
 </section>
 <section id="constant-mass">
-<h3><span class="section-number">7.1.3. </span>Constant mass<a class="headerlink" href="#constant-mass" title="Permalink to this headline">#</a></h3>
-<p>In the special case of constant mass
-\begin{align}
+<h3>Constant mass<a class="headerlink" href="#constant-mass" title="Permalink to this headline">#</a></h3>
+<p>In the special case of constant mass</p>
+<div class="amsmath math notranslate nohighlight" id="equation-69bc1703-7a49-4040-a261-3837fe912d1f">
+<span class="eqno">(4)<a class="headerlink" href="#equation-69bc1703-7a49-4040-a261-3837fe912d1f" title="Permalink to this equation">#</a></span>\[\begin{align}
 \boldsymbol{F}=&amp;m \boldsymbol{a}
-\end{align}</p>
+\end{align}\]</div>
 </section>
 <section id="example-drag-force">
-<h3><span class="section-number">7.1.4. </span>Example: Drag force<a class="headerlink" href="#example-drag-force" title="Permalink to this headline">#</a></h3>
+<h3>Example: Drag force<a class="headerlink" href="#example-drag-force" title="Permalink to this headline">#</a></h3>
 <p>For a body falling in the air, in addition to the gravitiy force <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span>, there is a dragging force in the opposite direction given by <a class="reference external" href="https://en.wikipedia.org/wiki/Drag_(physics)">[see here for details]</a><img alt="img" src="https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/figures/friction.svg" />
 $<span class="math notranslate nohighlight">\(
 F_D=\frac{1}{2}{\rho A C_d} v^2(t)=\frac{1}{2m^2}{\rho A C_d} p^2(t)\,,
@@ -848,11 +902,12 @@ where</p>
 <li><p><span class="math notranslate nohighlight">\(v(t)\)</span>: speed of the baseball</p></li>
 <li><p><span class="math notranslate nohighlight">\(p(t)\)</span>: momentum of baseball</p></li>
 </ul>
-<p>The equation of motion is
-\begin{align}
-W-F_D=&amp; \frac{d p}{dt}\
-\frac{d p}{dt}=&amp;m g - \frac{\rho A C_d}{2m^2} p^2(t).
-\end{align}</p>
+<p>The equation of motion is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b73edbdb-06f0-4061-bf99-82d5105f4f6c">
+<span class="eqno">(5)<a class="headerlink" href="#equation-b73edbdb-06f0-4061-bf99-82d5105f4f6c" title="Permalink to this equation">#</a></span>\[\begin{align}
+W-F_D=&amp; \frac{d p}{dt}\\
+\frac{d p}{dt}=&amp;m g - \frac{\rho A C_d}{2m^2} p^2(t). 
+\end{align}\]</div>
 <p>We see then that, in general
 $<span class="math notranslate nohighlight">\(
 \frac{d p}{dt}=f(t,p)\,.
@@ -861,14 +916,14 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <hr class="docutils" />
 <section id="mathematical-background">
-<h2><span class="section-number">7.2. </span>Mathematical background<a class="headerlink" href="#mathematical-background" title="Permalink to this headline">#</a></h2>
+<h2>Mathematical background<a class="headerlink" href="#mathematical-background" title="Permalink to this headline">#</a></h2>
 <p>Ordinary differential equations normally implies the solution of an initial-value problem, i.e., the solution has to satisfy the differential equation together with some initial condition. Real-life problems usually imply very complicated problems and even non-soluble ones, making any analytical approximation unfeasible. Fortunately, there are two ways to handle this. First, for almost every situation, it is generally posible to simplify the original problem and obtain a simpler one that can be easily solved. Then, using perturbation theory, we can perturbate this solution in order to approximate the real one. This approach is useful, however, it depends very much on the specific problem and a systematic study is rather complicated.</p>
 <p>The second approximation, and the one used here, consists of a complete numerical reduction of the problem, solving it exactly within the accuracy allowed by implicit errors of the methods. For this part, we are going to assume well-defined problems, where solutions are expected to be well-behaved.</p>
 </section>
 <section id="euler-s-method">
-<h2><span class="section-number">7.3. </span>Euler’s method<a class="headerlink" href="#euler-s-method" title="Permalink to this headline">#</a></h2>
+<h2>Euler’s method<a class="headerlink" href="#euler-s-method" title="Permalink to this headline">#</a></h2>
 <section id="first-order-differential-equations">
-<h3><span class="section-number">7.3.1. </span>First order differential equations<a class="headerlink" href="#first-order-differential-equations" title="Permalink to this headline">#</a></h3>
+<h3>First order differential equations<a class="headerlink" href="#first-order-differential-equations" title="Permalink to this headline">#</a></h3>
 <p>This method is the most basic of all methods, however, it is useful to understand basic concepts and definitions of differential equations problems.</p>
 <p>Suppose we have a well-posed initial-value problem given by:</p>
 <div class="math notranslate nohighlight">
@@ -889,7 +944,7 @@ $<span class="math notranslate nohighlight">\(
 <p>where the notation <span class="math notranslate nohighlight">\(y(t_i)\equiv y_i\)</span> has been introduced and the last term (error term) can be obtained taking a second-order approximation of the derivative. <span class="math notranslate nohighlight">\(\xi_i\)</span> is the value that give the maximum in absolute value for <span class="math notranslate nohighlight">\(y''\)</span></p>
 <p>This equation can be solved recursively as we know the initial value <span class="math notranslate nohighlight">\(y_0 = y(a) = \alpha\)</span>.</p>
 <section id="second-order-differential-equations">
-<h4><span class="section-number">7.3.1.1. </span>Second order differential equations<a class="headerlink" href="#second-order-differential-equations" title="Permalink to this headline">#</a></h4>
+<h4>Second order differential equations<a class="headerlink" href="#second-order-differential-equations" title="Permalink to this headline">#</a></h4>
 <p>The formalism of the Euler’s method can be applied for any system of the form:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha \]</div>
@@ -898,36 +953,39 @@ $<span class="math notranslate nohighlight">\(
 \[ \frac{d^2y}{dt^2}+ g(t,y)\frac{dy}{dt}=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ y'(a) = \beta\]</div>
 <p>For this system we have to provide both, the initial value <span class="math notranslate nohighlight">\(y(a)\)</span> and the initial derivative <span class="math notranslate nohighlight">\(y'(a)\)</span>.</p>
 <p>Now, let’s define a new variable <span class="math notranslate nohighlight">\(w(t) = y'(t)\)</span>, the previous problem can be then written as</p>
-<p>\begin{align}
-\frac{dy}{dt}=&amp;w(t) \<br />
-\frac{dw}{dt}=&amp;f(t,y)-g(t,y)w, ,\ \ \ a\leq t\leq b,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-35c0d0fc-4499-45db-ad18-c1fcd9bc2e9a">
+<span class="eqno">(6)<a class="headerlink" href="#equation-35c0d0fc-4499-45db-ad18-c1fcd9bc2e9a" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{dy}{dt}=&amp;w(t) \\  
+\frac{dw}{dt}=&amp;f(t,y)-g(t,y)w\, ,\ \ \ a\leq t\leq b\,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
+\end{align}\]</div>
 <p>Each of this problem has now the form required by the Euler’s algorithm, and the solution can be computed as:</p>
-<p>\begin{align}
-w_{i+1}=&amp; w_{i} + [f(t_i,y_i)-g(t_i,y_i)w_i]\Delta t \<br />
-y_{i+1}=&amp;y_i + w_i \Delta t, ,\ \ \ a\leq t\leq b,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2b993658-358a-495c-9819-226bf970366d">
+<span class="eqno">(7)<a class="headerlink" href="#equation-2b993658-358a-495c-9819-226bf970366d" title="Permalink to this equation">#</a></span>\[\begin{align}
+w_{i+1}=&amp; w_{i} + [f(t_i,y_i)-g(t_i,y_i)w_i]\Delta t \\  
+y_{i+1}=&amp;y_i + w_i \Delta t\, ,\ \ \ a\leq t\leq b\,, \ \ \ \ y(a) = \alpha\ \ \mbox{and}\ w(a) = \beta
+\end{align}\]</div>
 </section>
 <section id="euler-method-for-second-order-differential-equations">
-<h4><span class="section-number">7.3.1.2. </span>Euler method for second order differential equations<a class="headerlink" href="#euler-method-for-second-order-differential-equations" title="Permalink to this headline">#</a></h4>
-<p>We can define the column vectors
-\begin{align}
+<h4>Euler method for second order differential equations<a class="headerlink" href="#euler-method-for-second-order-differential-equations" title="Permalink to this headline">#</a></h4>
+<p>We can define the column vectors</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1c7413dc-9991-4f8b-93c8-0365e8f15f8e">
+<span class="eqno">(8)<a class="headerlink" href="#equation-1c7413dc-9991-4f8b-93c8-0365e8f15f8e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \boldsymbol{U}=\begin{bmatrix}
-U_1\
-U_2\
+U_1\\
+U_2\\
 \end{bmatrix}=&amp;\begin{bmatrix}
-y(t)\
-w(t)\
-\end{bmatrix},,&amp;
+y(t)\\
+w(t)\\
+\end{bmatrix}\,,&amp; 
 \boldsymbol{V}(\boldsymbol{U},t)=\begin{bmatrix}
-w(t)\
-f(t,y)-g(t,y)w(t)\
+w(t)\\
+f(t,y)-g(t,y)w(t)\\
 \end{bmatrix}=&amp;\begin{bmatrix}
-U_2\
-f(t,U_1)-g(t,U_1)U_2\
+U_2\\
+f(t,U_1)-g(t,U_1)U_2\\
 \end{bmatrix}
-\end{align}
-such that</p>
+\end{align}\]</div>
+<p>such that</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dU}{dt}=V(t,U)
@@ -935,16 +993,17 @@ such that</p>
 </section>
 </section>
 <section id="newton-s-second-law-of-motion">
-<h3><span class="section-number">7.3.2. </span>Newton’s second law of motion<a class="headerlink" href="#newton-s-second-law-of-motion" title="Permalink to this headline">#</a></h3>
-<p>In fact, the equation of motion can be seen as the system of equations
-\begin{align}
-\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\
-\boldsymbol{p}=&amp; \gamma m \boldsymbol{v}\
-\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t}
-\end{align}</p>
+<h3>Newton’s second law of motion<a class="headerlink" href="#newton-s-second-law-of-motion" title="Permalink to this headline">#</a></h3>
+<p>In fact, the equation of motion can be seen as the system of equations</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f66648b8-f588-44bb-aefa-4fd75eeabfd3">
+<span class="eqno">(9)<a class="headerlink" href="#equation-f66648b8-f588-44bb-aefa-4fd75eeabfd3" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\\
+\boldsymbol{p}=&amp; \gamma m \boldsymbol{v}\\
+\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} 
+\end{align}\]</div>
 </section>
 <section id="example">
-<h3><span class="section-number">7.3.3. </span>Example:<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
 <!-- Para ilustrar la integración numérica considere el siguiente programa en `vpython` de la solución al problema de una partícula de masa $m=0.5\ $Kg, con velocidad inicial $\mathbf{v}_i=(5,0,0)\ $m/s, moviendose bajo la influencia de una fuerza neta gravitacional dada por
 \begin{align}
 \textbf{F}_{\text{neta}}=&(0,-mg,0)\nonumber\\
@@ -970,11 +1029,12 @@ La implementación con un paso de integración dado por un $\Delta t=0.01\ \text
 </div>
 </div>
 </div>
-<p>\begin{align}
-\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\
-\boldsymbol{p}=&amp; \gamma m \boldsymbol{v}\
-\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t}
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7a6c186e-a584-46a8-8bc7-730941e287bb">
+<span class="eqno">(10)<a class="headerlink" href="#equation-7a6c186e-a584-46a8-8bc7-730941e287bb" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\\
+\boldsymbol{p}=&amp; \gamma m \boldsymbol{v}\\
+\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} 
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1376,7 +1436,7 @@ where \)</span>c$ can take the values 0 (not dragging force), 0.1 y  0.5</p>
 <p><strong>Activity</strong>: Find the time to reach the position <code class="docutils literal notranslate"><span class="pre">y=0</span></code> in each case. By using an algorithm to find roots</p>
 <p><strong>Activity</strong>: Repeat the previous analysis for a baseball in the air with a dragging force proportinal to the square of the velocity. The diameter of the baseball is 7.5cm</p>
 <section id="example-spring">
-<h4><span class="section-number">7.3.3.1. </span>Example. Spring<a class="headerlink" href="#example-spring" title="Permalink to this headline">#</a></h4>
+<h4>Example. Spring<a class="headerlink" href="#example-spring" title="Permalink to this headline">#</a></h4>
 <p>In order to apply this, let’s assume a simple mass-spring.</p>
 <p><img alt="" src="https://raw.githubusercontent.com/sbustamante/ComputationalMethods/master/material/figures/mass_spring.png" /></p>
 <p>The equation of motion according to Newton’s second law is</p>
@@ -1387,26 +1447,28 @@ where \)</span>c$ can take the values 0 (not dragging force), 0.1 y  0.5</p>
 \[ \frac{d p}{dt} = -k x \]</div>
 <div class="math notranslate nohighlight">
 \[ \frac{dx}{dt} = \frac{p}{m}\]</div>
-<p>And the equivalent Euler system is
-\begin{align}
-v_{i+1}=&amp; v_{i} - \Delta t\frac{k}{m}x_i \<br />
-x_{i+1}=&amp;x_i +  v_i \Delta t, ,\ \ \ x(0) = x_0\ \ \mbox{and}\ v(0) = v_0
-\end{align}</p>
+<p>And the equivalent Euler system is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-42dd6323-df55-4a1b-86d9-3e50ef8978cc">
+<span class="eqno">(11)<a class="headerlink" href="#equation-42dd6323-df55-4a1b-86d9-3e50ef8978cc" title="Permalink to this equation">#</a></span>\[\begin{align}
+v_{i+1}=&amp; v_{i} - \Delta t\frac{k}{m}x_i \\  
+x_{i+1}=&amp;x_i +  v_i \Delta t\, ,\ \ \ x(0) = x_0\ \ \mbox{and}\ v(0) = v_0
+\end{align}\]</div>
 </section>
 </section>
 <section id="font-color-red-activity-font">
-<h3><span class="section-number">7.3.4. </span><font color='red'>     <strong>Activity</strong> </font><a class="headerlink" href="#font-color-red-activity-font" title="Permalink to this headline">#</a></h3>
+<h3><font color='red'>     <strong>Activity</strong> </font><a class="headerlink" href="#font-color-red-activity-font" title="Permalink to this headline">#</a></h3>
 <font color='red'>    
 **1.** Using the initial conditions $x(0) = 0$ and $v(0) = 3$, solve the previous system. Plot the solutions $x(t)$ and $y(t)$ and compare with real solutions. Furthermore, calculate the total energy of the system. What can you conclude about the behaviour of the energy? Does it make any sense?
 </font><font color='red'>    
 **2.** Using the same reasoning, derive the equations for a simple pendulum. Compare the solution for small oscillations with the analytic one. What happens when increasing the initial amplitude of the movement?
 </font><hr class="docutils" />
-<p>\begin{align}
-\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\
-\boldsymbol{p}=&amp; \gamma m \boldsymbol{v}\
-\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t}
-\end{align}
-1D
+<div class="amsmath math notranslate nohighlight" id="equation-431859bb-f3eb-405c-ac4e-0ef816ddd158">
+<span class="eqno">(12)<a class="headerlink" href="#equation-431859bb-f3eb-405c-ac4e-0ef816ddd158" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\\
+\boldsymbol{p}=&amp; \gamma m \boldsymbol{v}\\
+\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} 
+\end{align}\]</div>
+<p>1D
 $<span class="math notranslate nohighlight">\( x_{i+1}=x_i+(p/m)\Delta t\)</span><span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\( p_{i+1}-p_i= F\Delta t\)</span><span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\( p_{i+1}=p_i+F \Delta t \)</span>$</p>
@@ -1551,7 +1613,7 @@ $<span class="math notranslate nohighlight">\( x_{i+1}=x_i+(p/m)\Delta t\)</span
 </div>
 </section>
 <section id="implementation-in-scipy">
-<h3><span class="section-number">7.3.5. </span>Implementation in Scipy<a class="headerlink" href="#implementation-in-scipy" title="Permalink to this headline">#</a></h3>
+<h3>Implementation in Scipy<a class="headerlink" href="#implementation-in-scipy" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
@@ -1579,7 +1641,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <section id="first-order-ordinary-differential-equations">
-<h4><span class="section-number">7.3.5.1. </span>First order ordinary differential equations<a class="headerlink" href="#first-order-ordinary-differential-equations" title="Permalink to this headline">#</a></h4>
+<h4>First order ordinary differential equations<a class="headerlink" href="#first-order-ordinary-differential-equations" title="Permalink to this headline">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">integrate.odeint</span></code>:
 Integrate a system of ordinary differential equations</p>
 <p>Uso básico</p>
@@ -1587,17 +1649,19 @@ Integrate a system of ordinary differential equations</p>
 </pre></div>
 </div>
 <p>Solves the initial value problem for stiff or non-stiff systems
-of first order ordinary differential equations:
-$<span class="math notranslate nohighlight">\(
+of first order ordinary differential equations:</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{dy}{dt}=f(y,t)
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>y<span class="math notranslate nohighlight">\( can be a vector. \)</span>a&lt;t&lt;b<span class="math notranslate nohighlight">\( and \)</span>y(a)=\alpha$</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(y\)</span> can be a vector. <span class="math notranslate nohighlight">\(a&lt;t&lt;b\)</span> and <span class="math notranslate nohighlight">\(y(a)=\alpha\)</span></p>
 </section>
 <section id="id1">
-<h4><span class="section-number">7.3.5.2. </span>Example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
-<p>Consider the following differential equation
-$<span class="math notranslate nohighlight">\( \frac{dy(t)}{dt}=-k y(t),\)</span><span class="math notranslate nohighlight">\(
-where \)</span>k<span class="math notranslate nohighlight">\( is constant and with initial condition \)</span>y(0)=y_0=5$</p>
+<h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>Consider the following differential equation</p>
+<div class="math notranslate nohighlight">
+\[\frac{dy(t)}{dt}=-k y(t),\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is constant and with initial condition <span class="math notranslate nohighlight">\(y(0)=y_0=5\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">):</span> <span class="c1">#t is mandatory even if no explicit </span>
@@ -1691,7 +1755,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </section>
 <section id="id2">
-<h4><span class="section-number">7.3.5.3. </span>Second order differential equations<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Second order differential equations<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
 <p>Although first-order schemes like Euler’s method are illustrative and allow a good understanding of the numerical problem, real applications cannot be dealt with them, instead more precise and accurate high-order methods must be invoked. In this section we shall cover a well-known family of numerical integrators, the Runge-Kutta methods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1702,28 +1766,28 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </section>
 <section id="some-examples">
-<h4><span class="section-number">7.3.5.4. </span>Some examples<a class="headerlink" href="#some-examples" title="Permalink to this headline">#</a></h4>
+<h4>Some examples<a class="headerlink" href="#some-examples" title="Permalink to this headline">#</a></h4>
 <ol class="simple">
-<li><p><a class="reference external" href="http://www.southampton.ac.uk/~fangohr/teaching/python/book/Python-for-Computational-Science-and-Engineering.pdf">http://www.southampton.ac.uk/~fangohr/teaching/python/book/Python-for-Computational-Science-and-Engineering.pdf</a></p>
+<li><p>http://www.southampton.ac.uk/~fangohr/teaching/python/book/Python-for-Computational-Science-and-Engineering.pdf</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://www.southampton.ac.uk/~fangohr/teaching/python/book/ipynb/">http://www.southampton.ac.uk/~fangohr/teaching/python/book/ipynb/</a></p></li>
+<li><p>http://www.southampton.ac.uk/~fangohr/teaching/python/book/ipynb/</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="http://sam-dolan.staff.shef.ac.uk/mas212/">http://sam-dolan.staff.shef.ac.uk/mas212/</a></p>
+<li><p>http://sam-dolan.staff.shef.ac.uk/mas212/</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://sam-dolan.staff.shef.ac.uk/mas212/notebooks/ODE_Example.ipynb">http://sam-dolan.staff.shef.ac.uk/mas212/notebooks/ODE_Example.ipynb</a></p></li>
+<li><p>http://sam-dolan.staff.shef.ac.uk/mas212/notebooks/ODE_Example.ipynb</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://apmonitor.com/pdc/index.php/Main/SolveDifferentialEquations">https://apmonitor.com/pdc/index.php/Main/SolveDifferentialEquations</a></p></li>
-<li><p><a class="reference external" href="http://csc.ucdavis.edu/~cmg/Group/readings/pythonissue_3of4.pdf">http://csc.ucdavis.edu/~cmg/Group/readings/pythonissue_3of4.pdf</a></p></li>
-<li><p><a class="reference external" href="http://www.tau.ac.il/~kineret/amit/scipy_tutorial/#x1-210004.4">http://www.tau.ac.il/~kineret/amit/scipy_tutorial/#x1-210004.4</a></p></li>
-<li><p><a class="reference external" href="https://www.udacity.com/course/differential-equations-in-action--cs222">https://www.udacity.com/course/differential-equations-in-action–cs222</a></p></li>
-<li><p><a class="reference external" href="https://github.com/robclewley/pydstool">https://github.com/robclewley/pydstool</a></p>
+<li><p>https://apmonitor.com/pdc/index.php/Main/SolveDifferentialEquations</p></li>
+<li><p>http://csc.ucdavis.edu/~cmg/Group/readings/pythonissue_3of4.pdf</p></li>
+<li><p>http://www.tau.ac.il/~kineret/amit/scipy_tutorial/#x1-210004.4</p></li>
+<li><p>https://www.udacity.com/course/differential-equations-in-action–cs222</p></li>
+<li><p>https://github.com/robclewley/pydstool</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://www2.gsu.edu/~matrhc/PyDSTool.htm">http://www2.gsu.edu/~matrhc/PyDSTool.htm</a></p></li>
+<li><p>http://www2.gsu.edu/~matrhc/PyDSTool.htm</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/JuliaDiffEq">https://github.com/JuliaDiffEq</a></p></li>
+<li><p>https://github.com/JuliaDiffEq</p></li>
 </ol>
 <p><strong>Example</strong>: From <a class="reference external" href="http://sam-dolan.staff.shef.ac.uk/mas212/notebooks/ODE_Example.ipynb">http://sam-dolan.staff.shef.ac.uk/mas212/</a></p>
 <p>As explained before, we need to write a second order ordinary differential equations in terms of first order matricial ordinary differential equation. In terms of a parameter, <span class="math notranslate nohighlight">\(x\)</span>, this implay to have a column vector
@@ -1763,24 +1827,25 @@ y\\
 z
 \end{bmatrix}.
 \)</span>$
-Therefore
-\begin{align}
-\frac{\operatorname{d}}{\operatorname{d} x}
-\begin{bmatrix}
-y\
-z\
+Therefore</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a3e009a1-f11e-4ecc-94eb-ea06802becdd">
+<span class="eqno">(13)<a class="headerlink" href="#equation-a3e009a1-f11e-4ecc-94eb-ea06802becdd" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} x} 
+\begin{bmatrix} 
+y\\
+z\\
 \end{bmatrix}=&amp;
 \begin{bmatrix}
-z\
--2z-2y+\cos(2x)\
-\end{bmatrix}\
-\frac{\operatorname{d}}{\operatorname{d} x}
+z\\
+-2z-2y+\cos(2x)\\
+\end{bmatrix}\\
+\frac{\operatorname{d}}{\operatorname{d} x} 
 U=&amp;
 \begin{bmatrix}
-U_1\
--2U_1-2U_0+\cos(2x)\
+U_1\\
+-2U_1-2U_0+\cos(2x)\\
 \end{bmatrix}
-\end{align}</p>
+\end{align}\]</div>
 <p>Implementation by using only <span class="math notranslate nohighlight">\(U\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1911,18 +1976,19 @@ U_1\
 <img alt="../_images/differential-equations_89_0.png" src="../_images/differential-equations_89_0.png" />
 </div>
 </div>
-<p>Implementation by using explicitly <span class="math notranslate nohighlight">\(y(x)\)</span> and <span class="math notranslate nohighlight">\(z(x)\)</span>
-\begin{align}
-\frac{\operatorname{d}}{\operatorname{d} x}
-\begin{bmatrix}
-y\
-z\
+<p>Implementation by using explicitly <span class="math notranslate nohighlight">\(y(x)\)</span> and <span class="math notranslate nohighlight">\(z(x)\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-5ee6797d-08ed-484e-9d1a-e97c0e8cf0a1">
+<span class="eqno">(14)<a class="headerlink" href="#equation-5ee6797d-08ed-484e-9d1a-e97c0e8cf0a1" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} x} 
+\begin{bmatrix} 
+y\\
+z\\
 \end{bmatrix}=&amp;
 \begin{bmatrix}
-z\
--2z-2y+\cos(2x)\
+z\\
+-2z-2y+\cos(2x)\\
 \end{bmatrix}
-\end{align}</p>
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dU_dx</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -1957,22 +2023,24 @@ z\
 </div>
 </div>
 <p><strong>Activity</strong>: Apply the previous example to the problem of parabolic motion with air friction:</p>
-<p>\begin{align}
-\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\
-\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t}
-\end{align}</p>
-<p>\begin{align}
-\frac{\operatorname{d}}{\operatorname{d} t}
-\begin{bmatrix}
-\boldsymbol{x}\
-\boldsymbol{p}\
+<div class="amsmath math notranslate nohighlight" id="equation-8d3be174-f078-4828-a4e5-7290801b10e3">
+<span class="eqno">(15)<a class="headerlink" href="#equation-8d3be174-f078-4828-a4e5-7290801b10e3" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\boldsymbol{p}}{m}=&amp;\frac{\operatorname{d}\boldsymbol{x}}{\operatorname{d}t}\\
+\boldsymbol{F}=&amp;\frac{\operatorname{d}\boldsymbol{p}}{\operatorname{d} t} 
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-aaa04118-8189-4aa4-b7dc-5050086cf935">
+<span class="eqno">(16)<a class="headerlink" href="#equation-aaa04118-8189-4aa4-b7dc-5050086cf935" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} t} 
+\begin{bmatrix} 
+ \boldsymbol{x}\\
+ \boldsymbol{p}\\
 \end{bmatrix}=&amp;
 \begin{bmatrix}
-\boldsymbol{p}/m\
--m\boldsymbol{g}-c \boldsymbol{p}/m \
-\end{bmatrix},,
-\end{align}
-where <span class="math notranslate nohighlight">\(\boldsymbol{g}=(0,g)\)</span>, and  such that in two dimensions</p>
+\boldsymbol{p}/m\\
+-m\boldsymbol{g}-c \boldsymbol{p}/m \\
+\end{bmatrix}\,,
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{g}=(0,g)\)</span>, and  such that in two dimensions</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{U}=\begin{bmatrix}
@@ -1987,15 +2055,16 @@ p_x\\
 p_y\\
 \end{bmatrix}
 \end{split}\]</div>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-80df35a6-20c3-483f-ad22-ca0d8198710f">
+<span class="eqno">(17)<a class="headerlink" href="#equation-80df35a6-20c3-483f-ad22-ca0d8198710f" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{\operatorname{d}}{\operatorname{d} t} \boldsymbol{U}=&amp;
 \begin{bmatrix}
-{U}_2/m\
-{U}_3/m\
--c{U}_2/m\
--m{g}-c{U}_3/m\
+{U}_2/m\\
+{U}_3/m\\
+-c{U}_2/m\\
+-m{g}-c{U}_3/m\\
 \end{bmatrix}
-\end{align}</p>
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dU_dt</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span><span class="n">g</span><span class="o">=</span><span class="mf">9.8</span><span class="p">):</span>
@@ -2065,34 +2134,36 @@ p_y\\
 <img alt="../_images/differential-equations_99_0.png" src="../_images/differential-equations_99_0.png" />
 </div>
 </div>
-<p><font color="red">Activity</font>: Implemet directly:
-\begin{align}
-\frac{\operatorname{d}}{\operatorname{d} t}
-\begin{bmatrix}
-\boldsymbol{x}\
-\boldsymbol{p}\
+<p><font color="red">Activity</font>: Implemet directly:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-78f120e0-9413-4fa2-8361-c1b8e2962d24">
+<span class="eqno">(18)<a class="headerlink" href="#equation-78f120e0-9413-4fa2-8361-c1b8e2962d24" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} t} 
+\begin{bmatrix} 
+ \boldsymbol{x}\\
+ \boldsymbol{p}\\
 \end{bmatrix}=&amp;
 \begin{bmatrix}
-\boldsymbol{p}/m\
--m\boldsymbol{g}-c \boldsymbol{p}/m \
-\end{bmatrix},,
-\end{align}
-as
-\begin{align}
-\frac{\operatorname{d}}{\operatorname{d} t}
-\begin{bmatrix}
-x\
-y\
-p_x\
-p_y
+\boldsymbol{p}/m\\
+-m\boldsymbol{g}-c \boldsymbol{p}/m \\
+\end{bmatrix}\,,
+\end{align}\]</div>
+<p>as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ef31301e-4a55-49c3-ba1c-d7e464948fba">
+<span class="eqno">(19)<a class="headerlink" href="#equation-ef31301e-4a55-49c3-ba1c-d7e464948fba" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\operatorname{d}}{\operatorname{d} t} 
+\begin{bmatrix} 
+ x\\
+ y\\
+ p_x\\
+ p_y
 \end{bmatrix}=&amp;
 \begin{bmatrix}
-p_x/m\
-p_y/m\
--c p_x/m \
--mg-c p_y/m \
-\end{bmatrix},,
-\end{align}</p>
+p_x/m\\
+p_y/m\\
+-c p_x/m \\
+-mg-c p_y/m \\
+\end{bmatrix}\,,
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dU_dt</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span><span class="n">g</span><span class="o">=</span><span class="mf">9.8</span><span class="p">):</span>
@@ -2154,22 +2225,24 @@ p_y/m\
 </section>
 </section>
 <section id="example-2">
-<h3><span class="section-number">7.3.6. </span>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">#</a></h3>
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">#</a></h3>
 <p>In this example we are going to use the Scipy implementation for mapping the phase space of a pendulum.</p>
 <p>The equations of the pendulum are given by:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{d\theta}{dt} = \omega \]</div>
 <div class="math notranslate nohighlight">
 \[ \frac{d\omega}{dt} = -\frac{g}{l}\sin \theta \]</div>
-<p>\begin{align}
-\frac{d}{dt} U=\begin{pmatrix}\omega\
--\dfrac{g}{l}\sin\theta \end{pmatrix},
-\end{align}
-where
-\begin{align}
-U=\begin{pmatrix}\theta\
+<div class="amsmath math notranslate nohighlight" id="equation-81020c40-8990-49d4-a177-a787e5c11a5e">
+<span class="eqno">(20)<a class="headerlink" href="#equation-81020c40-8990-49d4-a177-a787e5c11a5e" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{d}{dt} U=\begin{pmatrix}\omega\\
+ -\dfrac{g}{l}\sin\theta \end{pmatrix},
+\end{align}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4f798f31-c211-46cb-b5e7-a6640c3443dc">
+<span class="eqno">(21)<a class="headerlink" href="#equation-4f798f31-c211-46cb-b5e7-a6640c3443dc" title="Permalink to this equation">#</a></span>\[\begin{align}
+ U=\begin{pmatrix}\theta\\
 \omega \end{pmatrix}.
-\end{align}</p>
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
@@ -2371,14 +2444,14 @@ which go from right to left represent clockwise rotations. The phase space have 
 </section>
 <hr class="docutils" />
 <section id="appendix">
-<h2><span class="section-number">7.4. </span>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h2>
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">7.4.1. </span><font color='red'>     <strong>Activity</strong> </font><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><font color='red'>     <strong>Activity</strong> </font><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <font color='red'>    
 Using the previous example, explore the phase space of a simple oscillator and a damped pendulum.
 </font></section>
 <section id="fourth-order-runge-kutta-method">
-<h3><span class="section-number">7.4.2. </span>Fourth-order Runge-Kutta method<a class="headerlink" href="#fourth-order-runge-kutta-method" title="Permalink to this headline">#</a></h3>
+<h3>Fourth-order Runge-Kutta method<a class="headerlink" href="#fourth-order-runge-kutta-method" title="Permalink to this headline">#</a></h3>
 <p>Finally, the most used general purpose method is the fourth-order Runge-Kutta scheme. Its derivation follows the same previous reasoning, however the procedure is rather long and it makes no sense to reprouce it here. Instead, we will give the direct algorithm:</p>
 <p>Let’s assume again a problem of the form:</p>
 <div class="math notranslate nohighlight">
@@ -2397,7 +2470,7 @@ Using the previous example, explore the phase space of a simple oscillator and a
 \[ \mathbf{K}_3 = hf\left( t + h,y + \mathbf{K}_2\right)\]</div>
 </section>
 <section id="id4">
-<h3><span class="section-number">7.4.3. </span><font color='red'>     <strong>Activity</strong> </font><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><font color='red'>     <strong>Activity</strong> </font><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <font color='red'>    
 The Lorenz attractor is a common set of differential equations of some models of terrestrial atmosphere studies. It is historically known as one of the first system to exhibit deterministic caos. The equations are:
 <div class="math notranslate nohighlight">
@@ -2412,7 +2485,7 @@ The Lorenz attractor is a common set of differential equations of some models of
 Write a routine that gives a step of RK4 and integrate the previous system. Plot the resulting 3D solution $(x,y,z)$.
 </font></section>
 <section id="second-order-runge-kutta-methods">
-<h3><span class="section-number">7.4.4. </span>Second-order Runge-Kutta methods<a class="headerlink" href="#second-order-runge-kutta-methods" title="Permalink to this headline">#</a></h3>
+<h3>Second-order Runge-Kutta methods<a class="headerlink" href="#second-order-runge-kutta-methods" title="Permalink to this headline">#</a></h3>
 <p>For this method, let’s assume a problem of the form:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{dy}{dt}=y'=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha \]</div>
@@ -2454,7 +2527,7 @@ c_0 = 1/3 &amp; c_1=2/3 &amp; p = 3/4 &amp; q = 3/4 &amp; \mbox{Ralston's Method
 </section>
 </section>
 <section id="two-point-boundary-value-problems">
-<h2><span class="section-number">7.5. </span>Two-Point Boundary Value Problems<a class="headerlink" href="#two-point-boundary-value-problems" title="Permalink to this headline">#</a></h2>
+<h2>Two-Point Boundary Value Problems<a class="headerlink" href="#two-point-boundary-value-problems" title="Permalink to this headline">#</a></h2>
 <p>Up to now we have solved initial value problems of the form:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{dy}{dt}=y'=f(t,y),\ \ \ a\leq t\leq b, \ \ \ \ y(a) = \alpha \]</div>
@@ -2477,7 +2550,7 @@ c_0 = 1/3 &amp; c_1=2/3 &amp; p = 3/4 &amp; q = 3/4 &amp; \mbox{Ralston's Method
 <p><span class="math notranslate nohighlight">\( r(u) \equiv \theta(u) - \beta = 0 \)</span></p>
 <p>where <span class="math notranslate nohighlight">\(r(u)\)</span> is the residual function. This problem can be thus solved using some of the methods previously seen for the root-finding problem.</p>
 <section id="example-3">
-<h3><span class="section-number">7.5.1. </span>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">#</a></h3>
+<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">#</a></h3>
 <p>A very simplified model of interior solid planets consists of a set of spherically symmetric radial layers, where the next properties are computed: density <span class="math notranslate nohighlight">\(\rho(r)\)</span>, enclosed mass <span class="math notranslate nohighlight">\(m(r)\)</span>, gravity <span class="math notranslate nohighlight">\(g(r)\)</span> and pressure <span class="math notranslate nohighlight">\(P(r)\)</span>. Each of these properties are assumed to be only radially dependent. The set of equations that rules the planetary interior is:</p>
 <p><strong>Hydrostatic equilibrium equation</strong></p>
 <div class="math notranslate nohighlight">
@@ -2501,7 +2574,7 @@ c_0 = 1/3 &amp; c_1=2/3 &amp; p = 3/4 &amp; q = 3/4 &amp; \mbox{Ralston's Method
 <p>For this problem, we are going to assume an one-layer planet made of perovskite, so <span class="math notranslate nohighlight">\(K_s \approx 200\ GPa\)</span>. A planet mass equal to earth, so <span class="math notranslate nohighlight">\(M_p = 5.97219 \times 10^{24}\ kg\)</span>, a surface density <span class="math notranslate nohighlight">\(\rho_{surf} = 3500\ kg/m^3\)</span> and a atmospheric pressure of <span class="math notranslate nohighlight">\(P_{atm} = 1\ atm = 1\times 10^5\ Pa\)</span>.</p>
 </section>
 <section id="implementation-of-the-pendulum-phase-space">
-<h3><span class="section-number">7.5.2. </span>Implementation of the pendulum phase space<a class="headerlink" href="#implementation-of-the-pendulum-phase-space" title="Permalink to this headline">#</a></h3>
+<h3>Implementation of the pendulum phase space<a class="headerlink" href="#implementation-of-the-pendulum-phase-space" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#RK2 integrator</span>
@@ -2649,7 +2722,7 @@ c_0 = 1/3 &amp; c_1=2/3 &amp; p = 3/4 &amp; q = 3/4 &amp; \mbox{Ralston's Method
     <a class='right-next' id="next-link" href="statistics.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Statistics</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Statistics</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -115,50 +115,106 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview-python.html">
    1. Python Overview
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="computer-arithmetics.html">
    2. Computer Arithmetics and Round-off Methods
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="one-variable-equations.html">
    3. One Variable Equations
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    4. Interpolation Methods
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numerical-calculus.html">
    5. Numerical Calculus
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="linear-algebra.html">
    6. Linear Algebra
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="differential-equations.html">
-   7. Differential Equations
+   Differential Equations
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="statistics.html">
-   8. Statistics
+   7. Statistics
   </a>
  </li>
+</ul>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Intro_clases.html">
-   9. Clases
+   8. Clases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="scientific-libraries.html">
+   Scientific Libraries with Python
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pandas.html">
+   Pandas
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="matplotlib.html">
+   Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ipython-notebooks.html">
+   Notebooks
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra-diagonalization.html">
+   Matrix diagonalization
   </a>
  </li>
 </ul>
@@ -655,7 +711,7 @@ title="Print to PDF"
 <p>[1a] Gonzalo Galiano Casas, Esperanza García Gonzalo <a class="reference external" href="https://www.unioviedo.es/compnum/expositive/handbook/metnum.pdf">Numerical Computation</a> - <a class="reference external" href="https://drive.google.com/file/d/1gwHYLx5aBf3oXRhmGeG-n1toTtAUhvfX/view?usp=sharing">GD</a> - <a class="reference external" href="https://www.unioviedo.es/compnum/index.php/english-menu">Web page with notebooks</a><br/>
 [1g] Mo Mu, <a class="reference external" href="https://www.math.ust.hk/~mamu/courses/230/course.htm">MATH 3311: Introduction to Numerical Methods</a> <a class="reference external" href="https://drive.google.com/drive/folders/1vv38SS7Zpw8mOHG7Kq_3lZr6o9H4xOYP?usp=sharing">GD</a> - <a class="reference external" href="https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf">Demostration Error in Lagrange Polynomials</a><br/>
 [1h] Zhiliang Xu, <a class="reference external" href="https://www3.nd.edu/~zxu2/ACMS40390-F16.html">ACMS 40390: Fall 2016 - Numerical Analysis</a> <a class="reference external" href="https://drive.google.com/drive/folders/1Z9Fws1v34PuPdGAp_mBCWmTvZM_Qd6Xk?usp=sharing">GD</a></br></p>
-<p><a class="reference external" href="https://github.com/restrepo/Calculus/blob/master/Differential_Calculus.ipynb">https://github.com/restrepo/Calculus/blob/master/Differential_Calculus.ipynb</a></p>
+<p>https://github.com/restrepo/Calculus/blob/master/Differential_Calculus.ipynb</p>
 <hr class="docutils" />
 <ul class="simple">
 <li><p><a class="reference external" href="#NumPy-Polynomials">NumPy polynomials</a></p></li>
@@ -1143,20 +1199,24 @@ p1(x)+p2(x)=
 </div>
 <p><strong>Activity</strong>:  Movement with uniform acceleration</p>
 <ol class="simple">
-<li><p>Define a polynomial for the movement with uniform acceleration:
-\begin{align}
-x(t)=x_0+v_0 (t-t_0)+\tfrac{1}{2} a (t-t_0)^2 ,,
-\end{align}</p></li>
+<li><p>Define a polynomial for the movement with uniform acceleration:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-fe0a66a5-2a05-43a8-a8ea-c6109911a074">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-fe0a66a5-2a05-43a8-a8ea-c6109911a074" title="Permalink to this equation">#</a></span>\[\begin{align}
+x(t)=x_0+v_0 (t-t_0)+\tfrac{1}{2} a (t-t_0)^2 \,,
+\end{align}\]</div>
+<ol class="simple">
 <li><p>Use the previous formula expressed as polynomial of degree 2, to solve the following problem with <code class="docutils literal notranslate"><span class="pre">np.poly1d</span></code>:</p>
 <ul class="simple">
 <li><p>A car departs from rest with a constant acceleration of <span class="math notranslate nohighlight">\(6~\text{m}\cdot\text{s}^{-2}\)</span> and travels through a flat and straight road. 10 seconds later a second pass for the same starting point and in the same direction with an initial speed of <span class="math notranslate nohighlight">\(10~\text{m}\cdot\text{s}^{-1}\)</span> and a constant acelleration of <span class="math notranslate nohighlight">\(10~\text{m}\cdot\text{s}^{-2}\)</span>. Find the time and distance at which the two cars meet.</p></li>
 </ul>
 </li>
 </ol>
-<p><em>Hint</em>.
-\begin{align}
-x(t)=x_0-v_0t_0+\frac{1}{2}at_0^2 +(v_0-at_0)t+\tfrac{1}{2} a t^2
-\end{align}</p>
+<p><em>Hint</em>.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9ba40f70-62d2-4145-80b5-3e789b6d58be">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-9ba40f70-62d2-4145-80b5-3e789b6d58be" title="Permalink to this equation">#</a></span>\[\begin{align}
+x(t)=x_0-v_0t_0+\frac{1}{2}at_0^2 +(v_0-at_0)t+\tfrac{1}{2} a t^2 
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span><span class="o">=</span><span class="mi">0</span>
@@ -1397,10 +1457,13 @@ Entonces \)</span>t_e<span class="math notranslate nohighlight">\(, es la raíz 
 \[y=\frac{y_{i+1}-y_i}{x_{i+1}-x_i}x+b\]</div>
 <div class="math notranslate nohighlight">
 \[b=y_i-\frac{y_{i+1}-y_i}{x_{i+1}-x_i}x_i\]</div>
-<p>\begin{align}</p>
-<p>f(x)\approx y = &amp;\frac{y_{i+1}-y_i}{x_{i+1}-x_i}(x-x_i) + y_i \
-=&amp;\frac{y_{i+1}-y_i}{x_{i+1}-x_i}x+\left[y_i-\frac{y_{i+1}-y_i}{x_{i+1}-x_i}x_i\right] \</p>
-<p>\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-47966287-09b6-4eba-8b71-3d5b8f156d8d">
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-47966287-09b6-4eba-8b71-3d5b8f156d8d" title="Permalink to this equation">#</a></span>\[\begin{align}
+%$$  
+f(x)\approx y = &amp;\frac{y_{i+1}-y_i}{x_{i+1}-x_i}(x-x_i) + y_i \\
+=&amp;\frac{y_{i+1}-y_i}{x_{i+1}-x_i}x+\left[y_i-\frac{y_{i+1}-y_i}{x_{i+1}-x_i}x_i\right] \\
+%$$
+\end{align}\]</div>
 <p>and this can be applied for any <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(x_0\leq x \leq x_N\)</span> and where it has been assumed an ordered set <span class="math notranslate nohighlight">\(\left\{x_i\right\}_i\)</span>.</p>
 <section id="steps-li">
 <h3><span class="section-number">4.3.1. </span>Steps LI<a class="headerlink" href="#steps-li" title="Permalink to this headline">#</a></h3>
@@ -1800,17 +1863,18 @@ plt.ylim(-15,20)
 <p>Let’s suppose a well-behaved yet unknown function <span class="math notranslate nohighlight">\(f\)</span> and two points <span class="math notranslate nohighlight">\((x_0,y_0)\)</span> and <span class="math notranslate nohighlight">\((x_1,y_1)\)</span> for which <span class="math notranslate nohighlight">\(f(x_0) = y_0\)</span> and <span class="math notranslate nohighlight">\(f(x_1) = y_1\)</span>. With this information we can build a first-degree polynomial that passes through both points by using the last equation in sec. <a class="reference external" href="interpolation.ipynb#Linear-Interpolation">Linear Interpolation</a>, we have</p>
 <div class="math notranslate nohighlight">
 \[P_1(x) = \left[ \frac{y_{1}-y_0}{x_{1}-x_0} \right]x + \left[ y_0 - \frac{y_{1}-y_0}{x_{1}-x_0}x_0 \right]\]</div>
-<p>We can readily rewrite this expression like:
-\begin{align}
-P_1(x) =&amp; \frac{y_{1}}{x_{1}-x_0} x- \frac{y_0}{x_{1}-x_0} x + y_0 -\frac{y_{1}}{x_{1}-x_0}x_0 +  \frac{y_0}{x_{1}-x_0}x_0 \nonumber\
+<p>We can readily rewrite this expression like:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bf71bac3-ff03-4b01-8adf-cf417fd5e10d">
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-bf71bac3-ff03-4b01-8adf-cf417fd5e10d" title="Permalink to this equation">#</a></span>\[\begin{align}
+P_1(x) =&amp; \frac{y_{1}}{x_{1}-x_0} x- \frac{y_0}{x_{1}-x_0} x + y_0 -\frac{y_{1}}{x_{1}-x_0}x_0 +  \frac{y_0}{x_{1}-x_0}x_0 \nonumber\\
 =&amp; \left[1 - \frac{x}{x_{1}-x_0}  +  \frac{x_0}{x_{1}-x_0}\right]y_0+
-\left[\frac{x}{x_{1}-x_0}  -\frac{x_0}{x_{1}-x_0}\right]y_1    \nonumber\
-=&amp; \left[\frac{x_1-x_0}{x_{1}-x_0} - \frac{x}{x_{1}-x_0}  +  \frac{x_0}{x_{1}-x_0}\right]y_0+
-\left[\frac{x}{x_{1}-x_0}  -\frac{x_0}{x_{1}-x_0}\right]y_1    \nonumber\
+\left[\frac{x}{x_{1}-x_0}  -\frac{x_0}{x_{1}-x_0}\right]y_1    \nonumber\\
+ =&amp; \left[\frac{x_1-x_0}{x_{1}-x_0} - \frac{x}{x_{1}-x_0}  +  \frac{x_0}{x_{1}-x_0}\right]y_0+
+\left[\frac{x}{x_{1}-x_0}  -\frac{x_0}{x_{1}-x_0}\right]y_1    \nonumber\\
 =&amp; \left[\frac{x_1-x}{x_{1}-x_0}\right]y_0+
-\left[\frac{x-x_0}{x_{1}-x_0}\right]y_1    ,.
-\end{align}
-In this way
+\left[\frac{x-x_0}{x_{1}-x_0}\right]y_1    \,.
+\end{align}\]</div>
+<p>In this way
 $<span class="math notranslate nohighlight">\(P_1(x) = L_0(x)f(x_0) + L_1(x)f(x_1)\)</span>$</p>
 <p>where we define the functions <span class="math notranslate nohighlight">\(L_0(x)\)</span> and <span class="math notranslate nohighlight">\(L_1(x)\)</span> as:</p>
 <div class="math notranslate nohighlight">
@@ -1870,7 +1934,7 @@ where the formula for the error bound is given by
 E_n(x) = {f^{n+1}(\xi(x)) \over (n+1)!} \cdot \prod_{i=0}^{n}\left(x-x_{i}\right)\,,
 \)</span><span class="math notranslate nohighlight">\(
 \)</span>f^{(n+1)}<span class="math notranslate nohighlight">\( is the \)</span>n+1<span class="math notranslate nohighlight">\( derivative of \)</span>f$</p>
-<p>For a demostration see [1d] → <a class="reference external" href="https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf">https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf</a></p>
+<p>For a demostration see [1d] → https://www.math.ust.hk/~mamu/courses/231/Slides/CH03_1B.pdf</p>
 <p>The specific calculation of the bounded error is to find the <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(x\)</span> such that
 $<span class="math notranslate nohighlight">\(
 \left|f(x)-P(x)\right| \leq \max_{\xi\in[a,b]}\left|\frac{f^{(n+1)}(\xi)}{(n+1) !}\right| \cdot \max_{x\in[a,b]}\left|\prod_{i=0}^{n}\left(x-x_{i}\right)\right|
@@ -2717,7 +2781,7 @@ A
 </section>
 <section id="logarithmic-interpolation">
 <h3><span class="section-number">4.4.13. </span>Logarithmic interpolation<a class="headerlink" href="#logarithmic-interpolation" title="Permalink to this headline">#</a></h3>
-<p>See: <a class="reference external" href="https://stackoverflow.com/a/29359275/2268280">https://stackoverflow.com/a/29359275/2268280</a></p>
+<p>See: https://stackoverflow.com/a/29359275/2268280</p>
 </section>
 </section>
 <section id="appendix">
