@@ -39,5 +39,14 @@ parts:
   - file:  material/scientific-libraries
 - numbered: false
   chapters:
+  - file:  material/Pandas
+- numbered: false
+  chapters:
+  - file:  material/matplotlib
+- numbered: false
+  chapters:
+  - file:  material/ipython-notebooks  
+- numbered: false
+  chapters:
   - file:  material/linear-algebra-diagonalization
   
