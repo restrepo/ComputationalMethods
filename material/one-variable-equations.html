@@ -160,21 +160,21 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="differential-equations.html">
-   Differential Equations
+   7. Differential Equations
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="statistics.html">
-   7. Statistics
+   8. Statistics
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Intro_clases.html">
-   8. Clases
+   9. Clases
   </a>
  </li>
 </ul>
@@ -464,16 +464,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#example">
      3.3.1. Example
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#font-color-red-activity-font">
-       3.3.1.1.
-       <font color="red">
-        ACTIVITY
-       </font>
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-2">
@@ -542,16 +532,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#example">
      3.3.1. Example
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#font-color-red-activity-font">
-       3.3.1.1.
-       <font color="red">
-        ACTIVITY
-       </font>
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-2">
@@ -572,48 +552,25 @@ title="Print to PDF"
                 
   <p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/one-variable-equations.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="one-variable-equations">
-<h1><span class="section-number">3. </span>One Variable Equations<a class="headerlink" href="#one-variable-equations" title="Permalink to this headline">#</a></h1>
+<h1><a class="toc-backref" href="#id1"><span class="section-number">3. </span>One Variable Equations</a><a class="headerlink" href="#one-variable-equations" title="Permalink to this headline">#</a></h1>
 <p>Throughout this section and the next ones we shall cover the topic of solutions to one variable equations. Many different problems in physics and astronomy require the use of complex expressions, even with implicit dependence of variables. When it is necessary to solve for one of those variable, an analytical approach is not usually the best solution, because of its complexity or even because it does not exist at all. Different approaches for dealing with this comprehend series expansions and numerical solutions. Among the most widely used numerical approaches are the Bisection or Binary-search method, fixed-point iteration, Newton’s methods.</p>
 <p>For further details see for example Chap. 5 of Ref. (<a class="reference external" href="../index.ipynb#Bibliography">1</a>) or Chap. 4 of Ref. (<a class="reference external" href="../index.ipynb#Bibliography">3</a>)</p>
 <hr class="docutils" />
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#Bisection-Method">Bisection Method</a></p>
+<li><p><a class="reference internal" href="#one-variable-equations" id="id1">One Variable Equations</a></p>
 <ul>
-<li><p><a class="reference external" href="#Steps-BM">Steps</a></p></li>
-<li><p><a class="reference external" href="#Stop-condition-BM">Stop condition</a></p></li>
-<li><p><a class="reference external" href="#Error-analysis-BM">Error analysis</a></p></li>
-<li><p><a class="reference external" href="#Example-1">Example 1</a></p></li>
-<li><p><a class="reference external" href="#Example-2">Example 2</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Fixed-point-Iteration">Fixed-point Iteration</a></p>
-<ul>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Steps-FP">Steps</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Example-3">Example 3</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Stop-condition-FP">Stop condition</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Example-4">Example 4</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#ACTIVITY-FP">Activity</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Newton-Raphson-Method">Newton-Raphson Method</a></p>
-<ul>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Derivation-NM">Derivation</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Steps-NM">Steps</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Example-5">Example 5</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Stop-condition-NM">Stop condition</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Convergence-NM">Convergence</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Secant-Method">Secant Method</a></p>
-<ul>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Derivation-SM">Derivation</a></p></li>
-<li><p><a class="reference external" href="./one-variable-equations-fixed-point.ipynb#Steps-SM">Steps</a></p></li>
+<li><p><a class="reference internal" href="#bibliography" id="id2">Bibliography</a></p></li>
+<li><p><a class="reference internal" href="#bisection-method" id="id3">Bisection Method</a></p></li>
+<li><p><a class="reference internal" href="#general-arguments-and-options-of-a-scipy-function" id="id4">General arguments and options of a SciPy function</a></p></li>
 </ul>
 </li>
 </ul>
+</div>
 <hr class="docutils" />
 <section id="bibliography">
-<h2><span class="section-number">3.1. </span>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id2"><span class="section-number">3.1. </span>Bibliography</a><a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h2>
 <p>[1] <a class="reference external" href="https://drive.google.com/file/d/0BxoOXsn2EUNIQUdFVkctR2xWRUk/view?usp=sharing">Kiusalaas, Numerical Methods in Engineering with Python</a><br/>
 [2] <a class="reference external" href="https://drive.google.com/file/d/0BxoOXsn2EUNIekRUMFVPYXVsSTg/view?usp=sharing">Jensen, Computational_Physics</a>.  Companion repos: https://github.com/mhjensen <a class="reference external" href="http://compphysics.github.io/ComputationalPhysics/doc/web/course">Web page</a>  <br/>
 [3] E. Ayres, <a class="reference external" href="http://bit.ly/CPwPython">Computational Physics With Python</a><br/></p>
@@ -667,7 +624,7 @@ The animation.avconv_args rcparam was deprecated in Matplotlib 3.3 and will be r
 </div>
 </section>
 <section id="bisection-method">
-<h2><span class="section-number">3.2. </span>Bisection Method<a class="headerlink" href="#bisection-method" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id3"><span class="section-number">3.2. </span>Bisection Method</a><a class="headerlink" href="#bisection-method" title="Permalink to this headline">#</a></h2>
 <p>The Bisection method exploits the <a class="reference external" href="http://en.wikipedia.org/wiki/Intermediate_value_theorem">intermediate value theorem</a>, where a continuous and differentiable function <span class="math notranslate nohighlight">\(f\)</span> must have a zero between an interval <span class="math notranslate nohighlight">\([a,b]\)</span> such that <span class="math notranslate nohighlight">\(f(a)f(b)&lt;0\)</span>, or equivalently, there must be a value <span class="math notranslate nohighlight">\(p\in[a,b]\)</span> such that <span class="math notranslate nohighlight">\(f(p)=0\)</span>. Below the algorithmm is stated explicitly.</p>
 <section id="steps-bm">
 <h3><span class="section-number">3.2.1. </span>Steps BM<a class="headerlink" href="#steps-bm" title="Permalink to this headline">#</a></h3>
@@ -758,21 +715,14 @@ The animation.avconv_args rcparam was deprecated in Matplotlib 3.3 and will be r
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### plt.plot( x,y  ) # points joined with straight lines </span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### 1/2**i → exp2(-i)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1/2**i → exp2(-i)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp2</span><span class="p">(</span><span class="o">-</span><span class="n">i</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/one-variable-equations_20_0.png" src="../_images/one-variable-equations_20_0.png" />
+<img alt="../_images/one-variable-equations_21_0.png" src="../_images/one-variable-equations_21_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -792,7 +742,7 @@ The animation.avconv_args rcparam was deprecated in Matplotlib 3.3 and will be r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/one-variable-equations_21_0.png" src="../_images/one-variable-equations_21_0.png" />
+<img alt="../_images/one-variable-equations_22_0.png" src="../_images/one-variable-equations_22_0.png" />
 </div>
 </div>
 </section>
@@ -1240,7 +1190,7 @@ bisect(f, a, b, args=(), xtol=2e-12, rtol=8.881784197001252e-16, maxiter=100, fu
 </section>
 </section>
 <section id="general-arguments-and-options-of-a-scipy-function">
-<h2><span class="section-number">3.3. </span>General arguments and options of a SciPy function<a class="headerlink" href="#general-arguments-and-options-of-a-scipy-function" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id4"><span class="section-number">3.3. </span>General arguments and options of a SciPy function</a><a class="headerlink" href="#general-arguments-and-options-of-a-scipy-function" title="Permalink to this headline">#</a></h2>
 <p>Let define a general multiparameter</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">f</span></code>
@@ -1673,8 +1623,7 @@ $<span class="math notranslate nohighlight">\(x^3=2\)</span>$</p>
 </div>
 </div>
 </div>
-<section id="font-color-red-activity-font">
-<h4><span class="section-number">3.3.1.1. </span><font color='red'> ACTIVITY </font><a class="headerlink" href="#font-color-red-activity-font" title="Permalink to this headline">#</a></h4>
+<p><strong><font color='red'> ACTIVITY </font></strong></p>
 <font color='red'>
 In an IPython notebook, use the scipy implementation and find the first solution to the equation
 <p><span class="math notranslate nohighlight">\( 7 = \sqrt{x^2+1}+e^x\sin x \)</span></p>
@@ -1709,7 +1658,7 @@ In an IPython notebook, use the scipy implementation and find the first solution
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Solo usar para constante</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solo usar para constante</span>
 <span class="n">np</span><span class="o">.</span><span class="n">e</span>
 </pre></div>
 </div>
@@ -1732,7 +1681,6 @@ In an IPython notebook, use the scipy implementation and find the first solution
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="example-2">
 <h3><span class="section-number">3.3.2. </span>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">#</a></h3>
@@ -1860,7 +1808,7 @@ In 4.750000 hours, the satellite is located at (-34001.350021,27809.586870) km
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y$ coordinate [km]&#39;)
 </pre></div>
 </div>
-<img alt="../_images/one-variable-equations_102_2.png" src="../_images/one-variable-equations_102_2.png" />
+<img alt="../_images/one-variable-equations_103_2.png" src="../_images/one-variable-equations_103_2.png" />
 </div>
 </div>
 <hr class="docutils" />

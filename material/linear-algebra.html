@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Differential Equations" href="differential-equations.html" />
+    <link rel="next" title="7. Differential Equations" href="differential-equations.html" />
     <link rel="prev" title="5. Numerical Calculus" href="numerical-calculus.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -160,21 +160,21 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="differential-equations.html">
-   Differential Equations
+   7. Differential Equations
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="statistics.html">
-   7. Statistics
+   8. Statistics
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Intro_clases.html">
-   8. Clases
+   9. Clases
   </a>
  </li>
 </ul>
@@ -438,68 +438,68 @@ title="Print to PDF"
        6.1.1.1. Special arrays:
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analytical-matrices">
+       6.1.1.2. Analytical matrices
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matrix-operations-numpy">
+       6.1.1.3. Matrix operations (numpy)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#element-by-element-operations">
+       6.1.1.4. Element by element operations
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#submatrix-from-matrix">
+       6.1.1.5. Submatrix from matrix:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extract-rows">
+       6.1.1.6. Extract rows
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extract-columns">
+       6.1.1.7. Extract columns
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reordering">
+       6.1.1.8. Reordering
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#it-is-possible-to-reasign-a-full-set-of-rows-to-a-matrix">
+       6.1.1.9. It is possible to reasign a full set of rows to a matrix
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matrix-object">
+       6.1.1.10. Matrix object
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analytical-matrices">
-     6.1.2. Analytical matrices
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-operations-numpy">
-     6.1.3. Matrix operations (numpy)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#element-by-element-operations">
-     6.1.4. Element by element operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#submatrix-from-matrix">
-     6.1.5. Submatrix from matrix:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-rows">
-     6.1.6. Extract rows
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-columns">
-     6.1.7. Extract columns
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reordering">
-     6.1.8. Reordering
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#it-is-possible-to-reasign-a-full-set-of-rows-to-a-matrix">
-     6.1.9. It is possible to reasign a full set of rows to a matrix
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-object">
-     6.1.10. Matrix object
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-operations-with-matrices">
-     6.1.11. Basic operations with matrices
+     6.1.2. Basic operations with matrices
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#extract-rows-from-an-array">
-       6.1.11.1. Extract rows from an array
+       6.1.2.1. Extract rows from an array
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#span-style-color-red-activity-span">
-     6.1.12.
+     6.1.3.
      <span style="color:red">
       Activity
      </span>
@@ -741,68 +741,68 @@ title="Print to PDF"
        6.1.1.1. Special arrays:
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analytical-matrices">
+       6.1.1.2. Analytical matrices
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matrix-operations-numpy">
+       6.1.1.3. Matrix operations (numpy)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#element-by-element-operations">
+       6.1.1.4. Element by element operations
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#submatrix-from-matrix">
+       6.1.1.5. Submatrix from matrix:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extract-rows">
+       6.1.1.6. Extract rows
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extract-columns">
+       6.1.1.7. Extract columns
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reordering">
+       6.1.1.8. Reordering
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#it-is-possible-to-reasign-a-full-set-of-rows-to-a-matrix">
+       6.1.1.9. It is possible to reasign a full set of rows to a matrix
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matrix-object">
+       6.1.1.10. Matrix object
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analytical-matrices">
-     6.1.2. Analytical matrices
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-operations-numpy">
-     6.1.3. Matrix operations (numpy)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#element-by-element-operations">
-     6.1.4. Element by element operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#submatrix-from-matrix">
-     6.1.5. Submatrix from matrix:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-rows">
-     6.1.6. Extract rows
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-columns">
-     6.1.7. Extract columns
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reordering">
-     6.1.8. Reordering
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#it-is-possible-to-reasign-a-full-set-of-rows-to-a-matrix">
-     6.1.9. It is possible to reasign a full set of rows to a matrix
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-object">
-     6.1.10. Matrix object
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-operations-with-matrices">
-     6.1.11. Basic operations with matrices
+     6.1.2. Basic operations with matrices
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#extract-rows-from-an-array">
-       6.1.11.1. Extract rows from an array
+       6.1.2.1. Extract rows from an array
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#span-style-color-red-activity-span">
-     6.1.12.
+     6.1.3.
      <span style="color:red">
       Activity
      </span>
@@ -1022,48 +1022,27 @@ title="Print to PDF"
                 
   <p><a href="https://colab.research.google.com/github/restrepo/ComputationalMethods/blob/master/material/linear-algebra.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra">
-<h1><span class="section-number">6. </span>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">#</a></h1>
+<h1><a class="toc-backref" href="#id9"><span class="section-number">6. </span>Linear Algebra</a><a class="headerlink" href="#linear-algebra" title="Permalink to this headline">#</a></h1>
 <p>Linear Algebra is a discipline where vector spaces and linear mapping between them are studied. In physics and astronomy, several phenomena can be readily written in terms of linear variables, what makes Computational Linear Algebra a very important topic to be covered throughout this course. We shall cover linear systems of equations, techniques for calculating inverses and determinants and factorization methods.</p>
 <p>An interesting fact of Computational Linear Algebra is that it does not comprises numerical approaches as most of the methods are exact. The usage of a computer is then necessary because of the large number of calculations rather than the non-soluble nature of the problems. Numerical errors come then from round-off approximations.</p>
 <p>See: http://pages.cs.wisc.edu/~amos/412/lecture-notes/lecture14.pdf</p>
 <hr class="docutils" />
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#Linear-Systems-of-Equations">Linear Systems of Equations</a></p>
+<li><p><a class="reference internal" href="#linear-algebra" id="id9">Linear Algebra</a></p>
 <ul>
-<li><p><a class="reference external" href="#Matrices-and-vectors">Matrices and vectors</a></p></li>
-<li><p><a class="reference external" href="#Example-1">Example 1</a></p></li>
-<li><p><a class="reference external" href="#Matrices-in-Python">Matrices in Python</a></p></li>
-<li><p><a class="reference external" href="#Basic-operations-with-matrices">Basic operations with matrices</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#Gaussian-Elimination">Gaussian Elimination</a></p>
-<ul>
-<li><p><a class="reference external" href="#General-Gaussian-elimination">General Gaussian elimination</a></p></li>
-<li><p><a class="reference external" href="#Computing-time">Computing time</a></p></li>
-<li><p><a class="reference external" href="#Example-2">Example 2</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="linear-algebra-diagonalization.html"><span class="doc std std-doc">Matrix diagonalization</span></a></p></li>
-<li><p><a class="reference external" href="#Pivoting-Strategies">Pivoting Strategies</a></p>
-<ul>
-<li><p><a class="reference external" href="#Partial-pivoting">Partial pivoting</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#Matrix-Inversion">Matrix Inversion</a></p></li>
-<li><p><a class="reference external" href="#Determinant-of-a-Matrix">Determinant of a Matrix</a></p>
-<ul>
-<li><p><a class="reference external" href="#Calculating-determinants">Calculating determinants</a></p></li>
-<li><p><a class="reference external" href="#Computing-time-of-determinants">Computing time of determinants</a></p></li>
-<li><p><a class="reference external" href="#Properties-of-determinants">Properties of determinants</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#LU-Factorization">LU Factorization</a></p>
-<ul>
-<li><p><a class="reference external" href="#Derivation-of-LU-factorization">Derivation of LU factorization</a></p></li>
-<li><p><a class="reference external" href="#Algorithm-for-LU-factorization">Algorithm for LU factorization</a></p></li>
+<li><p><a class="reference internal" href="#matrices-in-python" id="id10">Matrices in Python</a></p></li>
+<li><p><a class="reference internal" href="#gaussian-elimination" id="id11">Gaussian Elimination</a></p></li>
+<li><p><a class="reference internal" href="#linear-systems-of-equations" id="id12">Linear Systems of Equations</a></p></li>
+<li><p><a class="reference internal" href="#matrix-inversion" id="id13">Matrix Inversion</a></p></li>
+<li><p><a class="reference internal" href="#determinant-of-a-matrix" id="id14">Determinant of a Matrix</a></p></li>
+<li><p><a class="reference internal" href="#matrix-diagonalization" id="id15">Matrix diagonalization</a></p></li>
+<li><p><a class="reference internal" href="#lu-factorization" id="id16">LU Factorization</a></p></li>
 </ul>
 </li>
 </ul>
+</div>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1111,7 +1090,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 <hr class="docutils" />
 <section id="matrices-in-python">
-<h2><span class="section-number">6.1. </span>Matrices in Python<a class="headerlink" href="#matrices-in-python" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id10"><span class="section-number">6.1. </span>Matrices in Python</a><a class="headerlink" href="#matrices-in-python" title="Permalink to this headline">#</a></h2>
 <p>One of the most useful advantages of high level languages like Python, is the manipulation of complex objects like matrices and vectors. For this part we are going to use advanced capabilities for handling matrices, provided by the library NumPy.</p>
 <p>NumPy, besides the extreme useful NumPy array objects, which are like tensors of any rank, also provides the Matrix objects that are overloaded with proper matrix operations.</p>
 <section id="numpy-arrays">
@@ -1362,9 +1341,8 @@ M2=
 </div>
 </div>
 </section>
-</section>
 <section id="analytical-matrices">
-<h3><span class="section-number">6.1.2. </span>Analytical matrices<a class="headerlink" href="#analytical-matrices" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.2. </span>Analytical matrices<a class="headerlink" href="#analytical-matrices" title="Permalink to this headline">#</a></h4>
 <p>Some times it is necessary to work with analytical Matrices. In such a case we can use the symbolic module <code class="docutils literal notranslate"><span class="pre">Sympy</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1407,7 +1385,7 @@ M2=
 <p>In the following we will focus only in numerical matrices as <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays, but also use <code class="docutils literal notranslate"><span class="pre">sympy</span></code> to print the matrices in a more readable way</p>
 </section>
 <section id="matrix-operations-numpy">
-<h3><span class="section-number">6.1.3. </span>Matrix operations (numpy)<a class="headerlink" href="#matrix-operations-numpy" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.3. </span>Matrix operations (numpy)<a class="headerlink" href="#matrix-operations-numpy" title="Permalink to this headline">#</a></h4>
 <p>Both as functions or array’s methods</p>
 <ul class="simple">
 <li><p>Transpose</p></li>
@@ -1728,12 +1706,12 @@ and using <code class="docutils literal notranslate"><span class="pre">numpy.mul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/linear-algebra_76_0.png" src="../_images/linear-algebra_76_0.png" />
+<img alt="../_images/linear-algebra_78_0.png" src="../_images/linear-algebra_78_0.png" />
 </div>
 </div>
 </section>
 <section id="element-by-element-operations">
-<h3><span class="section-number">6.1.4. </span>Element by element operations<a class="headerlink" href="#element-by-element-operations" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.4. </span>Element by element operations<a class="headerlink" href="#element-by-element-operations" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">M1</span><span class="p">)</span>
@@ -1796,7 +1774,7 @@ and using <code class="docutils literal notranslate"><span class="pre">numpy.mul
 </div>
 </section>
 <section id="submatrix-from-matrix">
-<h3><span class="section-number">6.1.5. </span>Submatrix from matrix:<a class="headerlink" href="#submatrix-from-matrix" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.5. </span>Submatrix from matrix:<a class="headerlink" href="#submatrix-from-matrix" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span> <span class="mi">5</span> <span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -1821,7 +1799,7 @@ and using <code class="docutils literal notranslate"><span class="pre">numpy.mul
 </div>
 </section>
 <section id="extract-rows">
-<h3><span class="section-number">6.1.6. </span>Extract rows<a class="headerlink" href="#extract-rows" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.6. </span>Extract rows<a class="headerlink" href="#extract-rows" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M1</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span>
@@ -1885,7 +1863,7 @@ and using <code class="docutils literal notranslate"><span class="pre">numpy.mul
 </div>
 </section>
 <section id="extract-columns">
-<h3><span class="section-number">6.1.7. </span>Extract columns<a class="headerlink" href="#extract-columns" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.7. </span>Extract columns<a class="headerlink" href="#extract-columns" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
@@ -1915,7 +1893,7 @@ and using <code class="docutils literal notranslate"><span class="pre">numpy.mul
 </div>
 </section>
 <section id="reordering">
-<h3><span class="section-number">6.1.8. </span>Reordering<a class="headerlink" href="#reordering" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.8. </span>Reordering<a class="headerlink" href="#reordering" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span> <span class="mi">5</span> <span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -1972,7 +1950,7 @@ and using <code class="docutils literal notranslate"><span class="pre">numpy.mul
 </div>
 </section>
 <section id="it-is-possible-to-reasign-a-full-set-of-rows-to-a-matrix">
-<h3><span class="section-number">6.1.9. </span>It is possible to reasign a full set of rows to a matrix<a class="headerlink" href="#it-is-possible-to-reasign-a-full-set-of-rows-to-a-matrix" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.9. </span>It is possible to reasign a full set of rows to a matrix<a class="headerlink" href="#it-is-possible-to-reasign-a-full-set-of-rows-to-a-matrix" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[[</span> <span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -2091,7 +2069,7 @@ B = [4 2]
 </div>
 </section>
 <section id="matrix-object">
-<h3><span class="section-number">6.1.10. </span>Matrix object<a class="headerlink" href="#matrix-object" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.1.1.10. </span>Matrix object<a class="headerlink" href="#matrix-object" title="Permalink to this headline">#</a></h4>
 <p>numpy also has a Matrix object with simplified operations. However it is recommended to use the general array object even for specific matrix operations. This helps to avoid incompatibilities with usual array operations. For example, as shown below the multiplication symbol, <code class="docutils literal notranslate"><span class="pre">*</span></code>, behaves different for arrays that for matrices, and could induce to errors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2124,7 +2102,7 @@ B = [4 2]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/linear-algebra_123_0.png" src="../_images/linear-algebra_123_0.png" />
+<img alt="../_images/linear-algebra_125_0.png" src="../_images/linear-algebra_125_0.png" />
 </div>
 </div>
 <p><img alt="MP" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Matrix_multiplication_diagram_2.svg/200px-Matrix_multiplication_diagram_2.svg.png" /></p>
@@ -2136,12 +2114,13 @@ B = [4 2]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/linear-algebra_125_0.png" src="../_images/linear-algebra_125_0.png" />
+<img alt="../_images/linear-algebra_127_0.png" src="../_images/linear-algebra_127_0.png" />
 </div>
 </div>
 </section>
+</section>
 <section id="basic-operations-with-matrices">
-<h3><span class="section-number">6.1.11. </span>Basic operations with matrices<a class="headerlink" href="#basic-operations-with-matrices" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.2. </span>Basic operations with matrices<a class="headerlink" href="#basic-operations-with-matrices" title="Permalink to this headline">#</a></h3>
 <p>In order to simplify the following methods, we introduce here 3 basic operations over linear systems:</p>
 <ol class="simple">
 <li><p>The <span class="math notranslate nohighlight">\(i\)</span>-th row <span class="math notranslate nohighlight">\(E_i\)</span> can be multiplied by a non-zero constant <span class="math notranslate nohighlight">\(\lambda\)</span>, and then a new row used in place of <span class="math notranslate nohighlight">\(E_i\)</span>, i.e. <span class="math notranslate nohighlight">\((E_i)\rightarrow (\lambda E_i)\)</span>. We denote this operation as <span class="math notranslate nohighlight">\(\operatorname{Lamb}(E_i,\lambda)\)</span>.</p></li>
@@ -2149,11 +2128,11 @@ B = [4 2]
 <li><p>Finally, we define a swapping of two rows as <span class="math notranslate nohighlight">\((E_i)\leftrightarrow (E_j)\)</span>, denoted as <span class="math notranslate nohighlight">\(\operatorname{Swap}(E_i,E_j)\)</span></p></li>
 </ol>
 <section id="extract-rows-from-an-array">
-<h4><span class="section-number">6.1.11.1. </span>Extract rows from an array<a class="headerlink" href="#extract-rows-from-an-array" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">6.1.2.1. </span>Extract rows from an array<a class="headerlink" href="#extract-rows-from-an-array" title="Permalink to this headline">#</a></h4>
 </section>
 </section>
 <section id="span-style-color-red-activity-span">
-<h3><span class="section-number">6.1.12. </span><span style='color:red'> Activity </span><a class="headerlink" href="#span-style-color-red-activity-span" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.3. </span><span style='color:red'> Activity </span><a class="headerlink" href="#span-style-color-red-activity-span" title="Permalink to this headline">#</a></h3>
 <p>Write three routines that perform, given a matrix <span class="math notranslate nohighlight">\(A\)</span>, the previous operations over matrices:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">row_lamb(i,</span> <span class="pre">λ,</span> <span class="pre">A)</span></code>: <code class="docutils literal notranslate"><span class="pre">i</span></code> is the row to be changed, <code class="docutils literal notranslate"><span class="pre">λ</span></code> the multiplicative factor and <code class="docutils literal notranslate"><span class="pre">A</span></code> the matrix. This function should return the new matrix with the performed operation <span class="math notranslate nohighlight">\((E_i)\rightarrow (\lambda E_i)\)</span>.</p></li>
@@ -2341,28 +2320,28 @@ def row_swap( i, j, A ):
 </section>
 </section>
 <section id="gaussian-elimination">
-<h2><span class="section-number">6.2. </span>Gaussian Elimination<a class="headerlink" href="#gaussian-elimination" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id11"><span class="section-number">6.2. </span>Gaussian Elimination</a><a class="headerlink" href="#gaussian-elimination" title="Permalink to this headline">#</a></h2>
 <section id="example-1">
 <h3><span class="section-number">6.2.1. </span>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h3>
 <p>Using Kirchhoff’s circuit laws, it is possible to solve the next system:</p>
 <p><img alt="" src="https://raw.githubusercontent.com/sbustamante/ComputationalMethods/master/material/figures/circuit.png" /></p>
 <p>obtaining the next equations:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5b698b17-2ea2-4608-ab7b-c0f39631fd6e">
-<span class="eqno">(6.1)<a class="headerlink" href="#equation-5b698b17-2ea2-4608-ab7b-c0f39631fd6e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d540481d-40d6-4910-b685-26ef3a2efb60">
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-d540481d-40d6-4910-b685-26ef3a2efb60" title="Permalink to this equation">#</a></span>\[\begin{align}
 A:&amp;&amp;I_A( R+4R ) - I_B( 4R ) =&amp; E \\
 C:&amp;&amp;-I_A( 4R ) + I_B( 4R + 3R ) - I_C(3R) =&amp; 0 \\
 B:&amp;&amp;-I_B( 3R ) + I_C(3R+2R) =&amp; -2E\,
 \end{align}\]</div>
 <p>or</p>
-<div class="amsmath math notranslate nohighlight" id="equation-99b9de7d-0f1d-479a-a882-a1ac7393ec05">
-<span class="eqno">(6.2)<a class="headerlink" href="#equation-99b9de7d-0f1d-479a-a882-a1ac7393ec05" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b0c39bdb-fe17-46ba-af68-b0bd50c23563">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-b0c39bdb-fe17-46ba-af68-b0bd50c23563" title="Permalink to this equation">#</a></span>\[\begin{align}
 5\frac{I_A R }{E} - 4\frac{I_B R }{E} =&amp; 1 \\
 -4 \frac{I_A R }{E} + 7\frac{I_B R }{E} - 3 \frac{I_C R }{E} =&amp; 0 \\
 -3 \frac{I_B R }{E} + 5 \frac{I_C R }{E} =&amp; -2\,.
 \end{align}\]</div>
 <p>Defining the variables <span class="math notranslate nohighlight">\(x_1 = R I_A/E\)</span>, <span class="math notranslate nohighlight">\(x_2 = R I_B/E\)</span> and <span class="math notranslate nohighlight">\(x_3 = R I_C/E\)</span> we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-291ac3af-dcc0-4fef-8b87-659a5b8de06a">
-<span class="eqno">(6.3)<a class="headerlink" href="#equation-291ac3af-dcc0-4fef-8b87-659a5b8de06a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4ac3c0fe-46db-4fa9-9d3d-22a1300f7277">
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-4ac3c0fe-46db-4fa9-9d3d-22a1300f7277" title="Permalink to this equation">#</a></span>\[\begin{align}
 5x_1 - 4x_2 =&amp; 1 \\
 -4 x_1 + 7x_2 - 3 x_3 =&amp; 0 \\
 -3x_2 + 5 x_3 =&amp; -2\,.
@@ -2566,7 +2545,7 @@ x_{3}
 </section>
 </section>
 <section id="linear-systems-of-equations">
-<h2><span class="section-number">6.3. </span>Linear Systems of Equations<a class="headerlink" href="#linear-systems-of-equations" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12"><span class="section-number">6.3. </span>Linear Systems of Equations</a><a class="headerlink" href="#linear-systems-of-equations" title="Permalink to this headline">#</a></h2>
 <p>A linear system is a set of equations of <span class="math notranslate nohighlight">\(n\)</span> variables that can be written in a general form:</p>
 <div class="math notranslate nohighlight">
 \[ a_{11}x_1 + a_{12}x_2 + \cdots +a_{1n}x_n = b_1 \]</div>
@@ -2712,7 +2691,7 @@ a_{m1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} &amp; \vdots &amp; b_n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/linear-algebra_178_0.png" src="../_images/linear-algebra_178_0.png" />
+<img alt="../_images/linear-algebra_180_0.png" src="../_images/linear-algebra_180_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2723,7 +2702,7 @@ a_{m1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} &amp; \vdots &amp; b_n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/linear-algebra_179_0.png" src="../_images/linear-algebra_179_0.png" />
+<img alt="../_images/linear-algebra_181_0.png" src="../_images/linear-algebra_181_0.png" />
 </div>
 </div>
 </section>
@@ -2964,7 +2943,7 @@ $<span class="math notranslate nohighlight">\(x_n = \hat b_n\)</span><span class
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2762.6280000000002
 </pre></div>
 </div>
-<img alt="../_images/linear-algebra_198_2.png" src="../_images/linear-algebra_198_2.png" />
+<img alt="../_images/linear-algebra_200_2.png" src="../_images/linear-algebra_200_2.png" />
 </div>
 </div>
 </section>
@@ -2987,7 +2966,7 @@ $<span class="math notranslate nohighlight">\(x_n = \hat b_n\)</span><span class
 </section>
 <hr class="docutils" />
 <section id="matrix-inversion">
-<h2><span class="section-number">6.4. </span>Matrix Inversion<a class="headerlink" href="#matrix-inversion" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id13"><span class="section-number">6.4. </span>Matrix Inversion</a><a class="headerlink" href="#matrix-inversion" title="Permalink to this headline">#</a></h2>
 <p>Asumming a nonsingular matrix <span class="math notranslate nohighlight">\(A\)</span>, if a matrix <span class="math notranslate nohighlight">\(A^{-1}\)</span> exists, with <span class="math notranslate nohighlight">\(AA^{-1} = I\)</span> and <span class="math notranslate nohighlight">\(A^{-1}A = I\)</span>, where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix, then <span class="math notranslate nohighlight">\(A^{-1}\)</span> is called the inverse matrix of <span class="math notranslate nohighlight">\(A\)</span>. If such a matrix does not exist, <span class="math notranslate nohighlight">\(A\)</span> is said to be a singular matrix.</p>
 <p>A corollary of this definition is that <span class="math notranslate nohighlight">\(A\)</span> is also the inverse matrix of <span class="math notranslate nohighlight">\(A^{-1}\)</span>.</p>
 <p>Once defined the Gaussian Elimination method, it is possible to extend it in order to find the inverse of any nonsingular matrix.
@@ -3091,7 +3070,7 @@ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} &amp; \vdots &amp; 0 &amp; 0 &amp;
 </section>
 <hr class="docutils" />
 <section id="determinant-of-a-matrix">
-<h2><span class="section-number">6.5. </span>Determinant of a Matrix<a class="headerlink" href="#determinant-of-a-matrix" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id14"><span class="section-number">6.5. </span>Determinant of a Matrix</a><a class="headerlink" href="#determinant-of-a-matrix" title="Permalink to this headline">#</a></h2>
 <p>The determinant of a matrix is a scalar quantity calculated for square matrix. This provides important information about the matrix of coefficients of a system of linear of equations. For example, any system of <span class="math notranslate nohighlight">\(n\)</span> equations and <span class="math notranslate nohighlight">\(n\)</span> unknowns has an unique solution if the associated determinant is nonzero. This also implies the determinant allows to evaluate whether a matrix is singular or nonsingular.</p>
 <section id="calculating-determinants">
 <h3><span class="section-number">6.5.1. </span>Calculating determinants<a class="headerlink" href="#calculating-determinants" title="Permalink to this headline">#</a></h3>
@@ -3156,8 +3135,8 @@ a_{21} &amp; a_{22}}\right]\end{split}\]</div>
 <h3><span class="section-number">6.5.6. </span>Existence of inverse<a class="headerlink" href="#existence-of-inverse" title="Permalink to this headline">#</a></h3>
 <p>A matrix <span class="math notranslate nohighlight">\(A\)</span> has an inverse if <span class="math notranslate nohighlight">\(\det{A}\ne 0\)</span>. See for example <a class="reference external" href="http://www.sosmath.com/matrix/inverse/inverse.html">here</a></p>
 <p>If the matrix <span class="math notranslate nohighlight">\(A\)</span> has an inverse, then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c414951d-4e32-4757-9004-777664237285">
-<span class="eqno">(6.4)<a class="headerlink" href="#equation-c414951d-4e32-4757-9004-777664237285" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a53988c9-dc14-41b3-bcff-34cda9a1c962">
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-a53988c9-dc14-41b3-bcff-34cda9a1c962" title="Permalink to this equation">#</a></span>\[\begin{align}
 A \boldsymbol{x}=&amp;\boldsymbol{b}\\
 A^{-1}A\boldsymbol{x}=&amp;A^{-1}\boldsymbol{b}\\
 \boldsymbol{x}=&amp;A^{-1}\boldsymbol{b}\,,
@@ -3241,8 +3220,8 @@ From the previous example</p>
 </div>
 </div>
 <p>such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5ba2acd9-f52c-46be-b9b3-040894666d82">
-<span class="eqno">(6.5)<a class="headerlink" href="#equation-5ba2acd9-f52c-46be-b9b3-040894666d82" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b394fa55-66bd-42dc-ae3f-601a149a3417">
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-b394fa55-66bd-42dc-ae3f-601a149a3417" title="Permalink to this equation">#</a></span>\[\begin{align}
 A \boldsymbol{x}=&amp;\boldsymbol{b}\,,
 \end{align}\]</div>
 <p>Check that <span class="math notranslate nohighlight">\(A\)</span> has an inverse and calculate <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span></p>
@@ -3253,7 +3232,7 @@ A \boldsymbol{x}=&amp;\boldsymbol{b}\,,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/linear-algebra_232_0.png" src="../_images/linear-algebra_232_0.png" />
+<img alt="../_images/linear-algebra_234_0.png" src="../_images/linear-algebra_234_0.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(\boldsymbol{x}=\)</span></p>
@@ -3301,12 +3280,12 @@ A \boldsymbol{x}=&amp;\boldsymbol{b}\,,
 </section>
 </section>
 <section id="matrix-diagonalization">
-<h2><span class="section-number">6.6. </span>Matrix diagonalization<a class="headerlink" href="#matrix-diagonalization" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id15"><span class="section-number">6.6. </span>Matrix diagonalization</a><a class="headerlink" href="#matrix-diagonalization" title="Permalink to this headline">#</a></h2>
 <p>See <a class="reference internal" href="linear-algebra-diagonalization.html"><span class="doc std std-doc">linear-algebra-diagonalization</span></a></p>
 </section>
 <hr class="docutils" />
 <section id="lu-factorization">
-<h2><span class="section-number">6.7. </span>LU Factorization<a class="headerlink" href="#lu-factorization" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id16"><span class="section-number">6.7. </span>LU Factorization</a><a class="headerlink" href="#lu-factorization" title="Permalink to this headline">#</a></h2>
 <p>As we saw before, the Gaussian Elimination algorithm takes a computing time scaling as <span class="math notranslate nohighlight">\(\mathcal{O}(n^3/3)\)</span> in order to solve a system of <span class="math notranslate nohighlight">\(n\)</span> equations and <span class="math notranslate nohighlight">\(n\)</span> unknowns. Let’s assume a system of equations <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> where <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is already in upper diagonal form.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\left[ \matrix{
@@ -3479,13 +3458,13 @@ m_{ij} = \frac{a^{(j)}_{ij}}{a^{(j)}_{jj}} &amp; \mbox{if}\ \ j=k\ \ \mbox{and}\
 <section id="electron-interacting-with-a-magnetic-field">
 <h4><span class="section-number">6.7.5.1. </span>Electron interacting with a magnetic field<a class="headerlink" href="#electron-interacting-with-a-magnetic-field" title="Permalink to this headline">#</a></h4>
 <p>An electron is placed to interact with an uniform magnetic field. To give account of the possible allowed levels of the electron in the presence of the magnetic field it is necessary to solve the next equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-15450a55-0f59-4d87-bfac-02d187cc5b09">
-<span class="eqno">(6.6)<a class="headerlink" href="#equation-15450a55-0f59-4d87-bfac-02d187cc5b09" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-370d3fcc-0a14-4aca-9adf-a05c907ccf67">
+<span class="eqno">(6.6)<a class="headerlink" href="#equation-370d3fcc-0a14-4aca-9adf-a05c907ccf67" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{H}|\Psi\rangle = E|\Psi\rangle
 \end{equation}\]</div>
 <p>where the hamiltonian is equal to <span class="math notranslate nohighlight">\(H = -\mu \cdot B = -\gamma B \cdot S\)</span>, with the gyromagnetic ratio <span class="math notranslate nohighlight">\(\gamma\)</span>, <span class="math notranslate nohighlight">\(\textbf{B}\)</span> the magnetic field and <span class="math notranslate nohighlight">\(\textbf{S}\)</span> the spin. It can be shown that the hamiltonian expression is transformed in</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bfd92399-5af1-4319-afb0-f4d0c7bd326e">
-<span class="eqno">(6.7)<a class="headerlink" href="#equation-bfd92399-5af1-4319-afb0-f4d0c7bd326e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d23f12c1-5445-468d-aff1-9206e23c5bc2">
+<span class="eqno">(6.7)<a class="headerlink" href="#equation-d23f12c1-5445-468d-aff1-9206e23c5bc2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{\textbf{H}} = - \frac{\gamma \hbar}{2} \left( \begin{array}{cc}
 B_z  &amp; B_x -i B_y \\
 B_x + i B_y  &amp; -B_z  \end{array} \right) 
@@ -3541,7 +3520,7 @@ matrix <span class="math notranslate nohighlight">\(H - EI\)</span> allows to ge
     <a class='right-next' id="next-link" href="differential-equations.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Differential Equations</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Differential Equations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
