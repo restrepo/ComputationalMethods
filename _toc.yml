@@ -36,5 +36,8 @@ parts:
 - numbered: false
   caption: Appendix
   chapters:
+  - file:  material/scientific-libraries
+- numbered: false
+  chapters:
   - file:  material/linear-algebra-diagonalization
   
