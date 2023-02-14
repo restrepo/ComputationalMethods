@@ -24,7 +24,7 @@ parts:
 - numbered: true
   chapters:
   - file:  material/linear-algebra
-- chapters:numbered: true
+- numbered: true
   chapters:
   - file:  material/differential-equations
 - numbered: true
