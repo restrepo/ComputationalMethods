@@ -501,6 +501,23 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#special-dataframes">
+     Special DataFrames
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#empty-dataframe">
+       Empty DataFrame
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#single-row-dataframe-from-dictionary">
+       Single row DataFrame from dictionary
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#initialization-from-sequential-rows-as-series">
      Initialization from sequential rows as  Series
     </a>
@@ -739,6 +756,23 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#special-dataframes">
+     Special DataFrames
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#empty-dataframe">
+       Empty DataFrame
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#single-row-dataframe-from-dictionary">
+       Single row DataFrame from dictionary
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#initialization-from-sequential-rows-as-series">
      Initialization from sequential rows as  Series
     </a>
@@ -954,7 +988,7 @@ By Sarah Guido, Andreas Müller</p>
 <section id="introduction">
 <h2><a class="toc-backref" href="#id3">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>We already saw how NumPy arrays can improve the analysis of numerical data. For heterogeneous data the recommended tool are Pandas dataframes.</p>
-<p>Heterogeneous and nested data can be stored as list of dictionaries. For example, for people with names, birth date, sex, and a job list with start and end date, we can jave</p>
+<p>Heterogeneous and nested data can be stored as list of dictionaries. For example, for people with names, birth date, sex, and a job list with start and end date, we can have</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dictionary for each person&#39;s data</span>
@@ -1043,7 +1077,7 @@ By Sarah Guido, Andreas Müller</p>
 </table>
 </div></div></div>
 </div>
-<p>As with NumPy, we can create masks in ordert to filter out specific rows of the dataframe. For example, to filter out the female persons by using the syntax:</p>
+<p>As with NumPy, we can create masks in order to filter out specific rows of the dataframe. For example, to filter out the female persons by using the syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Female&quot;</span><span class="p">]</span>
@@ -1851,6 +1885,13 @@ Name: 0, dtype: int64
 <p>One specific cell value can be reached with the index and the key:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;odd&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2260,6 +2301,12 @@ dtype: object
 </table>
 </div></div></div>
 </div>
+</section>
+</section>
+<section id="special-dataframes">
+<h3>Special DataFrames<a class="headerlink" href="#special-dataframes" title="Permalink to this headline">#</a></h3>
+<section id="empty-dataframe">
+<h4>Empty DataFrame<a class="headerlink" href="#empty-dataframe" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -2306,13 +2353,61 @@ dtype: object
 </div>
 </div>
 </section>
+<section id="single-row-dataframe-from-dictionary">
+<h4>Single row DataFrame from dictionary<a class="headerlink" href="#single-row-dataframe-from-dictionary" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;first key&#39;</span> <span class="p">:</span><span class="s1">&#39;first value&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;second key&#39;</span><span class="p">:</span><span class="s1">&#39;second value&#39;</span>
+
+  <span class="p">}</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">d</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first key</th>
+      <th>second key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>first value</td>
+      <td>second value</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
 </section>
 <section id="initialization-from-sequential-rows-as-series">
 <h3>Initialization from sequential rows as  Series<a class="headerlink" href="#initialization-from-sequential-rows-as-series" title="Permalink to this headline">#</a></h3>
 <p>We start with an empty <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">empty</span>
 </pre></div>
 </div>
@@ -2327,16 +2422,12 @@ dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span><span class="s1">&#39;Juan Valdez&#39;</span><span class="p">,</span><span class="s1">&#39;Nacionality&#39;</span><span class="p">:</span><span class="s1">&#39;Colombia&#39;</span><span class="p">,</span><span class="s1">&#39;Age&#39;</span><span class="p">:</span><span class="mi">23</span><span class="p">}</span>
-<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">d</span><span class="p">])])</span>
 <span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_10365/593603890.py:2: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  df=df.append(d,ignore_index=True)
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2366,67 +2457,6 @@ dtype: object
       <td>Juan Valdez</td>
       <td>Colombia</td>
       <td>23</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>We can fix the type of data of the <code class="docutils literal notranslate"><span class="pre">'Age'</span></code> column</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Edad</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Edad&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Edad</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Nombre</th>
-      <th>Edad</th>
-      <th>Compañia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Juan Valdez</td>
-      <td>23</td>
-      <td>Café de Colombia</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Álvaro Uribe Vélez</td>
-      <td>65</td>
-      <td>Senado de la República</td>
     </tr>
   </tbody>
 </table>
@@ -2472,7 +2502,7 @@ Company:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">d</span><span class="p">])])</span>
 </pre></div>
 </div>
 </div>
@@ -2502,60 +2532,7 @@ Name: Name, dtype: object
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>Append to the previous <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and visualize it:</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Age</th>
-      <th>Nacionality</th>
-      <th>Name</th>
-      <th>Company</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>23</td>
-      <td>Colombia</td>
-      <td>Juan Valdez</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>33</td>
-      <td>Portugal</td>
-      <td>Diego Restrepo</td>
-      <td>Google</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
+<p><strong>Activity</strong>: Append a new row to the previous <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and visualize it:</p>
 <ul class="simple">
 <li><p>Fill NaN with empty strings</p></li>
 </ul>
@@ -3515,7 +3492,7 @@ dictionary</p></li>
 </section>
 <section id="common-operations-upon-dataframes">
 <h2><a class="toc-backref" href="#id8">Common operations upon <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a><a class="headerlink" href="#common-operations-upon-dataframes" title="Permalink to this headline">#</a></h2>
-<p>See https://github.com/restrepo/PythonTipsAndTricks</p>
+<p>See <a class="reference external" href="https://github.com/restrepo/PythonTipsAndTricks">https://github.com/restrepo/PythonTipsAndTricks</a></p>
 <ul class="simple">
 <li><p><strong>To fill a specific cell</strong></p></li>
 </ul>
