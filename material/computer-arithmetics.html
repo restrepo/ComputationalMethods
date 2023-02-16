@@ -1118,8 +1118,8 @@ $<span class="math notranslate nohighlight">\(e = \sum_{i=0}^7 b_{23+i}2^i\)</sp
 <p>The goal of this course is try to implement all the algorithms in terms of array operations, instead of use the loops of Pyhton like the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
 <p>In this way, we need to interpret the formula in terms of  arrays operations. If we manage to achieve that, then NumPy will be take care of the internal loops, which are much faster than the Python loops. As a bonus, the code is more compact and readable.</p>
 <p>For example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-deeae07a-c673-41ef-ace3-53374c9109f9">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-deeae07a-c673-41ef-ace3-53374c9109f9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-77d07fba-b9f5-4665-b72a-04bb052a4fc4">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-77d07fba-b9f5-4665-b72a-04bb052a4fc4" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{i=0}^{22}\frac{b_{i}}{2^{23-i}}=&amp;\frac{b[0]}{2^{23}}+\frac{b[1]}{2^{22}}
  +\cdots +\frac{b[21]}{2^2}+\frac{b[22]}{2^1}\nonumber\\
 =&amp;\frac{b[0:23]}{2^{[23,22,...,1]}}.\operatorname{sum()}\nonumber\\

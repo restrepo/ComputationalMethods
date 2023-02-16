@@ -427,6 +427,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-structure-dataframe">
    Basic structure: DataFrame
   </a>
@@ -657,6 +662,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#standard-way-to-load-the-module">
    Standard way to load the module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -911,21 +921,22 @@ By Sarah Guido, Andreas Müller</p>
 <li><p><a class="reference internal" href="#pandas" id="id1">Pandas</a></p>
 <ul>
 <li><p><a class="reference internal" href="#standard-way-to-load-the-module" id="id2">Standard way to load the module</a></p></li>
-<li><p><a class="reference internal" href="#basic-structure-dataframe" id="id3">Basic structure: DataFrame</a></p></li>
-<li><p><a class="reference internal" href="#data-structures" id="id4">Data structures</a></p></li>
-<li><p><a class="reference internal" href="#dataframe-initialization" id="id5"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> initialization</a></p></li>
-<li><p><a class="reference internal" href="#other-formats-to-saving-and-read-files" id="id6">Other formats to saving and read files</a></p></li>
-<li><p><a class="reference internal" href="#common-operations-upon-dataframes" id="id7">Common operations upon <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a></p></li>
-<li><p><a class="reference internal" href="#filters-masking" id="id8">Filters (masking)</a></p></li>
-<li><p><a class="reference internal" href="#the-apply-method" id="id9">The <code class="docutils literal notranslate"><span class="pre">apply</span></code> method</a></p></li>
-<li><p><a class="reference internal" href="#chain-tools-for-data-analysis" id="id10">Chain tools for data analysis</a></p></li>
-<li><p><a class="reference internal" href="#relational-databases" id="id11">Relational databases</a></p></li>
-<li><p><a class="reference internal" href="#non-relational-databases" id="id12">Non-relational databases</a></p></li>
-<li><p><a class="reference internal" href="#world-wide-web" id="id13">World wide web</a></p></li>
-<li><p><a class="reference internal" href="#summary" id="id14">Summary</a></p></li>
-<li><p><a class="reference internal" href="#activities" id="id15">ACTIVITIES</a></p></li>
-<li><p><a class="reference internal" href="#final-remarks" id="id16">Final remarks</a></p></li>
-<li><p><a class="reference internal" href="#appendix" id="id17">Appendix</a></p></li>
+<li><p><a class="reference internal" href="#introduction" id="id3">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#basic-structure-dataframe" id="id4">Basic structure: DataFrame</a></p></li>
+<li><p><a class="reference internal" href="#data-structures" id="id5">Data structures</a></p></li>
+<li><p><a class="reference internal" href="#dataframe-initialization" id="id6"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> initialization</a></p></li>
+<li><p><a class="reference internal" href="#other-formats-to-saving-and-read-files" id="id7">Other formats to saving and read files</a></p></li>
+<li><p><a class="reference internal" href="#common-operations-upon-dataframes" id="id8">Common operations upon <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a></p></li>
+<li><p><a class="reference internal" href="#filters-masking" id="id9">Filters (masking)</a></p></li>
+<li><p><a class="reference internal" href="#the-apply-method" id="id10">The <code class="docutils literal notranslate"><span class="pre">apply</span></code> method</a></p></li>
+<li><p><a class="reference internal" href="#chain-tools-for-data-analysis" id="id11">Chain tools for data analysis</a></p></li>
+<li><p><a class="reference internal" href="#relational-databases" id="id12">Relational databases</a></p></li>
+<li><p><a class="reference internal" href="#non-relational-databases" id="id13">Non-relational databases</a></p></li>
+<li><p><a class="reference internal" href="#world-wide-web" id="id14">World wide web</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id15">Summary</a></p></li>
+<li><p><a class="reference internal" href="#activities" id="id16">ACTIVITIES</a></p></li>
+<li><p><a class="reference internal" href="#final-remarks" id="id17">Final remarks</a></p></li>
+<li><p><a class="reference internal" href="#appendix" id="id18">Appendix</a></p></li>
 </ul>
 </li>
 </ul>
@@ -940,8 +951,218 @@ By Sarah Guido, Andreas Müller</p>
 </div>
 </div>
 </section>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id3">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>We already saw how NumPy arrays can improve the analysis of numerical data. For heterogeneous data the recommended tool are Pandas dataframes.</p>
+<p>Heterogeneous and nested data can be stored as list of dictionaries. For example, for people with names, birth date, sex, and a job list with start and end date, we can jave</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dictionary for each person&#39;s data</span>
+<span class="n">person1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;Birth Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-1980&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;Job&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;Job Title&quot;</span><span class="p">:</span> <span class="s2">&quot;Software Engineer&quot;</span><span class="p">,</span> <span class="s2">&quot;Start Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2000&quot;</span><span class="p">,</span> <span class="s2">&quot;End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2005&quot;</span><span class="p">},</span> 
+                   <span class="p">{</span><span class="s2">&quot;Job Title&quot;</span><span class="p">:</span> <span class="s2">&quot;Data Scientist&quot;</span><span class="p">,</span> <span class="s2">&quot;Start Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2005&quot;</span><span class="p">,</span> <span class="s2">&quot;End Date&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}]}</span>
+<span class="n">person2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;Birth Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-1985&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;Job&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;Job Title&quot;</span><span class="p">:</span> <span class="s2">&quot;Product Manager&quot;</span><span class="p">,</span> <span class="s2">&quot;Start Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2010&quot;</span><span class="p">,</span> <span class="s2">&quot;End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2015&quot;</span><span class="p">},</span> 
+                   <span class="p">{</span><span class="s2">&quot;Job Title&quot;</span><span class="p">:</span> <span class="s2">&quot;Project Manager&quot;</span><span class="p">,</span> <span class="s2">&quot;Start Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2015&quot;</span><span class="p">,</span> <span class="s2">&quot;End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2020&quot;</span><span class="p">}]}</span>
+<span class="n">person3</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jim Smith&quot;</span><span class="p">,</span> <span class="s2">&quot;Birth Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-1990&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;Job&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;Job Title&quot;</span><span class="p">:</span> <span class="s2">&quot;Data Analyst&quot;</span><span class="p">,</span> <span class="s2">&quot;Start Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2010&quot;</span><span class="p">,</span> <span class="s2">&quot;End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2015&quot;</span><span class="p">},</span> 
+                   <span class="p">{</span><span class="s2">&quot;Job Title&quot;</span><span class="p">:</span> <span class="s2">&quot;Business Analyst&quot;</span><span class="p">,</span> <span class="s2">&quot;Start Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2015&quot;</span><span class="p">,</span> <span class="s2">&quot;End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2020&quot;</span><span class="p">}]}</span>
+<span class="n">person4</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sara Johnson&quot;</span><span class="p">,</span> <span class="s2">&quot;Birth Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-1995&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;Job&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;Job Title&quot;</span><span class="p">:</span> <span class="s2">&quot;Product Designer&quot;</span><span class="p">,</span> <span class="s2">&quot;Start Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2015&quot;</span><span class="p">,</span> <span class="s2">&quot;End Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2020&quot;</span><span class="p">},</span> 
+                   <span class="p">{</span><span class="s2">&quot;Job Title&quot;</span><span class="p">:</span> <span class="s2">&quot;UX Designer&quot;</span><span class="p">,</span> <span class="s2">&quot;Start Date&quot;</span><span class="p">:</span> <span class="s2">&quot;01-01-2020&quot;</span><span class="p">,</span> <span class="s2">&quot;End Date&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}]}</span>
+
+<span class="c1"># Create a list of dictionaries</span>
+<span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="n">person1</span><span class="p">,</span> <span class="n">person2</span><span class="p">,</span> <span class="n">person3</span><span class="p">,</span> <span class="n">person4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can create a DataFrame from the list of dictionaries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Birth Date</th>
+      <th>Sex</th>
+      <th>Job</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Doe</td>
+      <td>01-01-1980</td>
+      <td>Male</td>
+      <td>[{'Job Title': 'Software Engineer', 'Start Dat...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>01-01-1985</td>
+      <td>Female</td>
+      <td>[{'Job Title': 'Product Manager', 'Start Date'...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Jim Smith</td>
+      <td>01-01-1990</td>
+      <td>Male</td>
+      <td>[{'Job Title': 'Data Analyst', 'Start Date': '...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sara Johnson</td>
+      <td>01-01-1995</td>
+      <td>Female</td>
+      <td>[{'Job Title': 'Product Designer', 'Start Date...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As with NumPy, we can create masks in ordert to filter out specific rows of the dataframe. For example, to filter out the female persons by using the syntax:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Female&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Birth Date</th>
+      <th>Sex</th>
+      <th>Job</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>01-01-1985</td>
+      <td>Female</td>
+      <td>[{'Job Title': 'Product Manager', 'Start Date'...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sara Johnson</td>
+      <td>01-01-1995</td>
+      <td>Female</td>
+      <td>[{'Job Title': 'Product Designer', 'Start Date...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To filter out the last job of each person by using the following code (<code class="docutils literal notranslate"><span class="pre">.get</span></code> is a safer way to obtain the value of the key of a dictionary)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Last job&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Job&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">L</span><span class="p">:</span> <span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Job Title&#39;</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span><span class="s1">&#39;Birth Date&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span><span class="s1">&#39;Last job&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Birth Date</th>
+      <th>Sex</th>
+      <th>Last job</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Doe</td>
+      <td>01-01-1980</td>
+      <td>Male</td>
+      <td>Data Scientist</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>01-01-1985</td>
+      <td>Female</td>
+      <td>Project Manager</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Jim Smith</td>
+      <td>01-01-1990</td>
+      <td>Male</td>
+      <td>Business Analyst</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sara Johnson</td>
+      <td>01-01-1995</td>
+      <td>Female</td>
+      <td>UX Designer</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
 <section id="basic-structure-dataframe">
-<h2><a class="toc-backref" href="#id3">Basic structure: DataFrame</a><a class="headerlink" href="#basic-structure-dataframe" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id4">Basic structure: DataFrame</a><a class="headerlink" href="#basic-structure-dataframe" title="Permalink to this headline">#</a></h2>
 <p>An flat <em>spreadsheet</em> can be seen in terms of the types of variables of <code class="docutils literal notranslate"><span class="pre">Python</span></code> just as dictionary of lists, where each column of the spreadsheet is a pair key-list of the dictionary</p>
 <table class="colwidths-auto table">
 <thead>
@@ -987,7 +1208,7 @@ By Sarah Guido, Andreas Müller</p>
 </div>
 </section>
 <section id="data-structures">
-<h2><a class="toc-backref" href="#id4">Data structures</a><a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id5">Data structures</a><a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> has two new data structures:</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> which are similar to numpy arrays but with some assigned key. For example, for the previous case</p></li>
@@ -1099,7 +1320,7 @@ By Sarah Guido, Andreas Müller</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7d7a779880&gt;]
 </pre></div>
 </div>
-<img alt="../_images/Pandas_18_1.png" src="../_images/Pandas_18_1.png" />
+<img alt="../_images/Pandas_27_1.png" src="../_images/Pandas_27_1.png" />
 </div>
 </div>
 <p>See below for other possibilities of <a class="reference external" href="https://fisica.udea.edu.co:4443/user/restrepo/notebooks/prog/cursos/data-analysis/Pandas.ipynb#Intialization-from-lists-and-dictionaries">creating Pandas DataFrames from lists and dictionaries</a></p>
@@ -1803,7 +2024,7 @@ dtype: object
 </section>
 </section>
 <section id="dataframe-initialization">
-<h2><a class="toc-backref" href="#id5"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> initialization</a><a class="headerlink" href="#dataframe-initialization" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id6"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> initialization</a><a class="headerlink" href="#dataframe-initialization" title="Permalink to this headline">#</a></h2>
 <section id="initialization-from-an-existing-spreadsheet">
 <h3>Initialization from an existing spreadsheet.<a class="headerlink" href="#initialization-from-an-existing-spreadsheet" title="Permalink to this headline">#</a></h3>
 <p>This can be locally in your computer o from some downloadable  link</p>
@@ -2462,7 +2683,7 @@ Name: Name, dtype: object
 </section>
 </section>
 <section id="other-formats-to-saving-and-read-files">
-<h2><a class="toc-backref" href="#id6">Other formats to saving and read files</a><a class="headerlink" href="#other-formats-to-saving-and-read-files" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id7">Other formats to saving and read files</a><a class="headerlink" href="#other-formats-to-saving-and-read-files" title="Permalink to this headline">#</a></h2>
 <p>We are interested in format which keeps the tags of the columns, like <code class="docutils literal notranslate"><span class="pre">'Nombre',</span> <span class="pre">'Edad',</span> <span class="pre">'Compañia'</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3293,7 +3514,7 @@ dictionary</p></li>
 </section>
 </section>
 <section id="common-operations-upon-dataframes">
-<h2><a class="toc-backref" href="#id7">Common operations upon <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a><a class="headerlink" href="#common-operations-upon-dataframes" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id8">Common operations upon <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a><a class="headerlink" href="#common-operations-upon-dataframes" title="Permalink to this headline">#</a></h2>
 <p>See https://github.com/restrepo/PythonTipsAndTricks</p>
 <ul class="simple">
 <li><p><strong>To fill a specific cell</strong></p></li>
@@ -3357,7 +3578,7 @@ dictionary</p></li>
 </div>
 </section>
 <section id="filters-masking">
-<h2><a class="toc-backref" href="#id8">Filters (masking)</a><a class="headerlink" href="#filters-masking" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id9">Filters (masking)</a><a class="headerlink" href="#filters-masking" title="Permalink to this headline">#</a></h2>
 <p>The main application of labeled data for data analysis is the possibility to make filers, or cuts, to obtain specific reduced datasets to further analysis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3644,7 +3865,7 @@ Name: even, dtype: bool
 </div>
 </section>
 <section id="the-apply-method">
-<h2><a class="toc-backref" href="#id9">The <code class="docutils literal notranslate"><span class="pre">apply</span></code> method</a><a class="headerlink" href="#the-apply-method" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id10">The <code class="docutils literal notranslate"><span class="pre">apply</span></code> method</a><a class="headerlink" href="#the-apply-method" title="Permalink to this headline">#</a></h2>
 <p>The advantage of the spreadsheet paradigm is that the columns can be transformed with functions. All the typical functions avalaible for a spreadsheet are already implemented like the method <code class="docutils literal notranslate"><span class="pre">.abs()</span></code> used before, or the method: <code class="docutils literal notranslate"><span class="pre">.sum()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3851,7 +4072,7 @@ dtype: int64
 </section>
 </section>
 <section id="chain-tools-for-data-analysis">
-<h2><a class="toc-backref" href="#id10">Chain tools for data analysis</a><a class="headerlink" href="#chain-tools-for-data-analysis" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id11">Chain tools for data analysis</a><a class="headerlink" href="#chain-tools-for-data-analysis" title="Permalink to this headline">#</a></h2>
 <p>There are several chain tools for data analyis like the</p>
 <ul class="simple">
 <li><p>Spreadsheet based one, like Excel</p></li>
@@ -3862,7 +4083,7 @@ dtype: int64
 <p>Here we illustrate an example of use fo a non-relational database with Pandas</p>
 </section>
 <section id="relational-databases">
-<h2><a class="toc-backref" href="#id11">Relational databases</a><a class="headerlink" href="#relational-databases" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12">Relational databases</a><a class="headerlink" href="#relational-databases" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -4090,7 +4311,7 @@ dtype: int64
 </section>
 </section>
 <section id="non-relational-databases">
-<h2><a class="toc-backref" href="#id12">Non-relational databases</a><a class="headerlink" href="#non-relational-databases" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id13">Non-relational databases</a><a class="headerlink" href="#non-relational-databases" title="Permalink to this headline">#</a></h2>
 <p>Listas de diccionarios anidados con una esquema de datos definido</p>
 <p><img alt="img" src="https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/figures/personajes.svg" /></p>
 <div class="cell docutils container">
@@ -4437,7 +4658,7 @@ Name: id, dtype: int64
 </section>
 </section>
 <section id="world-wide-web">
-<h2><a class="toc-backref" href="#id13">World wide web</a><a class="headerlink" href="#world-wide-web" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id14">World wide web</a><a class="headerlink" href="#world-wide-web" title="Permalink to this headline">#</a></h2>
 <p>There are really three kinds of web</p>
 <ul class="simple">
 <li><p>The normal web,</p></li>
@@ -4707,11 +4928,11 @@ Name: hits, dtype: object
 </section>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id14">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id15">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Pandas_Cheat_Sheet PDF</a></p>
 </section>
 <section id="activities">
-<h2><a class="toc-backref" href="#id15">ACTIVITIES</a><a class="headerlink" href="#activities" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id16">ACTIVITIES</a><a class="headerlink" href="#activities" title="Permalink to this headline">#</a></h2>
 <p>See:</p>
 <ul class="simple">
 <li><p>https://github.com/ajcr/100-pandas-puzzles</p></li>
@@ -4720,11 +4941,11 @@ Name: hits, dtype: object
 </ul>
 </section>
 <section id="final-remarks">
-<h2><a class="toc-backref" href="#id16">Final remarks</a><a class="headerlink" href="#final-remarks" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id17">Final remarks</a><a class="headerlink" href="#final-remarks" title="Permalink to this headline">#</a></h2>
 <p>With basic scripting and Pandas we already have a solid environment to analyse data. We introduce the other libraries motivated with the extending the capabilities of Pandas</p>
 </section>
 <section id="appendix">
-<h2><a class="toc-backref" href="#id17">Appendix</a><a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id18">Appendix</a><a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/ChatGPT/Pandas.html">Summary with ChatGPT</a></p>
 <a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=f91b818d-f536-4b8f-81de-61752e0979b7' target="_blank">
 <img alt='Created in deepnote.com' style='display:inline;max-height:16px;margin:0px;margin-right:7.5px;' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+' > </img>
