@@ -602,8 +602,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#activity">
-     Activity
+    <a class="reference internal nav-link" href="#example">
+     Example
     </a>
    </li>
   </ul>
@@ -857,8 +857,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#activity">
-     Activity
+    <a class="reference internal nav-link" href="#example">
+     Example
     </a>
    </li>
   </ul>
@@ -2118,12 +2118,11 @@ dtype: object
 </div></div></div>
 </div>
 <p>To make a downloadable link for any spread sheet in Google Drive, follow the sequence:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>File → Publish to the web...→ Entire Document → Web page → Microsoft excel (xlsx)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>File → Share → Publish to the web...→ Entire Document → Web page → Microsoft excel (xlsx)
 </pre></div>
 </div>
-<p>as illustrated in the figure:
-<img alt="GS" src="https://github.com/restrepo/data-analysis/blob/master/img/img1.png?raw=1" /></p>
-<div class="cell docutils container">
+<!-- as illustrated in the figure:
+![GS](https://github.com/restrepo/data-analysis/blob/master/img/img1.png?raw=1)--><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Edad&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">32</span>
 <span class="c1">#df.at[0,&#39;Edad&#39;]=32</span>
@@ -2506,13 +2505,8 @@ Company:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_10365/1294992754.py:1: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  df=df.append(d,ignore_index=True)
-</pre></div>
 </div>
-</div>
-</div>
+<p>To concatenate a list of dataframes side by side use the option <code class="docutils literal notranslate"><span class="pre">axis='columns'</span></code></p>
 <section id="exercises">
 <h4>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
@@ -3285,26 +3279,6 @@ load the resulting file with <code class="docutils literal notranslate"><span cl
 <ul class="simple">
 <li><p>Save to a file instead of <code class="docutils literal notranslate"><span class="pre">None</span></code>, with options: <code class="docutils literal notranslate"><span class="pre">orient='records',lines=True</span></code>, and open the file with some editor.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;presidents.json&#39;</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">,</span><span class="n">lines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">presidents</span><span class="o">.</span><span class="n">json</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&quot;Name&quot;:&quot;Donald Trump, Junior&quot;,&quot;Age&quot;:73,&quot;name&quot;:&quot;Donald Trump&quot;}
-{&quot;Name&quot;:&quot;Barak Obama, Senior&quot;,&quot;Age&quot;:58,&quot;name&quot;:&quot;Barak Obama&quot;}
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Add a similar dictionary in the next new line, and try to
 load the resulting file with <code class="docutils literal notranslate"><span class="pre">pd.read_json</span></code> with options: <code class="docutils literal notranslate"><span class="pre">orient='records',lines=True</span></code>.</p>
@@ -3314,59 +3288,6 @@ dictionary</p></li>
 </ul>
 </li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;presidents.json&#39;</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">,</span><span class="n">lines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Age</th>
-      <th>name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Donald Trump, Junior</td>
-      <td>73</td>
-      <td>Donald Trump</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Barak Obama, Senior</td>
-      <td>58</td>
-      <td>Barak Obama</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>George Bush, Junio</td>
-      <td>100</td>
-      <td>George Bush</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 <p>Any Python string need to be converted first to double-quotes before to be used as JSON string.</p>
 <p><strong>Example</strong></p>
 <div class="cell docutils container">
@@ -4071,7 +3992,6 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">personas</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/data/personas.csv&#39;</span><span class="p">)</span>
-<span class="c1">#personas=pd.read_csv(&#39;../data/personas.csv&#39;)</span>
 <span class="n">personas</span>
 </pre></div>
 </div>
@@ -4119,8 +4039,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">trabajos</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/data/trabajos.csv&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trabajos</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/data/trabajos.csv&#39;</span><span class="p">,</span>
                      <span class="n">na_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">trabajos</span>
 </pre></div>
@@ -4182,9 +4101,9 @@ dtype: int64
 </div></div></div>
 </div>
 <p><img alt="img" src="https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/figures/relation.svg" /></p>
-<section id="activity">
-<h3>Activity<a class="headerlink" href="#activity" title="Permalink to this headline">#</a></h3>
-<p>Obtain the current work of Álavro Uribe Vélez</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<p>Obtain the current work of Álvaro Uribe Vélez</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trabajos</span>
@@ -4246,6 +4165,8 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
+<p>It is convenient to normalize the columns with strings before to tray to search inside them with a DataFrame method like
+<code class="docutils literal notranslate"><span class="pre">.</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unidecode</span>
@@ -4289,7 +4210,7 @@ dtype: int64
 </section>
 <section id="non-relational-databases">
 <h2><a class="toc-backref" href="#id13">Non-relational databases</a><a class="headerlink" href="#non-relational-databases" title="Permalink to this headline">#</a></h2>
-<p>Listas de diccionarios anidados con una esquema de datos definido</p>
+<p>Nested lists of dictionaries with a defined data scheme</p>
 <p><img alt="img" src="https://raw.githubusercontent.com/restrepo/ComputationalMethods/master/material/figures/personajes.svg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
